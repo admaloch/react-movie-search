@@ -1,16 +1,15 @@
 
 
-const SearchTypeButton = ({type}) => {
+const SearchTypeButton = ({ type, isActive, handleBtnType }) => {
+
+
+
     return (
-
-     
-
-                <li className = "result-btn">{type}</li>
-
-          
-         
-
-      
+        <li
+            onClick={() => handleBtnType(type)}
+            className={`result-btn ${isActive ? 'active' : ''}`}>
+            {type}
+        </li>
     )
 }
 export default SearchTypeButton;

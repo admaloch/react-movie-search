@@ -1,19 +1,21 @@
 import SearchTypeButton from "./SearchTypeButton";
 
-const SearchTypeButtons = () => {
+const SearchTypeButtons = ({ types, handleBtnType }) => {
+
     return (
 
         <ul id="result-type-container">
-    
-            <SearchTypeButton type = {'Movies'}/>
-            <SearchTypeButton type = {'TV'}/>
-            <SearchTypeButton type = {'Both'}/>
-
+            {types.map((movieType) => (
+                <SearchTypeButton
+                    
+                    key={movieType.type}
+                    type={movieType.type}
+                    isActive={movieType.isActive}
+                    handleBtnType={handleBtnType}
+                    
+                />
+            ))}
         </ul>
-
-
-
-
     )
 }
 export default SearchTypeButtons;
