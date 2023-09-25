@@ -4,6 +4,7 @@ import SearchInfo from './components/SearchInfo/SearchInfo'
 
 import './App.css'
 import { useState } from 'react'
+import MainSlider from './components/Slider/MainSlider'
 
 
 
@@ -66,7 +67,7 @@ function App() {
     <>
       <MainSearch handleBtnType={handleBtnType} types={searchType} />
       <SearchInfo types={searchType}/>
-      
+      <MainSlider/>
     </>
   )
 }

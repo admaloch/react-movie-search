@@ -97,9 +97,7 @@
         --images-per-screen: 3;
     }
 
-    :root {
-        font-size: 11px;
-    }
+
 
     .movie-container img {
         aspect-ratio: 16/30;
