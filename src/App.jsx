@@ -52,9 +52,12 @@ function App() {
   }
 
 
-  const changeColorVars = vars => Object.entries(vars)
-    .forEach(v => document.querySelector(':root')
-      .style.setProperty(v[0], v[1]));
+
+  const changeColorVars = (vars) => {
+    const root = document.querySelector(':root')
+    return Object.entries(vars).forEach(v => root.style.setProperty(v[0], v[1]));
+  }
+
 
   return (
     <>
