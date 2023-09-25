@@ -66,6 +66,7 @@ function App() {
     <>
       <MainSearch handleBtnType={handleBtnType} types={searchType} />
       <SearchInfo types={searchType}/>
+      
     </>
   )
 }
