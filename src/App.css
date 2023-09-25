@@ -140,32 +140,7 @@ body {
     background-color: white;
 }
 
-/* result type buttons */
-#result-type-container {
-    display: flex;
-    margin: 1rem 0;
-    padding: 0;
-}
 
-.result-btn {
-    background-color: var(--containerBackground);
-    color: var(--containertext);
-    border: var(--containertext) solid 2px;
-    list-style: none;
-    padding: .5rem 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-
-}
-
-
-
-.active,
-.result-btn:hover {
-    background-color: var(--containertext);
-    color: var(--containerBackground);
-    border: var(--containerBackground) solid 2px;
-}
 
 /* dropdown search list */
 
@@ -643,54 +618,7 @@ body {
     --bs-gutter-x: 0;
 }
 
-.header-info {
-    display: flex;
-    opacity: 0;
 
-    transition: .5s ease-in-out;
-    justify-content: space-evenly;
-    margin-top: 1rem;
-}
-
-.title {
-    margin: 0;
-
-}
-
-.progress-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: center;
-    gap: .25rem;
-    width: 50%;
-    margin-right: 0;
-}
-
-.progress-item {
-    flex: 0 0 2.5rem;
-    min-width: 2.5rem;
-    height: .8rem;
-    background-color: var(--color2);
-    opacity: .5;
-}
-
-.progress-item.active {
-    background-color: var(--color3);
-    opacity: 1;
-}
-
-.no-results {
-    margin-top: 2rem;
-    width: 40%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transition: 1.5s ease-in-out;
-
-}
 
 
 /* bootstrap Breakpoints

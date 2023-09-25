@@ -6,18 +6,19 @@ import SearchTypeButtons from "./SearchTypeButtons";
 
 const MainSearch = ({ types, handleBtnType }) => {
 
-    const currType = types.filter(item => item.isActive === true)[0].heading
+    const currItem = types.filter(item => item.isActive === true)[0]
+    const currItemHeader = `Search ${currItem.description}`
+
     
 
     return (
 
         <div className="main-search-section">
-            <h1>{currType}</h1>
+            <h1>{currItemHeader}</h1>
             <SearchTypeButtons
                 handleBtnType={handleBtnType}
                 types={types} />
             <SearchForm />
-
         </div>
 
     )

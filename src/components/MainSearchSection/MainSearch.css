@@ -17,3 +17,30 @@
 .main-search-section form {
     margin-top: 1rem;
 }
+
+/* result type buttons */
+#result-type-container {
+    display: flex;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.result-btn {
+    background-color: var(--containerBackground);
+    color: var(--containertext);
+    border: var(--containertext) solid 2px;
+    list-style: none;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+}
+
+
+
+.active,
+.result-btn:hover {
+    background-color: var(--containertext);
+    color: var(--containerBackground);
+    border: var(--containerBackground) solid 2px;
+}

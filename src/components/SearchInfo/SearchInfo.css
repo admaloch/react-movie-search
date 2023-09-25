@@ -1,0 +1,49 @@
+.header-info {
+    display: flex;
+    opacity: 1;
+
+    transition: .5s ease-in-out;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+
+
+.header-info h3 {
+    margin: 0;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: .25rem;
+    width: 50%;
+    margin-right: 0;
+}
+
+.progress-item {
+    flex: 0 0 2.5rem;
+    min-width: 2.5rem;
+    height: .8rem;
+    background-color: var(--color2);
+    opacity: .5;
+}
+
+.progress-item.active {
+    background-color: var(--color3);
+    opacity: 1;
+}
+
+.no-results {
+    margin-top: 2rem;
+    width: 40%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: 1.5s ease-in-out;
+
+}
