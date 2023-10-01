@@ -1,12 +1,8 @@
-import MainSearch from './components/MainSearchSection/MainSearch'
-import SearchInfo from './components/SearchInfo/SearchInfo'
-
-
 import './App.css'
 import { useState } from 'react'
+import MainSearch from './components/MainSearchSection/MainSearch'
+import SearchInfo from './components/SearchInfo/SearchInfo'
 import MainSlider from './components/Slider/MainSlider'
-
-
 
 const searchTypeOptions = [
   {

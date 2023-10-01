@@ -1,3 +1,269 @@
+/* results slider */
+
+.slider-container {
+    margin-top: 3rem;
+    display: flex;
+
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+}
+
+.slider {
+    --images-per-screen: 5;
+    --slider-index: 0;
+    flex-grow: 1;
+    display: flex;
+    margin: 0 .25rem;
+    transform: translateX(calc(var(--slider-index)*-100%));
+    transition: transform 500ms ease-in-out;
+
+
+}
+
+.movie-container {
+    position: relative;
+    max-width: calc(100%/var(--images-per-screen));
+    flex: 0 0 calc(100%/var(--images-per-screen));
+    padding: 0 .3rem;
+    border-radius: 50%;
+    transition: transform .5s ease-in-out;
+    display: inline-block;
+
+}
+
+.movie-container:hover {
+
+    transform: scale(1.5);
+    /* filter: blur(3px); */
+    z-index: 100;
+    flex-basis: 3;
+}
+
+.movie-container img {
+    width: 100%;
+    aspect-ratio: 16/16;
+    min-height: 100;
+    transition: filter 500ms ease-in-out;
+}
+
+
+
+.info-container,
+.bio-overlay {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
+}
+
+
+
+.info-container {
+    background: var(--mainBackground);
+    border: var(--text) solid 2px;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.info-container:hover {
+    opacity: .9;
+}
+
+.movie-title {
+    font-size: 1.6rem;
+    color: var(--color2);
+    margin-bottom: 1rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+
+
+.info-container h4 {
+    letter-spacing: .1rem;
+    text-align: center;
+    max-width: 80%;
+    font-size: .7rem;
+}
+
+
+
+
+
+
+
+
+.info-container h4:nth-of-type(1) {
+    margin-top: .3rem;
+}
+
+.hover-btn {
+    font-size: .7rem;
+    color: var(--mainBackground);
+    background-color: var(--text);
+    border: var(--color2) solid 2px;
+    padding: .2rem .5rem .3rem .7rem;
+    opacity: 1;
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+
+    letter-spacing: 3px;
+    margin-top: .5rem;
+
+}
+
+.hover-btn:hover {
+    background-color: var(--mainBackground);
+    color: var(--text);
+    border: var(--text) solid 2px;
+}
+
+.bio-overlay {
+    background: var(--text);
+    border: var(--mainBackground) solid 2px;
+    color: var(--mainBackground);
+    display: none;
+    position: absolute;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+
+    font-size: .7rem;
+    cursor: default;
+    margin: 0;
+    padding: 1rem;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
+}
+
+
+
+.bio-overlay h4 {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+
+    color: var(--mainBackground);
+}
+
+.bio-overlay p {
+    margin: 1.5rem 1rem 1rem;
+    text-align: center;
+
+
+}
+
+
+
+.close-bio-text {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.3;
+}
+
+.close-bio-text:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.close-bio-text:before,
+.close-bio-text:after {
+    position: fixed;
+    left: 18px;
+    content: ' ';
+    height: 15px;
+    width: 3px;
+    background-color: var(--mainBackground);
+}
+
+.close-bio-text:before {
+    transform: rotate(45deg);
+}
+
+.close-bio-text:after {
+    transform: rotate(-45deg);
+}
+
+
+
+
+.handle {
+    border: none;
+
+    flex-grow: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all .5s ease-in-out;
+    opacity: 0;
+
+
+}
+
+.handle:hover {
+    background-color: var(--overlay);
+    color: var(--mainBackground);
+}
+
+.left-handle {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.right-handle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.arrow {
+    font-size: 8rem;
+    transition: transform 300ms ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+
+}
+
+.arrow:hover,
+.arrow:focus {
+    transform: scale(1.2);
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+
+
 @media screen and (max-width: 1500px) {
 
 
