@@ -44,3 +44,123 @@
     color: var(--containerBackground);
     border: var(--containerBackground) solid 2px;
 }
+
+.form-control {
+    border-radius: 0;
+    font-size: 1.2rem;
+    outline: none;
+    color: var(--text);
+
+}
+
+.form-control:focus {
+    border-color: green;
+    box-shadow: none;
+}
+
+#searchForm {
+    height: 50px;
+    display: flex;
+    position: relative;
+
+}
+
+
+#searchForm button {
+    border: var(--color2) solid 3px;
+    color: var(--containertext);
+    background-color: var(--containerBackground);
+    transition: all 250ms ease-in-out;
+    font-size: 1.5rem;
+    padding: 0 1rem .2rem;
+}
+
+#searchForm button:hover {
+    border: var(--text) solid 3px;
+    color: var(--containerBackground);
+    background-color: var(--containertext);
+}
+
+#searchForm input {
+    width: 250px;
+    margin-right: 1rem;
+    border: var(--color2) solid 3px;
+    transition: all .4s ease-in-out;
+    background-color: var(--mainBackground);
+}
+
+#searchForm input:hover,
+#searchForm input:focus {
+    color: black;
+    border: var(--color3) solid 3px;
+    background-color: white;
+}
+
+
+
+/* dropdown search list */
+
+.search-list {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    z-index: 10;
+    height: none;
+    flex-direction: column;
+    align-items: center;
+    display: none; 
+     opacity: 0; 
+
+    transition: 500ms ease-in-out;
+}
+
+
+
+.search-list-item {
+    background-color: var(--containerBackground);
+    color: var(--containertext);
+    border: var(--containertext) solid 1px;
+    padding: 0.5rem;
+
+    width: 100%;
+
+    cursor: pointer;
+    -webkit-transition: background-color 200ms ease;
+    -o-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    align-items: center;
+
+}
+
+.search-list-item:Hover {
+    background-color: var(--color3);
+
+    border: var(--color1) solid 1px;
+}
+
+
+.search-item-thumbnail img {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+.search-item-info h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.search-item-info p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0.6;
+    margin: 0;
+}

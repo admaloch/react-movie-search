@@ -18,7 +18,9 @@ const MainSearch = ({ types, handleBtnType }) => {
             <SearchTypeButtons
                 handleBtnType={handleBtnType}
                 types={types} />
-            <SearchForm />
+                
+            <SearchForm types={types}/>
+            
         </div>
 
     )

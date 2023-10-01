@@ -1,16 +1,17 @@
+import SearchInput from "./SearchInput";
+import SearchList from "./SearchList";
 
 
 
-const SearchForm = () => {
+const SearchForm = ({ types }) => {
+  const submitHandler = (e) =>{
+      e.preventDefault()
+  }
+    
     return (
-
-
-        <form id="searchForm">
-            <input type="text" className="form-control" placeholder="Movie Title..."
-                autoComplete="off" name="query"
-                id="search-input" onKeyUp="findMovies()" onClick="findMovies()" />
-            <button>Search</button>
-            <div className="search-list" id="search-list"></div>
+        <form id="searchForm" onSubmit={submitHandler}>
+            <SearchInput types = {types}/>
+            <SearchList/>
         </form>
 
 

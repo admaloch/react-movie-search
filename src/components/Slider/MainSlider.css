@@ -223,7 +223,7 @@
     justify-content: center;
     color: rgba(255, 255, 255, 0.5);
     transition: all .5s ease-in-out;
-    opacity: 0;
+    /* opacity: 0; */
 
 
 }
