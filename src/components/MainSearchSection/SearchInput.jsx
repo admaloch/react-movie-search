@@ -12,14 +12,6 @@ const SearchInput = ({ types }) => {
     const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam
 
-    const handleChange = (e) => {
-        setSearchTerm(e.target.value)
-        if (searchTerm.length > 1) {
-            loadMovies(searchTerm)
-        }
-
-    }
-
     async function loadMovies(searchTerm) {
         const URL = `https://omdbapi.com/?s=${searchTerm}&page=1${api_key}${searchParam}`;
         const res = await fetch(`${URL}`);
@@ -28,10 +20,18 @@ const SearchInput = ({ types }) => {
         setSearchRes(results)
     }
 
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value)
+        if (searchTerm.length > 1) {
+            loadMovies(searchTerm)
+        }
+
+    }
+
     const handleRequest = () => {
         return loadMovies(searchTerm)
     }
-    console.log('search results', searchRes)
+
 
 
     return (
