@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import SearchList from "./SearchList";
 import axios from 'axios';
+import { useTheme, useThemeUpdate } from "../../store/APIContext";
 
 const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
 const SearchForm = ({ types }) => {
-    const [searchTerm, setSearchTerm] = useState('')
+    const searchTerm = useTheme()
+    const handleChange = useThemeUpdate()
+
     const [searchRes, setSearchRes] = useState({})
 
     const currType = types.filter(item => item.isActive === true)[0]
@@ -23,17 +26,11 @@ const SearchForm = ({ types }) => {
         [searchTerm]
     )
 
-    const handleChange = (e) => {
-        setSearchTerm(e.target.value)
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+console.log(searchRes)
 
 
     return (
-        <form id="searchForm" onSubmit={handleSubmit}>
+        <form id="searchForm">
             <input
                 type="text"
                 className="form-control"
