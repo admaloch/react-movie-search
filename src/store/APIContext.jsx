@@ -13,11 +13,13 @@ export function useThemeUpdate() {
 
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
- 
+
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
 
     }
+
+    
 
 
     return (
