@@ -1,34 +1,26 @@
 
 import SearchList from "./SearchList";
-import { useTheme, useThemeUpdate } from "../../store/APIContext";
-
-
+import { useTheme } from "../../store/APIContext";
 import { useEffect } from "react";
 
 
 const SearchForm = ({ types }) => {
 
-    const searchTerm = useTheme().search
-    const [searchRes, setSearchRes] = useTheme().result
-    const updateThemeObj = useThemeUpdate()
-    const handleChange = useThemeUpdate().inputHandler
-    const fetchMovie = useThemeUpdate().apiHandler
-
+    const { searchTerm, handleChange, fetchMovie, submitHandler } = useTheme()
     const currType = types.filter(item => item.isActive === true)[0]
-    const searchParam = currType.apiParam
-
-
+    const searchParam = currType.apiParam;
 
     useEffect(
         function fetchMovieInfoOnChange() {
-            fetchMovie(searchParam);
+            if (searchTerm.length > 2) {
+                fetchMovie(searchParam);
+            }
         },
         [searchTerm]
     )
 
-
     return (
-        <form id="searchForm">
+        <form id="searchForm" onSubmit={submitHandler}>
             <input
                 type="text"
                 className="form-control"
@@ -39,7 +31,7 @@ const SearchForm = ({ types }) => {
                 id="search-input"
                 onChange={handleChange}
             />
-            <button type="button">Search</button>
+            <button>Search</button>
             <SearchList />
         </form>
 
