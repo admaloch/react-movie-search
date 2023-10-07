@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
-import SearchList from "./SearchList";
-import axios from 'axios';
-import { useTheme, useThemeUpdate } from "../../store/APIContext";
 
-const BASE_URL = 'https://omdbapi.com/?s='
-const api_key = '&apikey=84200d7a'
+import SearchList from "./SearchList";
+import { useTheme, useThemeUpdate } from "../../store/APIContext";
 
 const SearchForm = ({ types }) => {
     const searchTerm = useTheme()
     const handleChange = useThemeUpdate()
-
-    const [searchRes, setSearchRes] = useState({})
-
     const currType = types.filter(item => item.isActive === true)[0]
-    const searchParam = currType.apiParam
-
-    useEffect(
-        function fetchMovieInfoOnChange() {
-            async function fetchMovie() {
-                const searchResults = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-                setSearchRes(searchResults.data)
-            }
-            fetchMovie();
-        },
-        [searchTerm]
-    )
-
-console.log(searchRes)
+   
 
 
     return (
