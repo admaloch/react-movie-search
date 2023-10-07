@@ -3,7 +3,7 @@ import { useState } from 'react'
 import MainSearch from './components/MainSearchSection/MainSearch'
 import SearchInfo from './components/SearchInfo/SearchInfo'
 import MainSlider from './components/Slider/MainSlider'
-let resultType = '&type=movie'
+
 const searchTypeOptions = [
   {
     type: 'Movie', isActive: true, description: 'Movies', apiParam: "&type=movie", colorScheme: {

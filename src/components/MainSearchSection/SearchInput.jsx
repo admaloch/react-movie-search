@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-
+const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
 
@@ -13,7 +13,7 @@ const SearchInput = ({ types }) => {
     const searchParam = currType.apiParam
 
     async function loadMovies(searchTerm) {
-        const URL = `https://omdbapi.com/?s=${searchTerm}&page=1${api_key}${searchParam}`;
+        const URL = `${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`;
         const res = await fetch(`${URL}`);
         const results = await res.json();
         // console.log('results', results)
@@ -32,7 +32,7 @@ const SearchInput = ({ types }) => {
         return loadMovies(searchTerm)
     }
 
-
+console.log(searchTerm)
 
     return (
         <>
