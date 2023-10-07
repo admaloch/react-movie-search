@@ -8,7 +8,7 @@ const SearchInfo = ({ types }) => {
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
-    console.log(currSearch)
+    // console.log(currSearch)
 
     return (
 
