@@ -1,6 +1,5 @@
 
-import React, { useContext, useState } from "react"
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react"
 import axios from 'axios';
 const ThemeContext = React.createContext()
 const ThemeUpdateContext = React.createContext()
@@ -17,16 +16,15 @@ export function useThemeUpdate() {
 
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
+    const [searchRes, setSearchRes] = useState({})
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
 
     }
-
-    const [searchRes, setSearchRes] = useState({})
-
    
-    const searchParam = currType.apiParam
+    // const searchParam = currType.apiParam
+    const searchParam = '&type=movie'
 
     useEffect(
         function fetchMovieInfoOnChange() {
@@ -41,7 +39,7 @@ export function ThemeProvider({ children }) {
 
 
     return (
-        <ThemeContext.Provider value={searchTerm}>
+        <ThemeContext.Provider value={{search: searchTerm, result: searchRes}}>
             <ThemeUpdateContext.Provider value={handleChange}>
                 {children}
             </ThemeUpdateContext.Provider>

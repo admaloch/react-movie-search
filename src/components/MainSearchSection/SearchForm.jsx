@@ -3,11 +3,13 @@ import SearchList from "./SearchList";
 import { useTheme, useThemeUpdate } from "../../store/APIContext";
 
 const SearchForm = ({ types }) => {
-    const searchTerm = useTheme()
+    const contextObj = useTheme()
+    const searchTerm = contextObj.search
+    const searchRes = contextObj.result
     const handleChange = useThemeUpdate()
     const currType = types.filter(item => item.isActive === true)[0]
-   
 
+    console.log(contextObj)
 
     return (
         <form id="searchForm">
