@@ -27,7 +27,7 @@ const Slider = ({ types }) => {
 
 
 
-
+    
 
 
 

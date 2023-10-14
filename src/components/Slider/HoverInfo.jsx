@@ -4,7 +4,6 @@ import BioOverlay from "./BioOverlay";
 const HoverInfo = ({ item }) => {
 
 
-    console.log(item)
     // items have multiple ratings but not all have the same -- put preference to rotten, them imdb, then metacritic -- if it doesn't have any than whatever else
     const genItemRating = (obj) => {
         const rottenScore = obj.Ratings.filter(x => x.Source === "Rotten Tomatoes")
