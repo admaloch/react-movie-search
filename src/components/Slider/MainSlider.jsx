@@ -1,32 +1,22 @@
 
 
-import { useEffect, useState } from 'react';
-import { useTheme } from '../../store/APIContext';
+
 import './MainSlider.css'
-import SliderItem from './SliderItem';
-
-
-
-const MainSlider = ({types}) => {
-
-    const [sliderRes, setSliderRes] = useState([])
-    const { submittedSearch, searchRes } = useTheme()
-
-
-
-    
+import Slider from './Slider';
 
 
 
 
-    useEffect(
-        function sliderResHandler() {
-            setSliderRes(searchRes.Search)
-        },
-        [submittedSearch]
-    );
+const MainSlider = ({ types }) => {
 
-    
+
+
+
+
+
+
+
+
 
 
 
@@ -38,16 +28,8 @@ const MainSlider = ({types}) => {
             <button className="handle left-handle " >
                 <div className="arrow">‹</div>
             </button>
- 
-            {sliderRes && sliderRes.map(item => (
-                <SliderItem
-                    item={item}
-                    poster={item.Poster}
-                    imdbID={item.imdbID}
-                    key={item.imdbID}
-                    types = {types}
-                />
-            ))}
+
+            <Slider types = {types}/>
             <button className="handle right-handle">
                 <div className="arrow">›</div>
             </button>
