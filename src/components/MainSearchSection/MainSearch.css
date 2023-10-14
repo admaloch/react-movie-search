@@ -111,8 +111,8 @@
     height: none;
     flex-direction: column;
     align-items: center;
-    display: block; 
-     opacity: 1; 
+    display: none; 
+     opacity: 0; 
 
     transition: 500ms ease-in-out;
 }

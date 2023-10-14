@@ -20,6 +20,8 @@ const MainSlider = () => {
         [submittedSearch]
     );
 
+    
+
     // console.log(sliderRes[0])
 
 
@@ -32,7 +34,7 @@ const MainSlider = () => {
             <button className="handle left-handle " >
                 <div className="arrow">‹</div>
             </button>
-
+ 
             {sliderRes && sliderRes.map(item => (
                 <SliderItem
                     item={item}
