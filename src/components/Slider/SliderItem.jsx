@@ -3,7 +3,7 @@ import HoverInfo from "./hoverInfo";
 import image_not_found from '../../assets/image_not_found.png';
 import { useState } from "react";
 import axios from 'axios';
-import { useEffect } from "react";
+
 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'

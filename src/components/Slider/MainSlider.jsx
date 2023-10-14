@@ -1,12 +1,9 @@
 
-
-
 import { useState } from 'react';
 import './MainSlider.css'
-import Slider from './Slider';
+import SearchInfo from './SearchInfo';
 
-
-
+import SliderContainer from './SliderContainer';
 
 const MainSlider = ({ types }) => {
 
@@ -16,35 +13,25 @@ const MainSlider = ({ types }) => {
         setSliderIndex(sliderIndex - 1)
         document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex - 1);
     }
+
     const increaseIndexHandler = () => {
         setSliderIndex(sliderIndex + 1)
         document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex + 1);
     }
 
 
-
-
-
-
-
-
-
-
-
-
     return (
-
-        <div className="slider-container">
-            <button onClick={decreaseIndexHandler} className="handle left-handle " >
-                <div className="arrow">‹</div>
-            </button>
-
-            <Slider types={types} />
-            <button onClick={increaseIndexHandler} className="handle right-handle">
-                <div className="arrow">›</div>
-            </button>
-
-        </div >
+        <>
+            <SearchInfo 
+            sliderIndex = {sliderIndex}
+            types={types} 
+            />
+            <SliderContainer
+                types={types}
+                decreaseIndexHandler={decreaseIndexHandler}
+                increaseIndexHandler={increaseIndexHandler}
+            />
+        </>
     )
 }
 export default MainSlider;

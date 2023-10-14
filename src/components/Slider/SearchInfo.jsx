@@ -2,13 +2,18 @@ import "./SearchInfo.css"
 import { randomColorGen } from '../utility/utility.js'
 import { useTheme } from "../../store/APIContext"
 
-const SearchInfo = ({ types }) => {
-    const { submittedSearch } = useTheme()
+const SearchInfo = ({ types, sliderIndex }) => {
+    const { submittedSearch, searchRes } = useTheme()
     const currType = types.filter(item => item.isActive === true)[0]
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
  
+    console.log(submittedSearch)
+
+    // const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
+
+    // const numItems = sear
 
     return (
 
