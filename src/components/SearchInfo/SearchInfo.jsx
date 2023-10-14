@@ -1,6 +1,6 @@
 import "./SearchInfo.css"
-import { useTheme } from "../../store/APIContext";
 import { randomColorGen } from '../utility/utility.js'
+import { useTheme } from "../../store/APIContext"
 
 const SearchInfo = ({ types }) => {
     const { submittedSearch } = useTheme()
@@ -8,7 +8,7 @@ const SearchInfo = ({ types }) => {
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
-    // console.log(currSearch)
+ 
 
     return (
 

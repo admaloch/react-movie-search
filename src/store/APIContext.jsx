@@ -18,18 +18,20 @@ export function ThemeProvider({ children }) {
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
 
+
     }
 
     const submitHandler = (e) => {
         e.preventDefault()
         setSubmittedSearch(searchTerm)
-       
+
     }
 
     async function fetchMovie(searchParam) {
         const searchResults = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
         setSearchRes(searchResults.data)
     }
+
 
     const ctxObj = {
         searchTerm: searchTerm,
@@ -39,7 +41,7 @@ export function ThemeProvider({ children }) {
         submitHandler: submitHandler,
         fetchMovie: fetchMovie,
     }
-
+ 
     return (
         <ThemeContext.Provider value={ctxObj}>
             {children}
