@@ -17,8 +17,6 @@ export function ThemeProvider({ children }) {
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
-
-
     }
 
     const submitHandler = (e) => {

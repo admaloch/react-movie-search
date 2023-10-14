@@ -7,9 +7,15 @@ import SliderItem from './SliderItem';
 
 
 
-const MainSlider = () => {
+const MainSlider = ({types}) => {
+
     const [sliderRes, setSliderRes] = useState([])
     const { submittedSearch, searchRes } = useTheme()
+
+
+
+    
+
 
 
 
@@ -21,8 +27,6 @@ const MainSlider = () => {
     );
 
     
-
-    // console.log(sliderRes[0])
 
 
 
@@ -41,6 +45,7 @@ const MainSlider = () => {
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}
+                    types = {types}
                 />
             ))}
             <button className="handle right-handle">

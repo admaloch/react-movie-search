@@ -66,7 +66,7 @@ function App() {
     <ThemeProvider>
       <MainSearch handleBtnType={handleBtnType} types={searchType} />
       <SearchInfo types={searchType} />
-      <MainSlider />
+      <MainSlider types={searchType}/>
     </ThemeProvider>
 
   )

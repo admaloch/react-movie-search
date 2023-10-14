@@ -1,6 +1,6 @@
 
 
-const BioOverlay = () => {
+const BioOverlay = ({plot}) => {
 
 
 
@@ -9,7 +9,7 @@ const BioOverlay = () => {
 
         <div className="bio-overlay">
             <h4>Overview</h4>
-            <p>In 2005.....</p>
+            <p>{plot}</p>
             <div className="close-bio-text"></div>
         </div>
 
