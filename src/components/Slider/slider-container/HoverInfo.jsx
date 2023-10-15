@@ -1,8 +1,10 @@
+import { useState } from "react"
 import BioOverlay from "./BioOverlay"
 
 
 
 const HoverInfo = ({ item }) => {
+    const [revealBio, setRevealBio] = useState(false)
 
 
     // items have multiple ratings but not all have the same -- put preference to rotten, them imdb, then metacritic -- if it doesn't have any than whatever else
@@ -34,6 +36,20 @@ const HoverInfo = ({ item }) => {
     }
 
 
+    // console.log(revealBio)
+    const bioHandler = () => {
+        setRevealBio(true)
+    }
+
+    const closeBio = () => {
+        setRevealBio(false)
+    }
+
+
+
+
+
+
     return (
 
         <div className="info-container">
@@ -43,9 +59,9 @@ const HoverInfo = ({ item }) => {
             {item.Rated !== 'N/A' && <h4>Rated: {item.Rated}</h4>}
             {title && <h4>Type: {title} </h4>}
             {currRating && <h4>{currRating}</h4>}
-            <div className="hover-btn">Overview</div>
+            <div onClick={bioHandler} className="hover-btn">Overview</div>
             <div className="hover-btn">More Information</div>
-            <BioOverlay plot={item.Plot} />
+            <BioOverlay revealBio={revealBio} closeBio={closeBio} plot={item.Plot} />
         </div>
 
     )

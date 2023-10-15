@@ -14,7 +14,6 @@ const SliderItem = ({ imdbID, poster, types }) => {
     const currItem = types.filter(item => item.isActive === true)[0]
     const searchParam = currItem.apiParam;
 
-
     const [itemOnHover, setItemOnHover] = useState({})
 
     async function mouseEnterHandler() {
@@ -23,31 +22,14 @@ const SliderItem = ({ imdbID, poster, types }) => {
         setItemOnHover(apiRes.data)
     }
 
-
-
-
-
     return (
-
         <div onMouseEnter={mouseEnterHandler} className="movie-container" data-id={imdbID}>
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}></img>
             <HoverInfo item={itemOnHover}/>
-            
-
         </div>
-
     )
 }
 export default SliderItem;
 
-
-
-    // useEffect(() => {
-    //     async function hoverMovieHandler() {
-    //         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
-    //         console.log(apiRes)
-    //     }
-    //     hoverMovieHandler()
-    // }, [])
