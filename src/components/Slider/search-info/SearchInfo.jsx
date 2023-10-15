@@ -4,7 +4,7 @@ import { useTheme } from "../../../store/APIContext"
 
 import ProgressBar from "./ProgressBar"
 
-const SearchInfo = ({ types, sliderIndex }) => {
+const SearchInfo = ({ types, progBar }) => {
 
 
     const { submittedSearch } = useTheme()
@@ -24,7 +24,9 @@ const SearchInfo = ({ types, sliderIndex }) => {
         <div className="header-info">
             <h3>{currType.description} about: <span style={spanColor}>{currSearch}</span>
             </h3>
-            <ProgressBar sliderIndex={sliderIndex} />
+            <ProgressBar
+                progBar={progBar}
+            />
 
         </div>
 
