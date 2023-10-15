@@ -30,17 +30,8 @@ const MainSlider = ({ types }) => {
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
 
-    const increaseIndexHandler = () => {
-        dispatch({ type: 'increment', progBar: progBar })
-
-    }
-
-    const decreaseIndexHandler = () => {
-        dispatch({ type: 'decrement', progBar: progBar })
-
-    }
-
-
+    const increaseIndexHandler = () => dispatch({ type: 'increment', progBar: progBar })
+    const decreaseIndexHandler = () => dispatch({ type: 'decrement', progBar: progBar })
 
     useEffect(
 
