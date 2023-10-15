@@ -46,7 +46,7 @@ const MainSlider = ({ types }) => {
 
     return (
         <>
-            <SearchInfo
+            <Search/Info
                 progBar={progBar}
                 types={types}
             />
