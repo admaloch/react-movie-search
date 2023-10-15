@@ -2,7 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import MainSearch from './components/MainSearchSection/MainSearch'
 import SearchInfo from './components/Slider/search-info/SearchInfo'
-import MainSlider from './components/Slider/slider-container/MainSlider'
+import MainSlider from './components/Slider/MainSlider'
 import { ThemeProvider } from './store/APIContext'
 
 const searchTypeOptions = [

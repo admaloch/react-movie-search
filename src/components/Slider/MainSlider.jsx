@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from 'react';
-import './MainSlider.css'
-import SearchInfo from '../search-info/SearchInfo';
 
-import SliderContainer from './SliderContainer';
+import SearchInfo from './search-info/SearchInfo';
+
+import SliderContainer from './slider-container/SliderContainer';
 
 const MainSlider = ({ types }) => {
 

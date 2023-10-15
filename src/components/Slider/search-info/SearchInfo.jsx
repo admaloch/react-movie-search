@@ -1,13 +1,13 @@
 import "./SearchInfo.css"
 import { randomColorGen } from '../../utility/utility.js'
 import { useTheme } from "../../../store/APIContext"
-import { useEffect } from "react"
-import { useState } from "react"
+
+import ProgressBar from "./ProgressBar"
 
 const SearchInfo = ({ types, sliderIndex }) => {
 
-    const [numProgBar, setNumProgBar] = useState(0)
-    const { submittedSearch, searchRes } = useTheme()
+
+    const { submittedSearch } = useTheme()
     const currType = types.filter(item => item.isActive === true)[0]
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
@@ -16,28 +16,15 @@ const SearchInfo = ({ types, sliderIndex }) => {
 
 
 
-    useEffect(
-        function progressBarFunc() {
-            const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
-            const numItems = searchRes.Search && searchRes.Search.length
-            setNumProgBar(Math.ceil(numItems / itemsPerScreen))
-        },
-        [submittedSearch]
-    );
- 
+
+
 
     return (
 
         <div className="header-info">
             <h3>{currType.description} about: <span style={spanColor}>{currSearch}</span>
             </h3>
-            <div className="progress-bar">
-                <div className="progress-item active"></div>
-                <div className="progress-item"></div>
-                <div className="progress-item"></div>
-                <div className="progress-item"></div>
-
-            </div>
+            <ProgressBar sliderIndex={sliderIndex} />
 
         </div>
 

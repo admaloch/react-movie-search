@@ -13,13 +13,6 @@ const Slider = ({ types }) => {
     const [sliderRes, setSliderRes] = useState([])
     const { submittedSearch, searchRes } = useTheme()
 
-
-
-
-
-
-
-
     useEffect(
         function sliderResHandler() {
             setSliderRes(searchRes.Search)
@@ -27,15 +20,7 @@ const Slider = ({ types }) => {
         [submittedSearch]
     );
 
-
-
-    
-
-
-
     return (
-
-
 
         <div className="slider">
             {sliderRes && sliderRes.map(item => (
