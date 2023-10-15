@@ -13,18 +13,18 @@ const SearchInfo = ({ types, sliderIndex }) => {
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
 
-    
+
 
 
     useEffect(
         function progressBarFunc() {
             const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
-            const numItems = searchRes.length
-            setNumProgBar(numItems / itemsPerScreen)
+            const numItems = searchRes.Search && searchRes.Search.length
+            setNumProgBar(Math.ceil(numItems / itemsPerScreen))
         },
         [submittedSearch]
     );
-    console.log(numProgBar)
+ 
 
     return (
 

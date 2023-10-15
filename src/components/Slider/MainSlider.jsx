@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './MainSlider.css'
 import SearchInfo from './SearchInfo';
 
@@ -20,11 +20,13 @@ const MainSlider = ({ types }) => {
     }
 
 
+
+
     return (
         <>
-            <SearchInfo 
-            sliderIndex = {sliderIndex}
-            types={types} 
+            <SearchInfo
+                sliderIndex={sliderIndex}
+                types={types}
             />
             <SliderContainer
                 types={types}
