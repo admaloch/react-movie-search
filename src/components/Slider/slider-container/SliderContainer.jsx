@@ -1,8 +1,4 @@
 
-
-
-
-
 import Slider from './Slider';
 
 

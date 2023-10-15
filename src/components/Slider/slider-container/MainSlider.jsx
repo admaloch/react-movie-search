@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './MainSlider.css'
-import SearchInfo from './SearchInfo';
+import SearchInfo from '../search-info/SearchInfo';
 
 import SliderContainer from './SliderContainer';
 

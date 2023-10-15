@@ -1,6 +1,6 @@
 import "./SearchInfo.css"
-import { randomColorGen } from '../utility/utility.js'
-import { useTheme } from "../../store/APIContext"
+import { randomColorGen } from '../../utility/utility.js'
+import { useTheme } from "../../../store/APIContext"
 import { useEffect } from "react"
 import { useState } from "react"
 

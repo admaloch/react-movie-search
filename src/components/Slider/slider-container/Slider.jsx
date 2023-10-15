@@ -1,7 +1,9 @@
 
 
 import { useEffect, useState } from 'react';
-import { useTheme } from '../../store/APIContext';
+import { useTheme } from '../../../store/APIContext';
+
+
 import SliderItem from './SliderItem';
 
 

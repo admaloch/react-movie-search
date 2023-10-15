@@ -1,4 +1,5 @@
-import BioOverlay from "./BioOverlay";
+import BioOverlay from "./BioOverlay"
+
 
 
 const HoverInfo = ({ item }) => {

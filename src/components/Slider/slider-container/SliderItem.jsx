@@ -1,6 +1,6 @@
 
-import HoverInfo from "./hoverInfo";
-import image_not_found from '../../assets/image_not_found.png';
+import HoverInfo from "./HoverInfo";
+import image_not_found from '../../../assets/image_not_found.png';
 import { useState } from "react";
 import axios from 'axios';
 
