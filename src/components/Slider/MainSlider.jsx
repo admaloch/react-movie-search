@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTheme } from '../../store/APIContext';
 
 import SearchInfo from './search-info/SearchInfo';
-
 import SliderContainer from './slider-container/SliderContainer';
 
 const MainSlider = ({ types }) => {
@@ -12,27 +11,23 @@ const MainSlider = ({ types }) => {
     const [sliderIndex, setSliderIndex] = useState(0)
     const [progBar, setProgBar] = useState([])
 
-    // console.log(progBar)
     const decreaseIndexHandler = () => {
-        let newSliderIndex = 0
-        if(sliderIndex === 0) {
-            newSliderIndex === progBar.length - 1
-        } else {
-            newSliderIndex = sliderIndex - 1
-        }
-        setSliderIndex(sliderIndex - 1)
-        document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex - 1);
-
+        let newIndexVal = 0
+        sliderIndex - 1 === -1
+            ? newIndexVal = progBar.length - 1
+            : newIndexVal = sliderIndex - 1
+        document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
+        setSliderIndex(newIndexVal)
     }
 
     const increaseIndexHandler = () => {
-        setSliderIndex(sliderIndex + 1)
-        let newSliderIndex = null
-        document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex + 1);
+        let newIndexVal = 0
+        sliderIndex + 1 > progBar.length - 1
+            ? newIndexVal === 0
+            : newIndexVal = sliderIndex + 1
+        setSliderIndex(newIndexVal)
+        document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
     }
-
-
-
 
     useEffect(
         function progressBarFunc() {
@@ -43,20 +38,11 @@ const MainSlider = ({ types }) => {
             for (let i = 0; i < numOfBlocks; i++) {
                 blockArr.push({ id: i, isActive: false })
             }
-
-
             blockArr[sliderIndex] = { id: sliderIndex, isActive: true }
-
             setProgBar(blockArr)
         },
         [submittedSearch, sliderIndex]
     );
-
-
-
-    console.log(progBar)
-
-
 
     return (
         <>

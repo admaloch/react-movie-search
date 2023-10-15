@@ -13,12 +13,6 @@ const SearchInfo = ({ types, progBar }) => {
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
 
-
-
-
-
-
-
     return (
 
         <div className="header-info">
@@ -27,9 +21,7 @@ const SearchInfo = ({ types, progBar }) => {
             <ProgressBar
                 progBar={progBar}
             />
-
         </div>
-
     )
 }
 export default SearchInfo;
