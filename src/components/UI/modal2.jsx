@@ -1,7 +1,7 @@
 
 import ReactDOM from 'react-dom';
 
-import classes from './Modal.module.css';
+import classes from './Modal.css';
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClose}/>;
@@ -33,7 +33,7 @@ export default Modal;
 
 // modal mockup
 
-{/* <div class="container-fluid" id="modal" style="display: flex; opacity: 1;">
+{ <div id="modal" style="display: flex; opacity: 1;">
             <div class="overlay">
                 <div class="result-container">
                     <div class="movie-info-container">
@@ -62,4 +62,4 @@ export default Modal;
                     </div>
                 </div>
             </div>       
-    </div> */}
+    </div> }

@@ -72,4 +72,39 @@
 // ]
 
 
-{ "Title": "Dog Day Afternoon", "Year": "1975", "Rated": "R", "Released": "25 Dec 1975", "Runtime": "125 min", "Genre": "Biography, Crime, Drama", "Director": "Sidney Lumet", "Writer": "Frank Pierson, P.F. Kluge, Thomas Moore", "Actors": "Al Pacino, John Cazale, Penelope Allen", "Plot": "Three amateur bank robbers plan to hold up a bank. A nice simple robbery: Walk in, take the money, and run. Unfortunately, the supposedly uncomplicated heist suddenly becomes a bizarre nightmare as everything that could go wrong d...", "Language": "English", "Country": "United States", "Awards": "Won 1 Oscar. 14 wins & 20 nominations total", "Poster": "https://m.media-amazon.com/images/M/MV5BODExZmE2ZWItYTIzOC00MzI1LTgyNTktMDBhNmFhY2Y4OTQ3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg", "Ratings": [{ "Source": "Internet Movie Database", "Value": "8.0/10" }, { "Source": "Rotten Tomatoes", "Value": "96%" }, { "Source": "Metacritic", "Value": "86/100" }], "Metascore": "86", "imdbRating": "8.0", "imdbVotes": "267,511", "imdbID": "tt0072890", "Type": "movie", "DVD": "15 Aug 2008", "BoxOffice": "$50,000,000", "Production": "N/A", "Website": "N/A", "Response": "True" }
+const exampleRequest = {
+    "Title": "Dog Day Afternoon",
+    "Year": "1975",
+    "Rated": "R",
+    "Released": "25 Dec 1975",
+    "Runtime": "125 min",
+    "Genre": "Biography, Crime, Drama",
+    "Director": "Sidney Lumet",
+    "Writer": "Frank Pierson, P.F. Kluge, Thomas Moore",
+    "Actors": "Al Pacino, John Cazale, Penelope Allen",
+    "Plot": "Three amateur bank robbers plan to hold up a bank. A nice simple robbery: Walk in, take the money, and run. Unfortunately, the supposedly uncomplicated heist suddenly becomes a bizarre nightmare as everything that could go wrong d...",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "Won 1 Oscar. 14 wins & 20 nominations total",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BODExZmE2ZWItYTIzOC00MzI1LTgyNTktMDBhNmFhY2Y4OTQ3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    "Ratings": [{
+        "Source": "Internet Movie Database",
+        "Value": "8.0/10"
+    }, {
+        "Source": "Rotten Tomatoes",
+        "Value": "96%"
+    }, {
+        "Source": "Metacritic",
+        "Value": "86/100"
+    }],
+    "Metascore": "86",
+    "imdbRating": "8.0",
+    "imdbVotes": "267,511",
+    "imdbID": "tt0072890",
+    "Type": "movie",
+    "DVD": "15 Aug 2008",
+    "BoxOffice": "$50,000,000",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True"
+}
