@@ -38,11 +38,7 @@ const Modal = ({ open, item, setIsModalOpen }) => {
                         {item.Actors && <p className="actors movie-items"><span>Actors: </span>{item.Actors}</p>}
                         {item.Plot && <p className="plot movie-items"><span>Plot:</span>{item.Plot}</p>}
                         {item.Language && <p className="language movie-items"><span>Language:</span> {item.Language}</p>}
-                       
-                    </div>
-                    
-                </div>
-                <div className="modal-buttons">
+                        <div className="modal-buttons">
                             <button onClick={() => setIsModalOpen(false)} className="modal-btn" id="btn-close">Return to Search
                             </button>
                             <a
@@ -58,6 +54,8 @@ const Modal = ({ open, item, setIsModalOpen }) => {
 
 
                         </div>
+                    </div>
+                </div>
             </div>
 
         </div >,
