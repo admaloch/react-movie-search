@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function ModalBtns({ setIsModalOpen, searchLink }) {
   return (
     <div className="modal-buttons">
