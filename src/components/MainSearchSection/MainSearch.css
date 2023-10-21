@@ -83,7 +83,7 @@
 
 #searchForm input {
     width: 250px;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
     border: var(--color2) solid 3px;
     transition: all .4s ease-in-out;
     background-color: var(--mainBackground);
@@ -101,7 +101,9 @@
 /* dropdown search list */
 
 .search-list {
+    /* border: red solid 1px; */
     position: absolute;
+    padding-left: 0;
     width: 100%;
     right: 0;
     top: 100%;
@@ -111,8 +113,8 @@
     height: none;
     flex-direction: column;
     align-items: center;
-    display: none; 
-     opacity: 0; 
+    display: block; 
+     opacity: 1; 
 
     transition: 500ms ease-in-out;
 }

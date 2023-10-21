@@ -12,8 +12,9 @@ export function useTheme() {
 
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
-    const [searchRes, setSearchRes] = useState({})
     const [submittedSearch, setSubmittedSearch] = useState('')
+    const [searchRes, setSearchRes] = useState({})
+    
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value)
@@ -33,10 +34,12 @@ export function ThemeProvider({ children }) {
 
     const ctxObj = {
         searchTerm: searchTerm,
-        searchRes: searchRes,
-        submittedSearch: submittedSearch,
         handleChange: handleChange,
+        submittedSearch: submittedSearch,
         submitHandler: submitHandler,
+        searchRes: searchRes,
+        setSearchRes: setSearchRes,
+        
         fetchMovie: fetchMovie,
     }
  
