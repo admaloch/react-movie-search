@@ -6,16 +6,19 @@ import './Modal.css';
 const Modal = ({ open, children, closeModal }) => {
     if (!open) return null
     let modalStyle = open
-        ? { display: 'flex', opacity: 100 }
+        ? { display: 'block', opacity: 100 }
         : { display: 'none', opacity: 0 }
 
     return ReactDOM.createPortal(
-        <div onClick={closeModal} className="modal-overlay" style={modalStyle}>
+        <>
+            <div onClick={closeModal} className="modal-overlay" style={modalStyle}>
+            </div >
             <div className="modal-container">
                 {children}
             </div>
-        </div >,
+        </>,
         document.getElementById('portal')
+
     );
 };
 
