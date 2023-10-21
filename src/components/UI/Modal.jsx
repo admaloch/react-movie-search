@@ -1,24 +1,18 @@
 
 import ReactDOM from 'react-dom';
 import './Modal.css';
-import ModalContent from './ModalContent';
 
-const Modal = ({ open, item, setIsModalOpen }) => {
+
+const Modal = ({ open, children, closeModal }) => {
     if (!open) return null
     let modalStyle = open
         ? { display: 'flex', opacity: 100 }
         : { display: 'none', opacity: 0 }
 
     return ReactDOM.createPortal(
-        <div onClick={() => setIsModalOpen(false)} className="modal-overlay" style={modalStyle}>
-            <div onClick={() => setIsModalOpen(true)} className="modal-container">
-                {item.Poster &&
-                    <img src={item.Poster} alt={`${item.Title} poster`} />
-                }
-                <ModalContent
-                    item={item}
-                    setIsModalOpen={setIsModalOpen}
-                />
+        <div onClick={closeModal} className="modal-overlay" style={modalStyle}>
+            <div className="modal-container">
+                {children}
             </div>
         </div >,
         document.getElementById('portal')

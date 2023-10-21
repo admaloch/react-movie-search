@@ -1,0 +1,110 @@
+
+
+.result-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+
+
+.result-info {
+
+  margin: 0 1rem 0;
+  letter-spacing: .2rem;
+  text-align: center;
+  color: var(--text);
+  max-width: 500px;
+}
+
+
+
+
+
+.modal-container img {
+  padding: 0;
+  margin: 0 auto;
+  border: var(--text) solid 5px;
+  max-width: 400px;
+  margin-right: 1rem;
+}
+
+/* movie info stylings */
+.result-info ul {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.result-info li {
+  margin: 0 .3rem;
+}
+
+
+
+.result-info h3 {
+  font-size: 2rem;
+  color: var(--color2);
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 400px;
+}
+
+.result-info span {
+  color: var(--color1);
+}
+
+.result-info .plot {
+  max-width: 400px;
+  max-height: 200px;
+  overflow-y: scroll;
+  margin: 1rem auto;
+
+}
+
+
+.modal-buttons {
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.modal-buttons button,
+.modal-buttons a {
+  background-color: var(--containerBackground);
+  color: var(--containertext);
+  border: var(--color2) solid 2px;
+  padding: .5rem 2rem;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+#btn-close {
+  letter-spacing: .2rem;
+
+}
+
+.modal-buttons button:hover,
+.modal-buttons a:hover {
+  background-color: var(--containertext);
+  color: var(--containerBackground);
+  border: var(--containerBackground) solid 2px;
+
+}

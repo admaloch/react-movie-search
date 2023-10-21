@@ -1,5 +1,7 @@
 import { useState } from "react"
+import ItemModal from "../../ItemModal/ItemModal"
 import Modal from "../../UI/Modal"
+
 
 import BioOverlay from "./BioOverlay"
 import ItemInfo from "./ItemInfo"
@@ -10,13 +12,19 @@ const HoverInfo = ({ item }) => {
     const [revealBio, setRevealBio] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const bioHandler = () => {
+    const openBioOverlay = () => {
         setRevealBio(true)
     }
 
-    const closeBio = () => {
+    const closeBioOverlay = () => {
         setRevealBio(false)
     }
+
+    const closeItemModal = () => {
+        setIsModalOpen(false)
+    }
+
+
 
 
 
@@ -24,14 +32,19 @@ const HoverInfo = ({ item }) => {
 
         <div className="info-container">
             <ItemInfo item={item} />
-            <div onClick={bioHandler} className="hover-btn">Overview</div>
-            <BioOverlay revealBio={revealBio} closeBio={closeBio} plot={item.Plot} />
+            <div onClick={openBioOverlay} className="hover-btn">Overview</div>
+            <BioOverlay revealBio={revealBio} closeBio={closeBioOverlay} plot={item.Plot} />
             <div onClick={() => setIsModalOpen(true)} className="hover-btn">More Information</div>
-            {<Modal
-                item={item}
+            <Modal
+                closeModal={closeItemModal}
                 open={isModalOpen}
-                setIsModalOpen = {setIsModalOpen}
-            />}
+            >
+                <ItemModal
+                    item={item}
+                    setIsModalOpen={setIsModalOpen}
+                />
+            </Modal>
+
 
 
         </div>
