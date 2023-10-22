@@ -23,13 +23,14 @@ const searchTypeOptions = [
 function App() {
 
   const [searchType, setSearchType] = useState(searchTypeOptions)
+  const [isSliderActive, setIsSliderActive] = useState(false)
 
   const handleBtnType = (type) => {
     updateColorScheme(type)
-    updateStateFunc(type)
+    updateTypeState(type)
   }
 
-  const updateStateFunc = (type) => {
+  const updateTypeState = (type) => {
     setSearchType((oldType) => {
       return oldType.map((item) => {
         if (item.type === type) {
@@ -63,8 +64,16 @@ function App() {
   return (
 
     <ThemeProvider>
-      <MainSearch handleBtnType={handleBtnType} types={searchType} />
-      <MainSlider types={searchType}/>
+      <MainSearch
+        handleBtnType={handleBtnType}
+        types={searchType}
+        isSliderActive={isSliderActive}
+      />
+      <MainSlider
+        types={searchType}
+        isSliderActive={isSliderActive}
+        setIsSliderActive={setIsSliderActive}
+      />
     </ThemeProvider>
 
   )

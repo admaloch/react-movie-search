@@ -29,8 +29,8 @@ const reducer = (sliderIndex, action) => {
     return { index: newIndexVal }
 }
 
-const MainSlider = ({ types }) => {
-    const [isSliderActive, setIsSliderActive] = useState(false)
+const MainSlider = ({ types, isSliderActive, setIsSliderActive }) => {
+
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
     const { searchRes, submittedSearch } = useTheme()
@@ -56,12 +56,6 @@ const MainSlider = ({ types }) => {
         [submittedSearch]
     )
 
-    useEffect(
-        function print() {
-            console.log(sliderIndex)
-        },
-        [sliderIndex]
-    )
 
     return (
         <>
