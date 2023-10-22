@@ -34,7 +34,7 @@ const SearchForm = ({ types }) => {
                 onChange={handleChange}
             />
             <button>Search</button>
-            <SearchList />
+            <SearchList searchParam={searchParam}/>
         </form>
 
 

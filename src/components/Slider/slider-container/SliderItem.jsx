@@ -18,7 +18,6 @@ const SliderItem = ({ imdbID, poster, types }) => {
 
     async function mouseEnterHandler() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
-        // console.log(apiRes.data.Ratings)
         setItemOnHover(apiRes.data)
     }
 
