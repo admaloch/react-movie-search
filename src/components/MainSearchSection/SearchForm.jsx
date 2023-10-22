@@ -1,11 +1,11 @@
 
 import SearchList from "./SearchList";
 import { useTheme } from "../../store/APIContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const SearchForm = ({ types }) => {
-
+    const [isListShown, setIsListShown] = useState(false)
     const { searchTerm, handleChange, fetchMovie, submitHandler, setSearchRes } = useTheme()
     const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam;
@@ -14,12 +14,18 @@ const SearchForm = ({ types }) => {
         function fetchMovieInfoOnChange() {
             if (searchTerm.length > 2) {
                 fetchMovie(searchParam);
+                setIsListShown(true)
             } else {
                 setSearchRes({})
+                setIsListShown(false)
             }
         },
         [searchTerm]
     )
+
+    const hideSearchList = () => {
+        setIsListShown(false)
+    }
 
     return (
         <form id="searchForm" onSubmit={submitHandler}>
@@ -34,7 +40,12 @@ const SearchForm = ({ types }) => {
                 onChange={handleChange}
             />
             <button>Search</button>
-            <SearchList searchParam={searchParam}/>
+            <SearchList
+                searchParam={searchParam}
+                isListShown={isListShown}
+                hideList={hideSearchList}
+
+            />
         </form>
 
 
