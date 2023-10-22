@@ -4,8 +4,9 @@ import { useTheme } from "../../../store/APIContext"
 
 import ProgressBar from "./ProgressBar"
 
-const SearchInfo = ({ types, progBar }) => {
-
+const SearchInfo = ({ types, progBar, isSliderActive }) => {
+    
+    if (!isSliderActive) return null
 
     const { submittedSearch } = useTheme()
     const currType = types.filter(item => item.isActive === true)[0]

@@ -6,6 +6,7 @@ import { useTheme } from '../../store/APIContext';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
 
+// useReducer not entirely necessary for this but good practice
 const reducer = (sliderIndex, action) => {
     let progBar = action.progBar
     let newIndexVal = 0
@@ -21,23 +22,31 @@ const reducer = (sliderIndex, action) => {
                 ? newIndexVal = progBar.length - 1
                 : newIndexVal = sliderIndex.index - 1
     }
-            document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
-            return { index: newIndexVal }
+    document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
+    return { index: newIndexVal }
 }
 
 const MainSlider = ({ types }) => {
-    const { searchRes, submittedSearch } = useTheme()
+    const [isSliderActive, setIsSliderActive] = useState(false)
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
+    const { searchRes, submittedSearch } = useTheme()
+
+
 
     const increaseIndexHandler = () => dispatch({ type: 'increment', progBar: progBar })
     const decreaseIndexHandler = () => dispatch({ type: 'decrement', progBar: progBar })
+
+
 
     useEffect(
 
         function progressBarFunc() {
 
+
             const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
+
+
             const numItems = searchRes.Search && searchRes.Search.length
             const numOfBlocks = Math.ceil(numItems / itemsPerScreen)
             let blockArr = []
@@ -50,16 +59,31 @@ const MainSlider = ({ types }) => {
         [submittedSearch, sliderIndex]
     );
 
+    useEffect(
+        function hideOnSubmit() {
+            if (searchRes.Response === 'True') {
+                setIsSliderActive(true)
+            } else {
+                setIsSliderActive(false)
+            }
+        },
+        [submittedSearch]
+    )
+
+
+
     return (
         <>
             <SearchInfo
                 progBar={progBar}
                 types={types}
+                isSliderActive={isSliderActive}
             />
             <SliderContainer
                 types={types}
                 decreaseIndexHandler={decreaseIndexHandler}
                 increaseIndexHandler={increaseIndexHandler}
+                isSliderActive={isSliderActive}
             />
         </>
     )
