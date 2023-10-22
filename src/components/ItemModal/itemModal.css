@@ -29,6 +29,7 @@
   margin: 0 auto;
   border: var(--text) solid 5px;
  /* height: 80%; */
+ max-height: 400px;
 
   margin-right: 1rem;
 }

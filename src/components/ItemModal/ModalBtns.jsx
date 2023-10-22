@@ -1,7 +1,7 @@
-export default function ModalBtns({ setIsModalOpen, searchLink }) {
+export default function ModalBtns({ closeModal, searchLink }) {
   return (
     <div className="modal-buttons">
-        <button onClick={() => setIsModalOpen(false)}  >Return to Search
+        <button onClick={closeModal}  >Return to Search
         </button>
         <a
           href={searchLink}

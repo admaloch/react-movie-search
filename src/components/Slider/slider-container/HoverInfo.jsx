@@ -41,7 +41,7 @@ const HoverInfo = ({ item }) => {
             >
                 <ItemModal
                     item={item}
-                    setIsModalOpen={setIsModalOpen}
+                    closeModal={closeItemModal}
                 />
             </Modal>
 

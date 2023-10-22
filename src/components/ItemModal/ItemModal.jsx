@@ -2,7 +2,7 @@
 import ModalContent from './ModalContent';
 import './ItemModal.css';
 
-const ItemModal = ({ item, setIsModalOpen }) => {
+const ItemModal = ({ item, closeModal }) => {
     return (
         <>
             {item.Poster &&
@@ -10,7 +10,7 @@ const ItemModal = ({ item, setIsModalOpen }) => {
             }
             <ModalContent
                 item={item}
-                setIsModalOpen={setIsModalOpen}
+                closeModal={closeModal}
             />
         </>
     );

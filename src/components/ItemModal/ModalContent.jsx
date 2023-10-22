@@ -1,8 +1,8 @@
 import ModalBtns from './ModalBtns'
 import ResultInfo from './ResultInfo'
 
-export default function ModalContent({ open, item, setIsModalOpen }) {
-  
+export default function ModalContent({ open, item, closeModal }) {
+
   const year = new Date(item.Released).getFullYear()
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`
   
@@ -14,7 +14,7 @@ export default function ModalContent({ open, item, setIsModalOpen }) {
       />
       <ModalBtns
         item={item}
-        setIsModalOpen={setIsModalOpen}
+        closeModal={closeModal}
         searchLink={searchLink}
       />
     </div>
