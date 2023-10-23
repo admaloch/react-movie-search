@@ -21,19 +21,18 @@ const searchTypeOptions = [
 
 
 function App() {
-
   const [searchType, setSearchType] = useState(searchTypeOptions)
   const [isSliderActive, setIsSliderActive] = useState(false)
 
-  const handleBtnType = (type) => {
-    updateColorScheme(type)
-    updateTypeState(type)
+  const handleBtnType = (typeInput) => {
+    updateColorScheme(typeInput)
+    updateTypeState(typeInput)
   }
 
-  const updateTypeState = (type) => {
+  const updateTypeState = (inputType) => {
     setSearchType((oldType) => {
       return oldType.map((item) => {
-        if (item.type === type) {
+        if (item.type === inputType) {
           return ({ ...item, isActive: true })
         } else {
           return ({ ...item, isActive: false })
@@ -43,8 +42,8 @@ function App() {
   }
 
 
-  const updateColorScheme = (type) => {
-    const currType = searchType.filter(item => item.type === type)
+  const updateColorScheme = (inputType) => {
+    const currType = searchType.filter(item => item.type === inputType)
     const currTypeColorScheme = currType[0].colorScheme
     changeColorVars(currTypeColorScheme)
     // fade(sliderContainer, 0, 'none')
@@ -62,7 +61,6 @@ function App() {
 
 
   return (
-
     <ThemeProvider>
       <MainSearch
         handleBtnType={handleBtnType}
@@ -75,7 +73,6 @@ function App() {
         setIsSliderActive={setIsSliderActive}
       />
     </ThemeProvider>
-
   )
 }
 
