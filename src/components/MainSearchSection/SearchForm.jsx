@@ -1,12 +1,14 @@
 
 import SearchList from "./SearchList";
 import { useTheme } from "../../store/APIContext";
+import { typeTheme } from "../../store/TypeContext";
 import { useEffect, useState } from "react";
 
 
-const SearchForm = ({ types }) => {
+const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
     const { searchTerm, handleChange, fetchMovie, submitHandler, setSearchRes } = useTheme()
+    const { types } = typeTheme()
     const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam;
 

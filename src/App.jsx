@@ -17,13 +17,8 @@ function App() {
   return (
     <TypeProvider>
       <ThemeProvider>
-        <MainSearch
-          handleBtnType={handleBtnType}
-          types={searchType}
-          isSliderActive={isSliderActive}
-        />
+        <MainSearch isSliderActive={isSliderActive}/>
         <MainSlider
-          types={searchType}
           isSliderActive={isSliderActive}
           setIsSliderActive={setIsSliderActive}
         />

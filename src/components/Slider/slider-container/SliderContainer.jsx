@@ -1,6 +1,6 @@
 import Slider from './Slider';
 import './Slider.css'
-const SliderContainer = ({ types, increaseIndexHandler, decreaseIndexHandler, isSliderActive }) => {
+const SliderContainer = ({  increaseIndexHandler, decreaseIndexHandler, isSliderActive }) => {
 
 
     let sliderStyle = { display: isSliderActive ? 'flex' : 'none' }
@@ -11,7 +11,7 @@ const SliderContainer = ({ types, increaseIndexHandler, decreaseIndexHandler, is
             <button onClick={decreaseIndexHandler} className="handle left-handle " >
                 <div className="arrow">‹</div>
             </button>
-            <Slider types={types} />
+            <Slider />
             <button onClick={increaseIndexHandler} className="handle right-handle">
                 <div className="arrow">›</div>
             </button>

@@ -29,7 +29,7 @@ const reducer = (sliderIndex, action) => {
     return { index: newIndexVal }
 }
 
-const MainSlider = ({ types, isSliderActive, setIsSliderActive }) => {
+const MainSlider = ({ isSliderActive, setIsSliderActive }) => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
@@ -61,13 +61,13 @@ const MainSlider = ({ types, isSliderActive, setIsSliderActive }) => {
         <>
             <SearchInfo
                 progBar={progBar}
-                types={types}
+
                 isSliderActive={isSliderActive}
                 setProgBar={setProgBar}
                 sliderIndex={sliderIndex}
             />
             <SliderContainer
-                types={types}
+
                 decreaseIndexHandler={decreaseIndexHandler}
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}

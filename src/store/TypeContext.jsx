@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react"
 const TypeContext = React.createContext()
 
 
-export function useTheme() {
+export function typeTheme() {
     return useContext(TypeContext)
 }
 

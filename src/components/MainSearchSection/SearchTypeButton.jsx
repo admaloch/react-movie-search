@@ -1,8 +1,10 @@
+import { typeTheme } from "../../store/TypeContext";
 
 
-const SearchTypeButton = ({ type, isActive, handleBtnType }) => {
 
+const SearchTypeButton = ({ type, isActive }) => {
 
+    const { handleBtnType } = typeTheme()
 
     return (
         <li

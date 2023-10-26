@@ -1,6 +1,10 @@
+import { typeTheme } from "../../store/TypeContext";
 import SearchTypeButton from "./SearchTypeButton";
 
-const SearchTypeButtons = ({ types, handleBtnType }) => {
+const SearchTypeButtons = () => {
+
+    const { types } = typeTheme()
+    
 
     return (
 
@@ -11,7 +15,7 @@ const SearchTypeButtons = ({ types, handleBtnType }) => {
                     key={movieType.type}
                     type={movieType.type}
                     isActive={movieType.isActive}
-                    handleBtnType={handleBtnType}
+
                     
                 />
             ))}

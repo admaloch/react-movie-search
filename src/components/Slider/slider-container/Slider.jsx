@@ -8,7 +8,7 @@ import SliderItem from './SliderItem';
 
 
 
-const Slider = ({ types }) => {
+const Slider = () => {
 
     const [sliderRes, setSliderRes] = useState([])
     const { submittedSearch, searchRes } = useTheme()
@@ -29,7 +29,7 @@ const Slider = ({ types }) => {
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}
-                    types={types}
+                    
                 />
             ))}
         </div>
