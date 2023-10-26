@@ -21,10 +21,13 @@ export function typeTheme() {
 }
 
 export function TypeProvider({ children }) {
-    const [searchType, setSearchType] = useState(searchTypeOptions)
-    const handleBtnType = (typeInput) => {
-        updateColorScheme(typeInput)
+
+    const [searchTypes, setSearchType] = useState(searchTypeOptions)
+    
+
+    const searchTypeHandler = (typeInput) => {
         updateTypeState(typeInput)
+        updateColorScheme(typeInput)
     }
 
     const updateTypeState = (inputType) => {
@@ -41,25 +44,22 @@ export function TypeProvider({ children }) {
 
 
     const updateColorScheme = (inputType) => {
-        const currType = searchType.filter(item => item.type === inputType)
+        const currType = searchTypes.filter(item => item.type === inputType)
         const currTypeColorScheme = currType[0].colorScheme
         changeColorVars(currTypeColorScheme)
-        // fade(sliderContainer, 0, 'none')
-        // fade(headerInfo, 0)
-        // fade(arrow, 0)
-        // searchElement.style.margin = '8rem 0 0 0'
     }
-
-
 
     const changeColorVars = (input) => {
         const root = document.querySelector(':root')
         return Object.entries(input).forEach(v => root.style.setProperty(v[0], v[1]));
     }
 
+    const currType = searchTypes.filter(item => item.isActive === true)[0]
+
     const ctxObj = {
-        handleBtnType: handleBtnType,
-        types: searchType,
+        searchTypeHandler: searchTypeHandler,
+        types: searchTypes,
+        currType: currType,
     }
 
     return (

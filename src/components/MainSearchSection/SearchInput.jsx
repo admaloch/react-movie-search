@@ -7,7 +7,7 @@ const api_key = '&apikey=84200d7a'
 const SearchInput = ({ types }) => {
 
     const [searchTerm, setSearchTerm] = useState('')
-    const [searchRes, setSearchRes] = useState({})
+    const [ setSearchRes ] = useState({})
 
     const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam

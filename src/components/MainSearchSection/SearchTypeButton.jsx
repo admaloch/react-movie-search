@@ -4,11 +4,11 @@ import { typeTheme } from "../../store/TypeContext";
 
 const SearchTypeButton = ({ type, isActive }) => {
 
-    const { handleBtnType } = typeTheme()
+    const { searchTypeHandler } = typeTheme()
 
     return (
         <li
-            onClick={() => handleBtnType(type)}
+            onClick={() => searchTypeHandler(type)}
             className={`result-btn ${isActive ? 'active' : ''}`}>
             {type}
         </li>
