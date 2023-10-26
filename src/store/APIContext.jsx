@@ -38,9 +38,8 @@ export function ThemeProvider({ children }) {
         submittedSearch: submittedSearch,
         submitHandler: submitHandler,
         searchRes: searchRes,
-        setSearchRes: setSearchRes,
-        
         fetchMovie: fetchMovie,
+        setSearchRes: setSearchRes,
     }
  
     return (
