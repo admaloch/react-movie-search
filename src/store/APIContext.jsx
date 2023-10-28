@@ -10,8 +10,8 @@ export function ThemeProvider({ children }) {
     const [submittedSearch, setSubmittedSearch] = useState('')
     const [apiResults, setApiResults] = useState({})
 
-    const updateSearchState = (e) => {
-        setSearchTerm(e.target.value)
+    const updateSearchState = (input) => {
+        setSearchTerm(input)
     }
 
     const updateSubmittedSearch = (e) => {

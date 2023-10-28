@@ -45,7 +45,7 @@ const SearchForm = () => {
                 name="query"
                 value={searchTerm}
                 id="search-input"
-                onChange={updateSearchState}
+                onChange={(e) => updateSearchState(e.target.value)}
             />
             <button>Search</button>
             <SearchList

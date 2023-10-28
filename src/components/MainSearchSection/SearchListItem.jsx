@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { typeTheme } from "../../store/TypeContext"
 import ListItemModal from "./ListItemModal"
+import image_not_found from '../../assets/image_not_found.png'
 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
@@ -29,15 +30,17 @@ const SearchListItem = ({ id, img, title, year }) => {
         setIsModalOpen(false)
     }
 
+    console.log(img)
+
     return (
         <>
             <li onClick={handleListItemClick} data-id={id} className="search-list-item">
                 <div className="search-item-thumbnail">
-                    <img src={img}></img>
+                    <img src={img !== 'N/A' ? img : image_not_found}></img>
                 </div>
                 <div className="search-item-info">
                     <h3>{title}</h3>
-                    <p>{year}</p>
+                    {year && <p>{year}</p>}
                 </div>
             </li>
             <ListItemModal

@@ -5,7 +5,7 @@ import './ItemModal.css';
 const ItemModal = ({ item, closeModal }) => {
     return (
         <>
-            {item.Poster &&
+            {item.Poster !== 'N/A' &&
                 <img src={item.Poster} alt={`${item.Title} poster`} />
             }
             <ModalContent
