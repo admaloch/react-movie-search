@@ -44,7 +44,7 @@ const SearchForm = () => {
             />
             <button>Search</button>
             <SearchList
-                searchParam={searchParam}
+         
                 isListShown={isListShown}
                 hideList={hideSearchList}
 

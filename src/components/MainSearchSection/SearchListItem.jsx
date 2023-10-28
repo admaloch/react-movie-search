@@ -1,23 +1,29 @@
 import axios from "axios"
 import { useState } from "react"
+import { typeTheme } from "../../store/TypeContext"
 import ListItemModal from "./ListItemModal"
 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 
 
-const SearchListItem = ({ id, img, title, year, searchParam }) => {
+const SearchListItem = ({ id, img, title, year }) => {
 
     const [itemOnClick, setItemOnClick] = useState({})
     const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const { currType } = typeTheme()
+    const searchParam = currType.apiParam;
+
     async function handleItemClick() {
-        const apiRes = await axios.get(`${BASE_URL}${id}${api_key}${searchParam}&plot=full`)
-        setItemOnClick(apiRes.data)
+        genApiRes()
         setIsModalOpen(true)
     }
 
-
+    async function genApiRes() {
+        const apiRes = await axios.get(`${BASE_URL}${id}${api_key}${searchParam}&plot=full`)
+        setItemOnClick(apiRes.data)
+    }
 
     const closeItemModal = () => {
         setIsModalOpen(false)
@@ -34,10 +40,10 @@ const SearchListItem = ({ id, img, title, year, searchParam }) => {
                     <p>{year}</p>
                 </div>
             </li>
-            <ListItemModal 
-            item={itemOnClick} 
-            open={isModalOpen}
-            closeModal = {closeItemModal}
+            <ListItemModal
+                item={itemOnClick}
+                open={isModalOpen}
+                closeModal={closeItemModal}
             />
         </>
     )

@@ -5,7 +5,7 @@ import SearchListItem from "./SearchListItem";
 
 
 
-const SearchList = ({ searchParam, isListShown, hideList }) => {
+const SearchList = ({  isListShown, hideList }) => {
 
 
 
@@ -25,7 +25,7 @@ const SearchList = ({ searchParam, isListShown, hideList }) => {
                     img={item.Poster}
                     title={item.Title}
                     year={item.Year}
-                    searchParam={searchParam}
+                 
                 />
             ))}
         </ul>
