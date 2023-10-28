@@ -7,11 +7,9 @@ import SearchTypeButtons from "./SearchTypeButtons";
 
 const MainSearch = ({ isSliderActive }) => {
 
-    const { types, searchTypeHandler } = typeTheme()
+    const { currType } = typeTheme()
 
-    const currItem = types.filter(item => item.isActive === true)[0]
-    const currItemHeader = `Search ${currItem.description}`
-
+    const currItemHeader = `Search ${currType.description}`
     let mainStyle = { marginTop: isSliderActive ? '5rem' : '12rem' }
 
     return (

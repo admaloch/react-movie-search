@@ -11,9 +11,6 @@ function App() {
 
   const [isSliderActive, setIsSliderActive] = useState(false)
 
-
-
-
   return (
     <TypeProvider>
       <ThemeProvider>

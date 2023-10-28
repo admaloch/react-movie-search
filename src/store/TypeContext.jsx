@@ -23,6 +23,7 @@ export function typeTheme() {
 export function TypeProvider({ children }) {
 
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
+    
     const [currType, setCurrType] = useState(searchTypeOptions[0])
 
     const searchTypeHandler = (typeInput) => {

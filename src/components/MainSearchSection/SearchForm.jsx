@@ -9,7 +9,6 @@ const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
     const { searchTerm, handleChange, fetchMovie, submitHandler, setSearchRes } = useTheme()
     const { currType } = typeTheme()
-    // const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam;
 
 

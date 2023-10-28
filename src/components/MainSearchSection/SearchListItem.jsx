@@ -17,6 +17,8 @@ const SearchListItem = ({ id, img, title, year, searchParam }) => {
         setIsModalOpen(true)
     }
 
+
+
     const closeItemModal = () => {
         setIsModalOpen(false)
     }
