@@ -29,7 +29,7 @@ const reducer = (sliderIndex, action) => {
     return { index: newIndexVal }
 }
 
-const MainSlider = ({ isSliderActive, setIsSliderActive }) => {
+const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
@@ -48,9 +48,9 @@ const MainSlider = ({ isSliderActive, setIsSliderActive }) => {
     useEffect(
         function hideOnSubmit() {
             if (searchRes.Response === 'True') {
-                setIsSliderActive(true)
+                showSlider()
             } else {
-                setIsSliderActive(false)
+                hideSlider()
             }
         },
         [submittedSearch]

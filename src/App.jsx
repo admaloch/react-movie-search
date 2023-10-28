@@ -19,11 +19,12 @@ function App() {
       <ThemeProvider>
         <MainSearch 
         isSliderActive={isSliderActive}
-        setIsSliderActive={setIsSliderActive}
+        hideSlider={hideSlider}
         />
         <MainSlider
           isSliderActive={isSliderActive}
-          setIsSliderActive={setIsSliderActive}
+          showSlider={showSlider}
+          hideSlider={hideSlider}
         />
       </ThemeProvider>
     </TypeProvider>

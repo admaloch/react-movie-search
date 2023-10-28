@@ -5,7 +5,7 @@ import SearchTypeButtons from "./SearchTypeButtons";
 
 
 
-const MainSearch = ({ isSliderActive }) => {
+const MainSearch = ({ isSliderActive, hideSlider }) => {
 
     const { currType } = typeTheme()
 
@@ -15,7 +15,7 @@ const MainSearch = ({ isSliderActive }) => {
     return (
         <div style={mainStyle} className="main-search-section">
             <h1>{currItemHeader}</h1>
-            <SearchTypeButtons />
+            <SearchTypeButtons hideSlider={hideSlider} />
             <SearchForm />
         </div>
     )

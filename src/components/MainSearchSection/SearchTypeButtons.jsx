@@ -1,7 +1,7 @@
 import { typeTheme } from "../../store/TypeContext";
 import SearchTypeButton from "./SearchTypeButton";
 
-const SearchTypeButtons = () => {
+const SearchTypeButtons = ({hideSlider}) => {
 
     const { types } = typeTheme()
 
@@ -16,7 +16,7 @@ const SearchTypeButtons = () => {
                     type={movieType.type}
                     isActive={movieType.isActive}
                     colorScheme={movieType.colorScheme}
-
+hideSlider={hideSlider}
                 />
             ))}
         </ul>

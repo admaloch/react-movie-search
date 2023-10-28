@@ -2,13 +2,14 @@ import { typeTheme } from "../../store/TypeContext";
 
 
 
-const SearchTypeButton = ({ type, isActive, colorScheme }) => {
+const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }) => {
 
     const { searchTypeHandler } = typeTheme()
 
     const clickHandler = () => {
         searchTypeHandler(type)
         changeColorVars()
+        
     }
 
     const changeColorVars = () => {
