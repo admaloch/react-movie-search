@@ -2,9 +2,8 @@
 import React, { useContext, useState } from "react"
 
 const ThemeContext = React.createContext()
-import axios from 'axios';
-const BASE_URL = 'https://omdbapi.com/?s='
-const api_key = '&apikey=84200d7a'
+
+
 
 export function useTheme() {
     return useContext(ThemeContext)
@@ -24,12 +23,10 @@ export function ThemeProvider({ children }) {
     const updateSubmittedSearch = (e) => {
         e.preventDefault()
         setSubmittedSearch(searchTerm)
-
     }
 
-    async function fetchMovie(searchParam) {
-        const results = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-        setApiResults(results.data)
+    const updateApiResults = (input) => {
+        setApiResults(input)
     }
 
 
@@ -40,8 +37,6 @@ export function ThemeProvider({ children }) {
         updateSubmittedSearch: updateSubmittedSearch,
         apiResults: apiResults,
         setApiResults: setApiResults,
-        fetchMovie: fetchMovie,
-
     }
 
     return (
