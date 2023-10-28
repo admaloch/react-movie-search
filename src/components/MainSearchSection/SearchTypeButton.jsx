@@ -2,13 +2,25 @@ import { typeTheme } from "../../store/TypeContext";
 
 
 
-const SearchTypeButton = ({ type, isActive }) => {
+const SearchTypeButton = ({ type, isActive, colorScheme }) => {
 
     const { searchTypeHandler } = typeTheme()
 
+    const clickHandler = () => {
+        searchTypeHandler(type)
+        changeColorVars()
+    }
+
+    const changeColorVars = () => {
+        const root = document.querySelector(':root')
+        return Object.entries(colorScheme).forEach(v => root.style.setProperty(v[0], v[1]));
+    }
+
+
+
     return (
         <li
-            onClick={() => searchTypeHandler(type)}
+            onClick={clickHandler}
             className={`result-btn ${isActive ? 'active' : ''}`}>
             {type}
         </li>

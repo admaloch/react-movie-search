@@ -23,36 +23,21 @@ export function typeTheme() {
 export function TypeProvider({ children }) {
 
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
-    
+
 
     const searchTypeHandler = (typeInput) => {
-        updateTypeState(typeInput)
-        updateColorScheme(typeInput)
-    }
-
-    const updateTypeState = (inputType) => {
         setSearchType((oldType) => {
             return oldType.map((item) => {
-                if (item.type === inputType) {
+                if (item.type === typeInput) {
                     return ({ ...item, isActive: true })
                 } else {
                     return ({ ...item, isActive: false })
                 }
             })
         })
+
     }
 
-
-    const updateColorScheme = (inputType) => {
-        const currType = searchTypes.filter(item => item.type === inputType)
-        const currTypeColorScheme = currType[0].colorScheme
-        changeColorVars(currTypeColorScheme)
-    }
-
-    const changeColorVars = (input) => {
-        const root = document.querySelector(':root')
-        return Object.entries(input).forEach(v => root.style.setProperty(v[0], v[1]));
-    }
 
     const currType = searchTypes.filter(item => item.isActive === true)[0]
 
