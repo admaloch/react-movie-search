@@ -30,7 +30,7 @@ const SearchListItem = ({ id, img, title, year }) => {
         setIsModalOpen(false)
     }
 
-    console.log(img)
+
 
     return (
         <>

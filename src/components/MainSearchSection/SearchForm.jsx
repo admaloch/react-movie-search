@@ -14,13 +14,17 @@ const SearchForm = () => {
     const searchParam = currType.apiParam;
 
     async function apiRequest() {
-        const results = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-        updateApiState(results.data)
+        const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
+        const req2 = await axios.get(`${BASE_URL}${searchTerm}&page=2${api_key}${searchParam}`)
+        const results = [...req1.data.Search, ...req2.data.Search]
+        // console.log(req1)
+        // console.log(req2)
+        updateApiState(results)
     }
 
     useEffect(
         function updateReqOnChange() {
-            if (searchTerm.length > 2) {
+            if (searchTerm.length > 0) {
                 apiRequest()
                 setIsListShown(true)
             } else {

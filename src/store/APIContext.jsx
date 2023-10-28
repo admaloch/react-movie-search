@@ -8,7 +8,7 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
-    const [apiResults, setApiResults] = useState({})
+    const [apiResults, setApiResults] = useState([])
 
     const updateSearchState = (input) => {
         setSearchTerm(input)
