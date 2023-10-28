@@ -11,10 +11,16 @@ function App() {
 
   const [isSliderActive, setIsSliderActive] = useState(false)
 
+  const showSlider = () => setIsSliderActive(true)
+  const hideSlider = () => setIsSliderActive(false)
+
   return (
     <TypeProvider>
       <ThemeProvider>
-        <MainSearch isSliderActive={isSliderActive}/>
+        <MainSearch 
+        isSliderActive={isSliderActive}
+        setIsSliderActive={setIsSliderActive}
+        />
         <MainSlider
           isSliderActive={isSliderActive}
           setIsSliderActive={setIsSliderActive}

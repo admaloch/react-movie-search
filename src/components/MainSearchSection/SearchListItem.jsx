@@ -15,7 +15,7 @@ const SearchListItem = ({ id, img, title, year }) => {
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
-    async function handleItemClick() {
+    async function handleListItemClick() {
         genApiRes()
         setIsModalOpen(true)
     }
@@ -31,7 +31,7 @@ const SearchListItem = ({ id, img, title, year }) => {
 
     return (
         <>
-            <li onClick={handleItemClick} data-id={id} className="search-list-item">
+            <li onClick={handleListItemClick} data-id={id} className="search-list-item">
                 <div className="search-item-thumbnail">
                     <img src={img}></img>
                 </div>
