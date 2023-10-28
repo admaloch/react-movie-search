@@ -25,8 +25,8 @@ export function ThemeProvider({ children }) {
         setSubmittedSearch(searchTerm)
     }
 
-    const updateApiResults = (input) => {
-        setApiResults(input)
+    const updateApiState = (results) => {
+        setApiResults(results)
     }
 
 
@@ -36,7 +36,7 @@ export function ThemeProvider({ children }) {
         submittedSearch: submittedSearch,
         updateSubmittedSearch: updateSubmittedSearch,
         apiResults: apiResults,
-        setApiResults: setApiResults,
+        updateApiState: updateApiState,
     }
 
     return (

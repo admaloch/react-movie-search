@@ -9,13 +9,13 @@ const api_key = '&apikey=84200d7a'
 
 const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
-    const { searchTerm, updateSearchState, updateSubmittedSearch, setApiResults } = useTheme()
+    const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useTheme()
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
     async function apiRequest() {
         const results = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-        setApiResults(results.data)
+        updateApiState(results.data)
     }
 
     useEffect(
@@ -24,7 +24,7 @@ const SearchForm = () => {
                 apiRequest()
                 setIsListShown(true)
             } else {
-                setApiResults({})
+                updateApiState({})
                 setIsListShown(false)
             }
         },
