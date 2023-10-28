@@ -1,9 +1,5 @@
-
 import React, { useContext, useState } from "react"
-
 const ThemeContext = React.createContext()
-
-
 
 export function useTheme() {
     return useContext(ThemeContext)
@@ -13,8 +9,6 @@ export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
     const [apiResults, setApiResults] = useState({})
-
-    console.log(apiResults)
 
     const updateSearchState = (e) => {
         setSearchTerm(e.target.value)
@@ -28,7 +22,6 @@ export function ThemeProvider({ children }) {
     const updateApiState = (results) => {
         setApiResults(results)
     }
-
 
     const ctxObj = {
         searchTerm: searchTerm,
