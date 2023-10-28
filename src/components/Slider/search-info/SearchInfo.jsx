@@ -7,11 +7,11 @@ import { typeTheme } from "../../../store/TypeContext"
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
 
-    const { types } = typeTheme()
+    const { currType } = typeTheme()
     
 
     const { submittedSearch, searchRes } = useTheme()
-    const currType = types.filter(item => item.isActive === true)[0]
+    // const currType = types.filter(item => item.isActive === true)[0]
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)

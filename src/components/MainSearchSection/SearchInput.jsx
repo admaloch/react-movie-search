@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { typeTheme } from "../../store/TypeContext";
 
 const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
 
-const SearchInput = ({ types }) => {
+const SearchInput = () => {
 
     const [searchTerm, setSearchTerm] = useState('')
-    const [ setSearchRes ] = useState({})
+    const [setSearchRes] = useState({})
+    const { currType } = typeTheme()
 
-    const currType = types.filter(item => item.isActive === true)[0]
     const searchParam = currType.apiParam
 
     async function loadMovies(searchTerm) {
@@ -32,7 +33,7 @@ const SearchInput = ({ types }) => {
         return loadMovies(searchTerm)
     }
 
-console.log(searchTerm)
+    console.log(searchTerm)
 
     return (
         <>
