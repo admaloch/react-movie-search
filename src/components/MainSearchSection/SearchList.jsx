@@ -5,12 +5,12 @@ import SearchListItem from "./SearchListItem";
 
 
 
-const SearchList = ({  isListShown, hideList }) => {
+const SearchList = ({ isListShown, hideList }) => {
 
 
 
-    const { searchRes } = useTheme()
-    let searchArr = searchRes.Search
+    const { apiResults } = useTheme()
+    let searchArr = apiResults.Search
     const listStyle = isListShown ? { display: 'block' } : { display: 'none' }
 
     document.addEventListener('click', () => hideList())
@@ -25,7 +25,7 @@ const SearchList = ({  isListShown, hideList }) => {
                     img={item.Poster}
                     title={item.Title}
                     year={item.Year}
-                 
+
                 />
             ))}
         </ul>

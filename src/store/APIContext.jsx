@@ -13,9 +13,9 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
-    const [searchRes, setSearchRes] = useState({})
+    const [apiResults, setApiResults] = useState({})
 
-    console.log(searchRes)
+    console.log(apiResults)
 
     const updateSearchState = (e) => {
         setSearchTerm(e.target.value)
@@ -29,7 +29,7 @@ export function ThemeProvider({ children }) {
 
     async function fetchMovie(searchParam) {
         const results = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-        setSearchRes(results.data)
+        setApiResults(results.data)
     }
 
 
@@ -38,9 +38,10 @@ export function ThemeProvider({ children }) {
         updateSearchState: updateSearchState,
         submittedSearch: submittedSearch,
         updateSubmittedSearch: updateSubmittedSearch,
-        searchRes: searchRes,
+        apiResults: apiResults,
+        setApiResults: setApiResults,
         fetchMovie: fetchMovie,
-        setSearchRes: setSearchRes,
+
     }
 
     return (

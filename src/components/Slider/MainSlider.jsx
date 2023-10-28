@@ -33,7 +33,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
-    const { searchRes, submittedSearch } = useTheme()
+    const { apiResults, submittedSearch } = useTheme()
 
     const increaseIndexHandler = () => dispatch({ type: 'increment', progBar: progBar })
     const decreaseIndexHandler = () => dispatch({ type: 'decrement', progBar: progBar })
@@ -47,7 +47,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
     useEffect(
         function hideOnSubmit() {
-            if (searchRes.Response === 'True') {
+            if (apiResults.Response === 'True') {
                 showSlider()
             } else {
                 hideSlider()

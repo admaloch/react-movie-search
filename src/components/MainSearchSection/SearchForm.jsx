@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
-    const { searchTerm, updateSearchState, fetchMovie, updateSubmittedSearch, setSearchRes } = useTheme()
+    const { searchTerm, updateSearchState, fetchMovie, updateSubmittedSearch, setApiResults } = useTheme()
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
@@ -19,7 +19,7 @@ const SearchForm = () => {
                 fetchMovie(searchParam);
                 setIsListShown(true)
             } else {
-                setSearchRes({})
+                setApiResults({})
                 setIsListShown(false)
             }
         },

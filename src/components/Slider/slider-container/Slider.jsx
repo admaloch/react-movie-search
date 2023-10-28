@@ -11,11 +11,11 @@ import SliderItem from './SliderItem';
 const Slider = () => {
 
     const [sliderRes, setSliderRes] = useState([])
-    const { submittedSearch, searchRes } = useTheme()
+    const { submittedSearch, apiResults } = useTheme()
 
     useEffect(
         function sliderResHandler() {
-            setSliderRes(searchRes.Search)
+            setSliderRes(apiResults.Search)
         },
         [submittedSearch]
     );
@@ -29,7 +29,7 @@ const Slider = () => {
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}
-                    
+
                 />
             ))}
         </div>

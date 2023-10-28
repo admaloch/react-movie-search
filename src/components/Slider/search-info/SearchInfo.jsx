@@ -8,9 +8,9 @@ import { typeTheme } from "../../../store/TypeContext"
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
 
     const { currType } = typeTheme()
-    
 
-    const { submittedSearch, searchRes } = useTheme()
+
+    const { submittedSearch, apiResults } = useTheme()
     // const currType = types.filter(item => item.isActive === true)[0]
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
@@ -20,7 +20,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
     useEffect(
         function progressBarFunc() {
             const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
-            const numItems = searchRes.Search && searchRes.Search.length
+            const numItems = apiResults.Search && apiResults.Search.length
             const numOfBlocks = Math.ceil(numItems / itemsPerScreen)
             let blockArr = []
             for (let i = 0; i < numOfBlocks; i++) {
