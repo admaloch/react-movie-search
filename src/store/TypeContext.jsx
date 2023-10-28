@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 const TypeContext = React.createContext()
 
 const searchTypeOptions = [
@@ -23,7 +23,7 @@ export function typeTheme() {
 export function TypeProvider({ children }) {
 
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
-
+    const [currType, setCurrType] = useState(searchTypeOptions[0])
 
     const searchTypeHandler = (typeInput) => {
         setSearchType((oldType) => {
@@ -35,11 +35,16 @@ export function TypeProvider({ children }) {
                 }
             })
         })
-
     }
 
+    useEffect(
+        function currType() {
+            setCurrType(searchTypes.filter(item => item.isActive === true)[0])
+        },
+        [searchTypes]
+    )
 
-    const currType = searchTypes.filter(item => item.isActive === true)[0]
+
 
     const ctxObj = {
         searchTypeHandler: searchTypeHandler,
