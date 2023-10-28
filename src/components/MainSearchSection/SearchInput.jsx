@@ -21,7 +21,7 @@ const SearchInput = () => {
         setSearchRes(results)
     }
 
-    const handleChange = (e) => {
+    const updateSearchState = (e) => {
         setSearchTerm(e.target.value)
         if (searchTerm.length > 1) {
             loadMovies(searchTerm)
@@ -46,7 +46,7 @@ const SearchInput = () => {
                 name="query"
                 value={searchTerm}
                 id="search-input"
-                onChange={handleChange}
+                onChange={updateSearchState}
 
             />
             <button

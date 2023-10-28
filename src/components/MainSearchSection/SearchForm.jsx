@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
-    const { searchTerm, handleChange, fetchMovie, submitHandler, setSearchRes } = useTheme()
+    const { searchTerm, updateSearchState, fetchMovie, updateSubmittedSearch, setSearchRes } = useTheme()
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
@@ -31,7 +31,7 @@ const SearchForm = () => {
     }
 
     return (
-        <form id="searchForm" onSubmit={submitHandler}>
+        <form id="searchForm" onSubmit={updateSubmittedSearch}>
             <input
                 type="text"
                 className="form-control"
@@ -40,11 +40,11 @@ const SearchForm = () => {
                 name="query"
                 value={searchTerm}
                 id="search-input"
-                onChange={handleChange}
+                onChange={updateSearchState}
             />
             <button>Search</button>
             <SearchList
-         
+
                 isListShown={isListShown}
                 hideList={hideSearchList}
 

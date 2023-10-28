@@ -14,34 +14,35 @@ export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
     const [searchRes, setSearchRes] = useState({})
-    
 
-    const handleChange = (e) => {
+    console.log(searchRes)
+
+    const updateSearchState = (e) => {
         setSearchTerm(e.target.value)
     }
 
-    const submitHandler = (e) => {
+    const updateSubmittedSearch = (e) => {
         e.preventDefault()
         setSubmittedSearch(searchTerm)
 
     }
 
     async function fetchMovie(searchParam) {
-        const searchResults = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
-        setSearchRes(searchResults.data)
+        const results = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
+        setSearchRes(results.data)
     }
 
 
     const ctxObj = {
         searchTerm: searchTerm,
-        handleChange: handleChange,
+        updateSearchState: updateSearchState,
         submittedSearch: submittedSearch,
-        submitHandler: submitHandler,
+        updateSubmittedSearch: updateSubmittedSearch,
         searchRes: searchRes,
         fetchMovie: fetchMovie,
         setSearchRes: setSearchRes,
     }
- 
+
     return (
         <ThemeContext.Provider value={ctxObj}>
             {children}
