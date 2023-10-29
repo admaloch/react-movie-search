@@ -92,7 +92,7 @@
     
 }
 #searchForm input::placeholder {
-color: white;
+color: var(--color2);
 transition: all ease-in-out .3s;
 }
 #searchForm input:hover::placeholder,
@@ -124,10 +124,10 @@ color: black;
     height: none;
     flex-direction: column;
     align-items: center;
-    display: none; 
-     opacity: 1; 
+    /* display: none;  */
+     /* opacity: 1;  */
 
-    transition: 500ms ease-in-out;
+    transition: height 1s ease-in-out;
 }
 
 
