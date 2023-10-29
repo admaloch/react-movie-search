@@ -177,3 +177,9 @@ color: black;
     opacity: 0.6;
     margin: 0;
 }
+
+.animation-container {
+    display: inline-block;
+    position: absolute;
+    left: 15rem;
+  }

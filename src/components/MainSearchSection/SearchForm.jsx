@@ -4,8 +4,9 @@ import SearchList from "./SearchList";
 import { useTheme } from "../../store/APIContext";
 import { typeTheme } from "../../store/TypeContext";
 import { useEffect, useState } from "react";
-import LoadContainer from '../UI/LoadContainer/LoadContainer'
+
 import axios from "axios";
+import KeyRequestAnimation from "./KeyRequestAnimation";
 const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
@@ -16,9 +17,9 @@ const SearchForm = () => {
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
-    const removeLoader = () => setIsLoading(false)
+  
 
-   
+
 
     async function apiRequest() {
         const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
@@ -65,12 +66,11 @@ const SearchForm = () => {
                 id="search-input"
                 onChange={(e) => updateSearchState(e.target.value)}
             />
-              <LoadContainer isLoading={isLoading}/>
+            <KeyRequestAnimation isLoading={isLoading}/>
             <button>Search</button>
             <SearchList
                 isListShown={isListShown}
                 hideList={hideSearchList}
-
             />
         </form>
 
