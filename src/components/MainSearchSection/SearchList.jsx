@@ -10,7 +10,8 @@ const SearchList = ({ isListShown, hideList }) => {
 
 
     const { apiResults } = useTheme()
-    let searchArr = apiResults.Search
+    
+    // let searchArr = apiResults.Search
     const listStyle = isListShown ? { display: 'block' } : { display: 'none' }
 
     document.addEventListener('click', () => hideList())
@@ -18,7 +19,7 @@ const SearchList = ({ isListShown, hideList }) => {
 
     return (
         <ul style={listStyle} onClick={hideList} className="search-list" id="search-list">
-            {searchArr && searchArr.map((item) => (
+            {apiResults && apiResults.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
                     id={item.imdbID}

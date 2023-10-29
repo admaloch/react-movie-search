@@ -20,7 +20,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
     useEffect(
         function progressBarFunc() {
             const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
-            const numItems = apiResults.Search && apiResults.Search.length
+            const numItems = apiResults.length > 0 && apiResults.length
             const numOfBlocks = Math.ceil(numItems / itemsPerScreen)
             let blockArr = []
             for (let i = 0; i < numOfBlocks; i++) {
@@ -36,8 +36,8 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
     return (
 
         <div style={headerStyle} className="header-info">
-            <h3>{currType.description} about: <span style={spanColor}>{currSearch}</span>
-            </h3>
+            <h2>{currType.description} about: <span style={spanColor}>{currSearch}</span>
+            </h2>
             <ProgressBar
                 progBar={progBar}
             />

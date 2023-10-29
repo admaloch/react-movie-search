@@ -86,8 +86,18 @@
     width: 250px;
     /* margin-right: 1rem; */
     border: var(--color2) solid 3px;
+    border-right: none;
     transition: all .4s ease-in-out;
     background-color: var(--mainBackground);
+    
+}
+#searchForm input::placeholder {
+color: white;
+transition: all ease-in-out .3s;
+}
+#searchForm input:hover::placeholder,
+#searchForm input:focus::placeholder {
+color: black;
 }
 
 #searchForm input:hover,

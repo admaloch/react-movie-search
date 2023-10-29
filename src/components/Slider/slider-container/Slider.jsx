@@ -15,7 +15,7 @@ const Slider = () => {
 
     useEffect(
         function sliderResHandler() {
-            setSliderRes(apiResults.Search)
+            setSliderRes(apiResults)
         },
         [submittedSearch]
     );

@@ -16,9 +16,13 @@ const SearchForm = () => {
     async function apiRequest() {
         const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
         const req2 = await axios.get(`${BASE_URL}${searchTerm}&page=2${api_key}${searchParam}`)
-        const results = [...req1.data.Search, ...req2.data.Search]
-        // console.log(req1)
-        // console.log(req2)
+        let results = []
+        if (req1.data.Response === 'True') {
+            results = req1.data.Search
+            if (req2.data.Response === 'True') {
+                results = [...results, ...req2.data.Search]
+            }
+        }
         updateApiState(results)
     }
 
@@ -28,7 +32,7 @@ const SearchForm = () => {
                 apiRequest()
                 setIsListShown(true)
             } else {
-                updateApiState({})
+                updateApiState([])
                 setIsListShown(false)
             }
         },

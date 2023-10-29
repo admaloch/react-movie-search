@@ -19,23 +19,52 @@
 
 .modal-container {
   background-color: var(--mainBackground);
-  padding: 4rem 6rem;
-  --modal-width: 60%;
-  --modal-height: 80%;
+
+  --modal-width: 100%;
+  --modal-height: 100%;
   width: var(--modal-width);
   height: var(--modal-height);
   position: fixed;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   left: calc((100% - var(--modal-width))/2);
   top: calc((100% - var(--modal-height))/2);
-  
-  z-index: 200;
-  display: flex;
-justify-content: center;
-align-items: center;
 
+  z-index: 200;
+  
   -webkit-box-shadow: 0px 0px 38px 6px rgba(0, 0, 0, 0.19);
   box-shadow: 0px 0px 38px 6px rgba(0, 0, 0, 0.19);
-  max-height: 90%;
 
+}
+
+@media screen and (min-width: 500px) {
+  .modal-container {
+    --modal-width: 95%;
+    --modal-height: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal-container {
+    border-radius: 5px;
+    --modal-width: 80%;
+    --modal-height: 65%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .modal-container {
+    --modal-width: 70%;
+    --modal-height: 75%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .modal-container {
+    --modal-width: 60%;
+    --modal-height: 70%;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .modal-container {
+    --modal-width: 50%;
+    --modal-height: 70%;
+  }
 }

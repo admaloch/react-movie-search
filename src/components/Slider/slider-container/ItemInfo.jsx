@@ -40,7 +40,7 @@ export default function ItemInfo({item}) {
 
     return (
         <>
-            {item.Title !== 'N/A' && <h3 className="movie-title">{item.Title}</h3>}
+            {item.Title !== 'N/A' && <h3>{item.Title}</h3>}
             {item.Director !== 'N/A' && <h4>Directed by: {item.Director}</h4>}
             {item.Year !== 'N/A' && <h4>Released: {item.Year}</h4>}
             {item.Rated !== 'N/A' && <h4>Rated: {item.Rated}</h4>}

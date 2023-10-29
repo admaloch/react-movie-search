@@ -78,10 +78,10 @@
 }
 
 .info-container:hover {
-    opacity: .9;
+    opacity: 1;
 }
 
-.movie-title {
+.info-container h3 {
     font-size: 1.6rem;
     color: var(--color2);
     margin-bottom: 1rem;
@@ -94,7 +94,7 @@
 .info-container h4 {
     letter-spacing: .1rem;
     text-align: center;
-    max-width: 80%;
+    /* max-width: 80%; */
     font-size: .7rem;
 }
 
@@ -114,7 +114,7 @@
     color: var(--mainBackground);
     background-color: var(--text);
     border: var(--color2) solid 2px;
-    padding: .2rem .5rem .3rem .7rem;
+    padding: .2rem .5rem;
     opacity: 1;
     transition: 250ms ease-in-out;
     cursor: pointer;

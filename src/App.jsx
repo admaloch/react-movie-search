@@ -17,9 +17,9 @@ function App() {
   return (
     <TypeProvider>
       <ThemeProvider>
-        <MainSearch 
-        isSliderActive={isSliderActive}
-        hideSlider={hideSlider}
+        <MainSearch
+          isSliderActive={isSliderActive}
+          hideSlider={hideSlider}
         />
         <MainSlider
           isSliderActive={isSliderActive}

@@ -24,6 +24,8 @@ const HoverInfo = ({ item }) => {
         setIsModalOpen(false)
     }
 
+    item.Plot === 'N/A' && setRevealBio(false)
+
 
 
 
@@ -32,13 +34,25 @@ const HoverInfo = ({ item }) => {
 
         <div className="info-container">
             <ItemInfo item={item} />
-            <div onClick={openBioOverlay} className="hover-btn">Overview</div>
-            <BioOverlay revealBio={revealBio} closeBio={closeBioOverlay} plot={item.Plot} />
-            <div onClick={() => setIsModalOpen(true)} className="hover-btn">More Information</div>
+            {item.Plot !== 'N/A' &&
+                <div
+                    onClick={openBioOverlay}
+                    className="hover-btn"
+                >Overview</div>
+            }
+            {revealBio && <BioOverlay
+                revealBio={revealBio}
+                closeBio={closeBioOverlay}
+                plot={item.Plot} />}
+
+            <div
+                onClick={() => setIsModalOpen(true)}
+                className="hover-btn">
+                More Information
+            </div>
             <Modal
                 closeModal={closeItemModal}
-                open={isModalOpen}
-            >
+                open={isModalOpen}>
                 <ItemModal
                     item={item}
                     closeModal={closeItemModal}
