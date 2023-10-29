@@ -36,7 +36,7 @@ const HoverInfo = ({ item }) => {
                     className="hover-btn"
                 >Overview</div>
             }
-            <BioOverlay
+             <BioOverlay
                 revealBio={revealBio}
                 closeBio={closeBioOverlay}
                 plot={item.Plot} />

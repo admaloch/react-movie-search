@@ -9,7 +9,7 @@ import { typeTheme } from "../../../store/TypeContext";
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 
-const SliderItem = ({ imdbID, poster }) => {
+const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
 
     const { types } = typeTheme()
     const currItem = types.filter(item => item.isActive === true)[0]
@@ -20,10 +20,12 @@ const SliderItem = ({ imdbID, poster }) => {
     async function mouseEnterHandler() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnHover(apiRes.data)
+        hideArrows()
+
     }
 
     return (
-        <div onMouseEnter={mouseEnterHandler} className="movie-container" data-id={imdbID}>
+        <div onMouseEnter={mouseEnterHandler} onMouseLeave={revealArrows} className="movie-container" data-id={imdbID}>
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}></img>

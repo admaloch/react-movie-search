@@ -8,7 +8,7 @@ import SliderItem from './SliderItem';
 
 
 
-const Slider = () => {
+const Slider = ({ hideArrows, revealArrows }) => {
 
     const [sliderRes, setSliderRes] = useState([])
     const { submittedSearch, apiResults } = useTheme()
@@ -25,6 +25,8 @@ const Slider = () => {
         <div className="slider">
             {sliderRes && sliderRes.map(item => (
                 <SliderItem
+                    hideArrows={hideArrows}
+                    revealArrows={revealArrows}
                     item={item}
                     poster={item.Poster}
                     imdbID={item.imdbID}
