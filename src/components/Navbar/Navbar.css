@@ -1,0 +1,22 @@
+.nav-modal-container {
+    /* padding: 10rem; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* overflow-y: scroll; */
+  }
+.nav-modal-container h3 {
+font-size: 2rem;
+text-align: center;
+  }
+.nav-modal-container h4 {
+    margin-top: 2rem;
+font-size: 2rem;
+  }
+.nav-modal-container p {
+font-size: 1.5rem;
+  }

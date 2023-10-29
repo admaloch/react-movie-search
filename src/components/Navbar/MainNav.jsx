@@ -1,0 +1,43 @@
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
+
+
+
+export default function MainNav({ openModal }) {
+    return (
+
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar sx={{ backgroundColor: 'var(--color1)' }} position="static">
+                <Toolbar>
+
+                    <Typography variant="h6" component="div"
+                        sx={{
+                            flexGrow: 1,
+                            color: 'var(--mainBackground)',
+                            fontFamily: 'Poppins',
+                            fontSize: '2rem',
+                            fontWeight: '800',
+                        }}>
+                        Movie Seach
+                    </Typography>
+                    <IconButton
+                        onClick={openModal}
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2, color: 'var(--mainBackground)' }}
+                    >
+                        <InfoIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+        </Box>
+    );
+}
+
+

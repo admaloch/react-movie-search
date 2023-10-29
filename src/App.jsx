@@ -1,10 +1,13 @@
 import './App.css'
-import { useState } from 'react'
+import {  useState } from 'react'
 import MainSearch from './components/MainSearchSection/MainSearch'
 import MainSlider from './components/Slider/MainSlider'
 import { ThemeProvider } from './store/APIContext'
 import { TypeProvider } from './store/TypeContext'
 import Navbar from './components/Navbar/Navbar'
+
+
+
 
 
 
@@ -18,7 +21,7 @@ function App() {
   return (
     <TypeProvider>
       <ThemeProvider>
-        <Navbar/>
+        <Navbar />
         <MainSearch
           isSliderActive={isSliderActive}
           hideSlider={hideSlider}
