@@ -2,7 +2,7 @@
 import { useEffect, useReducer } from 'react';
 import { useState } from 'react';
 import { useTheme } from '../../store/APIContext';
-import LoadContainer from './LoadContainer/LoadContainer';
+
 
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
@@ -34,7 +34,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+   
     const { apiResults, submittedSearch } = useTheme()
 
     const increaseIndexHandler = () => dispatch({ type: 'increment', progBar: progBar })
@@ -59,6 +59,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
     )
 
 
+
     return (
         <>
             <SearchInfo
@@ -74,8 +75,8 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
             />
-            
-           {isLoading && <LoadContainer />}
+
+          
         </>
     )
 }

@@ -1,6 +1,6 @@
 import Slider from './Slider';
 import './Slider.css'
-const SliderContainer = ({  increaseIndexHandler, decreaseIndexHandler, isSliderActive }) => {
+const SliderContainer = ({  increaseIndexHandler, decreaseIndexHandler, isSliderActive}) => {
 
 
     let sliderStyle = { display: isSliderActive ? 'flex' : 'none' }

@@ -1,17 +1,24 @@
 
 import SearchList from "./SearchList";
+
 import { useTheme } from "../../store/APIContext";
 import { typeTheme } from "../../store/TypeContext";
 import { useEffect, useState } from "react";
+import LoadContainer from '../UI/LoadContainer/LoadContainer'
 import axios from "axios";
 const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
 const SearchForm = () => {
     const [isListShown, setIsListShown] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useTheme()
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
+
+    const removeLoader = () => setIsLoading(false)
+
+   
 
     async function apiRequest() {
         const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
@@ -23,17 +30,20 @@ const SearchForm = () => {
                 results = [...results, ...req2.data.Search]
             }
         }
+        setIsLoading(false)
         updateApiState(results)
     }
 
     useEffect(
         function updateReqOnChange() {
-            if (searchTerm.length > 0) {
+            if (searchTerm.length > 2) {
                 apiRequest()
                 setIsListShown(true)
+                setIsLoading(true)
             } else {
                 updateApiState([])
                 setIsListShown(false)
+                setIsLoading(false)
             }
         },
         [searchTerm]
@@ -55,9 +65,9 @@ const SearchForm = () => {
                 id="search-input"
                 onChange={(e) => updateSearchState(e.target.value)}
             />
+              <LoadContainer isLoading={isLoading}/>
             <button>Search</button>
             <SearchList
-
                 isListShown={isListShown}
                 hideList={hideSearchList}
 

@@ -1,0 +1,76 @@
+
+
+
+.load-animation {
+  display: inline-block;
+  position: absolute;
+ left: 15rem;
+ transition: 1.5s opacity ease-in;
+  width: auto;
+  height: 100%;
+  /* border: black solid 1px; */
+}
+
+.load-animation div {
+  position: absolute;
+  top: 25px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.load-animation div:nth-child(1) {
+  left: 8px;
+  animation: load-animation1 0.6s infinite;
+  background: black;
+}
+
+.load-animation div:nth-child(2) {
+  left: 8px;
+  animation: load-animation2 0.6s infinite;
+  background: black;
+}
+
+.load-animation div:nth-child(3) {
+  left: 32px;
+  animation: load-animation2 0.6s infinite;
+  background: black;
+}
+
+.load-animation div:nth-child(4) {
+  left: 56px;
+  animation: load-animation3 0.6s infinite;
+  background: black;
+}
+
+@keyframes load-animation1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes load-animation3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes load-animation2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
