@@ -42,7 +42,7 @@ const SearchForm = () => {
                 setIsListShown(true)
                 setIsLoading(true)
             } else {
-                updateApiState([])
+                // updateApiState([])
                 setIsListShown(false)
                 setIsLoading(false)
             }
