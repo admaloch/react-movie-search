@@ -1,5 +1,5 @@
 
-import '../../UI/LoadAnimation/LoadAnimation.css'
+import './LoadAnimation.css'
 export default function LoadAnimation({ isLoading }) {
 
 

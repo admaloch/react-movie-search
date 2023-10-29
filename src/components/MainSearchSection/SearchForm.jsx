@@ -17,7 +17,7 @@ const SearchForm = () => {
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
-  
+
 
 
 
@@ -38,14 +38,14 @@ const SearchForm = () => {
     useEffect(
         function updateReqOnChange() {
             if (searchTerm.length > 2) {
-                apiRequest()
                 setIsListShown(true)
                 setIsLoading(true)
-            } else {
-                // updateApiState([])
+            } else if (searchTerm.length <= 2) {
                 setIsListShown(false)
                 setIsLoading(false)
+                // updateApiState([])
             }
+            apiRequest()
         },
         [searchTerm]
     )
@@ -66,7 +66,7 @@ const SearchForm = () => {
                 id="search-input"
                 onChange={(e) => updateSearchState(e.target.value)}
             />
-            <KeyRequestAnimation isLoading={isLoading}/>
+            <KeyRequestAnimation isLoading={isLoading} />
             <button>Search</button>
             <SearchList
                 isListShown={isListShown}

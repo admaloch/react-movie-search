@@ -3,6 +3,8 @@ import ModalContent from './ModalContent';
 import './ItemModal.css';
 
 const ItemModal = ({ item, closeModal }) => {
+
+    
     return (
         <div className='modal-content-container'>
             {item.Poster !== 'N/A' &&

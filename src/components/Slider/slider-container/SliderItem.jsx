@@ -27,7 +27,7 @@ const SliderItem = ({ imdbID, poster }) => {
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}></img>
-            <HoverInfo item={itemOnHover}/>
+            <HoverInfo item={itemOnHover} />
         </div>
     )
 }

@@ -3,11 +3,11 @@ import './Slider.css'
 const SliderContainer = ({  increaseIndexHandler, decreaseIndexHandler, isSliderActive}) => {
 
 
-    let sliderStyle = { display: isSliderActive ? 'flex' : 'none' }
+   
 
     return (
 
-        <div style={sliderStyle} className="slider-container">
+        <div style={{opacity: isSliderActive ? 1 : 0}} className="slider-container">
             <button onClick={decreaseIndexHandler} className="handle left-handle " >
                 <div className="arrow">‹</div>
             </button>

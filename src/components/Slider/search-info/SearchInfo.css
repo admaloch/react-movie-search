@@ -1,8 +1,8 @@
 .header-info {
     display: flex;
-    opacity: 1;
-
-    transition: .5s ease-in-out;
+    opacity: 0;
+width: 100vw;
+    transition: opacity 1s ease-in-out;
     justify-content: space-evenly;
     margin-top: 1rem;
 }

@@ -26,10 +26,6 @@ const HoverInfo = ({ item }) => {
 
     item.Plot === 'N/A' && setRevealBio(false)
 
-
-
-
-
     return (
 
         <div className="info-container">
@@ -40,10 +36,10 @@ const HoverInfo = ({ item }) => {
                     className="hover-btn"
                 >Overview</div>
             }
-            {revealBio && <BioOverlay
+            <BioOverlay
                 revealBio={revealBio}
                 closeBio={closeBioOverlay}
-                plot={item.Plot} />}
+                plot={item.Plot} />
 
             <div
                 onClick={() => setIsModalOpen(true)}

@@ -34,7 +34,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { index: 0 })
     const [progBar, setProgBar] = useState([])
-   
+
     const { apiResults, submittedSearch } = useTheme()
 
     const increaseIndexHandler = () => dispatch({ type: 'increment', progBar: progBar })
@@ -53,12 +53,13 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
                 showSlider()
             } else {
                 hideSlider()
+
             }
         },
         [submittedSearch]
     )
 
-
+   
 
     return (
         <>
@@ -76,7 +77,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
                 isSliderActive={isSliderActive}
             />
 
-          
+
         </>
     )
 }

@@ -6,8 +6,8 @@ const BioOverlay = ({ plot, revealBio, closeBio }) => {
     const bioClass = revealBio ? `bio-overlay show-bio` : 'bio-overlay'
 
     let styles = revealBio
-        ? { display: 'block', opacity: '1', height: '100%' }
-        : { display: 'none', opacity: '0', height: '0' }
+        ? { opacity: '1', height: '100%' }
+        : {  opacity: '0', height: '0' }
 
 
     return (

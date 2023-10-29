@@ -1,7 +1,7 @@
 .modal-overlay {
   z-index: 100;
-  display: none;
-  opacity: 0;
+
+
   transition: opacity 500ms ease-in-out;
   position: fixed;
 

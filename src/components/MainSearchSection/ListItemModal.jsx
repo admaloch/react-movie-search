@@ -10,6 +10,7 @@ export default function ListItemModal({ item, open, closeModal }) {
             open={open}
         >
             <ItemModal
+            open={open}
                 item={item}
                 closeModal={closeModal}
             />

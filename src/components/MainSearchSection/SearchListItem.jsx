@@ -12,7 +12,7 @@ const SearchListItem = ({ id, img, title, year }) => {
 
     const [itemOnClick, setItemOnClick] = useState({})
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isModalLoading, setIsModalLoading] = useState(false)
+ 
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
