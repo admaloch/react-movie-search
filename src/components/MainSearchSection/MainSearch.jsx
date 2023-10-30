@@ -16,7 +16,7 @@ const MainSearch = ({ isSliderActive, hideSlider }) => {
 
     return (
         <div style={mainStyle} className="main-search-section">
-            <h1>{currItemHeader}</h1>
+            <h1 className="text-center">{currItemHeader}</h1>
             <SearchTypeButtons hideSlider={hideSlider} />
             <SearchForm />
         </div>

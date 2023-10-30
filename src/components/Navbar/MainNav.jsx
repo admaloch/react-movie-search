@@ -26,11 +26,11 @@ export default function MainNav({ openModal }) {
                     </Typography>
                     <IconButton
                         onClick={openModal}
-                        size="large"
+                        
                         edge="start"
                         color="inherit"
                         aria-label="menu"
-                        sx={{ mr: 2, color: 'var(--mainBackground)' }}
+                        sx={{fontSize: '4rem', mr: 1, color: 'var(--mainBackground)' }}
                     >
                         <InfoIcon />
                     </IconButton>
