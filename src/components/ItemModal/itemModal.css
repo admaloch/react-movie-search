@@ -1,4 +1,5 @@
 .modal-content-container {
+  background-color: var(--mainBackground);
   /* padding: rem; */
   width: 100%;
   height: 100%;

@@ -5,6 +5,7 @@ import MainSlider from './components/Slider/MainSlider'
 import { ThemeProvider } from './store/APIContext'
 import { TypeProvider } from './store/TypeContext'
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 
 
 
@@ -31,6 +32,7 @@ function App() {
           showSlider={showSlider}
           hideSlider={hideSlider}
         />
+        <Footer/>
       </ThemeProvider>
     </TypeProvider>
   )
