@@ -2,6 +2,7 @@
 import { useEffect, useReducer } from 'react';
 import { useState } from 'react';
 import { useTheme } from '../../store/APIContext';
+import ErrorMsg from './ErrorMsg/ErrorMsg';
 
 
 import SearchInfo from './search-info/SearchInfo';
@@ -59,7 +60,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
         [submittedSearch]
     )
 
-   
+
 
     return (
         <>
@@ -76,6 +77,8 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
             />
+
+            <ErrorMsg />
 
 
         </>

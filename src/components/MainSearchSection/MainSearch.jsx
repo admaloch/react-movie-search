@@ -12,7 +12,7 @@ const MainSearch = ({ isSliderActive, hideSlider }) => {
 
 
     const currItemHeader = `Search ${currType.description}`
-    let mainStyle = { marginTop: isSliderActive ? '5rem' : '12rem' }
+    let mainStyle = { marginTop: isSliderActive ? '2rem' : '12rem' }
 
     return (
         <div style={mainStyle} className="main-search-section">

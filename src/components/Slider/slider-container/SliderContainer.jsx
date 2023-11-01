@@ -9,11 +9,16 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     const hideArrows = () => setShowArrows(false)
     const revealArrows = () => setShowArrows(true)
 
+    const containerStyle = isSliderActive 
+        ? { opacity: 1, width: '100%', display: 'flex' }
+        : { opacity: 0, width: '0', display: 'none' }
+
+
     return (
 
         <div
 
-            style={{ opacity: isSliderActive ? 1 : 0 }}
+            style={containerStyle}
             className="slider-container">
             <button
                 onMouseEnter={revealArrows}

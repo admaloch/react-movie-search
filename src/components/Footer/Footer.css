@@ -1,10 +1,23 @@
 .footer {
     width: 100%;
-    padding: 2rem;
+    padding: 1.2rem;
     background-color: var(--color1);
-    color: var(--color2);
+    color: var(--mainBackground);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: 0;
 
+}
+
+.footer a {
+  color: var(--mainBackground);
+    transition: .3s all ease-in-out;
+    text-decoration: underline;
+}
+.footer a:hover {
+    opacity: .6;
+letter-spacing: 5px;
 }

@@ -1,0 +1,13 @@
+.error-msg-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black;
+}
+.error-msg-container p {
+    color: var(--color2);
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 2rem;
+}
