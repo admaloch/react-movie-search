@@ -9,5 +9,12 @@
     color: var(--color2);
     font-size: 1.5rem;
     text-align: center;
-    padding: 2rem;
+    max-width: 500px;
+    padding: 0 3rem;
 }
+
+/* @media screen and (min-width: 1200px) {
+    .error-msg-container p {
+        padding: 0 20rem;
+    }
+} */
