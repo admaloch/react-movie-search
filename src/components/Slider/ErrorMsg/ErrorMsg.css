@@ -1,10 +1,14 @@
 .error-msg-container {
     width: 100%;
+   
     display: flex;
     justify-content: center;
     align-items: center;
     border: black;
+    opacity: 0;
+    transition: all 2s ease-in-out;
 }
+
 .error-msg-container p {
     color: var(--color2);
     font-size: 1.5rem;
@@ -12,9 +16,3 @@
     max-width: 500px;
     padding: 0 3rem;
 }
-
-/* @media screen and (min-width: 1200px) {
-    .error-msg-container p {
-        padding: 0 20rem;
-    }
-} */

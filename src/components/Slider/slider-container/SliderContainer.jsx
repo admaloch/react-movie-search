@@ -9,9 +9,9 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     const hideArrows = () => setShowArrows(false)
     const revealArrows = () => setShowArrows(true)
 
-    const containerStyle = isSliderActive 
-        ? { opacity: 1, width: '100%', display: 'flex' }
-        : { opacity: 0, width: '0', display: 'none' }
+    const containerStyle = isSliderActive
+        ? { opacity: 1, height: 'auto' }
+        : { opacity: 0, height: '0' }
 
 
     return (

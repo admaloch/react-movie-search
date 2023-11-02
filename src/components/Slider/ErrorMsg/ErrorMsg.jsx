@@ -10,21 +10,26 @@ export default function ErrorMsg() {
     const { submittedSearch, apiResults } = useTheme()
     const [isSearchValid, setIsSearchValid] = useState(true)
 
-    useEffect(
 
+
+    useEffect(
         function testData() {
 
             if (submittedSearch.length > 0 && apiResults.length === 0) {
-              
+                console.log(submittedSearch.length, apiResults.length)
                 setIsSearchValid(false)
+            } else if (!isSearchValid && submittedSearch.length === 0) {
+                return;
+            } else {
+                setIsSearchValid(true)
             }
         },
         [submittedSearch]
     )
 
     const errorStyle = isSearchValid
-        ? { opacity: 0, width: '0' }
-        : { opacity: 1, width: '100%' }
+        ? { opacity: 0 }
+        : { opacity: 1 }
 
 
 
