@@ -1,21 +1,41 @@
 
+import { useEffect } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
 
 const Modal = ({ open, children, closeModal }) => {
+
+
+    const [isVisible, setIsVisible] = useState(false)
+
+
+
+    const closeModalHandler = () => {
+        setIsVisible(false)
+        setTimeout(() => {
+            closeModal()
+        }, 1000)
+    }
+
+    useEffect(() => {
+        if (open) {
+            setIsVisible(true)
+        }
+    }, [open])
+
     if (!open) return null
-    // let modalStyle = open
-    //     ? { opacity: 1 }
-    //     : { opacity: 0 }
-  
-    
 
     return ReactDOM.createPortal(
         <>
-            <div onClick={closeModal} className="modal-overlay" >
+            <div
+                onClick={closeModalHandler}
+                className={isVisible ? "modal-overlay active" : "modal-overlay"} >
             </div >
-            <div className="modal-container ">
+            <div
+                className={isVisible ? "modal-container active" : "modal-container"}
+            >
                 {children}
             </div>
         </>,

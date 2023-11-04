@@ -1,6 +1,6 @@
 .animation-container .load-animation {
 
-  transition: .5s opacity ease-in;
+  transition: 1.5s opacity ease-in;
   width: auto;
   height: 100%;
   /* border: black solid 1px; */
