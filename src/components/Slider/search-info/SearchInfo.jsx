@@ -27,8 +27,9 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
                 blockArr.push({ id: i, isActive: false })
             }
             blockArr[sliderIndex] = { id: sliderIndex, isActive: true }
-            console.log('sliderIndex', sliderIndex)
             setProgBar(blockArr)
+            // console.log('sliderIndex', sliderIndex, 'blockArr', blockArr, 'progBar', progBar)
+
         },
         [submittedSearch, sliderIndex]
     );

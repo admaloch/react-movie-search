@@ -13,9 +13,11 @@ import SliderContainer from './slider-container/SliderContainer';
 const reducer = (sliderIndex, action) => {
     // let progBar = action.progBar
     let newIndexVal = 0
+    let updatedProgBar = []
     switch (action.type) {
         case 'updateProgBar':
-            sliderIndex.progBar = action.progBarArr;
+            updatedProgBar = action.progBarArr;
+           
             break;
         case 'increment':
             sliderIndex.index + 1 > sliderIndex.progBar.length - 1
