@@ -5,7 +5,7 @@ const ProgressBar = ({ progBar }) => {
 
 
 
-    console.log(progBar)
+    // console.log(progBar)
 
     return (
         <div className="progress-bar">
