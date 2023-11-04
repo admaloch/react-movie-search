@@ -132,38 +132,24 @@ margin-bottom: 2rem;
 
 }
 
-
-.modal-buttons {
-
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+.google-icon-container {
+position: relative;
+top: 1.5rem;
 }
 
-.modal-buttons button,
-.modal-buttons a {
-  background-color: var(--containerBackground);
-  color: var(--containertext);
-  border: var(--color2) solid 2px;
-  padding: .5rem 2rem;
-  transition: 300ms ease-in-out;
-  cursor: pointer;
-  margin: 0 1rem;
-  text-decoration: none;
-}
+.google-icon {
+  color: var(--color2);
+  border: var(--color1) solid 1px;
+  background-color: var(--mainBackground);
+  padding: .1rem;
+  border-radius: 10px;
+  transition: 1s all;
 
-#btn-close {
-  letter-spacing: .2rem;
+}
+.google-icon:hover {
+  color: var(--color1);
+  border: var(--color2) solid 1px;
+  background-color: var(--mainBackground);
 
 }
 
-.modal-buttons button:hover,
-.modal-buttons a:hover {
-  background-color: var(--containertext);
-  color: var(--containerBackground);
-  border: var(--containerBackground) solid 2px;
-
-}

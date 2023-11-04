@@ -2,7 +2,7 @@
 import ModalContent from './ModalContent';
 import './ItemModal.css';
 
-const ItemModal = ({ item, closeModal }) => {
+const ItemModal = ({ item }) => {
 
     
     return (
@@ -15,7 +15,6 @@ const ItemModal = ({ item, closeModal }) => {
             }
             <ModalContent
                 item={item}
-                closeModal={closeModal}
             />
         </div>
     );

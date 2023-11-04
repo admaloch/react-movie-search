@@ -1,6 +1,6 @@
-import React from 'react'
+
 import Modal from '../UI/Modal'
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 
 
 export default function InfoModal({ open, closeModal }) {
@@ -11,15 +11,6 @@ export default function InfoModal({ open, closeModal }) {
             open={open}
         >
             <div className="nav-modal-container">
-                <HighlightOffIcon
-                    onClick={closeModal}
-                    sx={{
-                        position: 'absolute',
-                        top: '1rem',
-                        right: '1rem',
-                        fontSize: '2rem',
-                        cursor: 'pointer',
-                    }} />
                 <h3>Instructions:</h3>
                 <p>Filter the search results by selecting between the menu items</p>
                 <p>Search for </p>
