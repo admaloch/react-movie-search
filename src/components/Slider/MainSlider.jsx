@@ -13,32 +13,31 @@ import SliderContainer from './slider-container/SliderContainer';
 const reducer = (sliderIndex, action) => {
     // let progBar = action.progBar
     let newIndexVal = 0
-    let updatedProgBar = []
+
     switch (action.type) {
         case 'updateProgBar':
-            updatedProgBar = action.progBarArr;
-           
-            break;
+            return { progBar: action.progBarArr, index: sliderIndex.index }
         case 'increment':
             sliderIndex.index + 1 > sliderIndex.progBar.length - 1
                 ? newIndexVal = 0
                 : newIndexVal = sliderIndex.index + 1
-            break;
+            return { progBar: sliderIndex.progBar, index: newIndexVal }
         case 'decrement':
             sliderIndex.index - 1 === - 1
                 ? newIndexVal = sliderIndex.progBar.length - 1
                 : newIndexVal = sliderIndex.index - 1
-            break;
+            return { progBar: sliderIndex.progBar, index: newIndexVal }
         case 'changeIndex':
             newIndexVal = action.newIndex
-            break;
-        
+            return { progBar: sliderIndex.progBar, index: newIndexVal }
         default:
             newIndexVal = 0
+            return { progBar: sliderIndex.progBar, index: newIndexVal }
     }
 
-    document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
-    return { index: newIndexVal }
+    // document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
+    // return { index: newIndexVal }
+
 }
 
 const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
@@ -64,9 +63,16 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
         [submittedSearch]
     )
 
+    useEffect(
+        function updateSlider() {
+            document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex.index);
+        },
+        [sliderIndex.index]
+    )
 
 
 
+    // console.log(sliderIndex)
 
 
     useEffect(
