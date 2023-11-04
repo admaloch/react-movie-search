@@ -48,13 +48,14 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
         [submittedSearch]
     )
 
+
+
     useEffect(
         function hideOnSubmit() {
             if (apiResults.length > 0) {
                 showSlider()
             } else {
                 hideSlider()
-
             }
         },
         [submittedSearch]

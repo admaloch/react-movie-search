@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function ItemInfo({item}) {
+export default function ItemInfo({ item }) {
 
-// not all items have same ratings or any at all
+    // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
     const genItemRating = (obj) => {
         const rottenScore = obj.Ratings.filter(x => x.Source === "Rotten Tomatoes")
@@ -34,7 +34,7 @@ export default function ItemInfo({item}) {
     } else {
         itemType = null
     }
-   
+
 
 
 

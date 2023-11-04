@@ -21,14 +21,16 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnHover(apiRes.data)
         hideArrows()
-
     }
+
+ 
 
     return (
         <div onMouseEnter={mouseEnterHandler} onMouseLeave={revealArrows} className="movie-container" data-id={imdbID}>
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
-                alt={imdbID}></img>
+                alt={imdbID}>
+            </img>
             <HoverInfo item={itemOnHover} />
         </div>
     )

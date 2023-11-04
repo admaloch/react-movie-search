@@ -1,9 +1,11 @@
 
 import ProgressItem from "./ProgressItem";
 
-const ProgressBar = ({progBar}) => {
+const ProgressBar = ({ progBar }) => {
 
 
+
+    console.log(progBar)
 
     return (
         <div className="progress-bar">
@@ -18,3 +20,5 @@ const ProgressBar = ({progBar}) => {
     )
 }
 export default ProgressBar;
+
+

@@ -16,7 +16,6 @@ export default function ErrorMsg() {
         function testData() {
 
             if (submittedSearch.length > 0 && apiResults.length === 0) {
-                console.log(submittedSearch.length, apiResults.length)
                 setIsSearchValid(false)
             } else if (!isSearchValid && submittedSearch.length === 0) {
                 return;

@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const BioOverlay = ({ plot, revealBio, closeBio }) => {
     const scrollDiv = useRef(null);
-    const bioClass = revealBio ? `bio-overlay show-bio` : 'bio-overlay'
+  
 
     const mouseLeaveHandler = () => {
         scrollToTop()
