@@ -43,7 +43,8 @@ const SearchForm = () => {
             } else if (searchTerm.length <= 2) {
                 setIsListShown(false)
                 setIsLoading(false)
-                // updateApiState([])
+                setTimeout(() => updateApiState([]), 1000)
+
             }
             apiRequest()
         },

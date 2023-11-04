@@ -1,7 +1,7 @@
 
 import ProgressItem from "./ProgressItem";
 
-const ProgressBar = ({ progBar }) => {
+const ProgressBar = ({ progBar, changeIndexHandler }) => {
 
 
 
@@ -14,6 +14,7 @@ const ProgressBar = ({ progBar }) => {
                     key={item.id}
                     id={item.id}
                     isActive={item.isActive}
+                    changeIndexHandler={changeIndexHandler}
                 />
             ))}
         </div>

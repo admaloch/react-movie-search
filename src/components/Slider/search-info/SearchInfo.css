@@ -31,9 +31,11 @@ width: 100vw;
     opacity: .5;
 }
 
-.progress-item.active {
+.progress-item.active,
+.progress-item:hover {
     background-color: var(--color3);
     opacity: 1;
+    cursor: pointer;
 }
 
 .no-results {

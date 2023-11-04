@@ -5,13 +5,13 @@ import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { typeTheme } from "../../../store/TypeContext"
 
-const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
+const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }) => {
 
     const { currType } = typeTheme()
 
 
     const { submittedSearch, apiResults } = useTheme()
-    // const currType = types.filter(item => item.isActive === true)[0]
+
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
@@ -28,7 +28,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
             }
             blockArr[sliderIndex] = { id: sliderIndex, isActive: true }
             setProgBar(blockArr)
-            console.log('sliderIndex', sliderIndex, 'progBar', progBar)
+            // console.log('sliderIndex', sliderIndex, 'progBar', progBar)
 
         },
         [submittedSearch, sliderIndex]
@@ -42,6 +42,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex }) => {
             </h2>
             <ProgressBar
                 progBar={progBar}
+                changeIndexHandler={changeIndexHandler}
             />
         </div>
     )

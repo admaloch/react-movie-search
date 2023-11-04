@@ -11,28 +11,24 @@ import SliderContainer from './slider-container/SliderContainer';
 
 // useReducer not entirely necessary for this but good practice
 const reducer = (sliderIndex, action) => {
-    // let progBar = action.progBar
     let newIndexVal = 0
-
     switch (action.type) {
         case 'updateProgBar':
-            return { progBar: action.progBarArr, index: sliderIndex.index }
+            return { ...sliderIndex, progBar: action.progBarArr }
         case 'increment':
             sliderIndex.index + 1 > sliderIndex.progBar.length - 1
                 ? newIndexVal = 0
                 : newIndexVal = sliderIndex.index + 1
-            return { progBar: sliderIndex.progBar, index: newIndexVal }
+            return { ...sliderIndex, index: newIndexVal }
         case 'decrement':
             sliderIndex.index - 1 === - 1
                 ? newIndexVal = sliderIndex.progBar.length - 1
                 : newIndexVal = sliderIndex.index - 1
-            return { progBar: sliderIndex.progBar, index: newIndexVal }
+            return { ...sliderIndex, index: newIndexVal }
         case 'changeIndex':
-            newIndexVal = action.newIndex
-            return { progBar: sliderIndex.progBar, index: newIndexVal }
+            return { ...sliderIndex, index: action.newIndex }
         default:
-            newIndexVal = 0
-            return { progBar: sliderIndex.progBar, index: newIndexVal }
+            return { ...sliderIndex, index: 0 }
     }
 
     // document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
@@ -72,9 +68,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
 
 
 
-    // console.log(sliderIndex)
-
-
     useEffect(
         function hideOnSubmit() {
             if (apiResults.length > 0) {
@@ -92,10 +85,10 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
         <>
             <SearchInfo
                 progBar={sliderIndex.progBar}
-
                 isSliderActive={isSliderActive}
                 setProgBar={updateProgBarHandler}
                 sliderIndex={sliderIndex.index}
+                changeIndexHandler={changeIndexHandler}
             />
             <SliderContainer
 
