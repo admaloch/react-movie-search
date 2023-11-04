@@ -1,14 +1,14 @@
 import GoogleIcon from '@mui/icons-material/Google';
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import { typeTheme } from '../../store/TypeContext';
+import { useState } from 'react';
 
 export default function ModalBtns({ searchLink }) {
 
-  const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const {currType} = typeTheme()
 
