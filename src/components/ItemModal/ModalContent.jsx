@@ -1,4 +1,4 @@
-import ModalBtns from './ModalBtns'
+import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
 
 export default function ModalContent({ open, item }) {
@@ -12,7 +12,7 @@ export default function ModalContent({ open, item }) {
         item={item}
         year={year}
       />
-      <ModalBtns
+      <SearchBtn
         item={item}
         searchLink={searchLink}
       />

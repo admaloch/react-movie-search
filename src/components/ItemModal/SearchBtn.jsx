@@ -5,7 +5,7 @@ import Fade from '@mui/material/Fade';
 import { typeTheme } from '../../store/TypeContext';
 import { useState } from 'react';
 
-export default function ModalBtns({ searchLink }) {
+export default function SearchBtn({ searchLink }) {
 
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -32,7 +32,8 @@ export default function ModalBtns({ searchLink }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <GoogleIcon className='google-icon' sx={{ fontSize: 20 }} />
+          <GoogleIcon className='google-icon' sx={{ fontSize: 27 }} />
+          
 
         </a>
       </div>

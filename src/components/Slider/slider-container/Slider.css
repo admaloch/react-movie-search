@@ -4,7 +4,7 @@
     margin-top: 3rem;
     display: flex;
     width: 100%;
-  height: 0;
+    height: 0;
     justify-content: center;
     opacity: 0;
     transition: all .5s ease-in-out;
@@ -52,6 +52,11 @@
 
 
 
+
+
+
+
+
 .info-container {
     position: absolute;
     width: 100%;
@@ -61,12 +66,6 @@
     align-items: center;
     -webkit-box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
     box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
-}
-
-
-
-
-.info-container {
     background: var(--mainBackground);
     border: var(--text) solid 2px;
     color: var(--text);
@@ -99,33 +98,35 @@
     font-size: .7rem;
 }
 
-
-
-
-
-
-
-
-.hover-btn {
-    font-size: .7rem;
-    color: var(--mainBackground);
-    background-color: var(--text);
-    border: var(--color2) solid 2px;
-    padding: .2rem .5rem;
-    opacity: 1;
-    transition: 250ms ease-in-out;
-    cursor: pointer;
-
-    letter-spacing: 3px;
-    margin-top: .5rem;
-
+.hover-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.hover-btn:hover {
+.popover-icon {
+    margin: .5rem;
+    display: inline-block;
+    color: var(--color2);
+    border: var(--color1) solid 1px;
     background-color: var(--mainBackground);
-    color: var(--text);
-    border: var(--text) solid 2px;
+    cursor: pointer;
+    opacity: .4;
+    transition: .25s all ease-in-out;
+    padding: 0 .15rem .1rem .15rem;
 }
+
+.popover-icon:hover {
+    opacity: 1;
+    color: var(--color1);
+    border: var(--color2) solid 1px;
+    background-color: var(--mainBackground);
+
+}
+
+
+
+
 
 .bio-overlay {
     background: var(--text);
@@ -142,7 +143,7 @@
     justify-content: center;
     position: absolute;
     width: 100%;
-
+z-index: 250;
     transition: all .5s ease-in-out;
     flex-direction: column;
     align-items: center;
@@ -227,7 +228,7 @@
     color: rgba(255, 255, 255, 0.5);
     transition: all .5s ease-in-out;
     /* opacity: 0; */
-z-index: 150;
+    z-index: 150;
 
 }
 

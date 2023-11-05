@@ -135,7 +135,7 @@ margin-bottom: 2rem;
 .google-icon-container {
 position: absolute;
 top: 3.5rem;
-right: 1.3rem;
+right: 1rem;
 
 }
 
@@ -145,8 +145,8 @@ right: 1.3rem;
   color: var(--color2);
   border: var(--color1) solid 1px;
   background-color: var(--mainBackground);
-  padding: .1rem;
-  border-radius: 10px;
+  padding: .3rem;
+  border-radius: 20px;
   transition: 1s all;
 
 }

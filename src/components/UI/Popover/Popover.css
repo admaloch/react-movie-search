@@ -13,7 +13,7 @@
       background-color: var(--mainBackground);
       padding: .1rem;
       border-radius: 10px;
-      transition: 1s all;
+      transition: .3s all;
     
     }
     .google-icon:hover {

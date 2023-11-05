@@ -4,7 +4,9 @@ import Modal from "../../UI/Modal"
 
 
 import BioOverlay from "./BioOverlay"
+import HoverInfoBtn from "./ShowPlotBtn"
 import ItemInfo from "./ItemInfo"
+import MoreInfoBtn from "./MoreInfoBtn"
 
 
 
@@ -23,6 +25,9 @@ const HoverInfo = ({ item }) => {
     const closeItemModal = () => {
         setIsModalOpen(false)
     }
+    const openItemModal = () => {
+        setIsModalOpen(true)
+    }
 
     item.Plot === 'N/A' && setRevealBio(false)
 
@@ -30,26 +35,20 @@ const HoverInfo = ({ item }) => {
 
         <div className="info-container">
             <ItemInfo item={item} />
-            {item.Plot !== 'N/A' &&
-                <div
-                    onClick={openBioOverlay}
-                    className="hover-btn"
-                >Overview</div>
-            }
-             <BioOverlay
+            <BioOverlay
                 revealBio={revealBio}
                 closeBio={closeBioOverlay}
-                plot={item.Plot} />
-
-            <div
-                onClick={() => setIsModalOpen(true)}
-                className="hover-btn">
-                More Information
+                plot={item.Plot}
+            />
+            <div className="hover-btn-container">
+                {item.Plot !== 'N/A' && <HoverInfoBtn openBioOverlay={openBioOverlay} />}
+                <MoreInfoBtn openItemModal={openItemModal} />
             </div>
+
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}>
-                <ItemModal item={item}/>
+                <ItemModal item={item} />
             </Modal>
 
 
