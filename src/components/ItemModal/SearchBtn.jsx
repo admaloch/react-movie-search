@@ -32,7 +32,7 @@ export default function SearchBtn({ searchLink }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <GoogleIcon className='google-icon' sx={{ fontSize: 27 }} />
+          <GoogleIcon className='google-icon' sx={{ fontSize: 30 }} />
           
 
         </a>

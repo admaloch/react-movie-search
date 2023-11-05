@@ -54,9 +54,6 @@
 
 
 
-
-
-
 .info-container {
     position: absolute;
     width: 100%;
@@ -105,13 +102,13 @@
 }
 
 .popover-icon {
-    margin: .5rem;
+    margin: .7rem .2rem 0 .2rem;
     display: inline-block;
     color: var(--color2);
-    border: var(--color1) solid 1px;
+    border: transparent solid 1px;
     background-color: var(--mainBackground);
     cursor: pointer;
-    opacity: .4;
+    opacity: .6;
     transition: .25s all ease-in-out;
     padding: 0 .15rem .1rem .15rem;
 }
@@ -173,7 +170,7 @@ z-index: 250;
 .bio-overlay p {
     /* margin: 1.5rem 1rem 1rem; */
     text-align: center;
-    font-size: .85rem;
+    font-size: .75rem;
 
 }
 
@@ -183,8 +180,8 @@ z-index: 250;
     position: absolute;
     left: 10px;
     top: 12px;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     opacity: 0.3;
 }
 
@@ -198,7 +195,7 @@ z-index: 250;
     position: fixed;
     left: 18px;
     content: ' ';
-    height: 15px;
+    height: 12px;
     width: 3px;
     background-color: var(--mainBackground);
 }

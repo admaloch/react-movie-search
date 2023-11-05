@@ -18,12 +18,18 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
     const [itemOnHover, setItemOnHover] = useState({})
 
     async function mouseEnterHandler() {
+
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
+
+
         setItemOnHover(apiRes.data)
         hideArrows()
-    }
 
- 
+
+    }
+    const objLength = Object.keys(itemOnHover).length
+
+
 
     return (
         <div onMouseEnter={mouseEnterHandler} onMouseLeave={revealArrows} className="movie-container" data-id={imdbID}>
@@ -32,6 +38,7 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
                 alt={imdbID}>
             </img>
             <HoverInfo item={itemOnHover} />
+
         </div>
     )
 }

@@ -29,11 +29,13 @@ const HoverInfo = ({ item }) => {
         setIsModalOpen(true)
     }
 
-    item.Plot === 'N/A' && setRevealBio(false)
+
+    // item.Plot === 'N/A' && setRevealBio(false)
 
     return (
 
         <div className="info-container">
+          
             <ItemInfo item={item} />
             <BioOverlay
                 revealBio={revealBio}

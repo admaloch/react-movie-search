@@ -1,18 +1,39 @@
+
+import { useEffect } from 'react';
 import { useState } from 'react';
+
 import Slider from './Slider';
 import './Slider.css'
-const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive }) => {
+const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }) => {
 
     const [showArrows, setShowArrows] = useState(true)
 
+
+
+
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
     const hideArrows = () => setShowArrows(false)
-    const revealArrows = () => setShowArrows(true)
+    const revealArrows = () => {
+        if (progBar.length > 1) {
+            setShowArrows(true)
+        }
+
+    }
 
     const containerStyle = isSliderActive
         ? { opacity: 1, height: 'auto' }
         : { opacity: 0, height: '0' }
 
+    useEffect(
+        function hideArrowsOnSmallRequests() {
+            if (progBar.length > 1) {
+                revealArrows()
+            } else {
+                hideArrows()
+            }
+        },
+        [progBar]
+    )
 
     return (
 

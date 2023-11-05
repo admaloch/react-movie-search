@@ -19,6 +19,8 @@ const Slider = ({ hideArrows, revealArrows }) => {
         },
         [submittedSearch]
     );
+ 
+
 
     return (
 

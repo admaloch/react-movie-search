@@ -1,6 +1,5 @@
 
 import { useEffect, useReducer } from 'react';
-import { useState } from 'react';
 import { useTheme } from '../../store/APIContext';
 import ErrorMsg from './ErrorMsg/ErrorMsg';
 
@@ -30,10 +29,6 @@ const reducer = (sliderIndex, action) => {
         default:
             return { ...sliderIndex, index: 0 }
     }
-
-    // document.querySelector('.slider').style.setProperty('--slider-index', newIndexVal);
-    // return { index: newIndexVal }
-
 }
 
 const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
@@ -91,7 +86,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
                 changeIndexHandler={changeIndexHandler}
             />
             <SliderContainer
-
+                progBar={sliderIndex.progBar}
                 decreaseIndexHandler={decreaseIndexHandler}
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
