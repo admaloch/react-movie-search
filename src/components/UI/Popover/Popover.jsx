@@ -1,12 +1,13 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Popper from '@mui/material/Popper';
-import Fade from '@mui/material/Fade';
 
-export default function TransitionsPopper({children}) {
 
-  const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+import { useState } from 'react';
+import PopoverBtn from './PopoverBtn'
+import PopoverItem from './PopoverItem'
+
+export default function Popover({ btnText, itemText }) {
+
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -17,20 +18,21 @@ export default function TransitionsPopper({children}) {
   const id = canBeOpen ? 'transition-popper' : undefined;
 
   return (
-    <div className='popover'>
-      <button aria-describedby={id} type="button" onClick={handleClick}>
-        Toggle Popper
-      </button>
-      <Popper id={id} open={open} anchorEl={anchorEl} transition>
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-              {children}
-            </Box>
-          </Fade>
-        )}
-      </Popper>
-    </div>,
-    document.getElementById('popover')
+    <>
+      <PopoverBtn
+        btnText={btnText}
+        handleClick={handleClick}
+        id={id}
+      />
+      <PopoverItem
+        itemText={itemText}
+        id={id}
+        anchorEl={anchorEl}
+      />
+    </>
   );
 }
+
+
+
+

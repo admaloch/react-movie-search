@@ -17,11 +17,8 @@ const SearchForm = () => {
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 
-
-
-
-
     async function apiRequest() {
+
         const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
         const req2 = await axios.get(`${BASE_URL}${searchTerm}&page=2${api_key}${searchParam}`)
         let results = []
@@ -37,17 +34,18 @@ const SearchForm = () => {
 
     useEffect(
         function updateReqOnChange() {
-            if (searchTerm.length > 2) {
-                setIsListShown(true)
-                setIsLoading(true)
-            } else if (searchTerm.length <= 2) {
-                setIsListShown(false)
-                setIsLoading(false)
-                // updateApiState([])
-            } else if (searchTerm.length === 0) {
-                updateApiState([])
-            }
-            apiRequest()
+           
+                if (searchTerm.length > 2) {
+                    setIsListShown(true)
+                    setIsLoading(true)
+                } else if (searchTerm.length <= 2) {
+                    setIsListShown(false)
+                    setIsLoading(false)
+                    // updateApiState([])
+                } else if (searchTerm.length === 0) {
+                    updateApiState([])
+                }
+                apiRequest()
         },
         [searchTerm]
     )
