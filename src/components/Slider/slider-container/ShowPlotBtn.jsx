@@ -30,8 +30,9 @@ export default function ShowPlotBtn({ openBioOverlay }) {
                 onMouseEnter={handleClick}
                 onMouseLeave={handleClick}
                 className="popover-icon"
+                
                 onClick={openBioOverlay}>
-                <ViewHeadlineSharpIcon />
+                <ViewHeadlineSharpIcon sx={{fontSize: 30}} />
             </div>
 
             <Popper

@@ -13,7 +13,7 @@ export default function ModalContent({ open, item }) {
         year={year}
       />
       <SearchBtn
-        item={item}
+        type={item.Type}
         searchLink={searchLink}
       />
     </div>

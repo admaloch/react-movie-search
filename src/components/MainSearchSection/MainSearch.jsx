@@ -12,10 +12,11 @@ const MainSearch = ({ isSliderActive, hideSlider }) => {
 
 
     const currItemHeader = `Search ${currType.description}`
-    let mainStyle = { marginTop: isSliderActive ? '2rem' : '12rem' }
+    let sliderClass =  isSliderActive ? 'show-slider main-search-section' : 'show-slider main-search-section' 
+    
 
     return (
-        <div style={mainStyle} className="main-search-section">
+        <div className={sliderClass}>
             <h1 className="text-center">{currItemHeader}</h1>
             <SearchTypeButtons hideSlider={hideSlider} />
             <SearchForm />

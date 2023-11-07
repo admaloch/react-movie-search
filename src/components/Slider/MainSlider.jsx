@@ -62,7 +62,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
     )
 
 
-
     useEffect(
         function hideOnSubmit() {
             if (apiResults.length > 0) {

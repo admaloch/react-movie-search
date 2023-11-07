@@ -7,10 +7,7 @@ import './Slider.css'
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }) => {
 
     const [showArrows, setShowArrows] = useState(true)
-
-
-
-
+    
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
     const hideArrows = () => setShowArrows(false)
     const revealArrows = () => {

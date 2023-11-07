@@ -2,15 +2,17 @@ import GoogleIcon from '@mui/icons-material/Google';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
-import { typeTheme } from '../../store/TypeContext';
+
 import { useState } from 'react';
 
-export default function SearchBtn({ searchLink }) {
+export default function SearchBtn({ searchLink, type }) {
+
+
 
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const {currType} = typeTheme()
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -47,7 +49,7 @@ export default function SearchBtn({ searchLink }) {
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box sx={{ border: 1, borderRadius: 2, marginBottom: 1, p: 1, bgcolor: 'background.paper' }}>
-              Search {currType.errorMsg}
+              Search {type}
             </Box>
           </Fade>
         )}
