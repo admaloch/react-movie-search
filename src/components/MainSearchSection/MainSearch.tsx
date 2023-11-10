@@ -1,7 +1,7 @@
 
 import { typeTheme } from "../../store/TypeContext";
 import "./MainSearch.css"
-import SearchForm from "./SearchForm"
+import SearchForm from "./SearchForm.jsx"
 import SearchTypeButtons from "./SearchTypeButtons";
 
 
