@@ -7,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 
 
-export default function MainNav({ openModal }) {
+export default function MainNav({ openModal }): JSX.Element {
     return (
 
         <Box sx={{ flexGrow: 1 }}>
