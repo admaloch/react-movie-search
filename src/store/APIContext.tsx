@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-const ThemeContext = React.createContext()
+const ThemeContext = React.createContext<null>(null)
 
 export function useTheme() {
     return useContext(ThemeContext)
@@ -31,6 +31,10 @@ export function ThemeProvider({ children }) {
         apiResults: apiResults,
         updateApiState: updateApiState,
     }
+
+
+    console.log(apiResults)
+
 
     return (
         <ThemeContext.Provider value={ctxObj}>

@@ -1,25 +1,25 @@
 import { useTheme } from "../../store/APIContext";
-import { typeTheme } from "../../store/TypeContext";
+import { typeTheme } from "../../store/searchTypeContext/TypeContext";
 
 interface SearchTypeBtnProps {
     type,
     isActive,
     colorScheme,
-    hideSlider 
+    hideSlider
 }
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }) => {
 
     const { searchTypeHandler } = typeTheme()
     const { updateSearchState } = useTheme()
-    
+
 
     const clickHandler = () => {
         searchTypeHandler(type)
         changeColorVars()
         hideSlider()
         updateSearchState('')
-        
+
     }
 
     // use vanilla to change root css color scheme

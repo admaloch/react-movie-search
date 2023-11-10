@@ -1,4 +1,4 @@
-import { typeTheme } from "../../store/TypeContext";
+import { typeTheme } from "../../store/searchTypeContext/TypeContext";
 import SearchTypeButton from "./SearchTypeButton";
 import SliderProps from '../../models/SliderProps'
 

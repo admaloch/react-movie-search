@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-import { typeTheme } from "../../store/TypeContext"
+import { typeTheme } from "../../store/searchTypeContext/TypeContext"
 import ListItemModal from "./ListItemModal"
 import image_not_found from '../../assets/image_not_found.png'
 
@@ -12,7 +12,7 @@ const SearchListItem = ({ id, img, title, year }) => {
 
     const [itemOnClick, setItemOnClick] = useState({})
     const [isModalOpen, setIsModalOpen] = useState(false)
- 
+
     const { currType } = typeTheme()
     const searchParam = currType.apiParam;
 

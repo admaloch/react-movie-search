@@ -17,11 +17,11 @@
     }
 }
 
-//  interface TypeObj {
-//     searchTypeHandler: (typeInput: string) => SearchType;
-//     types: SearchType[];
-//     currType: SearchType;
-// }
+ interface TypeObj {
+    searchTypeHandler: (typeInput: string) => SearchType;
+    types: SearchType[];
+    currType: SearchType;
+}
 
 const searchTypeOptions: SearchType[] = [
     {

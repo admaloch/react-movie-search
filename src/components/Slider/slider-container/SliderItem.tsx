@@ -3,7 +3,7 @@ import HoverInfo from "./HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import { useState } from "react";
 import axios from 'axios';
-import { typeTheme } from "../../../store/TypeContext";
+import { typeTheme } from "../../../store/searchTypeContext/TypeContext";
 
 
 const BASE_URL = 'https://omdbapi.com/?i='
@@ -22,7 +22,7 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
         setItemOnHover(apiRes.data)
         hideArrows()
     }
-   
+
 
 
 

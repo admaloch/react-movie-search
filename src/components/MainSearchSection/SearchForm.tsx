@@ -2,7 +2,7 @@
 import SearchList from "./SearchList";
 
 import { useTheme } from "../../store/APIContext";
-import { typeTheme } from "../../store/TypeContext";
+import { typeTheme } from "../../store/searchTypeContext/TypeContext";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -34,18 +34,18 @@ const SearchForm = () => {
 
     useEffect(
         function updateReqOnChange() {
-           
-                if (searchTerm.length > 2) {
-                    setIsListShown(true)
-                    setIsLoading(true)
-                } else if (searchTerm.length <= 2) {
-                    setIsListShown(false)
-                    setIsLoading(false)
-                    // updateApiState([])
-                } else if (searchTerm.length === 0) {
-                    updateApiState([])
-                }
-                apiRequest()
+
+            if (searchTerm.length > 2) {
+                setIsListShown(true)
+                setIsLoading(true)
+            } else if (searchTerm.length <= 2) {
+                setIsListShown(false)
+                setIsLoading(false)
+                // updateApiState([])
+            } else if (searchTerm.length === 0) {
+                updateApiState([])
+            }
+            apiRequest()
         },
         [searchTerm]
     )

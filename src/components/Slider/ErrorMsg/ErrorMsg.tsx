@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useTheme } from '../../../store/APIContext'
-import { typeTheme } from '../../../store/TypeContext'
+import { typeTheme } from '../../../store/searchTypeContext/TypeContext'
 import './ErrorMsg.css'
 export default function ErrorMsg() {
 
