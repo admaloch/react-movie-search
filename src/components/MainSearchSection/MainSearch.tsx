@@ -3,10 +3,14 @@ import { typeTheme } from "../../store/TypeContext";
 import "./MainSearch.css"
 import SearchForm from "./SearchForm.jsx"
 import SearchTypeButtons from "./SearchTypeButtons";
+import SliderProps from '../../models/SliderProps'
 
 
+interface MainSearchProps extends SliderProps {
+    isSliderActive: Boolean;
+}
 
-const MainSearch = ({ isSliderActive, hideSlider }) => {
+const MainSearch = ({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element => {
 
     const { currType } = typeTheme()
 

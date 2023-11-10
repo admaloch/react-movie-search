@@ -1,7 +1,8 @@
 import { typeTheme } from "../../store/TypeContext";
 import SearchTypeButton from "./SearchTypeButton";
+import SliderProps from '../../models/SliderProps'
 
-const SearchTypeButtons = ({ hideSlider }) => {
+const SearchTypeButtons = ({ hideSlider }: SliderProps) => {
 
     const { types } = typeTheme()
 

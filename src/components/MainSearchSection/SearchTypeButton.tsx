@@ -1,7 +1,12 @@
 import { useTheme } from "../../store/APIContext";
 import { typeTheme } from "../../store/TypeContext";
 
-
+interface SearchTypeBtnProps {
+    type,
+    isActive,
+    colorScheme,
+    hideSlider 
+}
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }) => {
 

@@ -14,7 +14,7 @@ export function ThemeProvider({ children }) {
         setSearchTerm(input)
     }
 
-    const updateSubmittedSearch = (e) => {
+    const updateSubmittedSearch = (e: React.FormEvent) => {
         e.preventDefault()
         setSubmittedSearch(searchTerm)
     }

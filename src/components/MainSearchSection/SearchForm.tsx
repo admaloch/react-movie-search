@@ -64,7 +64,7 @@ const SearchForm = () => {
                 name="query"
                 value={searchTerm}
                 id="search-input"
-                onChange={(e) => updateSearchState(e.target.value)}
+                onChange={(e: React.FormEvent) => updateSearchState(e.target.value)}
             />
             <KeyRequestAnimation isLoading={isLoading} />
             <button>Search</button>

@@ -14,8 +14,8 @@ export default function SearchBtn({ searchLink, type }) {
 
 
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e: React.FormEvent) => {
+    setAnchorEl(e.currentTarget);
     setOpen((previousOpen) => !previousOpen);
   };
 

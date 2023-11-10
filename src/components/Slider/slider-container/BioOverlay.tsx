@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 
 const BioOverlay = ({ plot, revealBio, closeBio }) => {
-    const scrollDiv = useRef(null);
+    const scrollDivRef = useRef<HTMLInputElement>(null);
   
 
     const mouseLeaveHandler = () => {
@@ -12,7 +12,7 @@ const BioOverlay = ({ plot, revealBio, closeBio }) => {
     }
 
     const scrollToTop = () => {
-        scrollDiv.current.scroll({
+        scrollDivRef.current.scroll({
             top: 0,
             behavior: "smooth"
         });
@@ -26,7 +26,7 @@ const BioOverlay = ({ plot, revealBio, closeBio }) => {
     return (
 
         <div
-            ref={scrollDiv}
+            ref={scrollDivRef}
             onMouseLeave={mouseLeaveHandler}
             style={styles}
             className='bio-overlay'>

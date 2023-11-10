@@ -1,20 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
-const TypeContext = React.createContext()
+import { searchTypeOptions, SearchType } from "./SearchTypeOptions"
 
-const searchTypeOptions = [
-    {
-        type: 'Movie', isActive: true, description: 'Movies', errorMsg: 'movie', apiParam: "&type=movie", colorScheme: {
-            '--text': '#f8f7ff', '--mainBackground': '#022B3A', '--containertext': '#022B3A', '--containerBackground': '#f8f7ff', '--color1': '#ff99c8', '--color2': '#d0f4de', '--color3': '#fdfcdc', '--overlay': 'rgba(248, 247, 255, .8)'
-        }
-    },
-    {
-        type: 'TV', isActive: false, description: 'TV Shows', errorMsg: 'tv show', apiParam: "&type=series", colorScheme: { '--text': '#022B3A', '--mainBackground': '#f7ede2', '--containertext': '#f7ede2', '--containerBackground': '#022B3A', '--color1': '#219ebc', '--color2': '#03045e', '--color3': '#1F7A8C', '--overlay': 'rgba(2, 43, 58, .8)' },
-    },
-    {
-        type: 'Both', isActive: false, description: 'Movies and TV Shows', errorMsg: 'movie or tv show', apiParam: "&type=", colorScheme: { '--text': '#284b63', '--mainBackground': '#cbc0d3', '--containertext': '#cbc0d3', '--containerBackground': '#284b63', '--color1': '#c1121f', '--color2': '#023e8a', '--color3': '#1b4332', '--overlay': 'rgba(40, 75, 99, .8)' },
-    },
-]
+interface TypeObj {
+    searchTypeHandler: (typeInput: string) => SearchType;
+    types: SearchType[];
+    currType: SearchType;
+}
 
+const TypeContext = React.createContext<null | TypeObj>(null)
 
 export function typeTheme() {
     return useContext(TypeContext)
@@ -22,11 +15,11 @@ export function typeTheme() {
 
 export function TypeProvider({ children }) {
 
-    const [searchTypes, setSearchType] = useState(searchTypeOptions)
-    
-    const [currType, setCurrType] = useState(searchTypeOptions[0])
+    const [searchTypes, setSearchType] = useState<SearchType[]>(searchTypeOptions)
 
-    const searchTypeHandler = (typeInput) => {
+    const [currType, setCurrType] = useState<SearchType>(searchTypeOptions[0])
+
+    const searchTypeHandler = (typeInput: string): SearchType => {
         setSearchType((oldType) => {
             return oldType.map((item) => {
                 if (item.type === typeInput) {
@@ -47,7 +40,7 @@ export function TypeProvider({ children }) {
 
 
 
-    const ctxObj = {
+    const ctxObj: TypeObj = {
         searchTypeHandler: searchTypeHandler,
         types: searchTypes,
         currType: currType,
