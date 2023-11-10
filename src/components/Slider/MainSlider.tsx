@@ -1,6 +1,6 @@
 
 import { useEffect, useReducer } from 'react';
-import { useTheme } from '../../store/APIContext';
+import { useTheme } from '../../store/APIContext/APIContext';
 import ErrorMsg from './ErrorMsg/ErrorMsg';
 
 

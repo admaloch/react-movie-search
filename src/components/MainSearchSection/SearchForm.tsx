@@ -1,7 +1,7 @@
 
 import SearchList from "./SearchList";
 
-import { useTheme } from "../../store/APIContext";
+import { useTheme } from "../../store/APIContext/APIContext";
 import { typeTheme } from "../../store/searchTypeContext/TypeContext";
 import { useEffect, useState } from "react";
 

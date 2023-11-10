@@ -1,23 +1,28 @@
 
- interface SearchType {
+
+export interface ColorScheme {
+
+    '--text': string;
+    '--mainBackground': string;
+    '--containertext': string;
+    '--containerBackground': string;
+    '--color1': string;
+    '--color2': string;
+    '--color3': string;
+    '--overlay': string;
+
+}
+
+interface SearchType {
     type: string;
     isActive: Boolean,
     description: string;
     errorMsg: string;
     apiParam: string;
-    colorScheme: {
-        '--text': string;
-        '--mainBackground': string;
-        '--containertext': string;
-        '--containerBackground': string;
-        '--color1': string;
-        '--color2': string;
-        '--color3': string;
-        '--overlay': string;
-    }
+    colorScheme: ColorScheme;
 }
 
- interface TypeObj {
+interface TypeObj {
     searchTypeHandler: (typeInput: string) => SearchType;
     types: SearchType[];
     currType: SearchType;
@@ -37,4 +42,4 @@ const searchTypeOptions: SearchType[] = [
     },
 ]
 
-export {searchTypeOptions, SearchType, TypeObj}
+export { searchTypeOptions, SearchType, TypeObj }

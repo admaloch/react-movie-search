@@ -1,14 +1,15 @@
-import { useTheme } from "../../store/APIContext";
+import { useTheme } from "../../store/APIContext/APIContext";
 import { typeTheme } from "../../store/searchTypeContext/TypeContext";
+import { ColorScheme } from "../../store/searchTypeContext/SearchTypeOptions"
+import SliderProps from '../../models/SliderProps'
 
-interface SearchTypeBtnProps {
-    type,
-    isActive,
-    colorScheme,
-    hideSlider
+interface SearchTypeBtnProps extends SliderProps {
+    type: string;
+    isActive: Boolean;
+    colorScheme: ColorScheme;
 }
 
-const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }) => {
+const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
     const { searchTypeHandler } = typeTheme()
     const { updateSearchState } = useTheme()
@@ -19,12 +20,12 @@ const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }) => {
         changeColorVars()
         hideSlider()
         updateSearchState('')
-
     }
 
     // use vanilla to change root css color scheme
     const changeColorVars = () => {
         const root = document.querySelector(':root')
+        console.log(Object.entries(colorScheme).forEach(v => root.style.setProperty(v[0], v[1])))
         return Object.entries(colorScheme).forEach(v => root.style.setProperty(v[0], v[1]));
     }
 

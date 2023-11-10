@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react"
-const ThemeContext = React.createContext<null>(null)
+import {APIContext, APIResults} from './APIContextInterface'
+
+const ThemeContext = React.createContext<null | APIContext>(null)
 
 export function useTheme() {
     return useContext(ThemeContext)
@@ -8,9 +10,9 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
-    const [apiResults, setApiResults] = useState([])
+    const [apiResults, setApiResults] = useState<APIResults[]>([])
 
-    const updateSearchState = (input) => {
+    const updateSearchState = (input: string) => {
         setSearchTerm(input)
     }
 
@@ -19,11 +21,11 @@ export function ThemeProvider({ children }) {
         setSubmittedSearch(searchTerm)
     }
 
-    const updateApiState = (results) => {
+    const updateApiState = (results: APIResults[]) => {
         setApiResults(results)
     }
 
-    const ctxObj = {
+    const ctxObj:APIContext = {
         searchTerm: searchTerm,
         updateSearchState: updateSearchState,
         submittedSearch: submittedSearch,
@@ -33,7 +35,6 @@ export function ThemeProvider({ children }) {
     }
 
 
-    console.log(apiResults)
 
 
     return (

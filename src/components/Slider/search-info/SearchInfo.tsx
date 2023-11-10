@@ -1,6 +1,6 @@
 import "./SearchInfo.css"
 import { randomColorGen } from '../../utility/utility.js'
-import { useTheme } from "../../../store/APIContext"
+import { useTheme } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { typeTheme } from "../../../store/searchTypeContext/TypeContext"

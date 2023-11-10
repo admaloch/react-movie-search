@@ -3,13 +3,13 @@ import { searchTypeOptions, SearchType, TypeObj } from "./SearchTypeOptions"
 
 const TypeContext = React.createContext<null | TypeObj>(null)
 
-export function typeTheme(): TypeObj {
+export function typeTheme() {
     return useContext(TypeContext)
 }
 
 export function TypeProvider({ children }) {
-    const [searchTypes, setSearchType] = useState<SearchType[]>(searchTypeOptions)
-    const [currType, setCurrType] = useState<SearchType>(searchTypeOptions[0])
+    const [searchTypes, setSearchType] = useState(searchTypeOptions)
+    const [currType, setCurrType] = useState(searchTypeOptions[0])
 
     const searchTypeHandler = (typeInput: string): SearchType => {
         setSearchType((oldType) => {
