@@ -10,7 +10,7 @@ import KeyRequestAnimation from "./KeyRequestAnimation";
 const BASE_URL = 'https://omdbapi.com/?s='
 const api_key = '&apikey=84200d7a'
 
-const SearchForm = () => {
+const SearchForm = (): JSX.Element => {
     const [isListShown, setIsListShown] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useTheme()

@@ -1,14 +1,12 @@
 
 import ModalContent from './ModalContent';
 import './ItemModal.css';
-import APIItem from "../../models/ItemApiProps"
+import { ModalContentProps } from '../../models/ListItemProps';
 
-// interface ModalContentProps {
-//     item: APIItem;
-// }`
 
-const ItemModal = ({ item }) => {
-console.log(item)
+
+const ItemModal = ({ item }:ModalContentProps): React.JSX.Element => {
+
     
     return (
         <div className='modal-content-container'>

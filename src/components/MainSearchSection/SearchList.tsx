@@ -1,10 +1,7 @@
 import { useTheme } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
+import SearchProps from "../../models/SearchProps";
 
-interface SearchProps {
-    isListShown:Boolean;
-    hideList:() => void;
-}
 
 
 

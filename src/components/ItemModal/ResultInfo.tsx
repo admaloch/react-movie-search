@@ -1,5 +1,6 @@
+import ResultInfoProps from '../../models/ResultInfoProps'
 
-export default function ResultInfo({ item, year }) {
+export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.Element {
   return (
     <div className="result-info">
       {item.Title !== 'N/A' && <h3 >{item.Title}</h3>}

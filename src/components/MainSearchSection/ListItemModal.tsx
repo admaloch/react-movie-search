@@ -1,17 +1,11 @@
 import React from 'react'
 import ItemModal from '../ItemModal/ItemModal'
 import Modal from '../UI/Modal'
-import APIItem from "../../models/ItemApiProps"
+import { ListItemProps } from '../../models/ListItemProps'
 
-interface ListItemProps {
-    item: APIItem;
-    open: Boolean;
-    closeModal: () => void;
-}
+export default function ListItemModal({ item, open, closeModal }: ListItemProps): React.JSX.Element {
 
-export default function ListItemModal({ item, open, closeModal }: ListItemProps) {
 
-    console.log(item)
 
     return (
         <Modal

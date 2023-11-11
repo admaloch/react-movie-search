@@ -1,11 +1,10 @@
 import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
+import { ModalContentProps } from '../../models/ListItemProps'
 
-import {ModalContentProps} from '../../models/ListItemProps'
 
+export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 
-export default function ModalContent({  item }) {
-// console.log(item)
   const year = new Date(item.Released).getFullYear()
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`
 
