@@ -1,5 +1,6 @@
+import React from 'react'
 import './App.css'
-import {  useState } from 'react'
+import { useState } from 'react'
 import MainSearch from './components/MainSearchSection/MainSearch'
 import MainSlider from './components/Slider/MainSlider'
 import { ThemeProvider } from './store/APIContext/APIContext'
@@ -27,7 +28,7 @@ function App() {
           showSlider={showSlider}
           hideSlider={hideSlider}
         />
-        <Footer/>
+        <Footer />
       </ThemeProvider>
     </TypeProvider>
   )
