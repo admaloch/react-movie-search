@@ -1,7 +1,10 @@
 import APIItem from "./ItemApiProps"
 
-export default interface ListItemProps {
-    item: APIItem;
+export interface ModalContentProps {
+    item: APIItem | null;
+}
+
+export interface ListItemProps extends ModalContentProps {
     open: Boolean;
     closeModal?: () => void;
 }

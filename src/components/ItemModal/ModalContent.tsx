@@ -1,10 +1,9 @@
 import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
-import APIItem from "../../models/ItemApiProps"
 
-interface ModalContentProps {
-    item: APIItem;
-}
+import {ModalContentProps} from '../../models/ListItemProps'
+
+
 export default function ModalContent({  item }) {
 // console.log(item)
   const year = new Date(item.Released).getFullYear()

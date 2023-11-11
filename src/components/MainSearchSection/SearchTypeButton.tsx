@@ -1,13 +1,8 @@
 import { useTheme } from "../../store/APIContext/APIContext";
 import { typeTheme } from "../../store/searchTypeContext/TypeContext";
-import { ColorScheme } from "../../store/searchTypeContext/SearchTypeOptions"
-import SliderProps from '../../models/SliderProps'
+import {SearchTypeBtnProps} from "../../models/SliderProps";
 
-interface SearchTypeBtnProps extends SliderProps {
-    type: string;
-    isActive: Boolean;
-    colorScheme: ColorScheme;
-}
+
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
