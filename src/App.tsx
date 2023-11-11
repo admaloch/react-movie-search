@@ -7,11 +7,6 @@ import { TypeProvider } from './store/searchTypeContext/TypeContext'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
-
-
-
-
-
 function App() {
 
   const [isSliderActive, setIsSliderActive] = useState(false)
