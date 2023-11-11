@@ -4,10 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import { OpenModalProps } from '../../models/ModalProps';
 
 
-
-export default function MainNav({ openModal }): JSX.Element {
+export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
     return (
 
         <Box sx={{ flexGrow: 1 }}>

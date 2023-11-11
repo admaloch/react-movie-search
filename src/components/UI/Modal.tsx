@@ -4,8 +4,9 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 import CloseIcon from '@mui/icons-material/Close';
+import { MainModalProps } from '../../models/ModalProps';
 
-const Modal = ({ open, children, closeModal }) => {
+export default function Modal ({ open, children, closeModal }: MainModalProps): JSX.Element  {
 
 
     const [isVisible, setIsVisible] = useState(false)
@@ -48,4 +49,3 @@ const Modal = ({ open, children, closeModal }) => {
     );
 };
 
-export default Modal;

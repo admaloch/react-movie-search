@@ -1,9 +1,9 @@
 
 import Modal from '../UI/Modal'
+import { ModalProps } from '../../models/ModalProps'
 
 
-
-export default function InfoModal({ open, closeModal }) {
+export default function InfoModal({ open, closeModal }:ModalProps): JSX.Element {
 
     return (
         <Modal
