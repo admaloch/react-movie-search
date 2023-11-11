@@ -1,23 +1,17 @@
-
 import { useTheme } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
 
+interface SearchProps {
+    isListShown:Boolean;
+    hideList:() => void;
+}
 
 
 
-const SearchList = ({ isListShown, hideList }) => {
-
-
-
+const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element => {
     const { apiResults } = useTheme()
-
-    // let searchArr = apiResults.Search
-
-
-
     document.addEventListener('click', () => hideList())
     document.addEventListener('scroll', () => hideList())
-
     return (
         <ul style={{ height: isListShown ? "300px" : "0", opacity: isListShown ? 1 : 0 }}
             onClick={hideList}
@@ -26,11 +20,10 @@ const SearchList = ({ isListShown, hideList }) => {
             {apiResults && apiResults.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
-                    id={item.imdbID}
-                    img={item.Poster}
-                    title={item.Title}
-                    year={item.Year}
-
+                    imdbID={item.imdbID}
+                    Poster={item.Poster}
+                    Title={item.Title}
+                    Year={item.Year}
                 />
             ))}
         </ul>

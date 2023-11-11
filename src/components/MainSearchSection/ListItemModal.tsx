@@ -1,8 +1,17 @@
 import React from 'react'
 import ItemModal from '../ItemModal/ItemModal'
 import Modal from '../UI/Modal'
+import APIItem from "../../models/ItemApiProps"
 
-export default function ListItemModal({ item, open, closeModal }) {
+interface ListItemProps {
+    item: APIItem;
+    open: Boolean;
+    closeModal: () => void;
+}
+
+export default function ListItemModal({ item, open, closeModal }: ListItemProps) {
+
+    console.log(item)
 
     return (
         <Modal
@@ -10,7 +19,6 @@ export default function ListItemModal({ item, open, closeModal }) {
             open={open}
         >
             <ItemModal
-                open={open}
                 item={item}
             />
         </Modal>

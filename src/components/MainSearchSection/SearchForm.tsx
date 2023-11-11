@@ -34,7 +34,6 @@ const SearchForm = () => {
 
     useEffect(
         function updateReqOnChange() {
-
             if (searchTerm.length > 2) {
                 setIsListShown(true)
                 setIsLoading(true)
@@ -64,7 +63,7 @@ const SearchForm = () => {
                 name="query"
                 value={searchTerm}
                 id="search-input"
-                onChange={(e: React.FormEvent) => updateSearchState(e.target.value)}
+                onChange={(e) => updateSearchState(e.target.value)}
             />
             <KeyRequestAnimation isLoading={isLoading} />
             <button>Search</button>

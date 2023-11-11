@@ -1,9 +1,14 @@
 
 import ModalContent from './ModalContent';
 import './ItemModal.css';
+import APIItem from "../../models/ItemApiProps"
+
+// interface ModalContentProps {
+//     item: APIItem;
+// }`
 
 const ItemModal = ({ item }) => {
-
+console.log(item)
     
     return (
         <div className='modal-content-container'>
