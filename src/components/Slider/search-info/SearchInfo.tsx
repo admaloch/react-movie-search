@@ -3,11 +3,11 @@ import { randomColorGen } from '../../utility/utility.js'
 import { useTheme } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
-import { typeTheme } from "../../../store/searchTypeContext/TypeContext"
+import { typeCurrentTheme } from "../../../store/searchTypeContext/TypeContext"
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }) => {
 
-    const { currType } = typeTheme()
+    const currType = typeCurrentTheme()
 
 
     const { submittedSearch, apiResults } = useTheme()

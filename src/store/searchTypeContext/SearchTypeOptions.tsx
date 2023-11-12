@@ -22,6 +22,10 @@ interface ColorScheme {
     colorScheme: ColorScheme;
 }
 
+interface TypeUpdater {
+    searchTypeHandler: (typeInput: string) => void;
+}
+
 interface TypeObj {
     searchTypeHandler: (typeInput: string) => void;
     types: SearchType[];
@@ -42,4 +46,4 @@ const searchTypeOptions: SearchType[] = [
     },
 ]
 
-export { searchTypeOptions, SearchType, TypeObj, ColorScheme }
+export { searchTypeOptions, SearchType, TypeObj, ColorScheme, TypeUpdater }

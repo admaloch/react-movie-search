@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useTheme } from '../../../store/APIContext/APIContext'
-import { typeTheme } from '../../../store/searchTypeContext/TypeContext'
+import { typeCurrentTheme } from '../../../store/searchTypeContext/TypeContext'
 import './ErrorMsg.css'
 export default function ErrorMsg() {
 
-    const { currType } = typeTheme()
+    const currType = typeCurrentTheme()
     const { submittedSearch, apiResults } = useTheme()
     const [isSearchValid, setIsSearchValid] = useState(true)
 

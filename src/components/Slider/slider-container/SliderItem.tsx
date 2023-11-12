@@ -11,7 +11,7 @@ const api_key = '&apikey=84200d7a'
 
 const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
 
-    const { types } = typeTheme()
+    const types = typeTheme()
     const currItem = types.filter(item => item.isActive === true)[0]
     const searchParam = currItem.apiParam;
 

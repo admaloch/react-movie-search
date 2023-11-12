@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-import { typeTheme } from "../../store/searchTypeContext/TypeContext"
+import { typeCurrentTheme } from "../../store/searchTypeContext/TypeContext"
 import ListItemModal from "./ListItemModal"
 import '../../../src/declaration.d'
 import image_not_found from '../../assets/image_not_found.png'
@@ -16,7 +16,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
     const [itemOnClick, setItemOnClick] = useState<APIItem | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const { currType } = typeTheme()
+    const currType = typeCurrentTheme()
     const searchParam = currType.apiParam;
 
     async function handleListItemClick() {

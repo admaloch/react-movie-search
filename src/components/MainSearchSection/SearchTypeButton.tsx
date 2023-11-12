@@ -1,12 +1,12 @@
 import { useTheme } from "../../store/APIContext/APIContext";
-import { typeTheme } from "../../store/searchTypeContext/TypeContext";
+import { typeUpdateTheme } from "../../store/searchTypeContext/TypeContext";
 import {SearchTypeBtnProps} from "../../models/SliderProps";
 
 
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
-    const { searchTypeHandler } = typeTheme()
+    const searchTypeHandler = typeUpdateTheme()
     const { updateSearchState } = useTheme()
 
 
