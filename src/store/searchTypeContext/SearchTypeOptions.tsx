@@ -1,6 +1,6 @@
 
 
-export interface ColorScheme {
+interface ColorScheme {
 
     '--text': string;
     '--mainBackground': string;
@@ -13,7 +13,7 @@ export interface ColorScheme {
 
 }
 
-interface SearchType {
+ interface SearchType {
     type: string;
     isActive: Boolean,
     description: string;
@@ -23,7 +23,7 @@ interface SearchType {
 }
 
 interface TypeObj {
-    searchTypeHandler: (typeInput: string) => SearchType;
+    searchTypeHandler: (typeInput: string) => void;
     types: SearchType[];
     currType: SearchType;
 }
@@ -42,4 +42,4 @@ const searchTypeOptions: SearchType[] = [
     },
 ]
 
-export { searchTypeOptions, SearchType, TypeObj }
+export { searchTypeOptions, SearchType, TypeObj, ColorScheme }

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
-import { searchTypeOptions, SearchType, TypeObj } from "./SearchTypeOptions"
+import { SearchType, TypeObj, searchTypeOptions } from "./SearchTypeOptions"
+import TypeProviderContextProps from "../../models/TypeProviderContextProps"
 
 const TypeContext = React.createContext<null | TypeObj>(null)
 
@@ -7,11 +8,11 @@ export function typeTheme() {
     return useContext(TypeContext)
 }
 
-export function TypeProvider({ children }) {
+export function TypeProvider({ children }:TypeProviderContextProps): JSX.Element {
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
     const [currType, setCurrType] = useState(searchTypeOptions[0])
 
-    const searchTypeHandler = (typeInput: string): SearchType => {
+    function searchTypeHandler (typeInput: string): void  {
         setSearchType((oldType) => {
             return oldType.map((item) => {
                 if (item.type === typeInput) {
@@ -24,7 +25,7 @@ export function TypeProvider({ children }) {
     }
 
     useEffect(
-        function currType() {
+        function currType(): void {
             setCurrType(searchTypes.filter(item => item.isActive === true)[0])
         },
         [searchTypes]

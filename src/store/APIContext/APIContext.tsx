@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react"
 import {APIContext, APIResults} from './APIContextInterface'
-
+import TypeProviderContextProps from "../../models/TypeProviderContextProps"
+import { Type } from "typescript"
 const ThemeContext = React.createContext<null | APIContext>(null)
 
 export function useTheme() {
     return useContext(ThemeContext)
 }
 
-export function ThemeProvider({ children }) {
+export function ThemeProvider({ children }:TypeProviderContextProps): JSX.Element {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
     const [apiResults, setApiResults] = useState<APIResults[]>([])

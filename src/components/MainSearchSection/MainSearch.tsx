@@ -1,21 +1,21 @@
-
+import React from "react";
 import { typeTheme } from "../../store/searchTypeContext/TypeContext";
 import "./MainSearch.css"
 import SearchForm from "./SearchForm.jsx"
 import SearchTypeButtons from "./SearchTypeButtons";
-import {MainSearchProps} from '../../models/SliderProps'
+import { MainSearchProps } from '../../models/SliderProps'
 
 
 
 
-const MainSearch = ({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element => {
+export default function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
 
     const { currType } = typeTheme()
 
+    console.log(currType)
 
     const currItemHeader = `Search ${currType.description}`
     let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'show-slider main-search-section'
-
 
     return (
         <div className={sliderClass}>
@@ -25,4 +25,3 @@ const MainSearch = ({ isSliderActive, hideSlider }: MainSearchProps): JSX.Elemen
         </div>
     )
 }
-export default MainSearch;
