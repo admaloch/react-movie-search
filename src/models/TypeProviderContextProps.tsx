@@ -1,3 +1,3 @@
 export default interface TypeProviderContextProps {
-    children: JSX.Element;
+    children: React.ReactNode;
 }

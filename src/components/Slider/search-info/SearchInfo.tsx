@@ -1,5 +1,5 @@
 import "./SearchInfo.css"
-import { randomColorGen } from '../../utility/utility.js'
+import { randomColorGen } from '../../../utility/utility.js'
 import { useTheme } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"

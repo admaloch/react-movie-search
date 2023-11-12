@@ -23,7 +23,7 @@ interface ColorScheme {
 }
 
 interface TypeUpdater {
-    searchTypeHandler: (typeInput: string) => void;
+    searchTypeHandler: (typeInput: string| null) => void;
 }
 
 interface TypeObj {

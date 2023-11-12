@@ -1,3 +1,4 @@
+import React from "react";
 import { useTheme } from "../../store/APIContext/APIContext";
 import { typeUpdateTheme } from "../../store/searchTypeContext/TypeContext";
 import {SearchTypeBtnProps} from "../../models/SliderProps";
