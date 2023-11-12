@@ -1,35 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { SearchType, TypeObj, searchTypeOptions } from "./SearchTypeOptions"
 import TypeProviderContextProps from "../../models/TypeProviderContextProps"
-// import testContext from '../../utility/testContext'
-import { TypeUpdater } from "./SearchTypeOptions"
 
-const TypeContext = React.createContext(searchTypeOptions)
-const TypeUpdateContext = React.createContext<TypeUpdater | null>(null)
-const TypeCurrentContext = React.createContext(searchTypeOptions[0])
-
-
-function testContext(contextInput) {
-    const context = contextInput
-    console.log(context)
-    if (context === undefined) {
-        throw Error(
-            "Context is undefined"
-        )
-    }
-    return context
-}
-
-const typeTheme = () => testContext(useContext(TypeContext))
-const typeUpdateTheme = () => testContext(useContext(TypeUpdateContext))
-const typeCurrentTheme = () => testContext(useContext(TypeCurrentContext))
-
-
+export const TypeContext = React.createContext<TypeObj | null>(null)
 
 export function TypeProvider({ children }: TypeProviderContextProps): JSX.Element {
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
     const [currType, setCurrType] = useState(searchTypeOptions[0])
-
     function searchTypeHandler(typeInput: string | null): void {
         setSearchType((oldType) => {
             return oldType.map((item) => {
@@ -49,21 +26,15 @@ export function TypeProvider({ children }: TypeProviderContextProps): JSX.Elemen
         [searchTypes]
     )
 
-    const ctxObj: TypeObj = {
-        searchTypeHandler: searchTypeHandler,
-        types: searchTypes,
-        currType: currType,
-    }
-
     return (
-        <TypeContext.Provider value={searchTypes}>
-            <TypeUpdateContext.Provider value={searchTypeHandler}>
-                <TypeCurrentContext.Provider value={currType}>
-                    {children}
-                </TypeCurrentContext.Provider>
-            </TypeUpdateContext.Provider>
+        <TypeContext.Provider value={{ searchTypes, searchTypeHandler, currType }}>
+            {children}
         </TypeContext.Provider>
     )
 }
 
-export { typeCurrentTheme, typeTheme, typeUpdateTheme }
+export const useTypeContext = () => {
+    const typeContext = React.useContext(TypeContext)
+    if (!typeContext) throw new Error("You need to use this context inside the provider")
+    return typeContext
+}

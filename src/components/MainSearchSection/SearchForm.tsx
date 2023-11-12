@@ -2,7 +2,7 @@
 import SearchList from "./SearchList";
 import React from "react";
 import { useTheme } from "../../store/APIContext/APIContext";
-import { typeCurrentTheme } from "../../store/searchTypeContext/TypeContext";
+import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -14,7 +14,7 @@ const SearchForm = (): JSX.Element => {
     const [isListShown, setIsListShown] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useTheme()
-    const currType  = typeCurrentTheme()
+    const { currType } = useTypeContext()
     const searchParam = currType.apiParam;
 
     async function apiRequest() {

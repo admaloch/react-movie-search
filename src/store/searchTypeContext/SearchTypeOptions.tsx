@@ -28,7 +28,7 @@ interface TypeUpdater {
 
 interface TypeObj {
     searchTypeHandler: (typeInput: string) => void;
-    types: SearchType[];
+    searchTypes: SearchType[];
     currType: SearchType;
 }
 
