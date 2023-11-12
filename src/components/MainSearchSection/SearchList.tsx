@@ -2,7 +2,7 @@ import { useTheme } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
 import SearchProps from "../../models/SearchProps";
 
-
+import React from "react";
 
 
 const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element => {

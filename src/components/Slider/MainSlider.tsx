@@ -3,12 +3,12 @@ import { useEffect, useReducer } from 'react';
 import { useTheme } from '../../store/APIContext/APIContext';
 import ErrorMsg from './ErrorMsg/ErrorMsg';
 
-
+import React from 'react';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
+import { MainSliderProps } from '../../models/SliderProps';
 
 
-// useReducer not entirely necessary for this but good practice
 const reducer = (sliderIndex, action) => {
     let newIndexVal = 0
     switch (action.type) {
@@ -31,7 +31,8 @@ const reducer = (sliderIndex, action) => {
     }
 }
 
-const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
+
+const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps): JSX.Element => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, {
         progBar: [],
@@ -39,12 +40,11 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
     })
 
 
-
     const { apiResults, submittedSearch } = useTheme()
 
     const increaseIndexHandler = () => dispatch({ type: 'increment' })
     const decreaseIndexHandler = () => dispatch({ type: 'decrement' })
-    const changeIndexHandler = (newIndex) => dispatch({ type: 'changeIndex', newIndex: newIndex })
+    const changeIndexHandler = (newIndex: number) => dispatch({ type: 'changeIndex', newIndex: newIndex })
     const updateProgBarHandler = (progBarArr) => dispatch({ type: 'updateProgBar', progBarArr: progBarArr })
 
     useEffect(
@@ -73,7 +73,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }) => {
         [submittedSearch]
     )
 
-
+    console.log(sliderIndex)
 
     return (
         <>
