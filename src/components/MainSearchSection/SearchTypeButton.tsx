@@ -1,14 +1,13 @@
 import React from "react";
-import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
 import { SearchTypeBtnProps } from "../../models/SliderProps";
-
-
+import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
+import { ThemeContext } from "../../store/APIContext/APIContext";
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
     const {searchTypeHandler} = useTypeContext()
 
-    const { updateSearchState } = useTheme()
+    const { updateSearchState } = themeContext()
 
 
     const clickHandler = () => {
