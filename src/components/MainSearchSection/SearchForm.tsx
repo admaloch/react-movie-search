@@ -1,7 +1,7 @@
 
 import SearchList from "./SearchList";
 import React from "react";
-import { useTheme } from "../../store/APIContext/APIContext";
+import { useAPIContext } from "../../store/APIContext/APIContext";
 import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
 import { useEffect, useState } from "react";
 
@@ -13,7 +13,7 @@ const api_key = '&apikey=84200d7a'
 const SearchForm = (): JSX.Element => {
     const [isListShown, setIsListShown] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useTheme()
+    const { searchTerm, updateSearchState, updateSubmittedSearch, updateApiState } = useAPIContext()
     const { currType } = useTypeContext()
     const searchParam = currType.apiParam;
 

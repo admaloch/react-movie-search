@@ -7,7 +7,7 @@ export interface APIResults {
     "Poster": string;
 }
 
-export interface APIContext {
+export interface APIContextTheme {
     searchTerm: string;
     updateSearchState: (input: string) => void;
     submittedSearch: string;

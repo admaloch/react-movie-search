@@ -1,17 +1,17 @@
 import React from "react"
 import "./SearchInfo.css"
 import { randomColorGen } from '../../../utility/utility.js'
-import { useTheme } from "../../../store/APIContext/APIContext"
+import { useAPIContext } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { useTypeContext } from "../../../store/searchTypeContext/TypeContext"
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }) => {
 
-    const {currType} = useTypeContext()
+    const { currType } = useTypeContext()
 
 
-    const { submittedSearch, apiResults } = useTheme()
+    const { submittedSearch, apiResults } = useAPIContext()
 
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }

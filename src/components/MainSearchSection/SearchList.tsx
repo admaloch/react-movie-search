@@ -1,4 +1,4 @@
-import { useTheme } from "../../store/APIContext/APIContext";
+import { useAPIContext } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
 import SearchProps from "../../models/SearchProps";
 
@@ -6,7 +6,7 @@ import React from "react";
 
 
 const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element => {
-    const { apiResults } = useTheme()
+    const { apiResults } = useAPIContext()
     document.addEventListener('click', () => hideList())
     document.addEventListener('scroll', () => hideList())
     return (

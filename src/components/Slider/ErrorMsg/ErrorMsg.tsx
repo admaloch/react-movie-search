@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useTheme } from '../../../store/APIContext/APIContext'
+import { useAPIContext } from '../../../store/APIContext/APIContext'
 import { useTypeContext } from '../../../store/searchTypeContext/TypeContext'
 import './ErrorMsg.css'
 export default function ErrorMsg() {
 
-    const {currType} = useTypeContext()
-    const { submittedSearch, apiResults } = useTheme()
+    const { currType } = useTypeContext()
+    const { submittedSearch, apiResults } = useAPIContext()
     const [isSearchValid, setIsSearchValid] = useState(true)
 
 

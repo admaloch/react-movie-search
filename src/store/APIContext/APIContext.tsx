@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react"
-import {APIContext, APIResults} from './APIContextInterface'
+import { APIContextTheme, APIResults } from './APIContextInterface'
 import TypeProviderContextProps from "../../models/TypeProviderContextProps"
 import { Type } from "typescript"
 
-export const ThemeContext = React.createContext<null | APIContext>(null)
+export const APIContext = React.createContext<null | APIContextTheme>(null)
 
 
 
-export function ThemeProvider({ children }:TypeProviderContextProps): JSX.Element {
+export function ThemeProvider({ children }: TypeProviderContextProps): JSX.Element {
     const [searchTerm, setSearchTerm] = useState('')
     const [submittedSearch, setSubmittedSearch] = useState('')
     const [apiResults, setApiResults] = useState<APIResults[]>([])
@@ -25,7 +25,7 @@ export function ThemeProvider({ children }:TypeProviderContextProps): JSX.Elemen
         setApiResults(results)
     }
 
-    const ctxObj:APIContext = {
+    const ctxObj: APIContextTheme = {
         searchTerm: searchTerm,
         updateSearchState: updateSearchState,
         submittedSearch: submittedSearch,
@@ -37,14 +37,15 @@ export function ThemeProvider({ children }:TypeProviderContextProps): JSX.Elemen
 
 
     return (
-        <ThemeContext.Provider value={{ searchTerm, updateSearchState, submittedSearch, updateSubmittedSearch, apiResults, updateApiState}}>
+        <APIContext.Provider
+            value={{ searchTerm, updateSearchState, submittedSearch, updateSubmittedSearch, apiResults, updateApiState }}>
             {children}
-        </ThemeContext.Provider>
+        </APIContext.Provider>
     )
 }
 
-export function useTheme() {
-    const themeContext = useContext(ThemeContext)
-    if (!themeContext) throw new Error("You need to use this context inside the provider")
-    return themeContext
+export function useAPIContext() {
+    const apiContext = useContext(APIContext)
+    if (!apiContext) throw new Error("You need to use this context inside the provider")
+    return apiContext
 }

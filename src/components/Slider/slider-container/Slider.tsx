@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react';
-import { useTheme } from '../../../store/APIContext/APIContext';
+import { useAPIContext } from '../../../store/APIContext/APIContext';
 
 
 import SliderItem from './SliderItem';
@@ -11,7 +11,7 @@ import SliderItem from './SliderItem';
 const Slider = ({ hideArrows, revealArrows }) => {
 
     const [sliderRes, setSliderRes] = useState([])
-    const { submittedSearch, apiResults } = useTheme()
+    const { submittedSearch, apiResults } = useAPIContext()
 
     useEffect(
         function sliderResHandler() {
@@ -19,7 +19,7 @@ const Slider = ({ hideArrows, revealArrows }) => {
         },
         [submittedSearch]
     );
- 
+
 
 
     return (

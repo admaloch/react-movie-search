@@ -1,6 +1,6 @@
 
 import { useEffect, useReducer } from 'react';
-import { useTheme } from '../../store/APIContext/APIContext';
+import { useAPIContext } from '../../store/APIContext/APIContext';
 import ErrorMsg from './ErrorMsg/ErrorMsg';
 
 import React from 'react';
@@ -40,7 +40,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
     })
 
 
-    const { apiResults, submittedSearch } = useTheme()
+    const { apiResults, submittedSearch } = useAPIContext()
 
     const increaseIndexHandler = () => dispatch({ type: 'increment' })
     const decreaseIndexHandler = () => dispatch({ type: 'decrement' })
