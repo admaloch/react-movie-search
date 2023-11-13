@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useMemo, useState } from "react"
 import { TypeObj, searchTypeOptions } from "./SearchTypeOptions"
 import TypeProviderContextProps from "../../models/TypeProviderContextProps"
 
@@ -7,7 +7,7 @@ export const TypeContext = React.createContext<TypeObj | null>(null)
 export function TypeProvider({ children }: TypeProviderContextProps): JSX.Element {
     const [searchTypes, setSearchType] = useState(searchTypeOptions)
     const [currType, setCurrType] = useState(searchTypeOptions[0])
-    
+
     function searchTypeHandler(typeInput: string | null): void {
         setSearchType((oldType) => {
             return oldType.map((item) => {
@@ -25,6 +25,12 @@ export function TypeProvider({ children }: TypeProviderContextProps): JSX.Elemen
             setCurrType(searchTypes.filter(item => item.isActive === true)[0])
         },
         [searchTypes]
+    )
+
+    const memoizedContextValue = React.useMemo(
+        () =>({
+            searchTypes, searchTypeHandler, currType
+        })
     )
 
     return (
