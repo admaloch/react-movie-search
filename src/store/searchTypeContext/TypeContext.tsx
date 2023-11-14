@@ -28,16 +28,17 @@ export function TypeProvider({ children }: TypeProviderContextProps): JSX.Elemen
     )
 
     const memoizedContextValue = React.useMemo(
-        () =>({
+        () => ({
             searchTypes, searchTypeHandler, currType
-        })
+        }),
+        [searchTypes, searchTypeHandler, currType]
     )
 
     return (
-        <TypeContext.Provider value={{ searchTypes, searchTypeHandler, currType }}>
+        <TypeContext.Provider value={{ memoizedContextValue }}>
             {children}
         </TypeContext.Provider>
-    )   
+    )
 }
 
 export const useTypeContext = () => {
