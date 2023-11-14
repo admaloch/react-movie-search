@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useMemo, useState } from "react"
 import { APIContextTheme, APIResults } from './APIContextInterface'
 import TypeProviderContextProps from "../../models/TypeProviderContextProps"
-import { Type } from "typescript"
 
 export const APIContext = React.createContext<null | APIContextTheme>(null)
-
-
 
 export function ThemeProvider({ children }: TypeProviderContextProps): JSX.Element {
     const [searchTerm, setSearchTerm] = useState('')
@@ -25,20 +22,16 @@ export function ThemeProvider({ children }: TypeProviderContextProps): JSX.Eleme
         setApiResults(results)
     }
 
-    const ctxObj: APIContextTheme = {
-        searchTerm: searchTerm,
-        updateSearchState: updateSearchState,
-        submittedSearch: submittedSearch,
-        updateSubmittedSearch: updateSubmittedSearch,
-        apiResults: apiResults,
-        updateApiState: updateApiState,
-    }
-
-
+    const memoizedContextValue = React.useMemo(
+        () => ({
+            searchTerm, updateSearchState, submittedSearch, updateSubmittedSearch, apiResults, updateApiState
+        }),
+        [searchTerm, updateSearchState, submittedSearch, updateSubmittedSearch, apiResults, updateApiState]
+    )
 
     return (
         <APIContext.Provider
-            value={{ searchTerm, updateSearchState, submittedSearch, updateSubmittedSearch, apiResults, updateApiState }}>
+            value={memoizedContextValue}>
             {children}
         </APIContext.Provider>
     )
