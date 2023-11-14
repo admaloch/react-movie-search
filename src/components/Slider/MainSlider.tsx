@@ -97,4 +97,4 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
         </>
     )
 }
-export default MainSlider;
+export default React.memo(MainSlider);

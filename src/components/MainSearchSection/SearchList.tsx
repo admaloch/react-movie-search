@@ -26,6 +26,6 @@ const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element =
         </ul>
     )
 }
-export default SearchList;
+export default React.memo(SearchList);
 
 

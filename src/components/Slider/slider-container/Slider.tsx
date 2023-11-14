@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useAPIContext } from '../../../store/APIContext/APIContext';
 
@@ -39,4 +39,4 @@ const Slider = ({ hideArrows, revealArrows }) => {
         </div>
     )
 }
-export default Slider;
+export default React.memo(Slider);
