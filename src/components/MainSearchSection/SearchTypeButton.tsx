@@ -32,4 +32,4 @@ const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTyp
         </li>
     )
 }
-export default SearchTypeButton;
+export default React.memo(SearchTypeButton);

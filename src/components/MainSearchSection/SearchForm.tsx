@@ -77,4 +77,4 @@ const SearchForm = (): JSX.Element => {
 
     )
 }
-export default SearchForm;
+export default React.memo(SearchForm)

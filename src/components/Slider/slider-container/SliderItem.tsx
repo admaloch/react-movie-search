@@ -36,5 +36,5 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }) => {
         </div>
     )
 }
-export default SliderItem;
+export default React.memo(SliderItem);
 

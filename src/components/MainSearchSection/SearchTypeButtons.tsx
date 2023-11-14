@@ -24,4 +24,4 @@ const SearchTypeButtons = ({ hideSlider }: SliderProps) => {
         </ul>
     )
 }
-export default SearchTypeButtons;
+export default React.memo(SearchTypeButtons)

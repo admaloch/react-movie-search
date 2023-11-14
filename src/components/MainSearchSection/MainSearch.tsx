@@ -8,7 +8,7 @@ import { MainSearchProps } from '../../models/SliderProps'
 
 
 
-export default function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
+ function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
 
     const { currType } = useTypeContext()
 
@@ -25,3 +25,5 @@ export default function MainSearch({ isSliderActive, hideSlider }: MainSearchPro
         </div>
     )
 }
+
+export default React.memo(MainSearch)

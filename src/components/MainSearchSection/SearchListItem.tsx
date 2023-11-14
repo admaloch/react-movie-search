@@ -55,5 +55,5 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
         </>
     )
 }
-export default SearchListItem;
+export default React.memo(SearchListItem);
 

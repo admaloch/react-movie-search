@@ -4,7 +4,8 @@ import { useEffect } from 'react'
 import { useAPIContext } from '../../../store/APIContext/APIContext'
 import { useTypeContext } from '../../../store/searchTypeContext/TypeContext'
 import './ErrorMsg.css'
-export default function ErrorMsg() {
+
+function ErrorMsg() {
 
     const { currType } = useTypeContext()
     const { submittedSearch, apiResults } = useAPIContext()
@@ -40,3 +41,4 @@ export default function ErrorMsg() {
 
     )
 }
+export default React.memo(ErrorMsg)

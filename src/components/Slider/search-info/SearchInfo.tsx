@@ -48,4 +48,4 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         </div>
     )
 }
-export default SearchInfo;
+export default React.memo(SearchInfo);
