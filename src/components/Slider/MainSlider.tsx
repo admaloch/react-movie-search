@@ -7,9 +7,9 @@ import React from 'react';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
 import { MainSliderProps } from '../../models/SliderProps';
+import { SliderIndexState, SliderAction } from '../../models/SliderIndexState';
 
-
-const reducer = (sliderIndex, action) => {
+const reducer = (sliderIndex: SliderIndexState, action: SliderAction) => {
     let newIndexVal = 0
     switch (action.type) {
         case 'updateProgBar':
@@ -34,11 +34,7 @@ const reducer = (sliderIndex, action) => {
 
 const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps): JSX.Element => {
 
-    const [sliderIndex, dispatch] = useReducer(reducer, {
-        progBar: [],
-        index: 0,
-    })
-
+    const [sliderIndex, dispatch] = useReducer(reducer, { progBar: [], index: 0, })
 
     const { apiResults, submittedSearch } = useAPIContext()
 
@@ -46,6 +42,8 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
     const decreaseIndexHandler = () => dispatch({ type: 'decrement' })
     const changeIndexHandler = (newIndex: number) => dispatch({ type: 'changeIndex', newIndex: newIndex })
     const updateProgBarHandler = (progBarArr) => dispatch({ type: 'updateProgBar', progBarArr: progBarArr })
+
+
 
     useEffect(
         function resetIndex() {
@@ -73,7 +71,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
         [submittedSearch]
     )
 
-    console.log(sliderIndex)
+    sliderIndex.progBar.length > 0 && console.log(sliderIndex.progBar)
 
     return (
         <>
