@@ -61,6 +61,7 @@ html {
     --color2: #d0f4de;
     --color3: #fdfcdc;
     --overlay: rgba(225, 229, 242, 0.73);
+    --slider-index: 0;
 }
 
 

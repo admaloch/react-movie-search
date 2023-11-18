@@ -1,12 +1,14 @@
 import React from "react"
 import "./SearchInfo.css"
-import { randomColorGen } from '../../../utility/utility.js'
+import {randomColorGen} from '../../../utility/utility'
 import { useAPIContext } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { useTypeContext } from "../../../store/searchTypeContext/TypeContext"
+import { SearchInfoProps } from "../../../models/SearchInfoProps"
 
-const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }) => {
+
+const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
 
     const { currType } = useTypeContext()
 
@@ -20,8 +22,13 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
 
     useEffect(
         function progressBarFunc() {
-            const itemsPerScreen = parseInt(getComputedStyle(document.querySelector('.slider')).getPropertyValue('--images-per-screen'))
-            const numItems = apiResults.length > 0 && apiResults.length
+            let itemsPerScreen = 5
+            const sliderElement = document.querySelector('.slider');
+            if (sliderElement) {
+                const images = getComputedStyle(sliderElement).getPropertyValue('--images-per-screen');
+                itemsPerScreen = parseInt(images.trim())
+            }
+            const numItems = apiResults?.length
             const numOfBlocks = Math.ceil(numItems / itemsPerScreen)
             let blockArr = []
             for (let i = 0; i < numOfBlocks; i++) {
@@ -29,8 +36,6 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
             }
             blockArr[sliderIndex] = { id: sliderIndex, isActive: true }
             setProgBar(blockArr)
-            // console.log('sliderIndex', sliderIndex, 'progBar', progBar)
-
         },
         [submittedSearch, sliderIndex]
     );

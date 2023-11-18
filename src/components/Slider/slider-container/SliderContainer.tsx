@@ -1,13 +1,12 @@
-
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-
 import Slider from './Slider';
 import './Slider.css'
-const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }) => {
+import SliderContainerProps from '../../../models/SliderContainerProps';
+
+const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }:SliderContainerProps):JSX.Element => {
 
     const [showArrows, setShowArrows] = useState(true)
-    
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
     const hideArrows = () => setShowArrows(false)
     const revealArrows = () => {

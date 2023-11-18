@@ -11,8 +11,6 @@ function ErrorMsg() {
     const { submittedSearch, apiResults } = useAPIContext()
     const [isSearchValid, setIsSearchValid] = useState(true)
 
-
-
     useEffect(
         function testData() {
 
@@ -31,14 +29,10 @@ function ErrorMsg() {
         ? { opacity: 0 }
         : { opacity: 1 }
 
-
-
-
     return (
         <div style={errorStyle} className="error-msg-container">
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>
         </div>
-
     )
 }
 export default React.memo(ErrorMsg)

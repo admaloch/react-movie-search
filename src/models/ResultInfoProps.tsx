@@ -1,4 +1,4 @@
-import APIItem from "./ItemApiProps";
+import { APIItem } from "./ItemApiProps";
 
 export default interface ResultInfoProps {
     item: APIItem;

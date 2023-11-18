@@ -2,15 +2,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useAPIContext } from '../../../store/APIContext/APIContext';
-
-
 import SliderItem from './SliderItem';
+import SlidersProps from '../../../models/SlidersProps';
+import { APIResults } from '../../../store/APIContext/APIContextInterface';
 
 
+const Slider = ({ hideArrows, revealArrows }: SlidersProps): JSX.Element => {
 
-const Slider = ({ hideArrows, revealArrows }) => {
-
-    const [sliderRes, setSliderRes] = useState([])
+    const [sliderRes, setSliderRes] = useState<APIResults[]>([])
     const { submittedSearch, apiResults } = useAPIContext()
 
     useEffect(
@@ -20,20 +19,15 @@ const Slider = ({ hideArrows, revealArrows }) => {
         [submittedSearch]
     );
 
-
-
     return (
-
         <div className="slider">
             {sliderRes && sliderRes.map(item => (
                 <SliderItem
                     hideArrows={hideArrows}
                     revealArrows={revealArrows}
-                    item={item}
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}
-
                 />
             ))}
         </div>

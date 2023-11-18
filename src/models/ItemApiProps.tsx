@@ -3,7 +3,7 @@ interface Ratings {
     "Value": string;
 }
 
-export default interface APIItem {
+export interface APIItem {
     "Title": string;
     "Year": string;
     "Rated": string;
@@ -22,3 +22,23 @@ export default interface APIItem {
     "Type": string;
     "Response": string;
 }
+
+export const defaultAPIItem: APIItem = {
+    Title: '',
+    Year: '',
+    Rated: '',
+    Released: '',
+    Runtime: '',
+    Genre: '',
+    Director: '',
+    Writer: '',
+    Actors: '',
+    Plot: '',
+    Language: '',
+    Country: '',
+    Poster: '',
+    Ratings: [],
+    imdbID: '',
+    Type: '',
+    Response: '',
+};

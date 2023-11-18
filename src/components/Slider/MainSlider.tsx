@@ -7,11 +7,10 @@ import React from 'react';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
 import { MainSliderProps } from '../../models/SliderProps';
-import { SliderIndexState, ProgBar, SliderActions } from '../../models/SliderIndexState';
+import { SliderIndexState, SliderActions } from '../../models/SliderIndexState';
+import ProgBar from '../../models/ProgBar';
 
 const reducer = (sliderIndex: SliderIndexState, action: SliderActions) => {
-    console.log('action', action)
-
     let newIndexVal = 0
     switch (action.type) {
         case 'updateProgBar':
@@ -47,7 +46,9 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     useEffect(
         function updateSlider() {
-            document.querySelector('.slider').style.setProperty('--slider-index', sliderIndex.index);
+            const root = document.documentElement;
+            const numToString = `${sliderIndex.index}`
+            root.style.setProperty('--slider-index', numToString);
         },
         [sliderIndex.index]
     )
@@ -80,8 +81,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
             />
 
             <ErrorMsg />
-
-
         </>
     )
 }

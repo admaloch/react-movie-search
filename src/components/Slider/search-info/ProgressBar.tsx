@@ -1,11 +1,10 @@
-
+import React from "react";
 import ProgressItem from "./ProgressItem";
-
-const ProgressBar = ({ progBar, changeIndexHandler }) => {
-
+import ProgressBarProps from "../../../models/ProgressBar";
 
 
-    // console.log(progBar)
+
+const ProgressBar = ({ progBar, changeIndexHandler }: ProgressBarProps):JSX.Element => {
 
     return (
         <div className="progress-bar">

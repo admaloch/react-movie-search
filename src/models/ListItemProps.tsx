@@ -1,4 +1,4 @@
-import APIItem from "./ItemApiProps"
+import { APIItem } from "./ItemApiProps"
 
 export interface ModalContentProps {
     item: APIItem | null;

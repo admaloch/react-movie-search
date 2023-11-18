@@ -11,18 +11,21 @@
 
 }
 
+:root {
+    --slider-index: 0;
+}
+
 .slider {
     --images-per-screen: 5;
-    --slider-index: 0;
     flex-grow: 1;
     display: flex;
     margin: 0 .25rem;
     transform: translateX(calc(var(--slider-index)*-100%));
     transition: transform 500ms ease-in-out;
-
     z-index: 100;
-
 }
+
+
 
 .movie-container {
     position: relative;
@@ -141,7 +144,7 @@
     justify-content: center;
     position: absolute;
     width: 100%;
-z-index: 250;
+    z-index: 250;
     transition: all .5s ease-in-out;
     flex-direction: column;
     align-items: center;

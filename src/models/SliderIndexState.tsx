@@ -1,7 +1,4 @@
-export interface ProgBar {
-    id: number;
-    isActive: Boolean;
-}
+import ProgBar from './ProgBar'
 
 export interface SliderIndexState {
     progBar: ProgBar[];

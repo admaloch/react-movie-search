@@ -1,19 +1,15 @@
+import React from "react"
+import ProgressItemProps from "../../../models/ProgressItemProps"
 
-
-const ProgressItem = ({ id, isActive, changeIndexHandler }) => {
-
-    const progItemHandler = (id) => {
-        console.log(id)
+const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): JSX.Element => {
+    const progItemHandler = (id: number) => {
         changeIndexHandler(id)
     }
-
     return (
-        // <div className="progress-item"></div>
         <div
             onClick={() => progItemHandler(id)}
             className={isActive ? 'progress-item active' : 'progress-item'}
         >
-
         </div>
     )
 }

@@ -1,12 +1,12 @@
 import React from "react"
 import axios from "axios"
 import { useState } from "react"
-import {useTypeContext } from "../../store/searchTypeContext/TypeContext"
+import { useTypeContext } from "../../store/searchTypeContext/TypeContext"
 import ListItemModal from "./ListItemModal"
 import '../../../src/declaration.d'
 import image_not_found from '../../assets/image_not_found.png'
 import { APIResults } from '../../store/APIContext/APIContextInterface'
-import APIItem from "../../models/ItemApiProps"
+import { APIItem } from "../../models/ItemApiProps"
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 
@@ -17,7 +17,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
     const [itemOnClick, setItemOnClick] = useState<APIItem | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const {currType} = useTypeContext()
+    const { currType } = useTypeContext()
     const searchParam = currType.apiParam;
 
     async function handleListItemClick() {
