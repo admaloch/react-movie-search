@@ -1,7 +1,6 @@
 
 
 interface ColorScheme {
-
     '--text': string;
     '--mainBackground': string;
     '--containertext': string;
@@ -10,7 +9,6 @@ interface ColorScheme {
     '--color2': string;
     '--color3': string;
     '--overlay': string;
-
 }
 
  interface SearchType {

@@ -1,9 +1,7 @@
 import { useAPIContext } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
 import SearchProps from "../../models/SearchProps";
-
 import React from "react";
-
 
 const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element => {
     const { apiResults } = useAPIContext()
@@ -21,6 +19,7 @@ const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element =
                     Poster={item.Poster}
                     Title={item.Title}
                     Year={item.Year}
+                    Type={item.Type}
                 />
             ))}
         </ul>

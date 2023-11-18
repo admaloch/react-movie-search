@@ -5,7 +5,6 @@ import { SliderProps } from '../../models/SliderProps'
 import { SearchType } from "../../store/searchTypeContext/SearchTypeOptions";
 
 const SearchTypeButtons = ({ hideSlider }: SliderProps) => {
-
     const {searchTypes} = useTypeContext()
 
     return (

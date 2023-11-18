@@ -6,12 +6,9 @@ import './Modal.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { MainModalProps } from '../../models/ModalProps';
 
-export default function Modal ({ open, children, closeModal }: MainModalProps): JSX.Element  {
-
+export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element {
 
     const [isVisible, setIsVisible] = useState(false)
-
-
 
     const closeModalHandler = () => {
         setIsVisible(false)
@@ -26,7 +23,7 @@ export default function Modal ({ open, children, closeModal }: MainModalProps): 
         }
     }, [open])
 
-    if (!open) return null
+    // if (!open) return null;
 
     return ReactDOM.createPortal(
         <>
@@ -44,8 +41,7 @@ export default function Modal ({ open, children, closeModal }: MainModalProps): 
                 {children}
             </div>
         </>,
-        document.getElementById('portal')
-
+        document.getElementById('portal') as Element
     );
 };
 

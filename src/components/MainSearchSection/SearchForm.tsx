@@ -1,10 +1,8 @@
-
 import SearchList from "./SearchList";
 import React from "react";
 import { useAPIContext } from "../../store/APIContext/APIContext";
 import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
 import { useEffect, useState } from "react";
-
 import axios from "axios";
 import KeyRequestAnimation from "./KeyRequestAnimation";
 const BASE_URL = 'https://omdbapi.com/?s='
@@ -72,9 +70,6 @@ const SearchForm = (): JSX.Element => {
                 hideList={hideSearchList}
             />
         </form>
-
-
-
     )
 }
 export default React.memo(SearchForm)

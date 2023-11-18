@@ -5,15 +5,9 @@ import SearchForm from "./SearchForm.jsx"
 import SearchTypeButtons from "./SearchTypeButtons";
 import { MainSearchProps } from '../../models/SliderProps'
 
-
-
-
- function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
+function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
 
     const { currType } = useTypeContext()
-
-
-
     const currItemHeader = `Search ${currType.description}`
     let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'show-slider main-search-section'
 
@@ -25,5 +19,4 @@ import { MainSearchProps } from '../../models/SliderProps'
         </div>
     )
 }
-
 export default React.memo(MainSearch)

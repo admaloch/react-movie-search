@@ -1,21 +1,23 @@
 
-
+import React from 'react';
 import ViewHeadlineSharpIcon from '@mui/icons-material/ViewHeadlineSharp';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
-
+import openBioOverlayProps from '../../../models/OpenBioOverlayProps';
 import { useState } from 'react';
 
-export default function ShowPlotBtn({ openBioOverlay }) {
+
+
+export default function ShowPlotBtn({ openBioOverlay }: openBioOverlayProps): JSX.Element {
 
     const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
 
 
-    const handleClick = (e: React.FormEvent) => {
-        setAnchorEl(e.currentTarget);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
         setOpen((previousOpen) => !previousOpen);
     };
 
@@ -30,9 +32,9 @@ export default function ShowPlotBtn({ openBioOverlay }) {
                 onMouseEnter={handleClick}
                 onMouseLeave={handleClick}
                 className="popover-icon"
-                
+
                 onClick={openBioOverlay}>
-                <ViewHeadlineSharpIcon sx={{fontSize: 30}} />
+                <ViewHeadlineSharpIcon sx={{ fontSize: 30 }} />
             </div>
 
             <Popper

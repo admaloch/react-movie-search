@@ -6,7 +6,6 @@ import SliderItem from './SliderItem';
 import SlidersProps from '../../../models/SlidersProps';
 import { APIResults } from '../../../store/APIContext/APIContextInterface';
 
-
 const Slider = ({ hideArrows, revealArrows }: SlidersProps): JSX.Element => {
 
     const [sliderRes, setSliderRes] = useState<APIResults[]>([])

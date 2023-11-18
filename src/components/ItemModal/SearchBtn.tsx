@@ -2,20 +2,16 @@ import GoogleIcon from '@mui/icons-material/Google';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
-
-import { useState } from 'react';
-
-export default function SearchBtn({ searchLink, type }) {
+import React, { useState } from 'react';
+import { SearchBtnProps } from '../../models/SearchBtnProps';
 
 
-
+export default function SearchBtn({ searchLink, type }: SearchBtnProps): JSX.Element {
   const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-
-
-  const handleClick = (e: React.FormEvent) => {
-    setAnchorEl(e.currentTarget);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
     setOpen((previousOpen) => !previousOpen);
   };
 
@@ -25,7 +21,7 @@ export default function SearchBtn({ searchLink, type }) {
   return (
     <>
       <div
-     className='google-icon-container'
+        className='google-icon-container'
         aria-describedby={id}
         onMouseEnter={handleClick}
         onMouseLeave={handleClick}>
@@ -35,8 +31,6 @@ export default function SearchBtn({ searchLink, type }) {
           rel="noopener noreferrer"
         >
           <GoogleIcon className='google-icon' sx={{ fontSize: 30 }} />
-          
-
         </a>
       </div>
       <Popper
@@ -57,7 +51,3 @@ export default function SearchBtn({ searchLink, type }) {
     </>
   );
 }
-
-
-
-

@@ -4,9 +4,6 @@ import Modal from '../UI/Modal'
 import { ListItemProps } from '../../models/ListItemProps'
 
 export default function ListItemModal({ item, open, closeModal }: ListItemProps): React.JSX.Element {
-
-
-
     return (
         <Modal
             closeModal={closeModal}

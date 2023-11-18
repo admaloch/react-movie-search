@@ -2,10 +2,7 @@ import React from "react";
 import ProgressItem from "./ProgressItem";
 import ProgressBarProps from "../../../models/ProgressBar";
 
-
-
 const ProgressBar = ({ progBar, changeIndexHandler }: ProgressBarProps):JSX.Element => {
-
     return (
         <div className="progress-bar">
             {progBar && progBar.map(item => (

@@ -1,8 +1,9 @@
 import { useRef } from "react";
+import React from "react";
+import BioOverlayProps from "../../../models/BioOverlayProps";
 
 
-
-const BioOverlay = ({ plot, revealBio, closeBio }) => {
+const BioOverlay = ({ plot, revealBio, closeBio }:BioOverlayProps):JSX.Element => {
     const scrollDivRef = useRef<HTMLInputElement>(null);
   
 

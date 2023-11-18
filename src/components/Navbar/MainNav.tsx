@@ -7,10 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import { OpenModalProps } from '../../models/ModalProps';
 
-
 export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
     return (
-
         <Box sx={{ flexGrow: 1 }}>
             <AppBar sx={{ backgroundColor: 'var(--color1)' }} position="static">
                 <Toolbar>
@@ -40,5 +38,3 @@ export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
         </Box>
     );
 }
-
-

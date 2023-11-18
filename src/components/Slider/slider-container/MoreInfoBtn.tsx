@@ -1,23 +1,24 @@
 
-
+import React from 'react';
 import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 
 import { useState } from 'react';
+import MoreInfoBtnProps from '../../../models/MoreInfoBtnProps';
 
-export default function MoreInfoBtn({ openItemModal }) {
+export default function MoreInfoBtn({ openItemModal }: MoreInfoBtnProps):JSX.Element {
 
     const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
 
 
-    const handleClick = (e: React.FormEvent) => {
-        setAnchorEl(e.currentTarget);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
         setOpen((previousOpen) => !previousOpen);
-    };
+      };
 
     const canBeOpen = open && Boolean(anchorEl);
     const id = canBeOpen ? 'transition-popper' : undefined;

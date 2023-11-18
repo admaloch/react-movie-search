@@ -4,10 +4,7 @@ import InfoModal from "./InfoModal";
 import MainNav from "./MainNav";
 import './Navbar.css'
 
-
-
 export default function Navbar() {
-
     const [isModalOpen, setIsModalOpen] = useState(false)
     const closeModal = () => setIsModalOpen(false)
     const openModal = () => setIsModalOpen(true)
@@ -20,8 +17,5 @@ export default function Navbar() {
                 open={isModalOpen}
             />
         </>
-
     );
 }
-
-

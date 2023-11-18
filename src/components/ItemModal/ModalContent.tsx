@@ -1,7 +1,7 @@
 import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
 import { ModalContentProps } from '../../models/ListItemProps'
-
+import React from 'react'
 
 export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 

@@ -9,16 +9,11 @@ import { SearchInfoProps } from "../../../models/SearchInfoProps"
 
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
-
     const { currType } = useTypeContext()
-
-
     const { submittedSearch, apiResults } = useAPIContext()
-
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
     const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
-
 
     useEffect(
         function progressBarFunc() {
@@ -39,7 +34,6 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         },
         [submittedSearch, sliderIndex]
     );
-
 
     return (
 

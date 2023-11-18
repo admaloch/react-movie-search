@@ -1,4 +1,3 @@
-
 export interface APIResults {
     "Title": string;
     "Year": string;
