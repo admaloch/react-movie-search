@@ -1,4 +1,4 @@
 export default interface SlidersProps {
-    hideArrows: () => void;
-    revealArrows: () => void;
+    mouseEnter: (event: React.MouseEvent) => void;
+    mouseLeave: (event: React.MouseEvent) => void;
 }

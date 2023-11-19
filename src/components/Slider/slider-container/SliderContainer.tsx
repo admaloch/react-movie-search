@@ -8,17 +8,11 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
 
     const [showArrows, setShowArrows] = useState(true)
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
-    const hideArrows = () => setShowArrows(false)
-    const revealArrows = () => {
-        if (progBar.length > 1) {
-            setShowArrows(true)
-        }
-    }
+
 
     const handleSliderMouseEnter = (event: React.MouseEvent) => {
         const target = event.target as HTMLElement;
-        // Check if the mouse is over the slider item or the arrows
-        if (target.classList.contains('handle')) {
+        if (target.classList.contains('handle')|| target.classList.contains('arrow')) {
             setShowArrows(true);
         } else {
             setShowArrows(false);
@@ -27,7 +21,6 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
 
     const handleSliderMouseLeave = (event: React.MouseEvent) => {
         const target = event.target as HTMLElement;
-        // Check if the mouse is over the slider item or the arrows
         if (!target.classList.contains('slider-item')) {
             setShowArrows(true);
         }
@@ -40,9 +33,9 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     useEffect(
         function hideArrowsOnSmallRequests() {
             if (progBar.length > 1) {
-                revealArrows()
+                setShowArrows(true)
             } else {
-                hideArrows()
+                setShowArrows(false)
             }
         },
         [progBar]
@@ -57,21 +50,18 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
             <button
                 onMouseEnter={handleSliderMouseEnter}
                 onMouseLeave={handleSliderMouseLeave}
-
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
                 className="handle left-handle " >
                 <div className="arrow">‹</div>
             </button>
             <Slider
-
-                hideArrows={hideArrows}
-                revealArrows={revealArrows}
+                mouseLeave={handleSliderMouseLeave}
+                mouseEnter={handleSliderMouseEnter}
             />
             <button
                 onMouseEnter={handleSliderMouseEnter}
                 onMouseLeave={handleSliderMouseLeave}
-
                 style={arrowStyle}
                 onClick={increaseIndexHandler}
                 className="handle right-handle">

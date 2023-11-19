@@ -6,7 +6,7 @@ import SliderItem from './SliderItem';
 import SlidersProps from '../../../models/SlidersProps';
 import { APIResults } from '../../../store/APIContext/APIContextInterface';
 
-const Slider = ({ hideArrows, revealArrows }: SlidersProps): JSX.Element => {
+const Slider = ({ mouseEnter, mouseLeave }: SlidersProps): JSX.Element => {
 
     const [sliderRes, setSliderRes] = useState<APIResults[]>([])
     const { submittedSearch, apiResults } = useAPIContext()
@@ -19,11 +19,13 @@ const Slider = ({ hideArrows, revealArrows }: SlidersProps): JSX.Element => {
     );
 
     return (
-        <div className="slider">
+        <div 
+        className="slider"
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
+        >
             {sliderRes && sliderRes.map(item => (
                 <SliderItem
-                    hideArrows={hideArrows}
-                    revealArrows={revealArrows}
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}

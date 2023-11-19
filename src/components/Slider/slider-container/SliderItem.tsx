@@ -12,7 +12,7 @@ const api_key = '&apikey=84200d7a'
 
 
 
-const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }: SliderItemProps): JSX.Element => {
+const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
 
     const { searchTypes } = useTypeContext()
     const currItem = searchTypes.filter(item => item.isActive === true)[0]
@@ -23,7 +23,6 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }: SliderItemProp
     async function mouseEnterHandler() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnHover(apiRes.data)
-        hideArrows()
     }
 
 

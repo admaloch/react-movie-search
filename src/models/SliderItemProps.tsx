@@ -1,6 +1,5 @@
-import SlidersProps from "./SlidersProps";
-import { APIItem } from "./ItemApiProps";
-export default interface SliderItemProps extends SlidersProps {
+
+export default interface SliderItemProps  {
     imdbID: string;
     poster: string;
 }
