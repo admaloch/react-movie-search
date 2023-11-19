@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Slider from './Slider';
 import './Slider.css'
 import SliderContainerProps from '../../../models/SliderContainerProps';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 
@@ -12,7 +14,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
 
     const handleSliderMouseEnter = (event: React.MouseEvent) => {
         const target = event.target as HTMLElement;
-        if (target.classList.contains('handle')|| target.classList.contains('arrow')) {
+        if (target.classList.contains('handle') || target.classList.contains('arrow')) {
             setShowArrows(true);
         } else {
             setShowArrows(false);
@@ -53,7 +55,9 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
                 className="handle left-handle " >
-                <div className="arrow">‹</div>
+                <div className="arrow">
+                    <ArrowBackIcon sx={{fontSize: '3rem'}}/>
+                </div>
             </button>
             <Slider
                 mouseLeave={handleSliderMouseLeave}
@@ -65,7 +69,9 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 style={arrowStyle}
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
-                <div className="arrow">›</div>
+                <div className="arrow">
+                    <ArrowForwardIcon sx={{fontSize: '3rem'}}/>
+                </div>
             </button>
         </div >
     )
