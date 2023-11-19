@@ -29,7 +29,7 @@ const SliderItem = ({ imdbID, poster, hideArrows, revealArrows }: SliderItemProp
 
 
     return (
-        <div onMouseEnter={mouseEnterHandler} onMouseLeave={revealArrows} className="movie-container" data-id={imdbID}>
+        <div className="movie-container" data-id={imdbID}>
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}>

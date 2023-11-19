@@ -1,5 +1,3 @@
-
-
 interface ColorScheme {
     '--text': string;
     '--mainBackground': string;
