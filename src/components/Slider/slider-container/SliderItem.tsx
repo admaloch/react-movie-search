@@ -28,7 +28,7 @@ const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
 
 
     return (
-        <div className="movie-container" data-id={imdbID}>
+        <div onMouseEnter={mouseEnterHandler} className="movie-container" data-id={imdbID}>
             <img
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}>
