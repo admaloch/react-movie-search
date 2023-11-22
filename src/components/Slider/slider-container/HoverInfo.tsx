@@ -1,27 +1,13 @@
 import React, { useState } from "react"
 import ItemModal from "../../ItemModal/ItemModal"
 import Modal from "../../UI/Modal"
-import BioOverlay from "./BioOverlay"
-import HoverInfoBtn from "./ShowPlotBtn"
-import ItemInfo from "./ItemInfo"
-import MoreInfoBtn from "./MoreInfoBtn"
-import { APIItem } from "../../../models/ItemApiProps"
+import ItemContent from "./ItemContent"
+import { ModalContentProps } from "../../../models/ListItemProps"
 
-interface HoverInfoTypes {
-    item: APIItem;
-}
 
-const HoverInfo = ({ item }: HoverInfoTypes): JSX.Element => {
-    const [revealBio, setRevealBio] = useState(false)
+const HoverInfo = ({ item }: ModalContentProps): JSX.Element => {
+
     const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const openBioOverlay = () => {
-        setRevealBio(true)
-    }
-
-    const closeBioOverlay = () => {
-        setRevealBio(false)
-    }
 
     const closeItemModal = () => {
         setIsModalOpen(false)
@@ -32,20 +18,10 @@ const HoverInfo = ({ item }: HoverInfoTypes): JSX.Element => {
 
     return (
         <div className="info-container">
-            
-            <ItemInfo item={item} />
-
-            <div className="hover-btn-container">
-                {item.Plot !== 'N/A' && <HoverInfoBtn openBioOverlay={openBioOverlay} />}
-                <MoreInfoBtn openItemModal={openItemModal} />
-            </div>
-
-            <BioOverlay
-                revealBio={revealBio}
-                closeBio={closeBioOverlay}
-                plot={item.Plot}
+            <ItemContent
+                item={item}
+                openItemModal={openItemModal}
             />
-
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}>
