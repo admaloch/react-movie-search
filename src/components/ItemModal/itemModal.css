@@ -85,7 +85,7 @@ margin-bottom: 2rem;
 .result-info {
 
   margin: 0 1rem 0;
-  letter-spacing: .2rem;
+  letter-spacing: .1rem;
   text-align: center;
   color: var(--text);
   max-width: 500px;

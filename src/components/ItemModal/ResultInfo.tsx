@@ -12,7 +12,7 @@ export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.E
       {item.Genre !== 'N/A' && <p><span>Genre:</span> {item.Genre}</p>}
       {item.Director !== 'N/A' && <p><span>Director:</span> {item.Director}</p>}
       {item.Actors !== 'N/A' && <p><span>Actors: </span>{item.Actors}</p>}
-      {item.Plot !== 'N/A' && <p className="plot"><span>Plot:</span>{item.Plot}</p>}
+      {item.Plot !== 'N/A' && <p className="plot"><span>Plot: </span>{item.Plot}</p>}
       {item.Language !== 'N/A' && <p><span>Language:</span> {item.Language}</p>}
     </div>
   )

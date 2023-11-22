@@ -6,27 +6,21 @@ import axios from 'axios';
 import { useTypeContext } from "../../../store/searchTypeContext/TypeContext";
 import SliderItemProps from "../../../models/SliderItemProps";
 import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps";
-
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 
-
-
 const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
-
+    const [isLoading, setIsLoading] = useState(true)
     const { searchTypes } = useTypeContext()
     const currItem = searchTypes.filter(item => item.isActive === true)[0]
     const searchParam = currItem.apiParam;
-
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
-
 
     async function mouseEnterHandler() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnHover(apiRes.data)
+        setIsLoading(false)
     }
-
-
 
     return (
         <div onMouseEnter={mouseEnterHandler} className="movie-container" data-id={imdbID}>
@@ -34,9 +28,10 @@ const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}>
             </img>
-            
-            <HoverInfo item={itemOnHover} />
-
+            <HoverInfo
+                item={itemOnHover}
+                isLoading={isLoading}
+            />
         </div>
     )
 }

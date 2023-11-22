@@ -37,7 +37,7 @@ export default function MoreInfoBtn({ openItemModal }: MoreInfoBtnProps):JSX.Ele
             </div>
 
             <Popper
-                style={{ color: 'black', zIndex: 200 }}
+                style={{ color: 'black', zIndex: 100 }}
                 placement="top"
                 id={id}
                 open={open}

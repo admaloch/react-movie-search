@@ -23,7 +23,7 @@ export default function Modal({ open, children, closeModal }: MainModalProps): J
         }
     }, [open])
 
-    // if (!open) return null;
+    if (!open) return null;
 
     return ReactDOM.createPortal(
         <>
