@@ -3,7 +3,7 @@ import ItemModal from "../../ItemModal/ItemModal"
 import Modal from "../../UI/Modal"
 import ItemContent from "./ItemContent"
 import HoverInfoProps from "../../../models/HoverInfoProps"
-import HoverRequestAnimation from "./HoverRequestAnimation"
+import CircleAnimation from "../../UI/LoadAnimation/CircleAnimation"
 
 const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
 
@@ -19,7 +19,8 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
     return (
         <div className="info-container">
 
-            {isLoading ? <HoverRequestAnimation isLoading={isLoading} />
+            {isLoading
+                ? <CircleAnimation />
                 : <ItemContent
                     item={item}
                     openItemModal={openItemModal}

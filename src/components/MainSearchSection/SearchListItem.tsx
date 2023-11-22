@@ -13,8 +13,10 @@ const api_key = '&apikey=84200d7a'
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
     const [itemOnClick, setItemOnClick] = useState<APIItem>(defaultAPIItem)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const { currType } = useTypeContext()
     const searchParam = currType.apiParam;
+   
 
     async function handleListItemClick() {
         genApiRes()

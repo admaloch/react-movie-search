@@ -12,7 +12,7 @@ const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element =
             onClick={hideList}
             className="search-list"
             id="search-list">
-            {apiResults && apiResults.map((item) => (
+            {apiResults.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
                     imdbID={item.imdbID}
