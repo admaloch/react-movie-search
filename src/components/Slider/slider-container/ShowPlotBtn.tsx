@@ -38,6 +38,7 @@ export default function ShowPlotBtn({ openBioOverlay }: openBioOverlayProps): JS
             </div>
 
             <Popper
+            className='item-popover'
                 style={{ color: 'black', zIndex: 200 }}
                 placement="top"
                 id={id}

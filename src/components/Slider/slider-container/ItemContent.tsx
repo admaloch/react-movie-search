@@ -6,7 +6,7 @@ import HoverInfoBtn from "./ShowPlotBtn"
 import { useState } from 'react'
 import ItemContentProps from '../../../models/ItemContentProps'
 
-export default function ItemContent({item, openItemModal}: ItemContentProps):JSX.Element {
+export default function ItemContent({ item, openItemModal }: ItemContentProps): JSX.Element {
 
     const [revealBio, setRevealBio] = useState(false)
     const openBioOverlay = () => {
@@ -22,7 +22,9 @@ export default function ItemContent({item, openItemModal}: ItemContentProps):JSX
             <ItemInfo item={item} />
 
             <div className="hover-btn-container">
-                {item.Plot !== 'N/A' && <HoverInfoBtn openBioOverlay={openBioOverlay} />}
+                {item.Plot !== 'N/A'
+                    && <HoverInfoBtn openBioOverlay={openBioOverlay} />
+                }
                 <MoreInfoBtn openItemModal={openItemModal} />
             </div>
 

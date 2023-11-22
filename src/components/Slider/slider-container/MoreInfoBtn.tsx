@@ -4,7 +4,6 @@ import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
-
 import { useState } from 'react';
 import MoreInfoBtnProps from '../../../models/MoreInfoBtnProps';
 
@@ -12,8 +11,6 @@ export default function MoreInfoBtn({ openItemModal }: MoreInfoBtnProps):JSX.Ele
 
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -25,8 +22,6 @@ export default function MoreInfoBtn({ openItemModal }: MoreInfoBtnProps):JSX.Ele
 
     return (
         <>
-
-
             <div
                 aria-describedby={id}
                 onMouseEnter={handleClick}
