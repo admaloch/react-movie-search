@@ -13,10 +13,10 @@ const api_key = '&apikey=84200d7a'
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
     const [itemOnClick, setItemOnClick] = useState<APIItem>(defaultAPIItem)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const { currType } = useTypeContext()
     const searchParam = currType.apiParam;
-   
+
 
     async function handleListItemClick() {
         genApiRes()
@@ -26,7 +26,9 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
     async function genApiRes() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnClick(apiRes.data)
+        setIsLoading(false)
     }
+
     const closeItemModal = () => {
         setIsModalOpen(false)
     }
@@ -42,13 +44,14 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     {Year && <p>{Year}</p>}
                 </div>
             </li>
-            {itemOnClick &&
+            
                 <ListItemModal
                     item={itemOnClick}
                     open={isModalOpen}
                     closeModal={closeItemModal}
+                    isLoading={isLoading}
                 />
-            }
+           
 
         </>
     )
