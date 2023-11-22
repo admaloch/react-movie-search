@@ -20,6 +20,7 @@ const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
 
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
 
+
     async function mouseEnterHandler() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
         setItemOnHover(apiRes.data)
@@ -33,6 +34,7 @@ const SliderItem = ({ imdbID, poster }: SliderItemProps): JSX.Element => {
                 src={poster !== 'N/A' ? poster : image_not_found}
                 alt={imdbID}>
             </img>
+            
             <HoverInfo item={itemOnHover} />
 
         </div>

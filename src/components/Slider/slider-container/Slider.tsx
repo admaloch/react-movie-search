@@ -19,12 +19,12 @@ const Slider = ({ mouseEnter, mouseLeave }: SlidersProps): JSX.Element => {
     );
 
     return (
-        <div 
-        className="slider"
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
+        <div
+            className="slider"
+            onMouseEnter={mouseEnter}
+            onMouseLeave={mouseLeave}
         >
-            {sliderRes && sliderRes.map(item => (
+            {sliderRes.map(item => (
                 <SliderItem
                     poster={item.Poster}
                     imdbID={item.imdbID}

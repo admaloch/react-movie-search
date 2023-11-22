@@ -14,6 +14,7 @@ interface HoverInfoTypes {
 const HoverInfo = ({ item }: HoverInfoTypes): JSX.Element => {
     const [revealBio, setRevealBio] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
+
     const openBioOverlay = () => {
         setRevealBio(true)
     }
@@ -31,16 +32,20 @@ const HoverInfo = ({ item }: HoverInfoTypes): JSX.Element => {
 
     return (
         <div className="info-container">
+            
             <ItemInfo item={item} />
+
+            <div className="hover-btn-container">
+                {item.Plot !== 'N/A' && <HoverInfoBtn openBioOverlay={openBioOverlay} />}
+                <MoreInfoBtn openItemModal={openItemModal} />
+            </div>
+
             <BioOverlay
                 revealBio={revealBio}
                 closeBio={closeBioOverlay}
                 plot={item.Plot}
             />
-            <div className="hover-btn-container">
-                {item.Plot !== 'N/A' && <HoverInfoBtn openBioOverlay={openBioOverlay} />}
-                <MoreInfoBtn openItemModal={openItemModal} />
-            </div>
+
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}>
