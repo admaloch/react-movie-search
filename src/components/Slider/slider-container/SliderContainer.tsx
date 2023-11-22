@@ -56,7 +56,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 onClick={decreaseIndexHandler}
                 className="handle left-handle " >
                 <div className="arrow">
-                    <ArrowBackIcon sx={{fontSize: '3rem'}}/>
+                    <ArrowBackIcon className='arrow-icon' sx={{fontSize: '3rem'}}/>
                 </div>
             </button>
             <Slider
@@ -70,7 +70,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
                 <div className="arrow">
-                    <ArrowForwardIcon sx={{fontSize: '3rem'}}/>
+                    <ArrowForwardIcon className='arrow-icon' sx={{fontSize: '3rem'}}/>
                 </div>
             </button>
         </div >

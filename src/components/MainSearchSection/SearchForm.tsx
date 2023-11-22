@@ -16,7 +16,6 @@ const SearchForm = (): JSX.Element => {
     const searchParam = currType.apiParam;
 
     async function apiRequest() {
-
         const req1 = await axios.get(`${BASE_URL}${searchTerm}&page=1${api_key}${searchParam}`)
         const req2 = await axios.get(`${BASE_URL}${searchTerm}&page=2${api_key}${searchParam}`)
         let results = []
