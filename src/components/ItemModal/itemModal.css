@@ -24,11 +24,15 @@
 
 .modal-container img {
   width: 100%;
-  max-width: 175px;
+  max-width: 75px;
 }
-@media screen and (min-width: 390px) {
+@media screen and (min-width: 375px) {
   .modal-container img {
-    width: 100%;
+    max-width: 125px;
+  }
+}
+@media screen and (min-width: 414px) {
+  .modal-container img {
     max-width: 200px;
   }
 }
@@ -134,7 +138,7 @@ margin-bottom: 2rem;
 
 .google-icon-container {
 position: relative;
-top: 1.5rem;
+top: 1rem;
 
 
 }

@@ -235,9 +235,34 @@
     .show-slider {
         margin-top: 1rem;
     }
+
     .hide-slider {
         margin-top: 9rem;
     }
+
+
+
+
+
+    #result-type-container {
+        display: flex;
+        margin: 1rem 0;
+        padding: 0;
+    }
+
+    .main-search-section h1 {
+        font-size: 4.5rem;
+        color: var(--color2);
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+
+    .search-list {
+        max-height: 300px;
+    }
+
     .search-list-item {
         padding: 0.5rem;
         max-height: 100px;
@@ -247,17 +272,4 @@
         max-height: 100px;
     }
 
-    .search-list {
-        max-height: 300px;
-    }
-    #result-type-container {
-        display: flex;
-        margin: 1rem 0;
-        padding: 0;
-    }
-    .main-search-section h1 {
-        font-size: 4.5rem;
-        color: var(--color2);
-    }
 }
-
