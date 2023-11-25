@@ -38,21 +38,33 @@ export default function ShowPlotBtn({ openBioOverlay }: openBioOverlayProps): JS
             </div>
 
             <Popper
-            className='item-popover'
-                style={{ color: 'black', zIndex: 200 }}
+                className='item-popover'
+                disablePortal={true}
                 placement="top"
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
-                transition>
+                transition
+            >
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={350}>
-                        <Box sx={{ border: 1, borderRadius: 2, marginBottom: 1, p: 1, bgcolor: 'background.paper' }}>
-                            Read plot
+                        <Box
+                            sx={{
+                                border: 1,
+                                borderRadius: 1,
+                                marginBottom: 1,
+                                p: .5,
+                                bgcolor: 'background.paper',
+                                fontSize: '9px', // Adjust the font size as needed
+                                color: 'black',
+                            }}
+                        >
+                            Synopsus
                         </Box>
                     </Fade>
                 )}
             </Popper>
+
         </>
     );
 }

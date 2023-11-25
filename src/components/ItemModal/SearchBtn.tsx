@@ -34,7 +34,8 @@ export default function SearchBtn({ searchLink, type }: SearchBtnProps): JSX.Ele
         </a>
       </div>
       <Popper
-        style={{ color: 'black', zIndex: 200 }}
+     
+        disablePortal={true}
         placement="top"
         id={id}
         open={open}
@@ -42,7 +43,7 @@ export default function SearchBtn({ searchLink, type }: SearchBtnProps): JSX.Ele
         transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Box sx={{ border: 1, borderRadius: 2, marginBottom: 1, p: 1, bgcolor: 'background.paper' }}>
+            <Box sx={{ border: 1, color: 'black', borderRadius: 2, marginBottom: 1, p: 1, bgcolor: 'background.paper' }}>
               Search {type}
             </Box>
           </Fade>

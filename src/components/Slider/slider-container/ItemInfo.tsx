@@ -8,7 +8,6 @@ export default function ItemInfo({ item }: ModalContentProps):JSX.Element {
     // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
     const genItemRating = (obj: APIItem): string| undefined => {
-        obj.Title !== '' && console.log(obj)
         const rottenScore = obj.Ratings.filter(x => x.Source === "Rotten Tomatoes")
         const imdbScore = obj.Ratings.filter(x => x.Source === "Internet Movie Database")
         const metaScore = obj.Ratings.filter(x => x.Source === "Metacritic")

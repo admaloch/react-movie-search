@@ -9,7 +9,8 @@ function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Elemen
 
     const { currType } = useTypeContext()
     const currItemHeader = `Search ${currType.description}`
-    let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'show-slider main-search-section'
+    let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'hide-slider main-search-section'
+    console.log(isSliderActive)
 
     return (
         <div className={sliderClass}>

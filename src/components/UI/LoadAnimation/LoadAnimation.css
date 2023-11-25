@@ -6,38 +6,48 @@
   /* border: black solid 1px; */
 }
 
+
+
 .load-animation div {
   position: absolute;
-  top: 25px;
+  top: 19px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
-
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  left: 100px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .load-animation div {
+    top: 15px;
+  }
 }
 
 .load-animation div:nth-child(1) {
   left: 8px;
   animation: load-animation1 0.6s infinite;
-  background: #000;
+  background: var(--containertext);
 }
 
 .load-animation div:nth-child(2) {
   left: 8px;
   animation: load-animation2 0.6s infinite;
-  background: #000;
+  background: var(--containertext);
 }
 
 .load-animation div:nth-child(3) {
   left: 32px;
   animation: load-animation2 0.6s infinite;
-  background: #000;
+  background: var(--containertext);
 }
 
 .load-animation div:nth-child(4) {
   left: 56px;
   animation: load-animation3 0.6s infinite;
-  background: #000;
+  background: var(--containertext);
 }
 
 @keyframes load-animation1 {

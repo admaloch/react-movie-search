@@ -55,6 +55,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     useEffect(
         function hideOnSubmit() {
+            changeIndexHandler(0)
             if (apiResults.length > 0) {
                 showSlider()
             } else {
@@ -63,6 +64,8 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
         },
         [submittedSearch]
     )
+
+    sliderIndex.progBar.length > 1 && console.log(sliderIndex.progBar)
 
     return (
         <>
