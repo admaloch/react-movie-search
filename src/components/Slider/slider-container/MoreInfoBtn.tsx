@@ -28,7 +28,7 @@ export default function MoreInfoBtn({ openItemModal }: MoreInfoBtnProps): JSX.El
                 onMouseLeave={handleClick}
                 className="popover-icon"
                 onClick={openItemModal}>
-                <MoreHorizSharpIcon sx={{ fontSize: 30 }} />
+                <MoreHorizSharpIcon sx={{ fontSize: 25 }} />
             </div>
 
             <Popper

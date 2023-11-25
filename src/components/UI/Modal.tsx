@@ -6,7 +6,7 @@ import './Modal.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { MainModalProps } from '../../models/ModalProps';
 
-export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element {
+export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element | null {
 
     const [isVisible, setIsVisible] = useState(false)
 

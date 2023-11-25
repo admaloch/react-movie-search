@@ -34,7 +34,7 @@ export default function ShowPlotBtn({ openBioOverlay }: openBioOverlayProps): JS
                 className="popover-icon"
 
                 onClick={openBioOverlay}>
-                <ViewHeadlineSharpIcon sx={{ fontSize: 30 }} />
+                <ViewHeadlineSharpIcon sx={{ fontSize: 25 }} />
             </div>
 
             <Popper

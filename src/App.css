@@ -22,7 +22,9 @@ html {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
 }
+
 
 /* scrollbar style change */
 ::-webkit-scrollbar {
@@ -79,20 +81,19 @@ body {
     display: flex;
     width: 100%;
     /* margin-top: 9.5rem; */
-    height: 100vh;
-    overflow: hidden;
+
     flex-direction: column;
     align-items: center;
 
     /* position: relative; */
 }
 
-/* #root {
-    height: 100%;
+#root {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-} */
+}
 
 
 

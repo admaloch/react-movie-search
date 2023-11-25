@@ -3,11 +3,11 @@ import { ModalContentProps } from '../../../models/ListItemProps'
 import { APIItem } from '../../../models/ItemApiProps'
 
 
-export default function ItemInfo({ item }: ModalContentProps):JSX.Element {
+export default function ItemInfo({ item }: ModalContentProps): JSX.Element {
 
     // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
-    const genItemRating = (obj: APIItem): string| undefined => {
+    const genItemRating = (obj: APIItem): string | undefined => {
         const rottenScore = obj.Ratings.filter(x => x.Source === "Rotten Tomatoes")
         const imdbScore = obj.Ratings.filter(x => x.Source === "Internet Movie Database")
         const metaScore = obj.Ratings.filter(x => x.Source === "Metacritic")
@@ -28,7 +28,7 @@ export default function ItemInfo({ item }: ModalContentProps):JSX.Element {
 
     if (item.Ratings) {
         currRating = genItemRating(item)
-    } 
+    }
 
     let itemType
     if (item.Type && item.Type !== 'N/A') {
@@ -39,7 +39,11 @@ export default function ItemInfo({ item }: ModalContentProps):JSX.Element {
 
     return (
         <div className='item-info'>
-            {item.Title !== 'N/A' && <h3>{item.Title}</h3>}
+            {item.Title !== 'N/A' &&
+                <div className="title-container">
+                    <h3>{item.Title}</h3>
+                </div>
+            }
             {item.Director !== 'N/A' && <h4>Directed by: {item.Director}</h4>}
             {item.Year !== 'N/A' && <h4>Released: {item.Year}</h4>}
             {item.Rated !== 'N/A' && <h4>Rated: {item.Rated}</h4>}

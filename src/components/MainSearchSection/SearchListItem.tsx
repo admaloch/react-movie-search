@@ -40,18 +40,21 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     <img src={Poster !== 'N/A' ? Poster : image_not_found}></img>
                 </div>
                 <div className="search-item-info">
-                    <h3>{Title}</h3>
+                 
+                        <h3>{Title}</h3>
+                    
+
                     {Year && <p>{Year}</p>}
                 </div>
             </li>
-            
-                <ListItemModal
-                    item={itemOnClick}
-                    open={isModalOpen}
-                    closeModal={closeItemModal}
-                    isLoading={isLoading}
-                />
-           
+
+            <ListItemModal
+                item={itemOnClick}
+                open={isModalOpen}
+                closeModal={closeItemModal}
+                isLoading={isLoading}
+            />
+
 
         </>
     )

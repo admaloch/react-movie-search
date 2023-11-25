@@ -10,14 +10,15 @@
 
 }
 
+
+
 .show-slider {
-    margin-top: 0rem;
+    margin-top: 3rem;
 }
 
 .hide-slider {
-    margin-top: 0rem;
+    margin-top: 6rem;
 }
-
 
 
 .main-search-section h1 {
@@ -37,7 +38,7 @@
 /* result type buttons */
 #result-type-container {
     display: flex;
-    margin: .5rem 0;
+    margin: .2rem 0;
     padding: 0;
 }
 
@@ -184,7 +185,7 @@
     display: -ms-flexbox;
     display: flex;
     align-items: center;
-    max-height: 40px;
+    max-height: 50px;
 }
 
 
@@ -199,7 +200,7 @@
 .search-item-thumbnail img {
     width: 40px;
     margin-right: 1rem;
-    max-height: 30px;
+    max-height: 40px;
 }
 
 
@@ -232,13 +233,7 @@
 }
 
 @media screen and (min-width: 375px) {
-    .show-slider {
-        margin-top: 1rem;
-    }
 
-    .hide-slider {
-        margin-top: 9rem;
-    }
 
 
 
@@ -255,9 +250,30 @@
         color: var(--color2);
     }
 }
+@media screen and (min-width: 414px) {
+    .show-slider {
+        margin-top: 3rem;
+    }
+    .hide-slider {
+        margin-top: 9rem;
+    }
+} 
+ @media screen and (min-width: 600px) {
+    .show-slider {
+        margin-top: 4rem;
+    }
+    .hide-slider {
+        margin-top: 10rem;
+    }
+}
 
 @media screen and (min-width: 768px) {
-
+    .show-slider {
+        margin-top: 6rem;
+    }
+    .hide-slider {
+        margin-top: 12rem;
+    }
 
     .search-list {
         max-height: 300px;
