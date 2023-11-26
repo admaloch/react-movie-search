@@ -1,12 +1,24 @@
 .error-msg-container {
     width: 100%;
-   
     display: flex;
     justify-content: center;
     align-items: center;
     border: black;
     opacity: 0;
     transition: all 1s ease-in;
+    position: relative;
+    bottom: 7rem;
+}
+
+@media screen and (min-width: 375px) {
+    .error-msg-container {
+        bottom: 10rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    .error-msg-container {
+        bottom: 13rem;
+    }
 }
 
 .error-msg-container p {
