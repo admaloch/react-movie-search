@@ -29,8 +29,6 @@ const SearchForm = (): JSX.Element => {
         updateApiState(results)
     }
 
-
-
     useEffect(
         function updateReqOnChange() {
             if (searchTerm.length > 2) {
