@@ -11,7 +11,7 @@ function ErrorMsg() {
     const [hideErrorMsg, sethideErrorMsg] = useState(true)
 
     useEffect(
-        function testData() {
+        function hideErrMsgStateHandler() {
             if (submittedSearch.length > 0 && apiResults.length === 0) {
                 sethideErrorMsg(false)
             } else if (!hideErrorMsg && submittedSearch.length === 0) {
@@ -23,7 +23,7 @@ function ErrorMsg() {
         [submittedSearch]
     )
     useEffect(
-        function eraseOnTypeChange() {
+        function eraseErrOnTypeChange() {
             sethideErrorMsg(true)
         }, [searchTypes]
     )
