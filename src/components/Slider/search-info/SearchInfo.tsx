@@ -35,9 +35,14 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         [submittedSearch, sliderIndex]
     );
 
+const headerStyle = isSliderActive 
+? {opacity: 1, height: '100%'}
+: {opacity: 0, height: '0'}
+
+
     return (
 
-        <div style={{ opacity: isSliderActive ? 1 : 0 }} className="header-info">
+        <div style={headerStyle} className="header-info">
             <h2>{currType.description} about: <span style={spanColor}>{currSearch}</span>
             </h2>
             <ProgressBar

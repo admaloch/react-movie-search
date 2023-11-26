@@ -23,8 +23,8 @@ function ErrorMsg() {
         [submittedSearch]
     )
     const errorStyle = isSearchValid
-        ? { opacity: 0 }
-        : { opacity: 1 }
+        ? { opacity: 0, height: '0px' }
+        : { opacity: 1, height: 'auto' }
     return (
         <div style={errorStyle} className="error-msg-container">
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>

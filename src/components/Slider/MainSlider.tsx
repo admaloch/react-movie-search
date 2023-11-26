@@ -69,6 +69,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     return (
         <>
+            <ErrorMsg />
             <SearchInfo
                 progBar={sliderIndex.progBar}
                 isSliderActive={isSliderActive}
@@ -83,7 +84,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
                 isSliderActive={isSliderActive}
             />
 
-            <ErrorMsg />
+
         </>
     )
 }

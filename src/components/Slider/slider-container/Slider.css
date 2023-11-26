@@ -1,18 +1,17 @@
 /* results slider */
 
+:root {
+    --slider-index: 0;
+}
+
 .slider-container {
     /* margin-top: 3rem; */
     display: flex;
     width: 100%;
-    height: 0;
+    height: auto;
     justify-content: center;
     opacity: 0;
     transition: all .5s ease-in-out;
-
-}
-
-:root {
-    --slider-index: 0;
 }
 
 .slider {
