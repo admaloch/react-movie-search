@@ -12,13 +12,13 @@
 
 
 
-.show-slider {
+/* .show-slider {
     margin-top: 1rem;
 }
 
 .hide-slider {
     margin-top: 5rem;
-}
+} */
 
 
 .main-search-section h1 {
@@ -92,7 +92,7 @@
     display: flex;
     position: relative;
     max-width: 90%;
-
+justify-content: space-evenly;
 }
 
 @media screen and (min-width: 768px) {
@@ -218,17 +218,18 @@
     margin: 0;
 }
 
-.animation-container {
-    display: inline-block;
+/* .animation-container {
     position: absolute;
-    left: 13.5rem;
+    left: 12.5rem;
     height: 100%;
+    width: 70px;
+    background-color: yellow;
 
-}
+} */
 
 @media screen and (min-width: 375px) {
     .animation-container {
-        left: 15.5rem;
+        left: 10.5rem;
     }
 }
 

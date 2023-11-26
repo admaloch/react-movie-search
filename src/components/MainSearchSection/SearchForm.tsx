@@ -29,6 +29,8 @@ const SearchForm = (): JSX.Element => {
         updateApiState(results)
     }
 
+
+
     useEffect(
         function updateReqOnChange() {
             if (searchTerm.length > 2) {
@@ -63,7 +65,7 @@ const SearchForm = (): JSX.Element => {
                 onChange={(e) => updateSearchState(e.target.value)}
             />
             <KeyRequestAnimation isLoading={isLoading} />
-            <button>Search</button>
+            <button onClick={()=> setIsLoading(false)}>Search</button>
             <SearchList
                 isListShown={isListShown}
                 hideList={hideSearchList}

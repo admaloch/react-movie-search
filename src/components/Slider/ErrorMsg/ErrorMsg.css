@@ -6,11 +6,11 @@
     border: black;
     opacity: 0;
     transition: all 1s ease-in;
-    position: relative;
-    bottom: 7rem;
+    /* position: relative; */
+    /* bottom: 7rem; */
 }
 
-@media screen and (min-width: 375px) {
+/* @media screen and (min-width: 375px) {
     .error-msg-container {
         bottom: 10rem;
     }
@@ -19,7 +19,7 @@
     .error-msg-container {
         bottom: 13rem;
     }
-}
+} */
 
 .error-msg-container p {
     color: var(--color2);

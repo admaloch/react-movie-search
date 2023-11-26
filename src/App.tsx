@@ -18,6 +18,7 @@ function App() {
     <TypeProvider>
       <APIProvider>
         <Navbar />
+        <div className="content-container">
           <MainSearch
             isSliderActive={isSliderActive}
             hideSlider={hideSlider}
@@ -27,6 +28,8 @@ function App() {
             showSlider={showSlider}
             hideSlider={hideSlider}
           />
+        </div>
+
         <Footer />
       </APIProvider>
     </TypeProvider>

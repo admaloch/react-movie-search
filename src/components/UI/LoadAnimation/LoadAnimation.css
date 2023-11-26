@@ -1,9 +1,7 @@
-.animation-container .load-animation {
-
+.load-animation {
+  position: absolute;
+  right: 12.5rem;
   transition: 1.5s opacity ease-in;
-  width: auto;
-  height: 100%;
-  /* border: black solid 1px; */
 }
 
 
@@ -15,7 +13,7 @@
   height: 5px;
   border-radius: 50%;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  left: 100px;
+
 }
 
 
@@ -23,7 +21,9 @@
 @media screen and (min-width: 768px) {
   .load-animation div {
     top: 25px;
-    left: 90px;
+  }
+  .load-animation {
+    right: 12rem;
   }
 }
 

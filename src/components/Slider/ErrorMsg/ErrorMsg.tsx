@@ -6,23 +6,29 @@ import { useTypeContext } from '../../../store/searchTypeContext/TypeContext'
 import './ErrorMsg.css'
 
 function ErrorMsg() {
-    const { currType } = useTypeContext()
+    const { currType, searchTypes } = useTypeContext()
     const { submittedSearch, apiResults } = useAPIContext()
-    const [isSearchValid, setIsSearchValid] = useState(true)
+    const [hideErrorMsg, sethideErrorMsg] = useState(true)
 
     useEffect(
         function testData() {
             if (submittedSearch.length > 0 && apiResults.length === 0) {
-                setIsSearchValid(false)
-            } else if (!isSearchValid && submittedSearch.length === 0) {
+                sethideErrorMsg(false)
+            } else if (!hideErrorMsg && submittedSearch.length === 0) {
                 return;
             } else {
-                setIsSearchValid(true)
+                sethideErrorMsg(false)
             }
         },
         [submittedSearch]
     )
-    const errorStyle = isSearchValid
+    useEffect(
+        function eraseOnTypeChange() {
+            sethideErrorMsg(true)
+        }, [searchTypes]
+    )
+
+    const errorStyle = hideErrorMsg
         ? { opacity: 0, height: '0px' }
         : { opacity: 1, height: 'auto' }
     return (
