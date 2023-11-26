@@ -1,14 +1,16 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAPIContext } from '../../../store/APIContext/APIContext'
 import { useTypeContext } from '../../../store/searchTypeContext/TypeContext'
+import { useSpring, animated } from 'react-spring'
 import './ErrorMsg.css'
 
 function ErrorMsg() {
     const { currType } = useTypeContext()
     const { submittedSearch, apiResults } = useAPIContext()
     const [isSearchValid, setIsSearchValid] = useState(true)
+
+    console.log("react-spring loaded successfully");
 
     useEffect(
         function testData() {
@@ -22,13 +24,17 @@ function ErrorMsg() {
         },
         [submittedSearch]
     )
-    const errorStyle = isSearchValid
-        ? { opacity: 0, height: '0px' }
-        : { opacity: 1, height: 'auto' }
+
+    // Define the fade animation
+    const fade = useSpring({
+        opacity: isSearchValid ? 0 : 1, // If isSearchValid is true, set opacity to 0 (fade out), otherwise set it to 1 (fade in)
+    })
+
     return (
-        <div style={errorStyle} className="error-msg-container">
+        <animated.div style={fade} className="error-msg-container">
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>
-        </div>
+        </animated.div>
     )
 }
+
 export default React.memo(ErrorMsg)
