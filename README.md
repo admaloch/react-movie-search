@@ -1,19 +1,20 @@
 # React-movie-search
 
-<b>About this project:</b><br/> 
-This is a rebuild of a movie search app I originally made with vanilla JS https://github.com/admaloch/js-movie-search. It allows you to search for movies, tv shows or both. The movie data is from OMDB API. The intent of this project was to get some practice with React, TypeScript, asynchronous Javascript and working with APIs.
+<b>About this Project:</b><br/>
+This project is a reconstruction of a [movie search app project](https://github.com/admaloch/js-movie-search) initially developed with vanilla JS. It allows the user to search for movies, TV shows, or both, utilizing movie data from the OMDB API. The primary goal of this project was to practice my React and TypeScript skills.
 
-<b>Technologies used:</b><br/> 
---React<br/>
---Typescript<br/>
---JavaScript<br/>
---OMDB API: https://www.omdbapi.com/<br/>
+<b>Technologies Used:</b><br/>
+--<b>React</b><br/>
+--<b>Typescript</b><br/>
+--<b>JavaScript</b><br/>
+--<b>[OMDB API](https://www.omdbapi.com/)<br/>
 
-<b>Takeaways:</b><br/> 
-The basis of the project had already been completed in the original app, so this was a good opportunity to focus purely on applying React concepts effectively and learning good practices for state management and component structuring. The most challenging part of this project was using hooks I wasn't comfortable with yet, such as useReducer, useRefs, portals, context api, and useMemo. I reworked multiple parts of the project to experiment with different means of state management, and reworked the component strucuture on multiple occasions. The project was a great way to dive into some of these react concepts and refine these skills. 
+<b>Takeaways:</b><br/>
+While the core of the project was already completed in the original app, this rebuild presented an excellent opportunity to solely focus on implementing React concepts effectively and adopting best practices for state management and component structuring. The most challenging aspect involved using hooks that were unfamiliar, such as useReducer, useRef, portals, context API, and useMemo. Multiple parts of the project were reworked to experiment with different state management techniques, and the component structure underwent several revisions. This project served as a valuable exploration of React concepts, contributing to the refinement of these skills.
 
-<b>Current status:</b><br/> 
-The project is currently finished.
+<b>Current Status:</b><br/>
+The project is complete.
 
-<b>Note:</b><br/> 
-This app has a search input that runs api calls on key press, but OMDB prevents that if the request returns too many results so it only works with 3 letters or more. 
+<b>Note:</b><br/>
+The app features a search input triggering API calls on key presses. However, please be aware that OMDB restricts requests if the response yields too many results, allowing searches with three letters or more.
+
