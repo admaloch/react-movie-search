@@ -76,7 +76,6 @@ body {
     color: var(--text);
     font-family: 'Oswald', sans-serif;
     letter-spacing: .3rem;
-    overflow-x: hidden;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -89,6 +88,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden;
 }
 
 

@@ -51,7 +51,7 @@
     list-style: none;
     padding: .5rem 1rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -125,6 +125,7 @@ justify-content: space-evenly;
     border-right: none;
     transition: all .3s ease-in-out;
     background-color: var(--mainBackground);
+    font-size: 1.5rem;
 
 }
 
