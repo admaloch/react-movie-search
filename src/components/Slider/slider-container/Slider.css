@@ -416,17 +416,7 @@
     }
 }
 
-@media screen and (max-width: 481px) {
-    .handle {
-        display: none;
-    }
 
-    .result-container {
-        width: 100%;
-        height: 100vh;
-
-    }
-}
 
 
 

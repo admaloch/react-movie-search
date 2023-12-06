@@ -22,8 +22,11 @@ html {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-size: 8px;
 
 }
+
+
 
 
 /* scrollbar style change */
@@ -81,6 +84,7 @@ body {
     flex-direction: column;
     align-items: center;
     overscroll-behavior: none;
+    font-size: 1rem;
 }
 
 #root {
