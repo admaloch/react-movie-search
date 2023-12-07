@@ -22,7 +22,7 @@ html {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-size: 8px;
+    font-size: 7px;
 
 }
 
@@ -118,37 +118,29 @@ Medium	md	≥768px
 Large	lg	≥992px
 Extra large	xl	≥1200px
 Extra extra large	xxl	≥1400px */
-@media screen and (max-width: 1500px) {
+@media screen and (min-width: 360px) {
     :root {
-        font-size: 13px;
+        font-size: 10px;
     }
-
-
-}
-
-@media screen and (max-width: 1375px) {
+} 
+@media screen and (min-width: 414px) {
     :root {
-        font-size: 12px;
+        font-size: 11px;
     }
-
-}
-
-
-
-
-
-
-@media screen and (max-width: 992px) {
+} 
+@media screen and (min-width: 540px) {
     :root {
         font-size: 12px;
     }
-
-}
-
+} 
 
 
-@media screen and (max-width: 576px) {
-    :root {
-        font-size: 9px;
-    }
-}
+
+
+
+
+
+
+
+
+

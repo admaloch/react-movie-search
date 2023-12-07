@@ -1,6 +1,6 @@
 .load-animation {
   position: absolute;
-  right: 12.5rem;
+  right: 14.5rem;
   transition: 1.5s opacity ease-in;
 }
 
@@ -8,7 +8,7 @@
 
 .load-animation div {
   position: absolute;
-  top: 19px;
+  top: 17px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -18,6 +18,22 @@
 
 
 
+@media screen and (min-width: 360px) {
+  .load-animation div {
+    top: 19.5px;
+  }
+  .load-animation {
+    right: 13.5rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .load-animation div {
+    top: 22.5px;
+  }
+  .load-animation {
+    right: 12.5rem;
+  }
+}
 @media screen and (min-width: 768px) {
   .load-animation div {
     top: 25px;
@@ -26,6 +42,12 @@
     right: 12rem;
   }
 }
+/* @media screen and (min-width: 768px) {
+
+  .load-animation {
+    right: 11rem;
+  }
+} */
 
 .load-animation div:nth-child(1) {
   left: 8px;

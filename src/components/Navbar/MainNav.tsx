@@ -21,7 +21,7 @@ export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
                                 flexGrow: 1,
                                 color: 'var(--mainBackground)',
                                 fontFamily: 'Poppins',
-                                fontSize: '2rem',
+                                fontSize: '2.5rem',
                                 fontWeight: '800',
                             }}>
                             Movie Seach
@@ -32,9 +32,9 @@ export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ fontSize: '4rem', mr: 1, color: 'var(--mainBackground)' }}
+                            sx={{  color: 'var(--mainBackground)' }}
                         >
-                            <InfoIcon />
+                            <InfoIcon sx={{ fontSize: '2rem'}} />
                         </IconButton>
                     </Toolbar>
                 </AppBar>

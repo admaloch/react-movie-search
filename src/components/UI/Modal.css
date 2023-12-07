@@ -49,7 +49,7 @@
   .modal-container {
     border-radius: 5px;
     --modal-width: 80%;
-    --modal-height: 65%;
+    --modal-height: 80%;
   }
 }
 
@@ -79,12 +79,12 @@
   cursor: pointer;
 }
 
-@media only screen and (max-device-width: 1000px) and (orientation: landscape) {
+/* @media only screen and (max-device-width: 1000px) and (orientation: landscape) {
   .modal-container {
     --modal-width: 100% !important;
     --modal-height: 100% !important;
   }
-}
+} */
 
 
 

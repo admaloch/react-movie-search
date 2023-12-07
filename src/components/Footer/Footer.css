@@ -11,6 +11,10 @@
 
 }
 
+.footer p, .footer a {
+    font-size: 1.2rem;
+}
+
 .footer a {
   color: var(--mainBackground);
     transition: .3s all ease-in-out;
