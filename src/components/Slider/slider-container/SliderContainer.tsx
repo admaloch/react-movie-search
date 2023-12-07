@@ -5,6 +5,7 @@ import './Slider.css'
 import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { DisplaySettings } from '@mui/icons-material';
 
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 
@@ -47,7 +48,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
 
         <div
 
-            style={containerStyle}
+            style={{ opacity: isSliderActive ? 1 : 0 }}
             className="slider-container">
             <button
                 onMouseEnter={handleSliderMouseEnter}
@@ -56,7 +57,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 onClick={decreaseIndexHandler}
                 className="handle left-handle " >
                 <div className="arrow">
-                    <ArrowBackIcon className='arrow-icon' sx={{fontSize: '3rem'}}/>
+                    <ArrowBackIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
             <Slider
@@ -70,7 +71,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
                 <div className="arrow">
-                    <ArrowForwardIcon className='arrow-icon' sx={{fontSize: '3rem'}}/>
+                    <ArrowForwardIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
         </div >

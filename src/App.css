@@ -149,6 +149,6 @@ Extra extra large	xxl	≥1400px */
 
 @media screen and (max-width: 576px) {
     :root {
-        font-size: 11px;
+        font-size: 9px;
     }
 }
