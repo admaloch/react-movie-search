@@ -5,10 +5,18 @@
     align-items: center;
     border: black;
     opacity: 0;
-    transition: opacity .2s ease-in-out;
-
+    transition: opacity .5s ease-in-out;
     /* position: relative; */
     /* bottom: 7rem; */
+}
+
+@media screen and (min-width:816px) {
+    .error-msg-container {
+        position: relative;
+        bottom: 4rem;
+        /* position: relative; */
+        /* bottom: 7rem; */
+    }
 }
 
 

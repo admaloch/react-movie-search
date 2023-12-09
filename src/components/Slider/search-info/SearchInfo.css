@@ -80,9 +80,11 @@ height: 100%;
 .show-header {
     opacity: 1;
     height: auto;
+    width: auto;
  
 }
 .remove-header {
     opacity: 0;
 height: 0;
+width: 0;
 }

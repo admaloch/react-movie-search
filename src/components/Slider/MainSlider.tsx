@@ -69,7 +69,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     return (
         <>
-            
+             
             <SearchInfo
                 progBar={sliderIndex.progBar}
                 isSliderActive={isSliderActive}
@@ -83,7 +83,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
             />
-            <ErrorMsg />
+           <ErrorMsg />
 
 
         </>
