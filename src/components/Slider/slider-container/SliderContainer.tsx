@@ -29,9 +29,9 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
         }
     };
 
-    const containerStyle = isSliderActive
-        ? { opacity: 1, height: 'auto' }
-        : { opacity: 0, height: '0' }
+    const sliderClass = isSliderActive
+        ? 'show-slider slider-container'
+        : 'remove-slider slider-container'
 
     useEffect(
         function hideArrowsOnSmallRequests() {
@@ -47,9 +47,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     return (
 
         <div
-
-            style={{ opacity: isSliderActive ? 1 : 0 }}
-            className="slider-container">
+            className={sliderClass}>
             <button
                 onMouseEnter={handleSliderMouseEnter}
                 onMouseLeave={handleSliderMouseLeave}

@@ -11,7 +11,7 @@
     height: auto;
     justify-content: center;
     opacity: 0;
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 @media only screen and (orientation: landscape) {
@@ -136,6 +136,11 @@
     align-items: center;
     width: 100%;
 
+}
+@media screen and (min-width: 992px) {
+    .item-info {
+padding: 0 1rem;
+    }
 }
 
 .hover-btn-container {
@@ -447,4 +452,13 @@
 
 .circle-container span {
     color: var(--color2);
+}
+
+.show-slider {
+    opacity: 1;
+    height: 100%;
+}
+.remove-slider {
+    opacity: 0;
+    height: 0;
 }

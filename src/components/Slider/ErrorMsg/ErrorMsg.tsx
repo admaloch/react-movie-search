@@ -8,7 +8,7 @@ import './ErrorMsg.css'
 function ErrorMsg() {
     const { currType, searchTypes } = useTypeContext()
     const { submittedSearch, apiResults } = useAPIContext()
-    const [showErrorMsg, setShowErrorMsg] = useState(true)
+    const [showErrorMsg, setShowErrorMsg] = useState(false)
 
     useEffect(
         function hideErrMsgStateHandler() {
@@ -28,12 +28,12 @@ function ErrorMsg() {
         }, [searchTypes]
     )
 
-    const errorStyle = showErrorMsg
-        ? { opacity: 1, height: 'auto' }
-        : { opacity: 0, height: '0px' }
-        
+    const errorClass = showErrorMsg
+        ? 'error-msg-container show-error'
+        : 'error-msg-container remove-error'
+
     return (
-        <div style={errorStyle} className="error-msg-container">
+        <div className={errorClass}>
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>
         </div>
     )

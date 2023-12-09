@@ -81,9 +81,10 @@ body {
     letter-spacing: .3rem;
     display: flex;
     width: 100%;
+   overflow-x: hidden;
     flex-direction: column;
     align-items: center;
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
     font-size: 1rem;
 }
 
@@ -93,13 +94,18 @@ body {
     flex-direction: column;
     justify-content: space-between;
     overflow-x: hidden;
+    width: 100vw;
 }
 
-.add-opacity {
-    opacity: 1;
+.content-container {
+    position: relative;
+    bottom: 2rem;
 }
-.remove-opacity {
-    opacity: 1;
+
+@media screen and (min-width: 816px) {
+    .content-container {
+        bottom: 0rem;
+    }
 }
 
 
