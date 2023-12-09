@@ -31,14 +31,12 @@
 
 
 
-.main-search-section form {
-    margin-top: 1rem;
-}
+
 
 /* result type buttons */
 #result-type-container {
     display: flex;
-    margin: .2rem 0;
+    /* margin: .2rem 0; */
     padding: 0;
 }
 
@@ -265,7 +263,7 @@ justify-content: space-evenly;
 
     #result-type-container {
         display: flex;
-        margin: 1rem 0;
+        /* margin: 1rem 0; */
         padding: 0;
     }
 

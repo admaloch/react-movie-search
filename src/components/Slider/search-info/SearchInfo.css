@@ -1,9 +1,9 @@
 .header-info {
     display: flex;
     opacity: 0;
-    width: 100vw;
+    /* width: 100vw; */
     transition: opacity 1s ease-in-out;
-height: auto;
+height: 100%;
     margin: 1.3rem 0;
     flex-direction: column;
     align-items: center;
@@ -21,9 +21,10 @@ height: auto;
     justify-content: end;
     align-items: center;
     gap: .25rem;
-    /* width: 50%; */
     margin-right: 0;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    height: 100%;
+    border: pink solid 1px;
 }
 
 .progress-item {
@@ -56,18 +57,11 @@ height: auto;
 @media screen and (min-width: 600px) {
     .header-info {
         justify-content: space-evenly;
-  margin: 2rem 0;
+  /* margin: 2rem 0; */
         flex-direction: row;
         align-items: center;
     }
 
-    .progress-bar {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        align-items: center;
-        gap: .25rem;
-        /* width: 50%; */
-        margin-right: 0;
-    }
+
 }
+

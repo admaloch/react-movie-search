@@ -95,7 +95,12 @@ body {
     overflow-x: hidden;
 }
 
-
+.add-opacity {
+    opacity: 1;
+}
+.remove-opacity {
+    opacity: 1;
+}
 
 
 
@@ -131,6 +136,11 @@ Extra extra large	xxl	≥1400px */
 @media screen and (min-width: 540px) {
     :root {
         font-size: 12px;
+    }
+} 
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 13px;
     }
 } 
 
