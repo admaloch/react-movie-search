@@ -29,7 +29,6 @@ function App() {
             hideSlider={hideSlider}
           />
         </div>
-
         <Footer />
       </APIProvider>
     </TypeProvider>
