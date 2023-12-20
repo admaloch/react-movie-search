@@ -1,4 +1,3 @@
-import React from 'react'
 import { ModalContentProps } from '../../../models/ListItemProps'
 import { APIItem } from '../../../models/ItemApiProps'
 

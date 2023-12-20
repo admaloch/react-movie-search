@@ -1,4 +1,3 @@
-import React from "react";
 import ProgressItem from "./ProgressItem";
 import ProgressBarProps from "../../../models/ProgressBar";
 

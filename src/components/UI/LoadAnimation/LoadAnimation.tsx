@@ -1,6 +1,5 @@
 import LoadingProps from '../../../models/LoadingProps'
 import './LoadAnimation.css'
-import React from 'react'
 
 export default function LoadAnimation({ isLoading }: LoadingProps): JSX.Element {
 

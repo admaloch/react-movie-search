@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import ItemModal from "../../ItemModal/ItemModal"
 import Modal from "../../UI/Modal"
 import ItemContent from "./ItemContent"

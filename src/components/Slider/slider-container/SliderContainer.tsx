@@ -5,7 +5,6 @@ import './Slider.css'
 import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { DisplaySettings } from '@mui/icons-material';
 
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 

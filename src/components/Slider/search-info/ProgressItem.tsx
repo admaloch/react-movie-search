@@ -1,4 +1,3 @@
-import React from "react"
 import ProgressItemProps from "../../../models/ProgressItemProps"
 
 const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): JSX.Element => {

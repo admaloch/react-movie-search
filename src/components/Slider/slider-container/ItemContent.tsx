@@ -1,4 +1,3 @@
-import React from 'react'
 import ItemInfo from './ItemInfo'
 import MoreInfoBtn from './MoreInfoBtn'
 import BioOverlay from './BioOverlay'

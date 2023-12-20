@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { TypeObj, searchTypeOptions } from "./SearchTypeOptions"
 import TypeProviderContextProps from "../../models/TypeProviderContextProps"
 

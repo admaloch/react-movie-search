@@ -1,6 +1,4 @@
-import LoadingProps from '../../../models/LoadingProps'
 import './CircleAnimation.css'
-import React from 'react'
 
 export default function CircleAnimation(): JSX.Element {
     return (
