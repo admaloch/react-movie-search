@@ -35,7 +35,7 @@ export function TypeProvider({ children }: TypeProviderContextProps): JSX.Elemen
     )
 
     return (
-        <TypeContext.Provider value={ memoizedContextValue }>
+        <TypeContext.Provider value={memoizedContextValue}>
             {children}
         </TypeContext.Provider>
     )
