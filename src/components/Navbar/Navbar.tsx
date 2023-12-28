@@ -10,7 +10,6 @@ export default function Navbar() {
 
     return (
         <>
-        
             <MainNav openModal={openModal} />
             <InfoModal
                 closeModal={closeModal}
