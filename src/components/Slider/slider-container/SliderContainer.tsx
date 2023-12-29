@@ -6,11 +6,12 @@ import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
+// ... (your existing imports)
+
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 
     const [showArrows, setShowArrows] = useState(true)
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
-
 
     const handleSliderMouseEnter = (event: React.MouseEvent) => {
         const target = event.target as HTMLElement;
@@ -26,6 +27,14 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
         if (!target.classList.contains('slider-item')) {
             setShowArrows(true);
         }
+    };
+
+    const handleSliderTouchStart = () => {
+        setShowArrows(true);
+    };
+
+    const handleSliderTouchEnd = () => {
+        setShowArrows(false);
     };
 
     const sliderClass = isSliderActive
@@ -44,15 +53,14 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     )
 
     return (
-
         <div
-            className={sliderClass}>
+            className={sliderClass}
+
+        >
             <button
-                onMouseEnter={handleSliderMouseEnter}
-                onMouseLeave={handleSliderMouseLeave}
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
-                className="handle left-handle " >
+                className="handle left-handle" >
                 <div className="arrow">
                     <ArrowBackIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
@@ -60,10 +68,10 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
             <Slider
                 mouseLeave={handleSliderMouseLeave}
                 mouseEnter={handleSliderMouseEnter}
+                onTouchStart={handleSliderTouchStart}
+                onTouchEnd={handleSliderTouchEnd}
             />
             <button
-                onMouseEnter={handleSliderMouseEnter}
-                onMouseLeave={handleSliderMouseLeave}
                 style={arrowStyle}
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
@@ -74,4 +82,5 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
         </div >
     )
 }
+
 export default SliderContainer;
