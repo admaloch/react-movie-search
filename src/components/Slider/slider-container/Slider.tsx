@@ -6,7 +6,7 @@ import SliderItem from './SliderItem';
 import SlidersProps from '../../../models/SlidersProps';
 import { APIResults } from '../../../store/APIContext/APIContextInterface';
 
-const Slider = ({ mouseEnter, mouseLeave }: SlidersProps): JSX.Element => {
+const Slider = ({ mouseEnter, mouseLeave, mobileTouch, mobileLeave }: SlidersProps): JSX.Element => {
 
     const [sliderRes, setSliderRes] = useState<APIResults[]>([])
     const { submittedSearch, apiResults } = useAPIContext()
@@ -23,6 +23,8 @@ const Slider = ({ mouseEnter, mouseLeave }: SlidersProps): JSX.Element => {
             className="slider"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}
+            onTouchStart={mobileTouch}
+            onTouchEnd={mobileLeave}
         >
             {sliderRes.map(item => (
                 <SliderItem

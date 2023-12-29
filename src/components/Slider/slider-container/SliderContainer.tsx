@@ -66,10 +66,10 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 </div>
             </button>
             <Slider
-                mouseLeave={handleSliderMouseLeave}
                 mouseEnter={handleSliderMouseEnter}
-                onTouchStart={handleSliderTouchStart}
-                onTouchEnd={handleSliderTouchEnd}
+                mouseLeave={handleSliderMouseLeave}
+                mobileTouch={handleSliderTouchStart}
+                mobileLeave={handleSliderTouchEnd}
             />
             <button
                 style={arrowStyle}
