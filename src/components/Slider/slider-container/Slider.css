@@ -46,7 +46,7 @@
     border-radius: 50%;
     transition: transform .5s ease-in-out;
     display: inline-block;
-    z-index: 100;
+   
 }
 
 .movie-container:hover {

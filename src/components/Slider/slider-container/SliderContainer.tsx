@@ -12,11 +12,11 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
 
     const showArrowHandler = () => {
-        setTimeout(() => setShowArrows(true), 300)
+        setShowArrows(true)
 
     }
     const hideArrowHandler = () => {
-        setTimeout(() => setShowArrows(false), 300)
+        setShowArrows(false)
     }
 
     const sliderClass = isSliderActive

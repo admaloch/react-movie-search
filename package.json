@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://admaloch.github.io/react-movie-search", 
+  "homepage": "https://admaloch.github.io/react-movie-search",
   "scripts": {
     "dev": "vite",
     "build": "vite build --outDir=dist",
@@ -24,6 +24,7 @@
     "axios": "^1.5.1",
     "bootstrap": "^5.3.2",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "webfontloader": "^1.6.28"
   },

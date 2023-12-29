@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useTypeContext } from "../../../store/searchTypeContext/TypeContext";
 import SliderItemProps from "../../../models/SliderItemProps";
 import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps";
-import { hide } from "@popperjs/core";
+import { isMobile } from "react-device-detect"; // Import from react-device-detect
 
 const BASE_URL = 'https://omdbapi.com/?i=';
 const api_key = '&apikey=84200d7a';
@@ -17,12 +17,28 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
     const currItem = searchTypes.filter(item => item.isActive === true)[0]
     const searchParam = currItem.apiParam;
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
+    
 
-    async function mouseEnterHandler() {
+
+    function mouseEnterHandler() {
         hideArrowFunc();
-        const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
-        setItemOnHover(apiRes.data);
-        setIsLoading(false);
+        fetchData()
+    }
+
+    async function fetchData() {
+        try {
+            const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
+            setItemOnHover(apiRes.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            if (!isMobile) {
+                setIsLoading(false)
+            } else {
+                // this state causes issue on mobile but a slight delay fixes that
+                setTimeout(() => setIsLoading(false), 100)
+            }
+        }
     }
 
     return (
