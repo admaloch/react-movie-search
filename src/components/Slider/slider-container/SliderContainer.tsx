@@ -6,8 +6,6 @@ import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-// ... (your existing imports)
-
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 
     const [showArrows, setShowArrows] = useState(true)
@@ -53,10 +51,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     )
 
     return (
-        <div
-            className={sliderClass}
-
-        >
+        <div className={sliderClass}>
             <button
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
