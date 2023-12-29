@@ -35,10 +35,14 @@ export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.
         itemType = null
     }
 
+
+
     return (
-        <div 
-        className='item-info'
-        onMouseEnter={closeBioOverlay}
+        <div
+            className='item-info'
+            onMouseEnter={closeBioOverlay}
+            onTouchEnd={closeBioOverlay}
+
         >
             {item.Title !== 'N/A' &&
                 <div className="title-container">

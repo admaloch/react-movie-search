@@ -19,6 +19,8 @@ export default function ItemContent({ item, openItemModal }: ItemContentProps): 
         setRevealBio(false)
     }
 
+ 
+
     return (
         <>
             <ItemInfo

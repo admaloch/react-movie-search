@@ -40,6 +40,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
             }
         }
     }
+    
 
     return (
         <div
