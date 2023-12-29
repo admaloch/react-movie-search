@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useAPIContext } from '../../../store/APIContext/APIContext';
@@ -31,6 +30,8 @@ const Slider = ({ mouseEnter, mouseLeave, mobileTouch, mobileLeave }: SlidersPro
                     poster={item.Poster}
                     imdbID={item.imdbID}
                     key={item.imdbID}
+                    onTouchStart={mobileTouch}
+                    onTouchEnd={mobileLeave}
                 />
             ))}
         </div>
