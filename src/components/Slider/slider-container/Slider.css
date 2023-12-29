@@ -89,7 +89,7 @@
     padding: .2rem;
 }
 
-.info-container:hover {
+.movie-container:hover .info-container:hover {
     opacity: 1;
 }
 

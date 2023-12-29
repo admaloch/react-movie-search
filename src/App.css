@@ -131,17 +131,17 @@ Extra large	xl	≥1200px
 Extra extra large	xxl	≥1400px */
 @media screen and (min-width: 360px) {
     :root {
-        font-size: 10px;
+        font-size: 9px;
     }
 } 
 @media screen and (min-width: 414px) {
     :root {
-        font-size: 11px;
+        font-size: 10px;
     }
 } 
 @media screen and (min-width: 540px) {
     :root {
-        font-size: 12px;
+        font-size: 11px;
     }
 } 
 @media screen and (min-width: 768px) {

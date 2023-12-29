@@ -23,7 +23,7 @@ export default function MainNav({ openModal }: OpenModalProps): JSX.Element {
                                 fontSize: '2.5rem',
                                 fontWeight: '800',
                             }}>
-                            Movie Seach
+                            Movie Search
                         </Typography>
                         <IconButton
                             onClick={openModal}

@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://admaloch.github.io/react-movie-search",
+  "homepage": "https://admaloch.github.io/react-movie-search", 
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --outDir=dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
