@@ -46,7 +46,7 @@
     border-radius: 50%;
     transition: transform .5s ease-in-out;
     display: inline-block;
-   
+
 }
 
 .movie-container:hover {
@@ -186,7 +186,7 @@
     font-size: .7rem;
     cursor: default;
     margin: 0;
-    padding: 1rem;
+    padding: 1rem .2rem;
     justify-content: center;
     position: absolute;
     width: 100%;
@@ -200,6 +200,12 @@
     display: block;
     opacity: 0;
     height: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .bio-overlay {
+        padding: 1rem .6rem;
+    }
 }
 
 .show-bio {

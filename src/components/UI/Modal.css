@@ -19,8 +19,8 @@
 .modal-container {
   /* background-color: var(--mainBackground); */
   position: fixed;
-  --modal-width: 100%;
-  --modal-height: 100%;
+  --modal-width: 95%;
+  --modal-height: 90%;
   width: var(--modal-width);
   height: var(--modal-height);
   left: calc((100% - var(--modal-width))/2);
