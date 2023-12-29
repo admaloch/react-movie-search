@@ -15,15 +15,16 @@
 }
 
 @media only screen and (orientation: landscape) {
+
     /* Your styles for landscape orientation go here */
     .slider-container {
         /* margin-top: 3rem; */
-    margin-bottom: 4rem;
+        margin-bottom: 4rem;
     }
-  
+
     /* Add more styles as needed */
-  }
-  
+}
+
 
 .slider {
     --images-per-screen: 5;
@@ -45,14 +46,14 @@
     border-radius: 50%;
     transition: transform .5s ease-in-out;
     display: inline-block;
-
+    z-index: 100;
 }
 
 .movie-container:hover {
 
     transform: scale(1.5);
     /* filter: blur(3px); */
-    z-index: 100;
+    z-index: 200;
     flex-basis: 3;
 }
 
@@ -89,8 +90,8 @@
     padding: .2rem;
 }
 
-.movie-container:hover .info-container:hover {
-    opacity: 1;
+.movie-container:hover .info-container {
+    opacity: .9;
 }
 
 .title-container {
@@ -98,6 +99,7 @@
     overflow-y: scroll;
     margin-bottom: .2rem;
 }
+
 @media screen and (min-width: 414px) {
     .title-container {
         max-height: 70px;
@@ -136,9 +138,10 @@
     width: 100%;
 
 }
+
 @media screen and (min-width: 992px) {
     .item-info {
-padding: 0 1rem;
+        padding: 0 1rem;
     }
 }
 
@@ -457,6 +460,7 @@ padding: 0 1rem;
     opacity: 1;
     height: 100%;
 }
+
 .remove-slider {
     opacity: 0;
     height: 0;
