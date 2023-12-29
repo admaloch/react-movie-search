@@ -11,29 +11,13 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     const [showArrows, setShowArrows] = useState(true)
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
 
-    const handleSliderMouseEnter = (event: React.MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (target.classList.contains('handle') || target.classList.contains('arrow')) {
-            setShowArrows(true);
-        } else {
-            setShowArrows(false);
-        }
-    };
+    const showArrowHandler = () => {
+        setTimeout(() => setShowArrows(true), 300)
 
-    const handleSliderMouseLeave = (event: React.MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (!target.classList.contains('slider-item')) {
-            setShowArrows(true);
-        }
-    };
-
-    const handleSliderTouchStart = () => {
-        setShowArrows(true);
-    };
-
-    const handleSliderTouchEnd = () => {
-        setShowArrows(false);
-    };
+    }
+    const hideArrowHandler = () => {
+        setTimeout(() => setShowArrows(false), 300)
+    }
 
     const sliderClass = isSliderActive
         ? 'show-slider slider-container'
@@ -61,10 +45,8 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 </div>
             </button>
             <Slider
-                mouseEnter={handleSliderMouseEnter}
-                mouseLeave={handleSliderMouseLeave}
-                mobileTouch={handleSliderTouchStart}
-                mobileLeave={handleSliderTouchEnd}
+                showArrowFunc={showArrowHandler}
+                hideArrowFunc={hideArrowHandler}
             />
             <button
                 style={arrowStyle}

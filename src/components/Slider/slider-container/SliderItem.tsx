@@ -6,11 +6,12 @@ import axios from 'axios';
 import { useTypeContext } from "../../../store/searchTypeContext/TypeContext";
 import SliderItemProps from "../../../models/SliderItemProps";
 import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps";
+import { hide } from "@popperjs/core";
 
 const BASE_URL = 'https://omdbapi.com/?i=';
 const api_key = '&apikey=84200d7a';
 
-const SliderItem = ({ imdbID, poster, onTouchStart, onTouchEnd }: SliderItemProps): JSX.Element => {
+const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
     const { searchTypes } = useTypeContext()
     const currItem = searchTypes.filter(item => item.isActive === true)[0]
@@ -18,16 +19,16 @@ const SliderItem = ({ imdbID, poster, onTouchStart, onTouchEnd }: SliderItemProp
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
 
     async function mouseEnterHandler() {
-        const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
-        setItemOnHover(apiRes.data)
-        setIsLoading(false)
+        hideArrowFunc();
+        const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
+        setItemOnHover(apiRes.data);
+        setIsLoading(false);
     }
 
     return (
         <div
             onMouseEnter={mouseEnterHandler}
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
+            onMouseLeave={showArrowFunc}
             className="movie-container"
             data-id={imdbID}
         >
