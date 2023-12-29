@@ -28,6 +28,7 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
     <div
       ref={scrollDivRef}
       onMouseLeave={mouseLeaveHandler}
+      onTouchEnd={mouseLeaveHandler}
       style={styles}
       className='bio-overlay'>
       <h4>Overview</h4>
