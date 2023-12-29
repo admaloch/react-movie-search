@@ -8,6 +8,7 @@ import ItemContentProps from '../../../models/ItemContentProps'
 export default function ItemContent({ item, openItemModal }: ItemContentProps): JSX.Element {
 
     const [revealBio, setRevealBio] = useState(false)
+
     const openBioOverlay = () => {
         setRevealBio(true)
     }
@@ -18,7 +19,10 @@ export default function ItemContent({ item, openItemModal }: ItemContentProps): 
 
     return (
         <>
-            <ItemInfo item={item} />
+            <ItemInfo
+                closeBioOverlay={closeBioOverlay}
+                item={item}
+            />
 
             <div className="hover-btn-container">
                 {item.Plot !== 'N/A'

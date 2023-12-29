@@ -1,8 +1,7 @@
-import { ModalContentProps } from '../../../models/ListItemProps'
 import { APIItem } from '../../../models/ItemApiProps'
+import ItemInfoProps from '../../../models/ItemInfoProps'
 
-
-export default function ItemInfo({ item }: ModalContentProps): JSX.Element {
+export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element {
 
     // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
@@ -37,7 +36,10 @@ export default function ItemInfo({ item }: ModalContentProps): JSX.Element {
     }
 
     return (
-        <div className='item-info'>
+        <div 
+        className='item-info'
+        onMouseEnter={closeBioOverlay}
+        >
             {item.Title !== 'N/A' &&
                 <div className="title-container">
                     <h3>{item.Title}</h3>
