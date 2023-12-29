@@ -10,10 +10,12 @@ export default function ItemContent({ item, openItemModal }: ItemContentProps): 
     const [revealBio, setRevealBio] = useState(false)
 
     const openBioOverlay = () => {
+        console.log('open bio overlay ran')
         setRevealBio(true)
     }
 
     const closeBioOverlay = () => {
+        console.log('close bio overlay ran')
         setRevealBio(false)
     }
 
