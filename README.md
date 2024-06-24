@@ -13,7 +13,7 @@ This project is a reconstruction of a [movie search app project](https://github.
 While the core of the project was already completed in the original app, this rebuild presented an excellent opportunity to solely focus on implementing React concepts effectively and adopting best practices for state management and component structuring. The most challenging aspect involved using hooks that were unfamiliar, such as useReducer, useRef, portals, context API, and useMemo. Multiple parts of the project were reworked to experiment with different state management techniques, and the component structure underwent several revisions. This project served as a valuable exploration of React concepts, contributing to the refinement of these skills.
 
 <b>Current Status:</b><br/>
-The project is complete.
+I intent to add a backend and implement CRUD functionality by allowing a user to setup an account and save lists of movies and write notes on each etc..
 
 <b>Note:</b><br/>
 The app features a search input triggering API calls on key presses. However, please be aware that OMDB restricts requests if the response yields too many results, allowing searches with three letters or more.
