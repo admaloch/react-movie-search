@@ -25,6 +25,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
 
     async function genApiRes() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
+        console.log(apiRes.data)
         setItemOnClick(apiRes.data)
         setIsLoading(false)
     }
@@ -40,9 +41,9 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     <img src={Poster !== 'N/A' ? Poster : image_not_found}></img>
                 </div>
                 <div className="search-item-info">
-                 
-                        <h3>{Title}</h3>
-                    
+
+                    <h3>{Title}</h3>
+
 
                     {Year && <p>{Year}</p>}
                 </div>

@@ -23,6 +23,7 @@ const SearchForm = (): JSX.Element => {
             results = req1.data.Search
             if (req2.data.Response === 'True') {
                 results = [...results, ...req2.data.Search]
+                console.log(results)
             }
         }
         setIsLoading(false)

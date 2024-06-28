@@ -17,7 +17,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
     const currItem = searchTypes.filter(item => item.isActive === true)[0]
     const searchParam = currItem.apiParam;
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
-    
+
 
 
     function mouseEnterHandler() {
@@ -28,6 +28,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
     async function fetchData() {
         try {
             const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
+            console.log(apiRes.data)
             setItemOnHover(apiRes.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -40,7 +41,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
             }
         }
     }
-    
+
 
     return (
         <div
