@@ -5,10 +5,13 @@
 
 
 <b>Technologies Used:</b><br/>
---<b>React</b><br/>
---<b>Typescript</b><br/>
---<b>JavaScript</b><br/>
---<b>[OMDB API](https://www.omdbapi.com/)<br/>
+<ul>
+  <li>React</li>
+  <li>TypeScript</li>
+  <li>JavaScript</li>
+  <li>[OMDB API](https://www.omdbapi.com/)</li>
+</ul>
+
 
 <h2>Takeaways:</h2>
 <p>While the core of the project was already completed in the original app, this rebuild presented an excellent opportunity to solely focus on implementing React concepts effectively and adopting best practices for state management and component structuring. The most challenging aspect involved using hooks that were unfamiliar, such as useReducer, useRef, portals, context API, and useMemo. Multiple parts of the project were reworked to experiment with different state management techniques, and the component structure underwent several revisions. This project served as a valuable exploration of React concepts.</p>
