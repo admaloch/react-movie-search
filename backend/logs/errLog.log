@@ -1,0 +1,3 @@
+20240701	19:07:46	a81e8611-b44c-481f-b706-35ab976f461b	ReferenceError: email is not defined	POST	/users	undefined
+20240701	19:09:03	80b0e002-4339-42e5-808c-d82195da18b0	ReferenceError: email is not defined	POST	/users	undefined
+20240701	19:12:22	15bc7df5-f0a6-42cc-9fb9-a7abd73b818a	ValidationError: User validation failed: email: Path `email` is required.	POST	/users	undefined

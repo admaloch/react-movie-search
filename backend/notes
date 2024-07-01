@@ -1,0 +1,2 @@
+install
+npm i express mongoose nodemon date-fns uuid cookie-parser cors dotenv express-async-handler bcrypt passport passport-local passport-local-mongoose
