@@ -40,8 +40,11 @@ const createNewUser = asyncHandler(async (req, res) => {
     const duplicateEmail = await User.findOne({ email }).lean().exec()
     const duplicateUser = await User.findOne({ username }).lean().exec()
 
-    if (duplicateEmail | duplicateUser) {
-        return res.status(409).json({ message: genDupErrMsg(duplicateEmail, duplicateUser) }) //helper func to cleanup/avoid duplication (code)
+    if (duplicateEmail) {
+        return res.status(409).json({ message: 'Duplicate email' })
+    }
+    if (duplicateUser) {
+        return res.status(409).json({ message: 'Duplicate user' })
     }
 
     // Hash password
@@ -63,30 +66,29 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, reviews, password } = req.body
+    const { _id, email, username, reviews, password } = req.body
 
     // Confirm data
-    if (!id || !username || email) {
+    if (!_id || !username || !email) {
         return res.status(400).json({ message: 'All fields except password are required' })
     }
 
     // Does the user exist to update?
     //no .lean becuase we need this to be mongoose doc with .save() etc
-    const user = await User.findById(id).exec()
+    const user = await User.findById(_id).exec()
 
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
     }
 
-    // Check for duplicate
-    const duplicateUser = await User.findOne({ username }).lean().exec()
     const duplicateEmail = await User.findOne({ email }).lean().exec()
+    const duplicateUser = await User.findOne({ username }).lean().exec()
 
-    // Allow updates to the original user - avoid catching current user that is trying to update though with optional chaining
-    if (duplicateUser && duplicateUser?._id.toString() !== id ||
-        duplicateEmail && duplicateEmail?._id.toString() !== id
-    ) {
-        return res.status(409).json({ message: genDupErrMsg(duplicateEmail, duplicateUser) })
+    if (duplicateEmail) {
+        return res.status(409).json({ message: 'Duplicate email' })
+    }
+    if (duplicateUser) {
+        return res.status(409).json({ message: 'Duplicate user' })
     }
 
     user.username = username
@@ -108,21 +110,21 @@ const updateUser = asyncHandler(async (req, res) => {
 // @route DELETE /users
 // @access Private
 const deleteUser = asyncHandler(async (req, res) => {
-    const { id } = req.body
+    const { _id } = req.body
 
     // Confirm data
-    if (!id) {
+    if (!_id) {
         return res.status(400).json({ message: 'User ID Required' })
     }
 
     // Does the user still have assigned notes?
-    const review = await Review.findOne({ user: id }).lean().exec()
+    const review = await Review.findOne({ user: _id }).lean().exec()
     if (review) {
-        return res.status(400).json({ message: 'User has assigned notes' })
+        return res.status(400).json({ message: 'User has assigned reviews' })
     }
 
     // Does the user exist to delete?
-    const user = await User.findById(id).exec()
+    const user = await User.findById(_id).exec()
 
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
