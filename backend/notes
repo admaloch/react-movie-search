@@ -1,0 +1,32 @@
+
+//user
+{
+    "_id": "669d02fff25367573a23a183",
+    "email": "admaloch91@gmail.com",
+    "username": "dmoney666"
+}
+{
+    "_id": "669d08070e17bdec707b745d",
+    "email": "unclegoose@ymail.com",
+    "username": "CrazyGuy9891"
+}
+
+
+// review
+{
+  "imdbId": "tt2005151",
+  "body": "I, davis loved this movie",
+  "rating": 1,
+  "author": "669c1ce99c5036c0187079dd",
+  "_id": "669c1f4a5982e083fa4e48c7",
+},
+
+
+{
+    "_id": "669d26cb7b5ba0fc17cf2433",
+    "imdbId": "tt2005151",
+    "rating": 1,
+    "author": "669d08070e17bdec707b745d",
+    "__v": 0,
+    "body": "still love this moviesssss"
+  },
