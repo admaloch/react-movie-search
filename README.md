@@ -1,7 +1,7 @@
 # React-movie-search
 
 <h2>About the Project:</h2>
-<p>This project is a reconstruction of a [movie search app project](https://github.com/admaloch/js-movie-search) initially developed with vanilla JS. It allows the user to search for movies, TV shows, or both, utilizing movie data from the OMDB API. The primary goal of this project was to practice my React and TypeScript skills.</p>
+<p>This project is a reconstruction of a [movie search app project](https://github.com/admaloch/js-movie-search) initially developed with vanilla JS. It allows the user to search for movies, TV shows, or both, utilizing movie data from the OMDB API. The primary goal of this project was to refine my React and TypeScript skills.</p>   
 
 
 <b>Technologies Used:</b><br/>
