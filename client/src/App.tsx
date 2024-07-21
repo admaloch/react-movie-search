@@ -1,37 +1,20 @@
 import './App.css'
-import { useState } from 'react'
-import MainSearch from './components/MainSearchSection/MainSearch'
-import MainSlider from './components/Slider/MainSlider'
-import { APIProvider } from './store/APIContext/APIContext'
-import { TypeProvider } from './store/searchTypeContext/TypeContext'
-import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer/Footer'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import HomePage from './components/HomePage/HomePage'
+import MainPage from './components/MainPage'
+
+
 
 function App() {
 
-  const [isSliderActive, setIsSliderActive] = useState(false)
-  const showSlider = () => setIsSliderActive(true)
-  const hideSlider = () => setIsSliderActive(false)
 
-  return (
-    <TypeProvider>
-      <APIProvider>
-        <Navbar />
-        <div className="content-container">
-          <MainSearch
-            isSliderActive={isSliderActive}
-            hideSlider={hideSlider}
-          />
-          <MainSlider
-            isSliderActive={isSliderActive}
-            showSlider={showSlider}
-            hideSlider={hideSlider}
-          />
-        </div>
-        <Footer />
-      </APIProvider>
-    </TypeProvider>
-  )
+    return (
+        <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/search' element={<MainPage />} />
+            <Route path='*' element={<Navigate to='/' />} />  
+        </Routes >
+    )
 }
 
 export default App
