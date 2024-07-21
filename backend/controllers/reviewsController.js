@@ -57,6 +57,7 @@ const deleteReview = asyncHandler(async (req, res) => {
     const {reviewId, author} = req.body
     // const { reviewId } = req.params;
     // const author = req.user._id;
+    
     if (!reviewId || !author) {
         return res.status(400).json({ message: 'Review ID Required' });
     }
