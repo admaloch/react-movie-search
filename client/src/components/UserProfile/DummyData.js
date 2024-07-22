@@ -1,143 +1,65 @@
 export const DUMMY_DATA = [
-    {
-        "Title": "Dog Day Afternoon",
-        "Year": "1975",
-        "imdbID": "tt0072890",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BODExZmE2ZWItYTIzOC00MzI1LTgyNTktMDBhNmFhY2Y4OTQ3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-    },
-    {
-        "Title": "The Power of the Dog",
-        "Year": "2021",
-        "imdbID": "tt10293406",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BZGRhYjE2NWUtN2FkNy00NGI3LTkxYWMtMDk4Yjg5ZjI3MWI2XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg"
-    },
-    {
-        "Title": "Alpha Dog",
-        "Year": "2006",
-        "imdbID": "tt0426883",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjExODMyNzQzMl5BMl5BanBnXkFtZTYwNzMwNTg3._V1_SX300.jpg"
-    },
-    {
-        "Title": "Ghost Dog: The Way of the Samurai",
-        "Year": "1999",
-        "imdbID": "tt0165798",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ5ZTc1NjAtMGNjNi00ZDY1LWIyM2EtZmM1NTcwMjkzNmMyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Wag the Dog",
-        "Year": "1997",
-        "imdbID": "tt0120885",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMzRkZDVkMDItYjk3Mi00NDkyLThmODUtYzhkN2EwZmE2ZTljXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Dog Soldiers",
-        "Year": "2002",
-        "imdbID": "tt0280609",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BZTliZmI0ZTYtM2E3ZS00OWEwLWIwMDUtMjdhYjA5MmU3YWJmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-    },
-    {
-        "Title": "An Andalusian Dog",
-        "Year": "1929",
-        "imdbID": "tt0020530",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjZlY2RjM2ItZGEwOC00ODQwLWFhZDYtMjE3ODMyYWNiOWNlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Dog",
-        "Year": "2022",
-        "imdbID": "tt11252248",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BYjA2MDM2YjctYzNhNC00NGEzLWFmYWEtODExODFkNmUyOGE2XkEyXkFqcGdeQXVyODk2NDQ3MTA@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Man Bites Dog",
-        "Year": "1992",
-        "imdbID": "tt0103905",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BZDM3N2Q5MDktNTIyYi00ZTYxLWE4NWQtYjAyYzYxYmNlZTFmXkEyXkFqcGdeQXVyMTEyODk3NTgz._V1_SX300.jpg"
-    },
-    {
-        "Title": "Diary of a Wimpy Kid: Dog Days",
-        "Year": "2012",
-        "imdbID": "tt2023453",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2MTk4MTk4Nl5BMl5BanBnXkFtZTcwMzgzOTY2Nw@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Mad Dog and Glory",
-        "Year": "1993",
-        "imdbID": "tt0107473",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BYWViMGIzMzktNDhjYS00ZjVhLWFjOWQtMjVlMmRhZjI5ZDlkXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg"
-    },
-    {
-        "Title": "My Life as a Dog",
-        "Year": "1985",
-        "imdbID": "tt0089606",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNjQzYmFjZTUtMzU3NC00ZWYyLTkzNWItMWQ4MWE4YmZlMmJhXkEyXkFqcGdeQXVyNzQxNDExNTU@._V1_SX300.jpg"
-    },
-    {
-        "Title": "My Dog Skip",
-        "Year": "2000",
-        "imdbID": "tt0156812",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTc1NDgxMjg5MV5BMl5BanBnXkFtZTYwNTUxODc5._V1_SX300.jpg"
-    },
-    {
-        "Title": "The Shaggy Dog",
-        "Year": "2006",
-        "imdbID": "tt0393735",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTY0NzM0OTE1N15BMl5BanBnXkFtZTcwMjQ0NjIzMQ@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Red Dog",
-        "Year": "2011",
-        "imdbID": "tt0803061",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMzM3NTE2NjY5M15BMl5BanBnXkFtZTcwMTY0MzUwNg@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "A Boy and His Dog",
-        "Year": "1975",
-        "imdbID": "tt0072730",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BYjk4NjdiYzUtOGM0Zi00MDlkLWFjMDgtMmI5MDk2ZTY2NDQ0XkEyXkFqcGdeQXVyNjc5NjEzNA@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Stray Dog",
-        "Year": "1949",
-        "imdbID": "tt0041699",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNzgzNWQ4MDctNzNkYy00ZjU0LWE3MWItMTI4MWZlZTVjZWY4XkEyXkFqcGdeQXVyNjc5NjEzNA@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Clifford the Big Red Dog",
-        "Year": "2021",
-        "imdbID": "tt2397461",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BZGIxYTU5MzctY2MzNS00MTRhLWEwM2UtY2Q5Mzk3OTAzMzcwXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg"
-    },
-    {
-        "Title": "Dylan Dog: Dead of Night",
-        "Year": "2010",
-        "imdbID": "tt1013860",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM4ODE1OTU3NF5BMl5BanBnXkFtZTcwMzY2MTEwNQ@@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Dog Pound",
-        "Year": "2010",
-        "imdbID": "tt1422020",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM0NDY2ODEzNF5BMl5BanBnXkFtZTcwNTcxMDg2Mw@@._V1_SX300.jpg"
-    }
-]
+    { "imdbID": "tt0072890", "hasWatched": true },
+    { "imdbID": "tt10293406", "hasWatched": false }
+    // { "imdbID": "tt0426883", "hasWatched": true },
+    // { "imdbID": "tt0165798", "hasWatched": false },
+    // { "imdbID": "tt0120885", "hasWatched": true },
+    // { "imdbID": "tt0280609", "hasWatched": true },
+    // { "imdbID": "tt0020530", "hasWatched": false },
+    // { "imdbID": "tt11252248", "hasWatched": true },
+    // { "imdbID": "tt0103905", "hasWatched": true },
+    // { "imdbID": "tt2023453", "hasWatched": false },
+    // { "imdbID": "tt0107473", "hasWatched": true },
+    // { "imdbID": "tt0089606", "hasWatched": true },
+    // { "imdbID": "tt0156812", "hasWatched": false },
+    // { "imdbID": "tt0393735", "hasWatched": true },
+    // { "imdbID": "tt0803061", "hasWatched": true },
+    // { "imdbID": "tt0072730", "hasWatched": false },
+    // { "imdbID": "tt0041699", "hasWatched": true },
+    // { "imdbID": "tt2397461", "hasWatched": false },
+    // { "imdbID": "tt1013860", "hasWatched": true },
+    // { "imdbID": "tt1422020", "hasWatched": true }
+];
 
+
+
+// {
+//     "Title": "The Power of the Dog",
+//     "Year": "2021",
+//     "Rated": "R",
+//     "Released": "01 Dec 2021",
+//     "Runtime": "126 min",
+//     "Genre": "Drama, Western",
+//     "Director": "Jane Campion",
+//     "Writer": "Jane Campion, Thomas Savage",
+//     "Actors": "Benedict Cumberbatch, Kirsten Dunst, Jesse Plemons",
+//     "Plot": "Severe, pale-eyed, handsome, Phil Burbank is brutally beguiling. All of Phil's romance, power and fragility is trapped in the past and in the land: He can castrate a bull calf with two swift slashes of his knife; he swims naked in the river, smearing his body with mud. He is a cowboy as raw as his hides. The year is 1925. The Burbank brothers are wealthy ranchers in Montana. At the Red Mill restaurant on their way to market, the brothers meet Rose, the widowed proprietress, and her impressionable son Peter. Phil behaves so cruelly he drives them both to tears, revelling in their hurt and rousing his fellow cowhands to laughter - all except his brother George, who comforts Rose then returns to marry her. As Phil swings between fury and cunning, his taunting of Rose takes an eerie form - he hovers at the edges of her vision, whistling a tune she can no longer play. His mockery of her son is more overt, amplified by the cheering of Phil's cowhand disciples. Then Phil appears to take the boy under his wing. Is this latest gesture a softening that leaves Phil exposed, or a plot twisting further into menace?",
+//     "Language": "English",
+//     "Country": "New Zealand, United Kingdom, Canada, Australia, United States",
+//     "Awards": "Won 1 Oscar. 282 wins & 317 nominations total",
+//     "Poster": "https://m.media-amazon.com/images/M/MV5BZGRhYjE2NWUtN2FkNy00NGI3LTkxYWMtMDk4Yjg5ZjI3MWI2XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg",
+//     "Ratings": [
+//         {
+//             "Source": "Internet Movie Database",
+//             "Value": "6.8/10"
+//         },
+//         {
+//             "Source": "Rotten Tomatoes",
+//             "Value": "94%"
+//         },
+//         {
+//             "Source": "Metacritic",
+//             "Value": "89/100"
+//         }
+//     ],
+//     "Metascore": "89",
+//     "imdbRating": "6.8",
+//     "imdbVotes": "195,001",
+//     "imdbID": "tt10293406",
+//     "Type": "movie",
+//     "DVD": "N/A",
+//     "BoxOffice": "N/A",
+//     "Production": "N/A",
+//     "Website": "N/A",
+//     "Response": "True"
+// }

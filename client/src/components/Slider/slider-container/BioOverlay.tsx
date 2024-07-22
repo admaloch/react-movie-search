@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import BioOverlayProps from "../../../models/BioOverlayProps";
+import zIndex from "@mui/material/styles/zIndex";
 
 const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element => {
   const scrollDivRef = useRef<HTMLDivElement>(null);
@@ -21,8 +22,9 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
   };
 
   let styles = revealBio
-    ? { opacity: '1', height: '100%' }
-    : { opacity: '0', height: '0' };
+    ? { opacity: '1', height: '100%', zIndex: 50 }
+    : { opacity: '0', height: '0', zIndex: 0 };
+ 
 
   return (
     <div
