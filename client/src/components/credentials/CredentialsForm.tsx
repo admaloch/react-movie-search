@@ -9,17 +9,19 @@ interface IFormInput {
   password: string;
 }
 
-const Login: React.FC = () => {
+const Register: React.FC = ({type}) => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log('Form submitted:', data);
   };
 
+  let headerText = 
+
   return (
 
-    <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
-      <h2>Login to your account</h2>
+    <form action="/register" method="POST" onSubmit={handleSubmit(onSubmit)} className="credentials-form">
+      <h2>{text}</h2>
       <div className="formGroup">
         <label htmlFor="email" className="label">Email:</label>
         <input
@@ -32,12 +34,20 @@ const Login: React.FC = () => {
               message: 'Email is invalid'
             }
           })}
-          name="email"
           className="input"
         />
         {errors.email && <span className="error">{errors.email.message}</span>}
       </div>
-
+      <div className="formGroup">
+        <label htmlFor="username" className="label">Username:</label>
+        <input
+          type="text"
+          id="username"
+          {...register('username', { required: 'Username is required' })}
+          className="input"
+        />
+        {errors.username && <span className="error">{errors.username.message}</span>}
+      </div>
       <div className="formGroup">
         <label htmlFor="password" className="label">Password:</label>
         <input
@@ -50,15 +60,14 @@ const Login: React.FC = () => {
               message: 'Password must be at least 6 characters'
             }
           })}
-          name="password"
           className="input"
         />
         {errors.password && <span className="error">{errors.password.message}</span>}
       </div>
 
       <button type="submit" className="button">Submit</button>
-      <p>Haven't set up an account?</p>
-      <p>Click <NavLink className="link-class" to="/register">here</NavLink> to register</p>
+      <p>Already have an account?</p>
+      <p>Click <NavLink className="link-class" to="/login">here</NavLink> to login</p>
 
     </form>
     
@@ -66,4 +75,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Register;

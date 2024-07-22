@@ -19,20 +19,22 @@
     align-items: center;
     padding: 1.5rem;
 }
-.home-page-nav p {
+.home-page-nav a {
     font-size: 1.5rem;
+    text-decoration: none;
 }
 
 .nav-links {
     display: flex;
 }
-.nav-links p {
+.nav-links a {
     margin: 0 .8rem;
     opacity: .7;
     transition: all .25s ease-in-out;
     cursor: pointer;
+    color: white;
 }
-.nav-links p:hover, .nav-links p.active-link {
+.nav-links a:hover, .nav-links a.active {
     text-decoration: underline;
     opacity: 1;
 }

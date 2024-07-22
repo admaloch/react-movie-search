@@ -1,102 +1,79 @@
-import { useState } from 'react';
+import React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import './Credentials.css';
+import { NavLink } from 'react-router-dom';
 
-const Register = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: ''
-  });
+interface IFormInput {
+  email: string;
+  username: string;
+  password: string;
+}
 
-  const [errors, setErrors] = useState({
-    email: '',
-    username: '',
-    password: ''
-  });
+const Register: React.FC = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const validate = () => {
-    let isValid = true;
-    const newErrors = {};
-
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-      isValid = false;
-    }
-
-    if (!formData.username) {
-      newErrors.username = 'Username is required';
-      isValid = false;
-    }
-
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-      isValid = false;
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      // Handle successful form submission (e.g., send data to the server)
-      console.log('Form submitted:', formData);
-    }
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log('Form submitted:', data);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
+
+    <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
+      <h2>Create an Account</h2>
+      <div className="formGroup">
+        <label htmlFor="email" className="label">Email:</label>
         <input
           type="email"
           id="email"
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: 'Email is invalid'
+            }
+          })}
           name="email"
-          value={formData.email}
-          onChange={handleChange}
+          className="input"
         />
-        {errors.email && <span style={{ color: 'red' }}>{errors.email}</span>}
+        {errors.email && <span className="error">{errors.email.message}</span>}
       </div>
-      <div>
-        <label htmlFor="username">Username:</label>
+      <div className="formGroup">
+        <label htmlFor="username" className="label">Username:</label>
         <input
           type="text"
           id="username"
+          {...register('username', { required: 'Username is required' })}
+          className="input"
           name="username"
-          value={formData.username}
-          onChange={handleChange}
         />
-        {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
+        {errors.username && <span className="error">{errors.username.message}</span>}
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="formGroup">
+        <label htmlFor="password" className="label">Password:</label>
         <input
           type="password"
           id="password"
+          {...register('password', {
+            required: 'Password is required',
+            minLength: {
+              value: 6,
+              message: 'Password must be at least 6 characters'
+            }
+          })}
           name="password"
-          value={formData.password}
-          onChange={handleChange}
+          className="input"
         />
-        {errors.password && <span style={{ color: 'red' }}>{errors.password}</span>}
+        {errors.password && <span className="error">{errors.password.message}</span>}
       </div>
-      <button type="submit">Register</button>
+
+      <button type="submit" className="button">Submit</button>
+      <p>Already have an account?</p>
+      <p>Click <NavLink className="link-class" to="/login">here</NavLink> to login</p>
+
     </form>
+
+
   );
 };
 
 export default Register;
-

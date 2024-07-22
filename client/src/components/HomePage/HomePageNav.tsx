@@ -1,4 +1,6 @@
+import { NavLink } from 'react-router-dom'
 import brain from '../../../public/brain.png'
+
 export default function HomePageNav() {
     return (
         <header className="home-page-nav">
@@ -8,10 +10,12 @@ export default function HomePageNav() {
                     <img src={brain} alt="brain-icon" />
                 </div>
                 <nav className="nav-links">
-                    <p className="active-link">Home</p>
-                    <p>Search</p>
-                    <p>Register</p>
-                    <p>Login</p>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/search">Search</NavLink>
+                    <NavLink to="/register">Register</NavLink>
+                    <NavLink to="/login">Login</NavLink>
+
+
                 </nav>
             </div>
 

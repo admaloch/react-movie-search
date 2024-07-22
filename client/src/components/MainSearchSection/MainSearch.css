@@ -65,7 +65,7 @@
 }
 
 
-.active,
+
 .result-btn:hover {
     background-color: var(--containertext);
     color: var(--containerBackground);
