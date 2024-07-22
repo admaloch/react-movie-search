@@ -37,7 +37,7 @@ nav a::after {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--text); /* Adjust the color as needed */
+    background-color: var(--text); 
     transition: width 0.3s ease-in-out;
 }
 
@@ -49,7 +49,7 @@ nav a.active::after {
 nav a:hover,
 nav a.active {
     opacity: 1;
-    color: var(--text-hover); /* Optional: Change text color on hover */
+    color: var(--text-hover); 
 }
 
 
@@ -63,12 +63,62 @@ header .nav-btn {
 	visibility: hidden;
 	opacity: 0;
 	font-size: 1.8rem;
+	transition: .15s ease-in-out opacity;
+}
+header .nav-btn:hover {
+opacity: .7;
 }
 
 header div,
 nav {
 	display: flex;
 	align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+	text-decoration: none;
+}
+.logo h3 {
+    font-size: 2.5rem;
+	color: var(--text);
+}
+
+
+.logo img {
+    width: 50px;
+}
+
+.logo h3, .logo img {
+	opacity: 1;
+	transition: opacity .2s ease-in-out;
+}
+.logo:hover h3, .logo:hover img {
+	opacity: .7;
+}
+
+
+
+.main-content-container {
+    position: relative;
+}
+
+.main-content-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    }
+    .main-content-container button {
+    margin-top: 1rem;
+    }
+.background-img {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: .5;
+    width: 100%;
 }
 
 
