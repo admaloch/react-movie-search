@@ -23,7 +23,7 @@ const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTyp
     return (
         <li
             onClick={clickHandler}
-            className={`result-btn ${isActive ? 'active' : ''}`}>
+            className={`result-btn ${isActive ? 'active-btn' : ''}`}>
             {type}
         </li>
     )

@@ -5,6 +5,7 @@ import { APIProvider } from '../store/APIContext/APIContext'
 import Navbar from './Navbar/Navbar'
 import MainSlider from './Slider/MainSlider'
 import Footer from './Footer/Footer'
+import MainNavBar from './MainNav/MainNavBar'
 
 
 function MainPage() {
@@ -16,8 +17,9 @@ function MainPage() {
   return (
     <TypeProvider>
       <APIProvider>
-        <Navbar />
-        <div className="content-container">
+       <MainNavBar/>
+       <div className="main-slider-content">
+         <div className="content-container">
           <MainSearch
             isSliderActive={isSliderActive}
             hideSlider={hideSlider}
@@ -28,6 +30,8 @@ function MainPage() {
             hideSlider={hideSlider}
           />
         </div>
+       </div>
+       
         <Footer />
       </APIProvider>
     </TypeProvider>

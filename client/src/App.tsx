@@ -5,6 +5,7 @@ import HomePageContent from './components/HomePage/HomePageContent'
 import Register from './components/credentials/Register'
 import Login from './components/credentials/Login'
 import HomeLayout from './components/HomePage/HomeLayout'
+import LikedItems from './components/LikedItems/LikedItems'
 
 
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path='login' element={<Login />} />
             </Route>
             <Route path='/search' element={<MainPage />} />
+            <Route path='/liked' element={<LikedItems />} />
             <Route path='*' element={<Navigate to='/' />} />
         </Routes >
     )
