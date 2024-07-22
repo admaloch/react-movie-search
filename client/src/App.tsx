@@ -12,6 +12,7 @@ function App() {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/search' element={<MainPage />} />
+            <Route path='/register' element={<MainPage />} />
             <Route path='*' element={<Navigate to='/' />} />  
         </Routes >
     )
