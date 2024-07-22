@@ -2,10 +2,8 @@ import { useState } from 'react'
 import MainSearch from './MainSearchSection/MainSearch'
 import { TypeProvider } from '../store/searchTypeContext/TypeContext'
 import { APIProvider } from '../store/APIContext/APIContext'
-import Navbar from './Navbar/Navbar'
 import MainSlider from './Slider/MainSlider'
 import Footer from './Footer/Footer'
-import MainNavBar from './MainNav/MainNavBar'
 
 
 function MainPage() {
@@ -17,7 +15,7 @@ function MainPage() {
   return (
     <TypeProvider>
       <APIProvider>
-       <MainNavBar/>
+       
        <div className="main-slider-content">
          <div className="content-container">
           <MainSearch
@@ -32,7 +30,7 @@ function MainPage() {
         </div>
        </div>
        
-        <Footer />
+        
       </APIProvider>
     </TypeProvider>
   )

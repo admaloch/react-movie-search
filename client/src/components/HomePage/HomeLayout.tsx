@@ -8,7 +8,6 @@ import MainNavBar from '../MainNav/MainNavBar'
 export default function HomeLayout() {
   return (
     <BGSection bgClass="theatre-bg4">
-      <MainNavBar />
       <main className='main-content-container'>
         <Outlet />
         <img className='background-img' src={bgBrain} alt="background-brain" />

@@ -6,6 +6,8 @@ import Register from './components/credentials/Register'
 import Login from './components/credentials/Login'
 import HomeLayout from './components/HomePage/HomeLayout'
 import LikedItems from './components/LikedItems/LikedItems'
+import MainNavBar from './components/MainNav/MainNavBar'
+import Footer from './components/Footer/Footer'
 
 
 
@@ -14,14 +16,20 @@ function App() {
 
     return (
         <Routes>
-            <Route path='/' element={<HomeLayout />} >
-                <Route index element={<HomePageContent />} />
-                <Route path='register' element={<Register />} />
-                <Route path='login' element={<Login />} />
+            <Route path='/' element={<MainNavBar />} >
+                <Route path='/' element={<HomeLayout />} >
+                    <Route index element={<HomePageContent />} />
+                    <Route path='register' element={<Register />} />
+                    <Route path='login' element={<Login />} />
+                </Route>
+
+                <Route path='/' element={<Footer />} >
+                    <Route path='/search' element={<MainPage />} />
+                    <Route path='/liked' element={<LikedItems />} />
+                    <Route path='*' element={<Navigate to='/' />} />
+                </Route>
+
             </Route>
-            <Route path='/search' element={<MainPage />} />
-            <Route path='/liked' element={<LikedItems />} />
-            <Route path='*' element={<Navigate to='/' />} />
         </Routes >
     )
 }
