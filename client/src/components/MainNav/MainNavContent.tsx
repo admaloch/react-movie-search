@@ -34,7 +34,7 @@ export default function MainNavContent() {
                 <a onClick={() => handleNavClick('/search')} href="#">Search</a>
                 <a onClick={() => handleNavClick('/register')} href="#">Register</a>
                 <a onClick={() => handleNavClick('/login')} href="#">Login</a>
-                <a onClick={() => handleNavClick('/liked')} href="#">Liked</a>
+                <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
                 <button
                     className="nav-btn nav-close-btn"
                     onClick={showNavbar}>

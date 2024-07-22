@@ -5,9 +5,10 @@ import HomePageContent from './components/HomePage/HomePageContent'
 import Register from './components/credentials/Register'
 import Login from './components/credentials/Login'
 import HomeLayout from './components/HomePage/HomeLayout'
-import LikedItems from './components/LikedItems/LikedItems'
+import LikedItems from './components/UserProfile/UserProfile'
 import MainNavBar from './components/MainNav/MainNavBar'
 import Footer from './components/Footer/Footer'
+import UserProfile from './components/UserProfile/UserProfile'
 
 
 
@@ -25,7 +26,7 @@ function App() {
 
                 <Route path='/' element={<Footer />} >
                     <Route path='/search' element={<MainPage />} />
-                    <Route path='/liked' element={<LikedItems />} />
+                    <Route path='/myprofile' element={<UserProfile />} />
                     <Route path='*' element={<Navigate to='/' />} />
                 </Route>
 
