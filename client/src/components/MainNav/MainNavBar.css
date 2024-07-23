@@ -4,45 +4,45 @@ header {
 	justify-content: space-between;
 	height: 80px;
 	padding: 0 2rem;
-	/* background-color: var(--mainBackground); */
+	/* background-color: var(--color1); */
 	color: var(--text);
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
 }
 
 nav a {
-    position: relative;
-    margin: 0 1rem;
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.15s ease-in-out, opacity 0.2s ease-in-out;
-    opacity: 0.7;
-    font-size: 1.5rem;
+	position: relative;
+	margin: 0 1rem;
+	color: var(--text);
+	text-decoration: none;
+	transition: color 0.15s ease-in-out, opacity 0.2s ease-in-out;
+	opacity: 0.7;
+	font-size: 1.5rem;
 }
 
 nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--text); 
-    transition: width 0.3s ease-in-out;
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--text);
+	transition: width 0.3s ease-in-out;
 }
 
 nav a:hover::after,
 nav a.active::after {
-    width: 100%;
+	width: 100%;
 }
 
 nav a:hover,
 nav a.active {
-    opacity: 1;
-    color: var(--text-hover); 
+	opacity: 1;
+	color: var(--containerBackground);
 }
 
 
@@ -58,9 +58,16 @@ header .nav-btn {
 	font-size: 1.8rem;
 	transition: .15s ease-in-out opacity;
 }
-header .nav-btn:hover {
-opacity: .7;
+
+header .nav-close-btn {
+	color: var(--mainBackground);
 }
+
+header .nav-btn:hover {
+	opacity: .7;
+}
+
+
 
 header div,
 nav {
@@ -69,27 +76,32 @@ nav {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 	text-decoration: none;
 }
+
 .logo h3 {
-    font-size: 2.5rem;
+	font-size: 2.5rem;
 	color: var(--text);
 }
 
 
 .logo img {
-    width: 50px;
+	width: 50px;
 }
 
-.logo h3, .logo img {
+.logo h3,
+.logo img {
 	opacity: 1;
 	transition: opacity .2s ease-in-out;
 }
-.logo:hover h3, .logo:hover img {
+
+.logo:hover h3,
+.logo:hover img {
 	opacity: .7;
 }
+
 @media only screen and (max-width: 1024px) {
 	header .nav-btn {
 		visibility: visible;
@@ -107,13 +119,32 @@ nav {
 		align-items: center;
 		justify-content: center;
 		gap: 1.5rem;
-		background-color: rgba(0, 0, 0, .8);
+		background-color: var(--color1);
 		transition: 1s;
+		opacity: 1;
+		z-index: 100;
+		border: var(--containertext) solid 10px;
+	}
+
+	header nav a {
+		color: var(--mainBackground);
+opacity: 1;
+	}
+	nav a::after {
+
+		background-color: var(--mainBackground);
+		transition: width 0.3s ease-in-out;
+	}
+
+	nav a:hover,
+	nav a.active {
+
+		color: var(--mainBackground);
 	}
 
 	header .responsive_nav {
 		transform: translateY(100vh);
-        
+
 	}
 
 	nav .nav-close-btn {
@@ -123,6 +154,6 @@ nav {
 	}
 
 	nav a {
-		font-size: 1.5rem;
+		font-size: 2.5rem;
 	}
 }

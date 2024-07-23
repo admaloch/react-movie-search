@@ -2,6 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { APIItem, defaultAPIItem } from "../../models/ItemApiProps"
 import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
+import LikedMovieContent from "./LikedMovieContent";
+import CircleAnimation from "../UI/LoadAnimation/CircleAnimation";
 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
@@ -19,7 +21,6 @@ export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) 
         async function genApiRes() {
             try {
                 const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}&plot=full`)
-                // console.log(apiRes.data)
                 setApiItem(apiRes.data)
                 setIsLoading(false)
             } catch (e) {
@@ -29,22 +30,36 @@ export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) 
         genApiRes()
     }, [])
 
+
     if (hasWatched && isWatchedFilter === 'notWatched') {
         return
     } else if (!hasWatched && isWatchedFilter === 'watched') {
         return
-    }
+    } else if (mainTypeFilter === 'Movie' && currItemType !== 'movie') {
+        return
+    } else if (mainTypeFilter === 'TV' && currItemType !== 'series') return
 
-    if (mainTypeFilter === 'Movie' && currItemType !== 'movie') return
-    else if (mainTypeFilter === 'TV' && currItemType !== 'series') return
+    // if (hasWatched && isWatchedFilter === 'notWatched' ||
+    //     !hasWatched && isWatchedFilter === 'watched' ||
+    //     mainTypeFilter === 'Movie' && currItemType !== 'movie' ||
+    //     mainTypeFilter === 'TV' && currItemType !== 'series'
+    // ) {
+    //     return
+    // }
 
-    // console.log(apiItem)
     return (
         <div className="movie-item-container">
             <div className="movie-item">
-                apiItem={apiItem}
-                imdbID={imdbID}
-                isLoading={isLoading}
+                {isLoading
+                    ? <CircleAnimation />
+                    : <LikedMovieContent
+                        apiItem={apiItem}
+                        imdbID={imdbID}
+                        isLoading={isLoading}
+                    />
+                }
+
+
             </div>
 
         </div>

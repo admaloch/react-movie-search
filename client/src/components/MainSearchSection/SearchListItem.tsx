@@ -25,7 +25,6 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
 
     async function genApiRes() {
         const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
-        console.log(apiRes.data)
         setItemOnClick(apiRes.data)
         setIsLoading(false)
     }

@@ -128,7 +128,7 @@ justify-content: space-evenly;
     transition: all .3s ease-in-out;
     background-color: var(--mainBackground);
     font-size: 1.1rem;
-    z-index: 100;
+    z-index: 10;
 
 }
 

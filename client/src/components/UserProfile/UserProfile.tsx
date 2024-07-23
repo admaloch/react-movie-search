@@ -5,11 +5,8 @@ import SearchTypeButtons from '../MainSearchSection/SearchTypeButtons';
 import { useState } from 'react';
 import IsWatchedBtns from './IsWatchedBtns';
 export default function UserProfile() {
-  // console.log(DUMMY_DATA)
 
   const [isWatched, setIsWatched] = useState('both')
-
-
 
   const hideSlider = () => {
     return;

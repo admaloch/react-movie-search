@@ -65,8 +65,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
         [submittedSearch]
     )
 
-    sliderIndex.progBar.length > 1 && console.log(sliderIndex.progBar)
-
     return (
         <>
              
