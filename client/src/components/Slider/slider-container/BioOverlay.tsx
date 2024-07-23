@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import BioOverlayProps from "../../../models/BioOverlayProps";
-import zIndex from "@mui/material/styles/zIndex";
+import { IoClose } from "react-icons/io5";
+
 
 const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element => {
   const scrollDivRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,7 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
   let styles = revealBio
     ? { opacity: '1', height: '100%', zIndex: 50 }
     : { opacity: '0', height: '0', zIndex: 0 };
- 
+
 
   return (
     <div
@@ -35,7 +36,9 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
       className='bio-overlay'>
       <h4>Overview</h4>
       <p>{plot}</p>
-      <div onClick={closeBio} className="close-bio-text"></div>
+
+        <IoClose onClick={closeBio} className="icon-large close-bio-text"/>
+  
     </div>
   );
 };

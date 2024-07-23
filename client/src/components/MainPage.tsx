@@ -13,8 +13,7 @@ function MainPage() {
   const hideSlider = () => setIsSliderActive(false)
 
   return (
-    <TypeProvider>
-      <APIProvider>
+
        
        <div className="main-slider-content">
          <div className="content-container">
@@ -31,8 +30,7 @@ function MainPage() {
        </div>
        
         
-      </APIProvider>
-    </TypeProvider>
+
   )
 }
 

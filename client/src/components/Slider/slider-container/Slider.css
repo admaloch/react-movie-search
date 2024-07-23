@@ -90,10 +90,9 @@
     padding: .2rem;
 }
 
-.movie-co
-:hover .info-container,
+.movie-container:hover .info-container,
 .movie-item:hover .info-container {
-    opacity: .9;
+    opacity: 1;
 }
 
 .title-container {
@@ -240,33 +239,19 @@
     position: absolute;
     left: 10px;
     top: 12px;
-    width: 12px;
-    height: 12px;
     opacity: 0.3;
+    cursor: pointer;
+    transition: .15s ease-in-out opacity;
+    font-size: 1.5rem;
 }
 
 .close-bio-text:hover {
     opacity: 1;
-    cursor: pointer;
 }
 
-.close-bio-text:before,
-.close-bio-text:after {
-    position: fixed;
-    left: 18px;
-    content: ' ';
-    height: 12px;
-    width: 3px;
-    background-color: var(--mainBackground);
-}
 
-.close-bio-text:before {
-    transform: rotate(45deg);
-}
 
-.close-bio-text:after {
-    transform: rotate(-45deg);
-}
+
 
 
 

@@ -9,6 +9,8 @@ import LikedItems from './components/UserProfile/UserProfile'
 import MainNavBar from './components/MainNav/MainNavBar'
 import Footer from './components/Footer/Footer'
 import UserProfile from './components/UserProfile/UserProfile'
+import { TypeProvider } from './store/searchTypeContext/TypeContext'
+import { APIProvider } from './store/APIContext/APIContext'
 
 
 
@@ -16,22 +18,26 @@ function App() {
 
 
     return (
-        <Routes>
-            <Route path='/' element={<MainNavBar />} >
-                <Route path='/' element={<HomeLayout />} >
-                    <Route index element={<HomePageContent />} />
-                    <Route path='register' element={<Register />} />
-                    <Route path='login' element={<Login />} />
-                </Route>
+        <TypeProvider>
+            <APIProvider>
+                <Routes>
+                    <Route path='/' element={<MainNavBar />} >
+                        <Route path='/' element={<HomeLayout />} >
+                            <Route index element={<HomePageContent />} />
+                            <Route path='register' element={<Register />} />
+                            <Route path='login' element={<Login />} />
+                        </Route>
 
-                <Route path='/' element={<Footer />} >
-                    <Route path='/search' element={<MainPage />} />
-                    <Route path='/myprofile' element={<UserProfile />} />
-                    <Route path='*' element={<Navigate to='/' />} />
-                </Route>
+                        <Route path='/' element={<Footer />} >
+                            <Route path='/search' element={<MainPage />} />
+                            <Route path='/myprofile' element={<UserProfile />} />
+                            <Route path='*' element={<Navigate to='/' />} />
+                        </Route>
 
-            </Route>
-        </Routes >
+                    </Route>
+                </Routes >
+            </APIProvider>
+        </TypeProvider>
     )
 }
 
