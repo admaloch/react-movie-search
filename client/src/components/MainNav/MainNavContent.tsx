@@ -1,9 +1,12 @@
 import { useRef, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 
 
 export default function MainNavContent() {
+    const [cookies, setCookies] = useCookies(["access_token"]);
+
     const navRef = useRef();
 
     const [isNavigating, setIsNavigating] = useState(false);
@@ -22,9 +25,21 @@ export default function MainNavContent() {
         const delay = window.innerWidth > 1024 ? 0 : 800;
 
         setTimeout(() => {
-            navigate(path);
+            if (path !== 'logout') {
+                navigate(path);
+            } else {
+
+                logout()
+            }
             setIsNavigating(false);
         }, delay);
+    };
+
+    const logout = () => {
+        setCookies("access_token", "");
+        window.localStorage.clear();
+
+        navigate("/login");
     };
 
     return (
@@ -32,9 +47,17 @@ export default function MainNavContent() {
             <nav ref={navRef}>
                 <a onClick={() => handleNavClick('/')} href="#">Home</a>
                 <a onClick={() => handleNavClick('/search')} href="#">Search</a>
-                <a onClick={() => handleNavClick('/register')} href="#">Register</a>
-                <a onClick={() => handleNavClick('/login')} href="#">Login</a>
-                <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
+                {cookies.access_token && (
+                    <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
+                )}
+                {!cookies.access_token && (
+                    <a onClick={() => handleNavClick('/register')} href="#">Register</a>
+                )}
+                {!cookies.access_token ? (
+                    <a onClick={() => handleNavClick('/login')} href="#">Login</a>
+                ) : (
+                    <a onClick={() => handleNavClick('logout')} href="#">Logout</a>)}
+
                 <button
                     className="nav-btn nav-close-btn"
                     onClick={showNavbar}>

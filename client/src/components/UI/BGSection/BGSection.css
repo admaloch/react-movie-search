@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    z-index: 0;
+    /* z-index: 0; */
     
 }
 
@@ -23,9 +23,9 @@
     background-repeat: no-repeat;
 }
 
-.photo-container * {
+/* .photo-container * {
     z-index: 1;
-}
+} */
 
 .theatre-bg1::before {
     background-image: url('https://images.unsplash.com/photo-1508778552286-12d4c6007799?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
