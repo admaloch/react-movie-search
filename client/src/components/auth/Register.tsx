@@ -1,7 +1,9 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import './Credentials.css';
+import './auth.css';
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
+
 
 interface IFormInput {
   email: string;
@@ -12,8 +14,15 @@ interface IFormInput {
 const Register: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log('Form submitted:', data);
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    console.log('Register Form submitted:', data);
+    try {
+      const response = await axios.post('http://localhost:3500/register', data);
+      console.log('Registration successful:', response.data);
+    } catch (error) {
+      console.error('There was a problem with the registration request:', error);
+      // Handle error (e.g., show an error message)
+    }
   };
 
   return (

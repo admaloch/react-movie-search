@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 
 const getAllReviews = asyncHandler(async (req, res) => {
-    const reviews = await Review.find().lean()
+    const reviews = await ReviewModel.find().lean()
     if (!reviews?.length) {
         return res.status(400).json({ message: 'No reviews found' })
     }
@@ -17,13 +17,13 @@ const createReview = asyncHandler(async (req, res) => {
     // const author = req.user._id;
     if (!imdbId || !body || !rating || !author) return res.status(400).json({ message: 'All fields are required' });
     // Check if the user has already reviewed this movie
-    const usersReviews = await Review.find({ author }).lean().exec();
+    const usersReviews = await ReviewModel.find({ author }).lean().exec();
     const alreadyReviewed = usersReviews.some(review => review.imdbId === imdbId);
     if (alreadyReviewed) {
         return res.status(409).json({ message: 'This movie was already reviewed by the current user' });
     }
     // Create the new review
-    const review = await Review.create(req.body);
+    const review = await ReviewModel.create(req.body);
     if (!review) return res.status(400).json({ message: 'Invalid review data received' });
     // Update the user's likedMovies array
     const user = await User.findById(author);
@@ -41,7 +41,7 @@ const updateReview = asyncHandler(async (req, res) => {
     if (!_id || (!body && !rating)) {
         return res.status(400).json({ message: 'Review ID and either body or rating are required' });
     }
-    const review = await Review.findById(_id).exec()
+    const review = await ReviewModel.findById(_id).exec()
     if (!review) {
         return res.status(400).json({ message: 'User not found' })
     }
@@ -62,12 +62,12 @@ const deleteReview = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Review ID Required' });
     }
     // Find and delete the review
-    const review = await Review.findById(reviewId);
+    const review = await ReviewModel.findById(reviewId);
     if (!review) {
         return res.status(404).json({ message: 'Review not found' });
     }
     await User.findByIdAndUpdate(author, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
+    await ReviewModel.findByIdAndDelete(reviewId);
     res.json({ message: `Review ${reviewId} deleted`,  });
 });
 

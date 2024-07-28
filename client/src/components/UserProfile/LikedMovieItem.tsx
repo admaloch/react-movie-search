@@ -30,7 +30,6 @@ export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) 
         genApiRes()
     }, [])
 
-
     if (hasWatched && isWatchedFilter === 'notWatched') {
         return
     } else if (!hasWatched && isWatchedFilter === 'watched') {
@@ -38,14 +37,6 @@ export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) 
     } else if (mainTypeFilter === 'Movie' && currItemType !== 'movie') {
         return
     } else if (mainTypeFilter === 'TV' && currItemType !== 'series') return
-
-    // if (hasWatched && isWatchedFilter === 'notWatched' ||
-    //     !hasWatched && isWatchedFilter === 'watched' ||
-    //     mainTypeFilter === 'Movie' && currItemType !== 'movie' ||
-    //     mainTypeFilter === 'TV' && currItemType !== 'series'
-    // ) {
-    //     return
-    // }
 
     return (
         <div className="movie-item-container">

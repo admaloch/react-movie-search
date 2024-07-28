@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import './Credentials.css';
+import './auth.css';
 import { NavLink } from 'react-router-dom';
 
 interface IFormInput {
@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log('Form submitted:', data);
+    console.log('Login Form submitted:', data);
   };
 
   return (
