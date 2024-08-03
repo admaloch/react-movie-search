@@ -7,8 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 interface IFormInput {
   email: string;
   username: string;
