@@ -1,45 +1,49 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from "react-cookie";
-
+import LogoutUser from '../../features/users/LogoutUser';
+import useAuth from '../../hooks/useAuth';
 
 export default function MainNavContent() {
-    const [cookies, setCookies] = useCookies(["access_token"]);
+
+    const { isLoggedIn } = useAuth()
 
     const navRef = useRef();
 
-    const [isNavigating, setIsNavigating] = useState(false);
+    const [navDelay, setNavDelay] = useState(window.innerWidth > 1024 ? 0 : 500);
+
     const navigate = useNavigate();
 
     const showNavbar = () => {
-        navRef.current.classList.toggle("responsive_nav");
+        navRef.current.classList.add("responsive_nav");
     };
+    const closeNavbar = () => {
+        navRef.current.classList.remove("responsive_nav");
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 1024) {
+                setNavDelay(0);
+                closeNavbar()
+            } else {
+                setNavDelay(500);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        // Initial check
+        handleResize();
+        // Cleanup function
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleNavClick = (path) => {
-        if (isNavigating) return;
-
-        setIsNavigating(true);
-        showNavbar();
-
-        const delay = window.innerWidth > 1024 ? 0 : 800;
-
+        closeNavbar()
         setTimeout(() => {
-            if (path !== 'logout') {
-                navigate(path);
-            } else {
-
-                logout()
-            }
-            setIsNavigating(false);
-        }, delay);
-    };
-
-    const logout = () => {
-        setCookies("access_token", "");
-        window.localStorage.clear();
-
-        navigate("/login");
+            navigate(path);
+        }, navDelay);
     };
 
     return (
@@ -47,20 +51,28 @@ export default function MainNavContent() {
             <nav ref={navRef}>
                 <a onClick={() => handleNavClick('/')} href="#">Home</a>
                 <a onClick={() => handleNavClick('/search')} href="#">Search</a>
-                {cookies.access_token && (
-                    <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
-                )}
-                {!cookies.access_token && (
-                    <a onClick={() => handleNavClick('/register')} href="#">Register</a>
-                )}
-                {!cookies.access_token ? (
-                    <a onClick={() => handleNavClick('/login')} href="#">Login</a>
+
+                {isLoggedIn ? (
+                    <>
+                        <LogoutUser
+                            closeNavbar={closeNavbar}
+                            navDelay={navDelay}
+                        />
+                        <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
+                    </>
                 ) : (
-                    <a onClick={() => handleNavClick('logout')} href="#">Logout</a>)}
+                    <>
+                        <a onClick={(e) => { e.preventDefault(); handleNavClick('/users/register'); }} href="#">Register</a>
+                        <a onClick={(e) => { e.preventDefault(); handleNavClick('/login'); }} href="#">Login</a>
+                    </>
+                )}
+
+
+
 
                 <button
                     className="nav-btn nav-close-btn"
-                    onClick={showNavbar}>
+                    onClick={closeNavbar}>
                     <FaTimes />
                 </button>
             </nav>

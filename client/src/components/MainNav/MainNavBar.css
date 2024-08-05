@@ -13,7 +13,7 @@ header {
 	z-index: 100;
 }
 
-nav a {
+nav a, nav button {
 	position: relative;
 	margin: 0 1rem;
 	color: var(--text);
@@ -21,8 +21,13 @@ nav a {
 	transition: color 0.15s ease-in-out, opacity 0.2s ease-in-out;
 	opacity: 0.7;
 	font-size: 1.5rem;
+	background: none;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 3px;
 }
 
+nav button::after,
 nav a::after {
 	content: '';
 	position: absolute;
@@ -34,13 +39,17 @@ nav a::after {
 	transition: width 0.3s ease-in-out;
 }
 
+nav button:hover::after,
 nav a:hover::after,
+nav button.active::after,
 nav a.active::after {
 	width: 100%;
 }
 
 nav a:hover,
-nav a.active {
+nav button:hover,
+nav a.active,
+nav button.active {
 	opacity: 1;
 	color: var(--containerBackground);
 }
@@ -120,7 +129,7 @@ nav {
 		justify-content: center;
 		gap: 1.5rem;
 		background-color: var(--color1);
-		transition: 1s;
+		transition: .5s;
 		opacity: 1;
 		z-index: 100;
 		border: var(--containertext) solid 10px;

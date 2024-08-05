@@ -1,0 +1,125 @@
+/* Register.css */
+
+
+.credentials-form {
+    background-color: #DCDBFF;
+    padding: 4rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* width: 300px; */
+    width: 100%;
+    max-width: 350px;
+    /* text-align: center; */
+    z-index: 2;
+  }
+  
+  
+  
+  .credentials-form h2 {
+    text-align: center;
+    color: var(--mainBackground);
+    font-size: 3rem;
+    /* margin: 2rem 0; */
+    margin: 0 0 2rem 0;
+    line-height: 3rem;
+  }
+  
+  .credentials-form p {
+    text-align: center;
+    color: var(--mainBackground);
+  }
+  
+  
+  .credentials-form .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .credentials-form .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .credentials-form .input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .credentials-form .button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--mainBackground);
+    color: var(--text);
+    border: transparent solid 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .25s ease-in-out all;
+    margin-bottom: 1rem;
+  }
+  
+  .credentials-form .button:hover {
+    border: var(--mainBackground) solid 1px;
+  
+    background-color: var(--text);
+    color: var(--mainBackground);
+  
+  
+  }
+  
+  .credentials-form .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .link-class {
+    color: #450920;
+    transition: .15s ease-in-out opacity;
+  }
+  
+  .link-class:hover {
+    /* color: #588157; */
+    opacity: .5;
+  }
+  
+  .Toastify__toast-container {
+    z-index: 999;
+    /* Adjust the z-index as needed */
+  }
+
+  /* .logout-btn {
+    position: relative;
+    margin: 0 1rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0.7;
+    font-size: 1.5rem;
+  }
+  
+  .logout-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text);
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .logout-btn:hover::after,
+  .logout-btn.active::after {
+    width: 100%;
+  }
+  
+  .logout-btn:hover,
+  .logout-btn.active {
+    opacity: 1;
+    color: var(--containerBackground);
+  } */
