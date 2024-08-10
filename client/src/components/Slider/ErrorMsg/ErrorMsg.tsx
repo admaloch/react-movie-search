@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useAPIContext } from '../../../store/APIContext/APIContext'
-import { useTypeContext } from '../../../store/searchTypeContext/TypeContext'
+import { useSearchType } from '../../../hooks/useSearchType'
 import './ErrorMsg.css'
 
 function ErrorMsg() {
-    const { currType, searchTypes } = useTypeContext()
+    const { currType, searchTypes } = useSearchType()
     const { submittedSearch, apiResults } = useAPIContext()
     const [showErrorMsg, setShowErrorMsg] = useState(false)
 

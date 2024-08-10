@@ -1,4 +1,4 @@
-import { ColorScheme } from "../store/searchTypeContext/SearchTypeOptions"
+import { ColorScheme } from "../features/search-options/SearchTypeOptions"
 
 export interface SliderProps {
     hideSlider: () => void;

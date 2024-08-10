@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { useState } from "react"
-import { useTypeContext } from "../../store/searchTypeContext/TypeContext"
+import { useSearchType } from "../../hooks/useSearchType"
 import ListItemModal from "./ListItemModal"
 import '../../../src/declaration.d'
 import image_not_found from '../../assets/image_not_found.png'
@@ -14,7 +14,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
     const [itemOnClick, setItemOnClick] = useState<APIItem>(defaultAPIItem)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    const { currType } = useTypeContext()
+    const { currType } = useSearchType()
     const searchParam = currType.apiParam;
 
 

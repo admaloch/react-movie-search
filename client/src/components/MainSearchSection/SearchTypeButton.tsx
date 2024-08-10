@@ -1,11 +1,11 @@
 import React from "react";
 import { SearchTypeBtnProps } from "../../models/SliderProps";
-import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
+import { useSearchType } from "../../hooks/useSearchType";
 import { useAPIContext } from "../../store/APIContext/APIContext";
 
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
-    const {searchTypeHandler} = useTypeContext()
+    const {searchTypeHandler} = useSearchType()
     const { updateSearchState } = useAPIContext()
 
     const clickHandler = () => {

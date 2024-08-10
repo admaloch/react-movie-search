@@ -1,16 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps"
-import { useTypeContext } from "../../../store/searchTypeContext/TypeContext";
+import { APIItem, defaultAPIItem } from "../../models/ItemApiProps"
+import { useSearchType } from "../../hooks/useSearchType";
 import LikedMovieContent from "./LikedMovieContent";
-import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
+import CircleAnimation from "../UI/LoadAnimation/CircleAnimation";
 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 
-export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) {
+export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) {
 
-    const { currType } = useTypeContext()
+    const { currType } = useSearchType()
     const [apiItem, setApiItem] = useState<APIItem>(defaultAPIItem)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -20,7 +20,7 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
     useEffect(() => {
         async function genApiRes() {
             try {
-                const apiRes = await axios.get(`${BASE_URL}${imdbId}${api_key}&plot=full`)
+                const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}&plot=full`)
                 setApiItem(apiRes.data)
                 setIsLoading(false)
             } catch (e) {
@@ -45,7 +45,7 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
                     ? <CircleAnimation />
                     : <LikedMovieContent
                         apiItem={apiItem}
-                        imdbId={imdbId}
+                        imdbID={imdbID}
                         isLoading={isLoading}
                     />
                 }

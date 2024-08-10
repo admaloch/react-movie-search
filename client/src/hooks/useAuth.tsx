@@ -14,7 +14,6 @@ const useAuth = () => {
             ({ username, isAdmin } = decoded.UserInfo);
             isLoggedIn = true;
         }
-        return { username, isAdmin, isLoggedIn };
     }
 
     return { username, isAdmin, isLoggedIn };

@@ -3,7 +3,7 @@ import HoverInfo from "./HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import { useState } from "react";
 import axios from 'axios';
-import { useTypeContext } from "../../../store/searchTypeContext/TypeContext";
+import { useSearchType } from "../../../hooks/useSearchType";
 import SliderItemProps from "../../../models/SliderItemProps";
 import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps";
 import { isMobile } from "react-device-detect"; // Import from react-device-detect
@@ -13,9 +13,8 @@ const api_key = '&apikey=84200d7a';
 
 const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
-    const { searchTypes } = useTypeContext()
-    const currItem = searchTypes.filter(item => item.isActive === true)[0]
-    const searchParam = currItem.apiParam;
+    const { currType } = useSearchType()
+    const searchParam = currType.apiParam;
     const [itemOnHover, setItemOnHover] = useState<APIItem>(defaultAPIItem)
 
 
@@ -28,7 +27,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
     async function fetchData() {
         try {
             const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
-            // console.log(apiRes.data)
+            console.log(apiRes.data)
             setItemOnHover(apiRes.data);
         } catch (error) {
             console.error('Error fetching data:', error);

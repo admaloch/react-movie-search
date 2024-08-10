@@ -1,11 +1,11 @@
 import React from "react";
-import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
+import { useSearchType } from "../../hooks/useSearchType";
 import SearchTypeButton from "./SearchTypeButton";
 import { SliderProps } from '../../models/SliderProps'
-import { SearchType } from "../../store/searchTypeContext/SearchTypeOptions";
+import { SearchType } from "../../features/search-options/SearchTypeOptions";
 
 const SearchTypeButtons = ({ hideSlider }: SliderProps) => {
-    const {searchTypes} = useTypeContext()
+    const { searchTypes } = useSearchType()
 
     return (
 

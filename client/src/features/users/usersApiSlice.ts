@@ -91,9 +91,3 @@ export const {
     selectIds: selectUserIds
     // Pass in a selector that returns the users slice of state
 } = usersAdapter.getSelectors(state => selectUsersData(state) ?? initialState)
-
-// New selector to find a user by username
-export const selectUserByUsername = createSelector(
-    [selectAllUsers, (state, username) => username],
-    (users, username) => users.find(user => user.username === username)
-);

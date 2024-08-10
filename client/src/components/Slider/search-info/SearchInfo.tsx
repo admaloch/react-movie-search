@@ -4,12 +4,12 @@ import {randomColorGen} from '../../../utility/utility'
 import { useAPIContext } from "../../../store/APIContext/APIContext"
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
-import { useTypeContext } from "../../../store/searchTypeContext/TypeContext"
+import { useSearchType } from "../../../hooks/useSearchType"
 import { SearchInfoProps } from "../../../models/SearchInfoProps"
 
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
-    const { currType } = useTypeContext()
+    const { currType } = useSearchType()
     const { submittedSearch, apiResults } = useAPIContext()
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
@@ -35,7 +35,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         [submittedSearch, sliderIndex]
     );
 
-const headerClass = isSliderActive 
+const headerClass = isSliderActive
 ? 'header-info show-header'
 : 'header-info remove-header'
 

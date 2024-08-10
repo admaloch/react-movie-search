@@ -7,19 +7,25 @@ import Login from './features/auth/Login'
 import HomeLayout from './components/HomePage/HomeLayout'
 import MainNavBar from './components/MainNav/MainNavBar'
 import Footer from './components/Footer/Footer'
-import UserProfile from './features/users/UserProfile/UserProfile'
-import { TypeProvider } from './store/searchTypeContext/TypeContext'
+import UserProfile from './components/UserProfile/UserProfile'
 import { APIProvider } from './store/APIContext/APIContext'
 import EditUser from './features/users/EditUser'
 import Prefetch from './features/auth/Prefetch'
 import { ToastContainer } from 'react-toastify'
 import PersistLogin from './features/auth/PersistLogin'
+import { useSelector } from 'react-redux'
+import { RootState } from '@reduxjs/toolkit/query'
+import { useSearchType } from './hooks/useSearchType'
 
 function App() {
-
+    // const state = useSelector((state: RootState) => state);
+    
+// console.log(state)
+// const state = useSearchType()
+//     console.log(state)
 
     return (
-        <TypeProvider>
+       
             <APIProvider>
                 <Routes>
                     <Route path='/' element={<MainNavBar />} >
@@ -58,7 +64,7 @@ function App() {
                     pauseOnHover
                     theme="colored" />
             </APIProvider>
-        </TypeProvider>
+       
     )
 }
 
