@@ -23,7 +23,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-    const { email, username, password } = req.body
+    const { email, username, password, likedMovies } = req.body
 
     // Confirm data
     if (!username || !password || !email) {
@@ -46,7 +46,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     // Hash password 
     const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
 
-    const userObject = { username, email, "password": hashedPwd }
+    const userObject = { username, email, "password": hashedPwd, likedMovies }
 
     // Create and store new user 
     const user = await UserModel.create(userObject)
@@ -62,7 +62,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, password, imdbId, hasWatched } = req.body
+    const { id, email, username, password, imdbId } = req.body
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -95,13 +95,7 @@ const updateUser = asyncHandler(async (req, res) => {
     if (imdbId) {
         const movieIndex = user.likedMovies.findIndex(movie => movie.imdbId === imdbId);
         if (movieIndex === -1) {
-            user.likedMovies.push({ imdbId, hasWatched: false });
-        } else {
-            if (hasWatched) {
-                user.likedMovies[movieIndex].hasWatched = hasWatched;
-            } else {
-                return res.status(400).json({ message: 'Failed to update movie item' });
-            }
+            user.likedMovies.push(imdbId);
         }
     }
 
