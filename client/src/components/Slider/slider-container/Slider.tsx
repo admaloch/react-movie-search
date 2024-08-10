@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useAPIContext } from '../../../store/APIContext/APIContext';
-import SliderItem from './SliderItem';
+import SliderItem from '../../../features/movie-api/slider-item/SliderItem';
 import SlidersProps from '../../../models/SlidersProps';
 import { APIResults } from '../../../store/APIContext/APIContextInterface';
 

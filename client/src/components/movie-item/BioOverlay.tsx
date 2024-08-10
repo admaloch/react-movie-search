@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import BioOverlayProps from "../../../models/BioOverlayProps";
+import BioOverlayProps from "../../models/BioOverlayProps";
 import { IoClose } from "react-icons/io5";
 
 

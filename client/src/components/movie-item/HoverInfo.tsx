@@ -1,9 +1,9 @@
 import { useState } from "react"
-import ItemModal from "../../ItemModal/ItemModal"
-import Modal from "../../UI/Modal"
+import ItemModal from "../ItemModal/ItemModal"
+import Modal from "../UI/Modal"
 import ItemContent from "./ItemContent"
-import HoverInfoProps from "../../../models/HoverInfoProps"
-import CircleAnimation from "../../UI/LoadAnimation/CircleAnimation"
+import HoverInfoProps from "../../models/HoverInfoProps"
+import CircleAnimation from "../UI/LoadAnimation/CircleAnimation"
 
 const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
 

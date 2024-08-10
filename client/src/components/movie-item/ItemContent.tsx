@@ -1,9 +1,9 @@
 import ItemInfo from './ItemInfo'
 import MoreInfoBtn from './MoreInfoBtn'
 import BioOverlay from './BioOverlay'
-import HoverInfoBtn from "./ShowPlotBtn"
+import HoverInfoBtn from './HoverInfoBtn'
 import { useState } from 'react'
-import ItemContentProps from '../../../models/ItemContentProps'
+import ItemContentProps from '../../models/ItemContentProps'
 
 export default function ItemContent({ item, openItemModal }: ItemContentProps): JSX.Element {
 
@@ -17,7 +17,7 @@ export default function ItemContent({ item, openItemModal }: ItemContentProps): 
         setRevealBio(false)
     }
 
- 
+
 
     return (
         <>

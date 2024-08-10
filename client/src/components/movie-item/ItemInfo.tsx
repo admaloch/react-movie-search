@@ -1,5 +1,5 @@
-import { APIItem } from '../../../models/ItemApiProps'
-import ItemInfoProps from '../../../models/ItemInfoProps'
+import { APIItem } from '../../models/ItemApiProps' 
+import ItemInfoProps from '../../models/ItemInfoProps'
 
 export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element {
 

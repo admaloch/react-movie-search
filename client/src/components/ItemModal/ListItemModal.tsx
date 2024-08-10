@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemModal from '../ItemModal/ItemModal'
+import ItemModal from './ItemModal'
 import Modal from '../UI/Modal'
 import { ListItemProps } from '../../models/ListItemProps'
 import CircleAnimation from '../UI/LoadAnimation/CircleAnimation'

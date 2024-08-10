@@ -1,12 +1,12 @@
 import React from "react"
 import axios from "axios"
 import { useState } from "react"
-import { useSearchType } from "../../hooks/useSearchType"
-import ListItemModal from "./ListItemModal"
-import '../../../src/declaration.d'
-import image_not_found from '../../assets/image_not_found.png'
-import { APIResults } from '../../store/APIContext/APIContextInterface'
-import { APIItem, defaultAPIItem } from "../../models/ItemApiProps"
+import { useSearchType } from "../../../hooks/useSearchType"
+import ListItemModal from "../../../components/ItemModal/ListItemModal"
+
+import image_not_found from '../../../assets/image_not_found.png'
+import { APIResults } from "../../../store/APIContext/APIContextInterface" 
+import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps" 
 const BASE_URL = 'https://omdbapi.com/?i='
 const api_key = '&apikey=84200d7a'
 

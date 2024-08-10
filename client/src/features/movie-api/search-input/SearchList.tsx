@@ -1,18 +1,19 @@
-import { useAPIContext } from "../../store/APIContext/APIContext";
 import SearchListItem from "./SearchListItem";
-import SearchProps from "../../models/SearchProps";
+import SearchProps from "../../../models/SearchProps";
 import React from "react";
 
-const SearchList = ({ isListShown, hideList }: SearchProps): React.JSX.Element => {
-    const { apiResults } = useAPIContext()
+const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.JSX.Element => {
+
+
     document.addEventListener('click', () => hideList())
     document.addEventListener('scroll', () => hideList())
+
     return (
         <ul style={{ height: isListShown ? "300px" : "0", opacity: isListShown ? 1 : 0 }}
             onClick={hideList}
             className="search-list"
             id="search-list">
-            {apiResults.map((item) => (
+            {movieItems.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
                     imdbID={item.imdbID}
