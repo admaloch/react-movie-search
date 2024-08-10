@@ -7,21 +7,17 @@ export default function LogoutUser({ closeNavbar, navDelay }) {
 
     const navigate = useNavigate();
 
-    const [sendLogout, { isLoading, isSuccess, isError, error }] = useSendLogoutMutation();
+    const [sendLogout, { isLoading, isError, error }] = useSendLogoutMutation();
+
 
     const handleLogoutBtnClick = () => {
         closeNavbar()
         setTimeout(() => {
             sendLogout()
+            navigate('/login');
+            toast.success('Successfully logged out!');
         }, navDelay);
     }
-
-    useEffect(() => {
-        if (isSuccess) {
-            navigate('/');
-            toast.success('Successfully logged out!');
-        }
-    }, [isSuccess, navigate]);
 
     if (isLoading) return <p>Logging Out...</p>;
 

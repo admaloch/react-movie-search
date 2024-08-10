@@ -28,7 +28,7 @@ const SliderItem = ({ imdbID, poster, showArrowFunc, hideArrowFunc }: SliderItem
     async function fetchData() {
         try {
             const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`);
-            console.log(apiRes.data)
+            // console.log(apiRes.data)
             setItemOnHover(apiRes.data);
         } catch (error) {
             console.error('Error fetching data:', error);
