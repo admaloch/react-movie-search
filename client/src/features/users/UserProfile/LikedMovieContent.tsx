@@ -1,5 +1,5 @@
-import image_not_found from '../../assets/image_not_found.png';
-import HoverInfo from '../movie-item/HoverInfo';
+import image_not_found from '../../../assets/image_not_found.png';
+import HoverInfo from '../../../components/movie-item/HoverInfo';
 
 export default function LikedMovieContent({ apiItem, imdbID, isLoading }) {
     return (

@@ -1,8 +1,8 @@
 
-import { useSearchType } from "../../hooks/useSearchType";
+import { useSearchType } from "../../../hooks/useSearchType";
 import LikedMovieContent from "./LikedMovieContent";
-import CircleAnimation from "../UI/LoadAnimation/CircleAnimation";
-import { useGetMovieByIdQuery } from "../../features/movie-api/omdbApiSlice";
+import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
+import { useGetMovieByIdQuery } from "../../movie-api/omdbApiSlice";
 
 
 

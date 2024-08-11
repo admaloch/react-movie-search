@@ -1,7 +1,7 @@
 import './UserProfile.css'
 import { DUMMY_DATA } from './DummyData';
 import LikedMovieItem from './LikedMovieItem';
-import SearchTypeButtons from '../MainSearchSection/SearchTypeButtons';
+import SearchTypeButtons from '../../../components/MainSearchSection/SearchTypeButtons';
 import { useState } from 'react';
 import IsWatchedBtns from './IsWatchedBtns';
 export default function UserProfile() {
@@ -22,14 +22,14 @@ export default function UserProfile() {
         setIsWatched={setIsWatched}
       />
       <div className="movie-items-container">
-        {DUMMY_DATA.map((movie) => (
+        {/* {DUMMY_DATA.map((movie) => (
           <LikedMovieItem
             imdbID={movie.imdbID}
             hasWatched={movie.hasWatched}
             key={movie.imdbID}
             isWatchedFilter={isWatched}
           />
-        ))}
+        ))} */}
 
       </div>
     </main>
