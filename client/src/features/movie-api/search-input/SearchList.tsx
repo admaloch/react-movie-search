@@ -1,19 +1,35 @@
 import SearchListItem from "./SearchListItem";
 import SearchProps from "../../../models/SearchProps";
-import React from "react";
+import React, { useEffect } from "react";
 
 const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.JSX.Element => {
 
-
-    document.addEventListener('click', () => hideList())
-    document.addEventListener('scroll', () => hideList())
+    useEffect(() => {
+        //handle clicking off screen and certain reserved items to prevent dropdown list from being closed at awkward times
+        function handleClickOutside(event: MouseEvent) {
+            const target = event.target as HTMLElement;
+            const excludeClasses = ['form-control', 'result-btn', 'modal-overlay'];
+            const excludeParentClass = 'modal-container';
+            const isExcluded = excludeClasses.some(className => target.classList.contains(className));
+            const isWithinExcludedParent = target.closest(`.${excludeParentClass}`);
+            const isInsideList = document.getElementById('search-list')?.contains(target);
+            if (!isExcluded && !isWithinExcludedParent && !isInsideList) {
+                hideList();
+            }
+        }
+        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('scroll', hideList);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('scroll', hideList);
+        };
+    }, [hideList]);
 
     return (
         <ul style={{ height: isListShown ? "300px" : "0", opacity: isListShown ? 1 : 0 }}
-            onClick={hideList}
             className="search-list"
             id="search-list">
-            {movieItems.map((item) => (
+            {movieItems?.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
                     imdbID={item.imdbID}

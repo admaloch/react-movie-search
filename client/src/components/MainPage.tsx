@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import MainSearch from './MainSearchSection/MainSearch'
-import { TypeProvider } from '../store/searchTypeContext/TypeContext'
-import { APIProvider } from '../store/APIContext/APIContext'
 import MainSlider from './Slider/MainSlider'
-import Footer from './Footer/Footer'
 
 
 function MainPage() {

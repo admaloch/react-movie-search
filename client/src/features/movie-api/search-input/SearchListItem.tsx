@@ -1,36 +1,30 @@
 import React from "react"
-import axios from "axios"
 import { useState } from "react"
-import { useSearchType } from "../../../hooks/useSearchType"
-import ListItemModal from "../../../components/ItemModal/ListItemModal"
-
+import ListItemModal from "../ItemModal/ListItemModal"
+import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import image_not_found from '../../../assets/image_not_found.png'
-import { APIResults } from "../../../store/APIContext/APIContextInterface" 
-import { APIItem, defaultAPIItem } from "../../../models/ItemApiProps" 
-const BASE_URL = 'https://omdbapi.com/?i='
-const api_key = '&apikey=84200d7a'
+import { APIResults } from "../../../store/APIContext/APIContextInterface"
+import { toast } from "react-toastify"
+
 
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
-    const [itemOnClick, setItemOnClick] = useState<APIItem>(defaultAPIItem)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
-    const { currType } = useSearchType()
-    const searchParam = currType.apiParam;
 
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     async function handleListItemClick() {
-        genApiRes()
         setIsModalOpen(true)
-    }
-
-    async function genApiRes() {
-        const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}${searchParam}&plot=full`)
-        setItemOnClick(apiRes.data)
-        setIsLoading(false)
+        triggerGetMovieById({ imdbID });
     }
 
     const closeItemModal = () => {
         setIsModalOpen(false)
+    }
+
+    if (isError) {
+        closeItemModal()
+        toast.error(`Error: ${error}`);
     }
 
     return (
@@ -40,20 +34,19 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     <img src={Poster !== 'N/A' ? Poster : image_not_found}></img>
                 </div>
                 <div className="search-item-info">
-
                     <h3>{Title}</h3>
-
-
                     {Year && <p>{Year}</p>}
                 </div>
             </li>
+        
+                <ListItemModal
+                    item={movieItem}
+                    open={isModalOpen}
+                    closeModal={closeItemModal}
+                    isLoading={isLoading}
+                />
+            
 
-            <ListItemModal
-                item={itemOnClick}
-                open={isModalOpen}
-                closeModal={closeItemModal}
-                isLoading={isLoading}
-            />
 
 
         </>

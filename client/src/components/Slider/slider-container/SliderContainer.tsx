@@ -1,12 +1,15 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import Slider from './Slider';
+import Slider from '../../../features/movie-api/slider-item/Slider';
 import './Slider.css'
 import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useOmdbState } from '../../../hooks/useOmdbState';
 
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
+
+    const { submittedSearch } = useOmdbState()
 
     const [showArrows, setShowArrows] = useState(true)
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
@@ -44,10 +47,13 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                     <ArrowBackIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
-            <Slider
-                showArrowFunc={showArrowHandler}
-                hideArrowFunc={hideArrowHandler}
-            />
+            {submittedSearch &&
+                <Slider
+                    showArrowFunc={showArrowHandler}
+                    hideArrowFunc={hideArrowHandler}
+                />
+            }
+
             <button
                 style={arrowStyle}
                 onClick={increaseIndexHandler}

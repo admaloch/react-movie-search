@@ -18,6 +18,7 @@ interface SearchResponse {
 }
 
 const BASE_URL = 'https://omdbapi.com/';
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 
 export const omdbApiSlice = createApi({
@@ -27,15 +28,18 @@ export const omdbApiSlice = createApi({
   }),
   endpoints: (builder) => ({
     searchMovies: builder.query<SearchResponse, { searchInput: string, currTypeParam: string, page?: number }>({
-      query: ({ searchInput, currTypeParam, page = 1 }) => 
-        `?s=${searchInput}&page=${page}&apikey=${import.meta.env.VITE_OMDB_API_KEY}${currTypeParam}`,
+      query: ({ searchInput, currTypeParam, page = 1 }) =>
+        `?s=${searchInput}&page=${page}&${API_KEY}${currTypeParam}`,
     }),
     getMovieById: builder.query<MovieResponse, string>({
-      query: (imdbID) =>
-        `?i=${imdbID}&plot=full&apikey=${import.meta.env.VITE_OMDB_API_KEY}`,
+      query: ({ imdbID }) => {
+        const queryString = `?i=${imdbID}&plot=full&${API_KEY}`;
+        console.log('Generated Query String:', queryString);  // Log the query string
+        return queryString;
+      },
     }),
   }),
 });
+// https://omdbapi.com/?i=tt0105624&plot=full&apikey=84200d7a
 
-
-export const { useSearchMoviesQuery, useGetMovieByIdQuery } = omdbApiSlice;
+export const { useSearchMoviesQuery,useLazySearchMoviesQuery, useGetMovieByIdQuery, useLazyGetMovieByIdQuery } = omdbApiSlice;

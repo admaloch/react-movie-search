@@ -1,5 +1,4 @@
 import React from "react";
-import { useTypeContext } from "../../store/searchTypeContext/TypeContext";
 import { useSearchType } from "../../hooks/useSearchType";
 import "./MainSearch.css"
 import SearchForm from "../../features/movie-api/search-input/SearchForm.js"

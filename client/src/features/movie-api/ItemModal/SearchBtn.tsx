@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import React, { useState } from 'react';
-import { SearchBtnProps } from '../../models/SearchBtnProps';
+import { SearchBtnProps } from '../../../models/SearchBtnProps';
 
 
 export default function SearchBtn({ searchLink, type }: SearchBtnProps): JSX.Element {

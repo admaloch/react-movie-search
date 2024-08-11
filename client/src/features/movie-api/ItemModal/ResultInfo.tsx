@@ -1,5 +1,6 @@
-import ResultInfoProps from '../../models/ResultInfoProps'
+import ResultInfoProps from '../../../models/ResultInfoProps'
 import React from 'react'
+
 export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.Element {
   return (
     <div className="result-info">

@@ -1,34 +1,19 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import { APIItem, defaultAPIItem } from "../../models/ItemApiProps"
+
 import { useSearchType } from "../../hooks/useSearchType";
 import LikedMovieContent from "./LikedMovieContent";
 import CircleAnimation from "../UI/LoadAnimation/CircleAnimation";
+import { useGetMovieByIdQuery } from "../../features/movie-api/omdbApiSlice";
 
-const BASE_URL = 'https://omdbapi.com/?i='
-const api_key = '&apikey=84200d7a'
+
 
 export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) {
 
     const { currType } = useSearchType()
-    const [apiItem, setApiItem] = useState<APIItem>(defaultAPIItem)
-    const [isLoading, setIsLoading] = useState(true)
 
     const mainTypeFilter = currType.type
     const currItemType = apiItem.Type
 
-    useEffect(() => {
-        async function genApiRes() {
-            try {
-                const apiRes = await axios.get(`${BASE_URL}${imdbID}${api_key}&plot=full`)
-                setApiItem(apiRes.data)
-                setIsLoading(false)
-            } catch (e) {
-                console.log('Api request failed: Error:', e)
-            }
-        }
-        genApiRes()
-    }, [])
+    const { data: movieItem, isLoading, isError, error } = useGetMovieByIdQuery(imdbID);
 
     if (hasWatched && isWatchedFilter === 'notWatched') {
         return
@@ -44,7 +29,7 @@ export default function LikedMovieItem({ imdbID, hasWatched, isWatchedFilter }) 
                 {isLoading
                     ? <CircleAnimation />
                     : <LikedMovieContent
-                        apiItem={apiItem}
+                        apiItem={movieItem}
                         imdbID={imdbID}
                         isLoading={isLoading}
                     />

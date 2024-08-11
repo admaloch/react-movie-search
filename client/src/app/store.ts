@@ -3,7 +3,7 @@ import { apiSlice } from './api/apiSlice'
 import { setupListeners } from "@reduxjs/toolkit/query"
 import authReducer from '../features/auth/authSlice'
 import searchTypeReducer from '../features/search-options/SearchTypeSlice'
-import searchTermReducer from '../features/movie-api/searchTermSlice'
+import omdbStateReducer from '../features/movie-api/omdbSlice'
 import { omdbApiSlice } from "../features/movie-api/omdbApiSlice"
 
 export const store = configureStore({
@@ -12,7 +12,7 @@ export const store = configureStore({
         [omdbApiSlice.reducerPath]: omdbApiSlice.reducer,
         auth: authReducer,
         searchTypes: searchTypeReducer,
-        submittedSearch: searchTermReducer,
+        omdbState: omdbStateReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(apiSlice.middleware, omdbApiSlice.middleware),

@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import { useSearchType } from "../../../hooks/useSearchType";
 import { useState } from "react";
 import KeyRequestAnimation from "./KeyRequestAnimation";
-import { useSearchTerm } from "../../../hooks/useSearchTerm";
+import { useOmdbState } from "../../../hooks/useOmdbState";
 import { useSearchMoviesQuery } from "../omdbApiSlice";
-import '../MovieItem.css'
+import useDoubleOmdbRes from "../../../hooks/useDoubleOmdbRes";
 
 const SearchForm = (): JSX.Element => {
-
-    const { searchInputHandler } = useSearchTerm()
+    const { fetchSubmittedResults, isLoading, isSuccess, isError, error } = useDoubleOmdbRes();
+    const { updateOmdbState } = useOmdbState()
     const [isListShown, setIsListShown] = useState(false)
     const { currType } = useSearchType()
     const [searchInput, setSearchInput] = useState<string>('')
@@ -27,25 +27,29 @@ const SearchForm = (): JSX.Element => {
     const showSearchList = () => setIsListShown(true)
     const hideSearchList = () => setIsListShown(false)
 
-
-
     useEffect(() => {
-        if (isSuccess && searchInput.length > 2) {
+        if (searchInput.length > 2) {
             showSearchList()
         } else {
             hideSearchList()
         }
-    }, [isSuccess, searchInput, showSearchList, hideSearchList])
+    }, [searchInput])
 
+    const formSubmitHandler = async () => {
+        if (searchInput.length < 3) {
+          return; // Prevent search if input length is less than 3
+        }
+        try {
+          const omdbResults = await fetchSubmittedResults(searchInput);
+          updateOmdbState(searchInput, omdbResults, isLoading, isSuccess)
+        } catch (err) {
+          console.error('Error fetching movie results:', err);
+        }
+      };
 
-
-    const formSubmitHandler = (e) => {
-        e.preventDefault()
-        searchInputHandler(searchInput)
-        hideSearchList()
-    }
-
-
+    useEffect(()=>{
+        console.log(isListShown)
+    }, [isListShown])
 
     return (
         <form id="searchForm" onSubmit={formSubmitHandler}>

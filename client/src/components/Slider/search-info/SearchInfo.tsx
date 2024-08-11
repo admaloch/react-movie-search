@@ -1,19 +1,24 @@
 import React from "react"
 import "./SearchInfo.css"
-import {randomColorGen} from '../../../utility/utility'
-import { useAPIContext } from "../../../store/APIContext/APIContext"
+import { randomColorGen } from '../../../utility/utility'
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { useSearchType } from "../../../hooks/useSearchType"
 import { SearchInfoProps } from "../../../models/SearchInfoProps"
+import { useOmdbState } from "../../../hooks/useOmdbState"
 
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
     const { currType } = useSearchType()
-    const { submittedSearch, apiResults } = useAPIContext()
+    const { submittedSearch, omdbSearchResults } = useOmdbState()
+
+    // console.log(submittedSearch, omdbSearchResults)
+
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
-    const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
+    // const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
+
+    const currSearch = submittedSearch
 
     useEffect(
         function progressBarFunc() {
@@ -23,7 +28,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
                 const images = getComputedStyle(sliderElement).getPropertyValue('--images-per-screen');
                 itemsPerScreen = parseInt(images.trim())
             }
-            const numItems = apiResults?.length
+            const numItems = omdbSearchResults?.length
             const numOfBlocks = Math.ceil(numItems / itemsPerScreen)
             let blockArr = []
             for (let i = 0; i < numOfBlocks; i++) {
@@ -35,9 +40,9 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         [submittedSearch, sliderIndex]
     );
 
-const headerClass = isSliderActive
-? 'header-info show-header'
-: 'header-info remove-header'
+    const headerClass = isSliderActive
+        ? 'header-info show-header'
+        : 'header-info remove-header'
 
 
     return (

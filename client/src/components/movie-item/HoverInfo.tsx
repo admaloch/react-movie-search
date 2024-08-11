@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ItemModal from "../ItemModal/ItemModal"
+import ItemModal from "../../features/movie-api/ItemModal/ItemModal"
 import Modal from "../UI/Modal"
 import ItemContent from "./ItemContent"
 import HoverInfoProps from "../../models/HoverInfoProps"

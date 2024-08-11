@@ -1,18 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useAPIContext } from '../../../store/APIContext/APIContext'
 import { useSearchType } from '../../../hooks/useSearchType'
 import './ErrorMsg.css'
+import { useOmdbState } from '../../../hooks/useOmdbState'
 
 function ErrorMsg() {
     const { currType, searchTypes } = useSearchType()
-    const { submittedSearch, apiResults } = useAPIContext()
+    const { submittedSearch, omdbSearchResults } = useOmdbState()
+
     const [showErrorMsg, setShowErrorMsg] = useState(false)
 
     useEffect(
         function hideErrMsgStateHandler() {
-            if (submittedSearch.length > 0 && apiResults.length === 0) {
+            if (submittedSearch.length > 0 && omdbSearchResults.length === 0) {
                 setShowErrorMsg(true)
             } else if (!showErrorMsg && submittedSearch.length === 0) {
                 return;

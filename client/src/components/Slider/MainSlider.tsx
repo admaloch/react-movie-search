@@ -1,14 +1,13 @@
 
 import { useEffect, useReducer } from 'react';
-import { useAPIContext } from '../../store/APIContext/APIContext';
 import ErrorMsg from './ErrorMsg/ErrorMsg';
-
 import React from 'react';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
 import { MainSliderProps } from '../../models/SliderProps';
 import { SliderIndexState, SliderActions } from '../../models/SliderIndexState';
 import ProgBar from '../../models/ProgBar';
+import { useOmdbState } from '../../hooks/useOmdbState';
 
 const reducer = (sliderIndex: SliderIndexState, action: SliderActions) => {
     let newIndexVal = 0
@@ -37,7 +36,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     const [sliderIndex, dispatch] = useReducer(reducer, { progBar: [], index: 0, })
 
-    const { apiResults, submittedSearch } = useAPIContext()
+    const { submittedSearch, omdbSearchResults } = useOmdbState()
 
     const updateProgBarHandler = (progBarArr: ProgBar[]) => dispatch({ type: 'updateProgBar', progBarArr: progBarArr })
     const increaseIndexHandler = () => dispatch({ type: 'increment' })
@@ -56,7 +55,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
     useEffect(
         function hideOnSubmit() {
             changeIndexHandler(0)
-            if (apiResults.length > 0) {
+            if (omdbSearchResults.length > 0) {
                 showSlider()
             } else {
                 hideSlider()
@@ -67,7 +66,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     return (
         <>
-             
+
             <SearchInfo
                 progBar={sliderIndex.progBar}
                 isSliderActive={isSliderActive}
@@ -81,7 +80,7 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
             />
-           <ErrorMsg />
+            <ErrorMsg />
 
 
         </>
