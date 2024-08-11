@@ -7,9 +7,7 @@ export const useOmdbState = () => {
     const { submittedSearch, omdbSearchResults } = useSelector((state) => state.omdbState);
 
     const updateOmdbState = (searchInput: string, omdbResults) => {
-        
         dispatch(setOmdbState({searchInput, omdbResults}));
-
     };
 
     return { updateOmdbState, submittedSearch, omdbSearchResults };

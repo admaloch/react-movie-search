@@ -6,13 +6,11 @@ import { useAPIContext } from "../../store/APIContext/APIContext";
 const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTypeBtnProps): JSX.Element => {
 
     const {searchTypeHandler} = useSearchType()
-    const { updateSearchState } = useAPIContext()
 
     const clickHandler = () => {
         searchTypeHandler(type)
         changeColorVars()
         // hideSlider()
-        updateSearchState('')
     }
 
     const changeColorVars = () => {

@@ -6,16 +6,19 @@ import KeyRequestAnimation from "./KeyRequestAnimation";
 import { useOmdbState } from "../../../hooks/useOmdbState";
 import { useSearchMoviesQuery } from "../omdbApiSlice";
 import useDoubleOmdbRes from "../../../hooks/useDoubleOmdbRes";
+import { toast } from "react-toastify";
 
 const SearchForm = (): JSX.Element => {
-    const { fetchSubmittedResults, isLoading, isSuccess, isError, error } = useDoubleOmdbRes();
+
     const { updateOmdbState } = useOmdbState()
     const [isListShown, setIsListShown] = useState(false)
     const { currType } = useSearchType()
     const [searchInput, setSearchInput] = useState<string>('')
     const currTypeParam = currType.apiParam;
 
-    const { data: movieItems, isLoading, isSuccess, isError, error } = useSearchMoviesQuery(
+    const { fetchSubmittedResults, isLoading: isSubmitLoading, isSuccess: isSubmitSuccess, isError: isSubmitError, error: submitError } = useDoubleOmdbRes();
+
+    const { data: movieItems, isLoading: isKeyLoading, isSuccess: isKeySuccess, isError, error } = useSearchMoviesQuery(
         { searchInput, currTypeParam },
         { skip: searchInput.length < 3 }
     );
@@ -35,21 +38,16 @@ const SearchForm = (): JSX.Element => {
         }
     }, [searchInput])
 
-    const formSubmitHandler = async () => {
-        if (searchInput.length < 3) {
-          return; // Prevent search if input length is less than 3
-        }
+    const formSubmitHandler = async (e) => {
+        e.preventDefault()
         try {
-          const omdbResults = await fetchSubmittedResults(searchInput);
-          updateOmdbState(searchInput, omdbResults, isLoading, isSuccess)
+            const omdbResults = await fetchSubmittedResults(searchInput);
+            updateOmdbState(searchInput, omdbResults)
         } catch (err) {
-          console.error('Error fetching movie results:', err);
+            console.error('Error fetching movie results:', err);
+            toast.error(`Error: Couldn't locate movies. Try checking your internet connction and trying again`);
         }
-      };
-
-    useEffect(()=>{
-        console.log(isListShown)
-    }, [isListShown])
+    };
 
     return (
         <form id="searchForm" onSubmit={formSubmitHandler}>
@@ -64,9 +62,11 @@ const SearchForm = (): JSX.Element => {
                 onChange={(e) => setSearchInput(e.target.value)}
             />
 
-            <KeyRequestAnimation isLoading={isLoading} />
-            <button>Search</button>
-            {isSuccess && (
+            <KeyRequestAnimation isLoading={isKeyLoading} />
+            <button>
+                {isSubmitLoading ? 'Submitting...' : 'Submit'}
+            </button>
+            {isKeySuccess && Array.isArray(movieItems.Search) && (
                 <SearchList
                     isListShown={isListShown}
                     hideList={hideSearchList}

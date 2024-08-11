@@ -27,8 +27,10 @@ const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.J
 
     return (
         <ul style={{ height: isListShown ? "300px" : "0", opacity: isListShown ? 1 : 0 }}
+           
             className="search-list"
             id="search-list">
+                
             {movieItems?.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
