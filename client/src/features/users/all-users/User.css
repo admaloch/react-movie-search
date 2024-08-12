@@ -1,0 +1,42 @@
+.all-users-section {
+    margin: 10rem 0 5rem 0;
+}
+
+.user-list {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.user-container {
+    width: 25%;
+
+}
+
+.user-item {
+    display: flex;
+    flex-direction: column;
+    /* justify-self: center; */
+    /* align-items: center; */
+    border: var(--containerBackground) solid  1px;
+    background-color: var(--containerBackground);
+    color: var(--containertext);
+    margin: 1rem; 
+    padding: 2rem 1.5rem;
+    /* min-height: 300px; */
+    aspect-ratio: 1/1;
+    border-radius: 7px;
+}
+
+.user-item h3 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.liked-list {
+    max-height: 200px;
+    overflow: auto;
+}

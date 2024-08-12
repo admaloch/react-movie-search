@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
             imdbId: {
                 type: String,
             },
+            title: {
+                type: String,
+            },
             hasWatched: {
                 type: Boolean,
             }

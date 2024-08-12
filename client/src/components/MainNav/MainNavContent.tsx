@@ -66,6 +66,7 @@ export default function MainNavContent() {
                         <a onClick={(e) => { e.preventDefault(); handleNavClick('/login'); }} href="#">Login</a>
                     </>
                 )}
+                <a onClick={() => handleNavClick('/profiles')} href="#">All users</a>
 
 
 

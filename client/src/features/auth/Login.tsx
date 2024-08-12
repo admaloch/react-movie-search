@@ -33,9 +33,9 @@ const Login: React.FC = () => {
             const { accessToken } = await login({ email, password }).unwrap()
             dispatch(setCredentials({ accessToken }))
             toast.dismiss();
-            toast.success('Registration successful!');
+            toast.success('Login successful!');
             setTimeout(() => {
-                navigate('/myprofile');
+                navigate('/profiles');
             }, 2300);
         } catch (err) {
             let errMsg

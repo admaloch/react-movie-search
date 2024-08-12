@@ -62,7 +62,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, password, imdbId } = req.body
+    const { id, email, username, password, imdbId, title } = req.body
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -92,10 +92,10 @@ const updateUser = asyncHandler(async (req, res) => {
         user.password = await bcrypt.hash(password, 10)
     }
 
-    if (imdbId) {
+    if (imdbId && title) {
         const movieIndex = user.likedMovies.findIndex(movie => movie.imdbId === imdbId);
         if (movieIndex === -1) {
-            user.likedMovies.push(imdbId);
+            user.likedMovies.push(imdbId, title);
         }
     }
 

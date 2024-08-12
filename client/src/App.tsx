@@ -13,55 +13,62 @@ import EditUser from './features/users/EditUser'
 import Prefetch from './features/auth/Prefetch'
 import { ToastContainer } from 'react-toastify'
 import PersistLogin from './features/auth/PersistLogin'
+import ListAllUsers from './features/users/all-users/ListAllUsers'
 
 function App() {
     // const state = useSelector((state: RootState) => state);
-    
-// console.log(state)
-// const state = useSearchType()
-//     console.log(state)
+
+    // console.log(state)
+    // const state = useSearchType()
+    //     console.log(state)
 
     return (
-       
-            <APIProvider>
-                <Routes>
-                    <Route path='/' element={<MainNavBar />} >
-                        <Route path='/' element={<HomeLayout />} >
-                            <Route index element={<HomePageContent />} />
 
-                            <Route path="users">
-                                <Route path=":id" element={<EditUser />} />
-                                <Route path="register" element={<Register />} />
-                            </Route>
-                            <Route path='login' element={<Login />} />
+        <APIProvider>
+            <Routes>
+                <Route path='/' element={<MainNavBar />} >
+                    <Route path='/' element={<HomeLayout />} >
+                        <Route index element={<HomePageContent />} />
 
+                        <Route path="users">
+                            {/* <Route path=":id" element={<EditUser />} /> */}
+                            <Route path="register" element={<Register />} />
                         </Route>
-
-                        <Route path='/' element={<Footer />} >
-                            <Route path='/search' element={<MainPage />} />
-                            <Route element={<PersistLogin />}>
-                                <Route element={<Prefetch />}>
-                                    <Route path='/myprofile' element={<UserProfile />} />
-                                </Route>
-                            </Route>
-                            <Route path='*' element={<Navigate to='/' />} />
-                        </Route>
+                        <Route path='login' element={<Login />} />
 
                     </Route>
-                </Routes >
-                <ToastContainer
-                    position="top-center"
-                    autoClose={1700}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="colored" />
-            </APIProvider>
-       
+
+                    <Route path='/' element={<Footer />} >
+                        <Route path='/search' element={<MainPage />} />
+                        <Route element={<PersistLogin />}>
+                            <Route path="profiles">
+                                <Route index element={<ListAllUsers />} />
+                                <Route path=":id" element={<UserProfile />} />
+                                <Route path=":id/edit" element={<EditUser />} />
+                            </Route>
+
+
+                            <Route path='/myprofile' element={<UserProfile />} />
+
+                        </Route>
+                        <Route path='*' element={<Navigate to='/' />} />
+                    </Route>
+
+                </Route>
+            </Routes >
+            <ToastContainer
+                position="top-center"
+                autoClose={1700}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
+        </APIProvider>
+
     )
 }
 

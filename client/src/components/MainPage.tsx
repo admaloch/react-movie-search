@@ -12,7 +12,7 @@ function MainPage() {
   return (
 
        
-       <div className="main-slider-content">
+       <div className="main-slider-content main-item-content">
          <div className="content-container">
           <MainSearch
             isSliderActive={isSliderActive}
