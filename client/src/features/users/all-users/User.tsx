@@ -1,12 +1,14 @@
 
-
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useSelector } from 'react-redux'
 import { selectUserById } from '../usersApiSlice'
 import UsersLikedList from './UserLikedList'
+import UserPageLinkIcon from './UserPageLinkIcon';
+
 
 const User = ({ userId }) => {
     const user = useSelector(state => selectUserById(state, userId))
-
+console.log(user)
     if (user) {
         // console.log(user.likedMovies)
         return (
@@ -18,6 +20,8 @@ const User = ({ userId }) => {
                             <li>{movie.title}</li>
                         ))}
                     </ul>
+
+                    <UserPageLinkIcon userId={user._id}/>
                 </div>
 
 

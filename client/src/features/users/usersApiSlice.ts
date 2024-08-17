@@ -18,12 +18,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 },
             }),
             transformResponse: responseData => {
-                const loadedUsers = responseData.map(user => {
-                    user.id = user._id
-
-                    return user
+                const filteredUsers = responseData.filter(user => user.likedMovies.length);
+                const loadedUsers = filteredUsers.map(user => {
+                    user.id = user._id;
+                    return user;
                 });
-                return usersAdapter.setAll(initialState, loadedUsers)
+                return usersAdapter.setAll(initialState, loadedUsers);
             },
             providesTags: (result, error, arg) => {
 
