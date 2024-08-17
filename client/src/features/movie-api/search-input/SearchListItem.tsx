@@ -15,7 +15,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
 
     async function handleListItemClick() {
         setIsModalOpen(true)
-        triggerGetMovieById({ imdbID });
+        triggerGetMovieById( imdbID );
     }
 
     const closeItemModal = () => {
@@ -44,6 +44,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     open={isModalOpen}
                     closeModal={closeItemModal}
                     isLoading={isLoading}
+                    isError={isError}
                 />
             
 

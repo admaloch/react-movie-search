@@ -10,6 +10,7 @@ import Error from '../../../components/UI/errors/Error';
 import UserInfo from './UserInfo';
 import FilterContentOptions from './FilterContentOptions';
 import LikedMovieItem from './LikedMovieItem';
+import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation';
 
 
 export default function UserProfile() {
@@ -20,7 +21,7 @@ export default function UserProfile() {
 
   const { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
 
-  if (isLoading) return <CircleAnimation />;
+  if (isLoading) return <MainLoadAnimation />;
   if (isError || !user) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
 
   // console.log(user)

@@ -6,6 +6,8 @@ import useAuth from '../../hooks/useAuth';
 
 export default function MainNavContent() {
 
+
+
     const { isLoggedIn } = useAuth()
 
     const navRef = useRef();

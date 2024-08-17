@@ -4,9 +4,11 @@ import Modal from "../UI/Modal"
 import ItemContent from "./ItemContent"
 import HoverInfoProps from "../../models/HoverInfoProps"
 import CircleAnimation from "../UI/LoadAnimation/CircleAnimation"
+import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedList"
 
 const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
 
+    // console.log(item)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const closeItemModal = () => {
@@ -26,6 +28,10 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
                     openItemModal={openItemModal}
                 />
             }
+            {/* <UpdateLikedList
+                title={item.Title}
+                imdbId={item.imdbID}
+            /> */}
 
             <Modal
                 closeModal={closeItemModal}

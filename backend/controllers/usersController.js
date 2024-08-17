@@ -75,8 +75,8 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { email, username, password, imdbId, title } = req.body
-    const { id } = req.params
+    const { id, email, username, password, imdbId, title } = req.body
+    // const { id } = req.params
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -107,10 +107,17 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     if (imdbId && title) {
-        const movieIndex = user.likedMovies.findIndex(movie => movie.imdbId === imdbId);
-        if (movieIndex === -1) {
-            user.likedMovies.push(imdbId, title);
+        const movieExists = user.likedMovies.some(movie => movie.imdbId === imdbId);
+
+        if (!movieExists) {
+            user.likedMovies.push({ imdbId, title });
+        } else {
+            return res.status(400).json({ message: 'Movie already liked' });
         }
+    }
+
+    if (imdbId && !title) {
+        user.likedMovies = user.likedMovies.filter(movie => movie.imdbId !== imdbId);
     }
 
     const updatedUser = await user.save()

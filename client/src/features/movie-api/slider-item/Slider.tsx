@@ -8,7 +8,7 @@ const Slider = ({ showArrowFunc, hideArrowFunc }: SlidersProps): JSX.Element => 
 
     const { omdbSearchResults} = useOmdbState()
 
-    console.log(omdbSearchResults.Search)
+    // console.log(omdbSearchResults.Search)
 
     return (
         <div className="slider">

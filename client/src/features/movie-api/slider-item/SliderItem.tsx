@@ -22,7 +22,7 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
 
     function mouseEnterHandler() {
         hideArrowFunc();
-        triggerGetMovieById({ imdbID });
+        triggerGetMovieById( imdbID );
     }
 
     return (

@@ -4,16 +4,19 @@ import Modal from '../../../components/UI/Modal'
 import { ListItemProps } from '../../../models/ListItemProps'
 import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation'
 
-export default function ListItemModal({ item, open, closeModal, isLoading }: ListItemProps): React.JSX.Element {
+export default function ListItemModal({ item, open, closeModal, isLoading, isError }: ListItemProps): React.JSX.Element {
+
+
     return (
         <Modal
             closeModal={closeModal}
             open={open}
         >
-            {isLoading
-                ? <CircleAnimation />
-                : <ItemModal item={item} />
-            }
+
+            <ItemModal 
+            isError={isError}
+            isLoading={isLoading} 
+            item={item} />
         </Modal>
     )
 }

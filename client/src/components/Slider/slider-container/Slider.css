@@ -90,6 +90,11 @@
     padding: .2rem;
 }
 
+/* .info-container .like-icon {
+    /* position: absolute;
+    bottom: ; */
+} */
+
 .movie-container:hover .info-container,
 .movie-item:hover .info-container {
     opacity: 1;

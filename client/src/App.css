@@ -58,16 +58,17 @@ html {
 }
 
 :root {
-    --text: #f8f7ff;
-    --mainBackground: #022B3A;
-    --containertext: #022B3A;
-    --containerBackground: #f8f7ff;
-    --color1: #caf0f8;
-    --color2: #d0f4de;
-    --color3: #fdfcdc;
-    --overlay: rgba(225, 229, 242, 0.73);
-    --slider-index: 0;
+    --text: #022B3A; 
+    --mainBackground: #edf2f4; 
+    --containertext: #f7ede2; 
+    --containerBackground: #022B3A; 
+    --color1: #5e548e; 
+    --color2: #03045e; 
+    --color3: #1F7A8C; 
+    --overlay: rgba(2, 43, 58, 1);
 }
+
+
 
 
 
