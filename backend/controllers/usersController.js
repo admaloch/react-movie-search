@@ -18,6 +18,17 @@ const getAllUsers = asyncHandler(async (req, res) => {
     }
     res.json(users)
 })
+// @desc Get user
+// @route GET /user/:id
+// @access Private
+const getUserById = asyncHandler(async (req, res) => {
+    const user = await UserModel.findById(req.params.id).select('-password').lean()
+
+    if (!user) {
+        return res.status(400).json({ message: 'No user found' })
+    }
+    res.json(user)
+})
 
 // @desc Create new user
 // @route POST /users
@@ -60,9 +71,12 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 
 
-
+// @desc Update user
+// @route PATCH /users
+// @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, password, imdbId, title } = req.body
+    const { email, username, password, imdbId, title } = req.body
+    const { id } = req.params
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -103,8 +117,11 @@ const updateUser = asyncHandler(async (req, res) => {
     res.json({ message: `${updatedUser.username} updated` })
 })
 
+// @desc Delete user
+// @route DELETE /user
+// @access Private
 const deleteUser = asyncHandler(async (req, res) => {
-    const { id } = req.body
+    const { id } = req.params
 
     if (!id) {
         return res.status(400).json({ message: 'User ID Required' })
@@ -129,6 +146,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 module.exports = {
     getAllUsers,
+    getUserById,
     createNewUser,
     updateUser,
     deleteUser

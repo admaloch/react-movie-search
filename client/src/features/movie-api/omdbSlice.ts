@@ -18,7 +18,6 @@ const omdbSlice = createSlice({
         },
         setOmdbState: (state,action) =>{
             const {searchInput, omdbResults}  = action.payload;
-            console.log('set omdb state ran', searchInput, omdbResults)
             state.submittedSearch = searchInput
             state.omdbSearchResults = omdbResults
         },

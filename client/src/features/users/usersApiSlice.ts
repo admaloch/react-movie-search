@@ -17,6 +17,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                     return response.status === 200 && !result.isError
                 },
             }),
+            //The transformResponse function modifies the response data before it’s stored in the Redux store.
             transformResponse: responseData => {
                 const filteredUsers = responseData.filter(user => user.likedMovies.length);
                 const loadedUsers = filteredUsers.map(user => {
@@ -39,6 +40,22 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 }
             }
 
+        }),
+        getUserById: builder.query({
+            query: (id) => ({
+                url: `/users/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError;
+                },
+            }),
+            transformResponse: responseData => {
+                // Adjust the response data if necessary
+                responseData.id = responseData._id;
+                return responseData;
+            },
+            providesTags: (result, error, arg) => [
+                { type: 'User', id: arg }
+            ]
         }),
         addNewUser: builder.mutation({
             query: initialUserData => ({
@@ -79,6 +96,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetUsersQuery,
+    useGetUserByIdQuery,
     useAddNewUserMutation,
     useUpdateUserMutation,
     useDeleteUserMutation,

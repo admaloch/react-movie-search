@@ -10,11 +10,22 @@
     flex-grow: 1;
 }
 
+.user-profile-container p {
+    font-size: 1.2rem;
+}
+.user-profile-container h2 {
+    margin: 1rem 0;
+}
+.user-profile-container h1 {
+    margin: 0;
+}
+
 .user-profile-container #result-type-container {
     margin-bottom: .7rem;
 }
 
 .movie-items-container {
+    margin-top: 2rem;
     width: 95%;
     height: 100%;
     max-width: 1200px;

@@ -32,9 +32,8 @@ export const omdbApiSlice = createApi({
         `?s=${searchInput}&page=${page}&${API_KEY}${currTypeParam}`,
     }),
     getMovieById: builder.query<MovieResponse, string>({
-      query: ({ imdbID }) => {
-        const queryString = `?i=${imdbID}&plot=full&${API_KEY}`;
-        console.log('Generated Query String:', queryString);  // Log the query string
+      query: ( imdbId ) => {
+        const queryString = `?i=${imdbId}&plot=full&${API_KEY}`;
         return queryString;
       },
     }),
@@ -42,4 +41,4 @@ export const omdbApiSlice = createApi({
 });
 // https://omdbapi.com/?i=tt0105624&plot=full&apikey=84200d7a
 
-export const { useSearchMoviesQuery,useLazySearchMoviesQuery, useGetMovieByIdQuery, useLazyGetMovieByIdQuery } = omdbApiSlice;
+export const { useSearchMoviesQuery, useLazySearchMoviesQuery, useGetMovieByIdQuery, useLazyGetMovieByIdQuery } = omdbApiSlice;

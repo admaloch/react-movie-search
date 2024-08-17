@@ -18,20 +18,21 @@ export default function ListAllUsers() {
     });
 
     // console.log("Users data in ListAllUsers:", users); // Log users data
+  
+    if (isLoading) return <CircleAnimation />;
+    if (isError) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
+    if (!users) return <div>User not found</div>;
 
 
     return (
         <div className="main-item-content all-users-section">
-            {isLoading && <CircleAnimation />}
-            {isError && <Error text={"Error locating the users. Check your internet connection and try again"} />}
-            {isSuccess && (
-                <>
-                    <h2>All Users:</h2>
-                    <div className="user-list">
-                        {users?.ids.map(id => <User key={id} userId={id} />)}
-                    </div>
-                </>
-            )}
+
+            <h2>All Users:</h2>
+            <div className="user-list">
+                {users?.ids.map(id => <User key={id} userId={id} />)}
+            </div>
+
+
         </div>
     );
 }
