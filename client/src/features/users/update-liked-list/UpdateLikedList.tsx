@@ -7,10 +7,11 @@ import LikeOrDislike from './LIkeOrDislike';
 export default function UpdateLikedList({ imdbId, title, size = 'small' }) {
 
     const { id } = useAuth()
-
+    
     if (!id) return null
 
     const { data: user, isLoading, isError, error, isSuccess } = useGetUserByIdQuery(id);
+
 
     let content
 
@@ -19,8 +20,9 @@ export default function UpdateLikedList({ imdbId, title, size = 'small' }) {
     if (isError || !user) content = <ErrorIcon size={size} />
 
     if (isSuccess) {
+        // console.log(user)
         const { likedMovies } = user
-        console.log(id)
+        
         content =
             <LikeOrDislike
                 size={size}

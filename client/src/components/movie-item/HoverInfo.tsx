@@ -20,7 +20,6 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
 
     return (
         <div className="info-container">
-
             {isLoading
                 ? <CircleAnimation />
                 : <ItemContent
@@ -28,11 +27,11 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
                     openItemModal={openItemModal}
                 />
             }
-            {/* <UpdateLikedList
+            <UpdateLikedList
                 title={item.Title}
                 imdbId={item.imdbID}
-            /> */}
-
+                size="large"
+            />
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}>

@@ -13,10 +13,10 @@ export default function ListItemModal({ item, open, closeModal, isLoading, isErr
             open={open}
         >
 
-            <ItemModal 
-            isError={isError}
-            isLoading={isLoading} 
-            item={item} />
+            <ItemModal
+                isError={isError}
+                isLoading={isLoading}
+                item={item} />
         </Modal>
     )
 }

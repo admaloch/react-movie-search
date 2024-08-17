@@ -2,6 +2,7 @@ import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
 import { ModalContentProps } from '../../../models/ListItemProps'
 import React from 'react'
+import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList'
 
 export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 
@@ -14,10 +15,18 @@ export default function ModalContent({ item }: ModalContentProps): React.JSX.Ele
         item={item}
         year={year}
       />
-      <SearchBtn
-        type={item.Type}
-        searchLink={searchLink}
-      />
+      <div className="results-icons">
+        <SearchBtn
+          type={item.Type}
+          searchLink={searchLink}
+        />
+        <UpdateLikedList
+          title={item.Title}
+          imdbId={item.imdbID}
+          size="large"
+        />
+      </div>
+
     </div>
   )
 }

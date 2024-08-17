@@ -4,43 +4,56 @@ import ErrorIcon from '@mui/icons-material/Error';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { toast } from 'react-toastify';
+import './LikeIcons.css'
+import useAuth from '../../../hooks/useAuth';
 
-export default function LikeOrDislike({ likedMovies, size, title, imdbdId }) {
-    // console.log(likedMovies)
-    // const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId)
+export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
+    const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId);
 
-    // const [updateUser, {
-    //     isLoading,
-    //     isSuccess,
-    //     isError,
-    //     error
-    // }] = useUpdateUserMutation()
+    const { id } = useAuth()
 
-    // const updateLikedList = async () => {
-    //     //backend setup: imdbId + title = add imdbdId = delete
-    //     const movieData = !alreadyLiked ? { imdbId, title } : { imdbId }
-    //     await updateUser(movieData)
-    // }
+    const [updateUser, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useUpdateUserMutation();
 
-    // let content;
+    const updateLikedList = async (event) => {
+        event.stopPropagation()
+        const movieData = !alreadyLiked ? { imdbId, title, id } : { imdbId, id };
+        try {
+            await updateUser(movieData).unwrap();
+        } catch (err) {
+            console.error("Failed to update liked list: ", err);
+        }
+    };
 
-    // if (isLoading) content = <LoadAnimation />
+    let content;
 
-    // if (isError) {
-    //     toast.error(`Error: ${error?.data?.message}`);
-    //     content = <ErrorIcon />
-    // }
+    if (isLoading) content = <LoadAnimation />;
 
-    // if (isSuccess) {
-    //     if (!alreadyLiked) {
-    //         content = <FavoriteBorderIcon className='like-icon' fontSize={size} onClick={updateLikedList} />
-    //     } else {
-    //         content = <FavoriteIcon className='like-icon' fontSize={size} onClick={updateLikedList} />
-    //     }
-    // }
+    if (isError) {
+        toast.error(`Error: ${error?.data?.message}`);
+        content = <ErrorIcon />;
+    } else if (!alreadyLiked) {
+        content = <FavoriteBorderIcon
+            className='like-icon'
+            fontSize={size}
+            onClick={updateLikedList}
+        />;
+    } else {
+        content = <FavoriteIcon
+            className='like-icon'
+            fontSize={size}
+            onClick={updateLikedList}
+        />;
+    }
 
     return (
-        // { content }
-        <h1>Hello</h1>
-    )
+        <div className="like-icon-container">
+            {content}
+        </div>
+    ); // Return content or a default element
 }
+

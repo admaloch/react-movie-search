@@ -5,6 +5,7 @@ import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import image_not_found from '../../../assets/image_not_found.png'
 import { APIResults } from "../../../store/APIContext/APIContextInterface"
 import { toast } from "react-toastify"
+import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 
 
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
@@ -15,7 +16,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
 
     async function handleListItemClick() {
         setIsModalOpen(true)
-        triggerGetMovieById( imdbID );
+        triggerGetMovieById(imdbID);
     }
 
     const closeItemModal = () => {
@@ -37,19 +38,20 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                     <h3>{Title}</h3>
                     {Year && <p>{Year}</p>}
                 </div>
-            </li>
-        
-                <ListItemModal
-                    item={movieItem}
-                    open={isModalOpen}
-                    closeModal={closeItemModal}
-                    isLoading={isLoading}
-                    isError={isError}
+                <UpdateLikedList
+                    title={Title}
+                    imdbId={imdbID}
+                    size="medium"
                 />
-            
+            </li>
 
-
-
+            <ListItemModal
+                item={movieItem}
+                open={isModalOpen}
+                closeModal={closeItemModal}
+                isLoading={isLoading}
+                isError={isError}
+            />
         </>
     )
 }

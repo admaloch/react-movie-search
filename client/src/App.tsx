@@ -39,8 +39,9 @@ function App() {
                     </Route>
 
                     <Route path='/' element={<Footer />} >
+                    <Route element={<PersistLogin />}>
                         <Route path='/search' element={<MainPage />} />
-                        <Route element={<PersistLogin />}>
+                        
                             <Route path="profiles">
                                 <Route index element={<ListAllUsers />} />
                                 <Route path=":id" element={<UserProfile />} />
