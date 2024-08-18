@@ -39,13 +39,13 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
     } else if (!alreadyLiked) {
         content = <FavoriteBorderIcon
             className='like-icon'
-            fontSize={size}
+            sx={{ fontSize: size }}
             onClick={updateLikedList}
         />;
     } else {
         content = <FavoriteIcon
             className='like-icon'
-            fontSize={size}
+            sx={{ fontSize: size }}
             onClick={updateLikedList}
         />;
     }

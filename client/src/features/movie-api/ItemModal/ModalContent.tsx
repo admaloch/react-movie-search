@@ -3,6 +3,7 @@ import ResultInfo from './ResultInfo'
 import { ModalContentProps } from '../../../models/ListItemProps'
 import React from 'react'
 import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList'
+import NewReview from '../../reviews/new-reviews/NewReview'
 
 export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 
@@ -23,8 +24,9 @@ export default function ModalContent({ item }: ModalContentProps): React.JSX.Ele
         <UpdateLikedList
           title={item.Title}
           imdbId={item.imdbID}
-          size="large"
+          size={30}
         />
+        <NewReview size={30} imdbId={item.imdbID}/>
       </div>
 
     </div>

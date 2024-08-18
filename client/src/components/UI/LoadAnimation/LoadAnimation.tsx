@@ -1,11 +1,14 @@
+import LoadingProps from '../../../models/LoadingProps'
 import './LoadAnimation.css'
 
-export default function LoadAnimation(): JSX.Element {
+export default function LoadAnimation({ isLoading }: LoadingProps): JSX.Element {
 
-
+    const loadStyle = isLoading
+        ? { opacity: 1, zIndex: 150 }
+        : { opacity: 0, zIndex: 0 }
     return (
         <>
-            <div className="load-animation"><div></div><div></div><div></div><div></div></div>
+            <div style={loadStyle} className="load-animation"><div></div><div></div><div></div><div></div></div>
         </>
     )
 }

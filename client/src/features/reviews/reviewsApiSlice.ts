@@ -40,33 +40,21 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
             }
 
         }),
-        getReviewById: builder.query({
-            query: (id) => {
-                // If `id` is provided, use it in the URL; otherwise, default to fetching the current user's reviews
-                const url = id ? `/reviews/user/${id}` : `/reviews/user`;
-                return {
-                    url,
-                    validateStatus: (response, result) => {
-                        return response.status === 200 && !result.isError;
-                    },
-                };
-            },
+        getReviewsById: builder.query({
+            query: (id) => ({
+                url: `/reviews/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError;
+                },
+            }),
             transformResponse: responseData => {
                 // Adjust the response data if necessary
-                if (Array.isArray(responseData)) {
-                    return responseData.map(review => ({
-                        ...review,
-                        id: review._id
-                    }));
-                } else {
-                    responseData.id = responseData._id;
-                    return responseData;
-                }
+                responseData.id = responseData._id;
+                return responseData;
             },
-            providesTags: (result, error, arg) =>
-                result ?
-                    result.map(({ id }) => ({ type: 'Review', id })) :
-                    [{ type: 'Review', id: arg }]
+            providesTags: (result, error, arg) => [
+                { type: 'Review', id: arg }
+            ]
         }),
         addNewReview: builder.mutation({
             query: initialReviewData => ({
@@ -107,8 +95,8 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetReviewsQuery,
-    useGetReviewByIdQuery,
-    useLazyGetReviewByIdQuery,
+    useGetReviewsByIdQuery,
+    useLazyGetReviewsByIdQuery,
     useAddNewReviewMutation,
     useUpdateReviewMutation,
     useDeleteReviewMutation,

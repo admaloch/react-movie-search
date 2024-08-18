@@ -11,17 +11,17 @@ const getAllReviews = asyncHandler(async (req, res) => {
     res.json(reviews)
 })
 
+// @desc Get user
+// @route GET /user/:id
+// @access Private
 const getUserReviews = asyncHandler(async (req, res) => {
-    const userId = req.params.userId || req.user.id; // Use URL userId if available, else use current user's ID
-
-    const reviews = await ReviewModel.find({ user: userId }).populate('user', 'username');
-
-    if (!reviews.length) {
-        return res.status(404).json({ message: 'No reviews found for this user' });
+    const reviews = await ReviewModel.find({ user: req.params.userId });
+    if (!reviews) {
+        return res.status(400).json({ message: 'No reviews found' })
     }
-
-    res.json(reviews);
-});
+    console.log(reviews)
+    res.json(reviews)
+})
 
 
 const createReview = asyncHandler(async (req, res) => {
@@ -74,12 +74,12 @@ const updateReview = asyncHandler(async (req, res) => {
 
 
 const deleteReview = asyncHandler(async (req, res) => {
-    const { id, reviewId} = req.body
+    const { id, reviewId } = req.body
 
     if (!reviewId || !id) {
         return res.status(400).json({ message: 'Review ID Required' });
     }
-    
+
     // Find and delete the review
     const review = await ReviewModel.findById(reviewId);
     if (!review) {

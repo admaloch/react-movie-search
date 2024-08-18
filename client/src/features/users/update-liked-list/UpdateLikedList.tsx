@@ -17,7 +17,7 @@ export default function UpdateLikedList({ imdbId, title, size = 'small' }) {
 
     if (isLoading) content = <LoadAnimation />
 
-    if (isError || !user) content = <ErrorIcon size={size} />
+    if (isError || !user) content = <ErrorIcon />
 
     if (isSuccess) {
         // console.log(user)
