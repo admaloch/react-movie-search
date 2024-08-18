@@ -1,0 +1,12 @@
+.like-icon {
+    cursor: pointer;
+}
+
+
+.info-container .like-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+

@@ -11,4 +11,7 @@ router.route('/')
     .patch(reviewsController.updateReview)
     .delete(reviewsController.deleteReview)
 
+router.route('/user/:userId?')
+    .get(reviewsController.getUserReviews);
+
 module.exports = router

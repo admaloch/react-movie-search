@@ -11,6 +11,18 @@ const getAllReviews = asyncHandler(async (req, res) => {
     res.json(reviews)
 })
 
+const getUserReviews = asyncHandler(async (req, res) => {
+    const userId = req.params.userId || req.user.id; // Use URL userId if available, else use current user's ID
+
+    const reviews = await ReviewModel.find({ user: userId }).populate('user', 'username');
+
+    if (!reviews.length) {
+        return res.status(404).json({ message: 'No reviews found for this user' });
+    }
+
+    res.json(reviews);
+});
+
 
 const createReview = asyncHandler(async (req, res) => {
     const { user, imdbId, body, rating } = req.body;
@@ -81,6 +93,7 @@ const deleteReview = asyncHandler(async (req, res) => {
 
 module.exports = {
     getAllReviews,
+    getUserReviews,
     createReview,
     updateReview,
     deleteReview
