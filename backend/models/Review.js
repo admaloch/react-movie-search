@@ -5,6 +5,9 @@ const reviewSchema = new Schema({
     imdbId: {
         type: String,
     },  
+    title: {
+        type: String,
+    },
     body: {
         type: String,
     },

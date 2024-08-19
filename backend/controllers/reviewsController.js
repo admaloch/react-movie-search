@@ -19,16 +19,16 @@ const getUserReviews = asyncHandler(async (req, res) => {
     if (!reviews) {
         return res.status(400).json({ message: 'No reviews found' })
     }
-    console.log(reviews)
+    // console.log(reviews)
     res.json(reviews)
 })
 
 
 const createReview = asyncHandler(async (req, res) => {
-    const { user, imdbId, body, rating } = req.body;
+    const { user, imdbId, body, rating, title } = req.body;
 
     // const user = req.user._id;
-    if (!imdbId || !body || !rating || !user) {
+    if (!imdbId || !body || !rating || !user || !title) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
@@ -36,7 +36,7 @@ const createReview = asyncHandler(async (req, res) => {
     const usersReviews = await ReviewModel.find({ user }).lean().exec();
     const alreadyReviewed = usersReviews.some(review => review.imdbId === imdbId);
     if (alreadyReviewed) {
-        return res.status(409).json({ message: 'This movie was already reviewed by the current user' });
+        return res.status(409).json({ message: 'You have already submitted a review for this movie' });
     }
 
     // Create the new review
@@ -54,21 +54,23 @@ const createReview = asyncHandler(async (req, res) => {
 
 
 const updateReview = asyncHandler(async (req, res) => {
-    const { id, body, rating } = req.body
+    const { reviewId, body, rating } = req.body
 
-    if (!id || (!body && !rating)) {
+    if (!body || !rating || !reviewId) {
         return res.status(400).json({ message: 'Review ID and either body or rating are required' });
     }
 
-    const review = await ReviewModel.findById(id).exec()
+    const review = await ReviewModel.findById(reviewId).exec()
+    
     if (!review) {
-        return res.status(400).json({ message: 'User not found' })
+        return res.status(400).json({ message: 'Movie not found' })
     }
 
     if (body) review.body = body
     if (rating) review.rating = rating
 
     const updatedReview = await review.save()
+    // console.log('update review just ran', updateReview)
     res.json({ message: `Review # ${updatedReview.id} updated`, review })
 })
 

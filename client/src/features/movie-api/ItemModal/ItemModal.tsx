@@ -4,7 +4,6 @@ import './ItemModal.css';
 import { ModalContentProps } from '../../../models/ListItemProps';
 import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation';
 import Error from '../../../components/UI/errors/Error';
-import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList';
 
 const ItemModal = ({ item, isLoading, isError }: ModalContentProps): React.JSX.Element => {
 

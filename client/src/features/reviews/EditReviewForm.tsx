@@ -1,160 +1,146 @@
-import { useState, useEffect } from "react"
-import { useUpdateReviewMutation, useDeleteReviewMutation } from "./reviewsApiSlice"
-import { useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import React, { useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { useUpdateReviewMutation } from './reviewsApiSlice';
+import useAuth from '../../hooks/useAuth';
+import './Reviews.css'
+import CloseIcon from '@mui/icons-material/Close';
 
-const EditReviewForm = ({ review, users }) => {
 
-    const [updateReview, {
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    }] = useUpdateReviewMutation()
 
-    const [deleteReview, {
-        isSuccess: isDelSuccess,
-        isError: isDelError,
-        error: delerror
-    }] = useDeleteReviewMutation()
 
-    const navigate = useNavigate()
 
-    const [title, setTitle] = useState(review.title)
-    const [text, setText] = useState(review.text)
-    const [completed, setCompleted] = useState(review.completed)
-    const [userId, setUserId] = useState(review.user)
+const EditReviewForm = ({ closeModal, movie }) => {
 
-    useEffect(() => {
+  const { body, title, _id, rating } = movie
 
-        if (isSuccess || isDelSuccess) {
-            setTitle('')
-            setText('')
-            setUserId('')
-            navigate('/dash/reviews')
-        }
+  let defaultRating = parseInt(rating)
 
-    }, [isSuccess, isDelSuccess, navigate])
+  console.log(defaultRating)
 
-    const onTitleChanged = e => setTitle(e.target.value)
-    const onTextChanged = e => setText(e.target.value)
-    const onCompletedChanged = e => setCompleted(prev => !prev)
-    const onUserIdChanged = e => setUserId(e.target.value)
+  const { id } = useAuth()
 
-    const canSave = [title, text, userId].every(Boolean) && !isLoading
+  if (!id) return null
 
-    const onSaveReviewClicked = async (e) => {
-        if (canSave) {
-            await updateReview({ id: review.id, user: userId, title, text, completed })
-        }
+  const { register, handleSubmit, formState: { errors } } = useForm({
+  });
+
+  const [updateReview, {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  }] = useUpdateReviewMutation()
+
+
+  const submitForm: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      await updateReview({ ...data, reviewId: _id }).unwrap();
+    } catch (err) {
+      console.log('Error', err)
     }
+  };
 
-    const onDeleteReviewClicked = async () => {
-        await deleteReview({ id: review.id })
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Review successfully updated');
+      setTimeout(() => {
+        closeModal()
+      }, 2300);
     }
+    if (isError) {
+      toast.error(`Error: ${error?.data?.message || 'Failed to update review. Try again later.'}`);
+    }
+  }, [isSuccess, isError, error]);
 
-    const created = new Date(review.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
-    const updated = new Date(review.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
+  return (
+    <>
+      <div className="review-form">
+        <div onClick={() => closeModal()} className="close-modal-icon">
+          <CloseIcon fontSize="large" />
+        </div>
+        <form onSubmit={handleSubmit(submitForm)}>
+          <h2>Review for {title}</h2>
 
-    const options = users.map(user => {
-        return (
-            <option
-                key={user.id}
-                value={user.id}
+          <div className="form-group review-star-input">
+            <label htmlFor="rating">Star Rating:</label>
+            <div className="starability-basic">
+              <input
+                type="radio"
+                id="rate-1"
+                value={1}
+                {...register('rating', { required: true, valueAsNumber: true })}
+                checked={defaultRating === 1} // Check if rating is 1
+              />
+              <label htmlFor="rate-1" title="Terrible">1 star</label>
 
-            > {user.username}</option >
-        )
-    })
+              <input
+                type="radio"
+                id="rate-2"
+                value={2}
+                {...register('rating', { required: true, valueAsNumber: true })}
+                checked={defaultRating === 2} // Check if rating is 2
+              />
+              <label htmlFor="rate-2" title="Not good">2 stars</label>
 
-    const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
-    const validTitleClass = !title ? "form__input--incomplete" : ''
-    const validTextClass = !text ? "form__input--incomplete" : ''
+              <input
+                type="radio"
+                id="rate-3"
+                value={3}
+                {...register('rating', { required: true, valueAsNumber: true })}
+                checked={defaultRating === 3} // Check if rating is 3
+              />
+              <label htmlFor="rate-3" title="Average">3 stars</label>
 
-    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+              <input
+                type="radio"
+                id="rate-4"
+                value={4}
+                {...register('rating', { required: true, valueAsNumber: true })}
+                checked={defaultRating === 4} // Check if rating is 4
+              />
+              <label htmlFor="rate-4" title="Very good">4 stars</label>
 
-    const content = (
-        <>
-            <p className={errClass}>{errContent}</p>
+              <input
+                type="radio"
+                id="rate-5"
+                value={5}
+                {...register('rating', { required: true, valueAsNumber: true })}
+                checked={defaultRating === 5} // Check if rating is 5
+              />
+              <label htmlFor="rate-5" title="Amazing">5 stars</label>
+            </div>
+            {errors.rating && <div className="error-message">Rating is required</div>}
+          </div>
 
-            <form className="form" onSubmit={e => e.preventDefault()}>
-                <div className="form__title-row">
-                    <h2>Edit Review #{review.ticket}</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            onClick={onSaveReviewClicked}
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                        <button
-                            className="icon-button"
-                            title="Delete"
-                            onClick={onDeleteReviewClicked}
-                        >
-                            <FontAwesomeIcon icon={faTrashCan} />
-                        </button>
-                    </div>
-                </div>
-                <label className="form__label" htmlFor="review-title">
-                    Title:</label>
-                <input
-                    className={`form__input ${validTitleClass}`}
-                    id="review-title"
-                    name="title"
-                    type="text"
-                    autoComplete="off"
-                    value={title}
-                    onChange={onTitleChanged}
-                />
+          <div className="form-group review-body-input">
+            <label htmlFor="body">Review:</label>
+            <textarea
+              id="body"
+              defaultValue={body} // Set the default value here
+              {...register('body', { required: 'Review is required', minLength: { value: 1, message: 'Review cannot be empty' } })}
+            />
+            {errors.body && <div className="error-message">{errors.body.message}</div>}
 
-                <label className="form__label" htmlFor="review-text">
-                    Text:</label>
-                <textarea
-                    className={`form__input form__input--text ${validTextClass}`}
-                    id="review-text"
-                    name="text"
-                    value={text}
-                    onChange={onTextChanged}
-                />
-                <div className="form__row">
-                    <div className="form__divider">
-                        <label className="form__label form__checkbox-container" htmlFor="review-completed">
-                            WORK COMPLETE:
-                            <input
-                                className="form__checkbox"
-                                id="review-completed"
-                                name="completed"
-                                type="checkbox"
-                                checked={completed}
-                                onChange={onCompletedChanged}
-                            />
-                        </label>
+          </div>
 
-                        <label className="form__label form__checkbox-container" htmlFor="review-username">
-                            ASSIGNED TO:</label>
-                        <select
-                            id="review-username"
-                            name="username"
-                            className="form__select"
-                            value={userId}
-                            onChange={onUserIdChanged}
-                        >
-                            {options}
-                        </select>
-                    </div>
-                    <div className="form__divider">
-                        <p className="form__created">Created:<br />{created}</p>
-                        <p className="form__updated">Updated:<br />{updated}</p>
-                    </div>
-                </div>
-            </form>
-        </>
-    )
+          <div className="review-btn-container">
+            <button className='review-btn' type="submit">
+              {isLoading ? 'Loading...' : 'Submit Review'}
+            </button>
 
-    return content
-}
+          </div>
+        </form>
+      </div>
 
-export default EditReviewForm
+
+
+    </>
+  );
+};
+
+export default EditReviewForm;

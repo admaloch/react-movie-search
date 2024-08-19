@@ -1,26 +1,35 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { MainModalProps } from '../../models/ModalProps';
 
-export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element | null {
+export interface ModalProps {
+    closeModal: () => void;
+    open: boolean;
+    isTimer?: boolean;
+    isCloseOnClick?: boolean;
+}
 
-    const [isVisible, setIsVisible] = useState(false)
+export interface MainModalProps extends ModalProps {
+    children: JSX.Element | null;
+}
 
-    const closeModalHandler = () => {
-        setIsVisible(false)
-        setTimeout(() => {
-            closeModal()
-        }, 1000)
-    }
+export default function Modal({ open, children, closeModal, isTimer = false, isCloseOnClick = true }: MainModalProps): JSX.Element | null {
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    const closeModalHandler = useCallback(() => {
+        if (!isTimer && isCloseOnClick) {
+            setIsVisible(false);
+            closeModal();
+        }
+    }, [closeModal, isTimer, isCloseOnClick])
 
     useEffect(() => {
         if (open) {
-            setIsVisible(true)
+            setIsVisible(true);
         }
-    }, [open])
+    }, [open]);
 
     if (!open) return null;
 
@@ -28,19 +37,13 @@ export default function Modal({ open, children, closeModal }: MainModalProps): J
         <>
             <div
                 onClick={closeModalHandler}
-                className={isVisible ? "modal-overlay active" : "modal-overlay"} >
-            </div >
-            <div
-                className={isVisible ? "modal-container active" : "modal-container"}
+                className={isVisible ? "modal-overlay active" : "modal-overlay"}
             >
-                <CloseIcon
-                    onClick={closeModalHandler}
-                    className='modal-close-icon'
-                    sx={{ position: 'absolute', top: 15, right: 15, fontSize: 25 }} />
-                {children}
+            </div>
+            <div className={isVisible ? "modal-container active" : "modal-container"}>
+                {children && children}
             </div>
         </>,
         document.getElementById('portal') as Element
     );
-};
-
+}
