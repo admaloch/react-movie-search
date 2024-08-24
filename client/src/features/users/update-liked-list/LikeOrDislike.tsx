@@ -20,6 +20,7 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
     }] = useUpdateUserMutation();
 
     const updateLikedList = async (event) => {
+        console.log('this worked')
         event.stopPropagation()
         const movieData = !alreadyLiked ? { imdbId, title, id } : { imdbId, id };
         try {

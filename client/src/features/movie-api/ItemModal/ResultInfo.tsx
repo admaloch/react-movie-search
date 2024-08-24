@@ -1,10 +1,13 @@
 import ResultInfoProps from '../../../models/ResultInfoProps'
 import React from 'react'
 import MovieReviews from './MovieReviews'
+import ShowMovieReviews from '../../reviews/ShowMovieReviews'
 
 export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.Element {
+  // console.log(item)
   return (
     <>
+    
 
       {item.Title !== 'N/A' && <h3 >{item.Title}</h3>}
       <div className="result-info">
@@ -18,7 +21,7 @@ export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.E
         {item.Actors !== 'N/A' && <p><span>Actors: </span>{item.Actors}</p>}
         {item.Plot !== 'N/A' && <p><span>Plot: </span>{item.Plot}</p>}
         {item.Language !== 'N/A' && <p><span>Language:</span> {item.Language}</p>}
-        <MovieReviews />
+        <ShowMovieReviews imdbId={item.imdbID}/>
       </div>
     </>
 

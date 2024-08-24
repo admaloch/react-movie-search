@@ -11,7 +11,10 @@ router.route('/')
     .patch(reviewsController.updateReview)
     .delete(reviewsController.deleteReview)
 
-router.route('/:userId')
+router.route('/user/:userId')
     .get(reviewsController.getUserReviews);
+
+router.route('/movie/:movieId')
+    .get(reviewsController.getMovieReviews);
 
 module.exports = router

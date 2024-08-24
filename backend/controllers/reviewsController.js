@@ -22,6 +22,19 @@ const getUserReviews = asyncHandler(async (req, res) => {
     // console.log(reviews)
     res.json(reviews)
 })
+// @desc Get user
+// @route GET /user/movieId
+// @access Private
+const getMovieReviews = asyncHandler(async (req, res) => {
+
+    const reviews = await ReviewModel.find({ imdbId: req.params.movieId });
+
+    if (!reviews) {
+        return res.status(400).json({ message: 'No reviews found' })
+    }
+    console.log(reviews)
+    res.json(reviews)
+})
 
 
 const createReview = asyncHandler(async (req, res) => {
@@ -61,7 +74,7 @@ const updateReview = asyncHandler(async (req, res) => {
     }
 
     const review = await ReviewModel.findById(reviewId).exec()
-    
+
     if (!review) {
         return res.status(400).json({ message: 'Movie not found' })
     }
@@ -96,6 +109,7 @@ const deleteReview = asyncHandler(async (req, res) => {
 module.exports = {
     getAllReviews,
     getUserReviews,
+    getMovieReviews,
     createReview,
     updateReview,
     deleteReview

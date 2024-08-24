@@ -1,6 +1,6 @@
 import LoadAnimation from '../../components/UI/LoadAnimation/LoadAnimation';
 import useAuth from '../../hooks/useAuth';
-import { useGetReviewsByIdQuery } from './reviewsApiSlice';
+import { useGetReviewsByUserQuery } from './reviewsApiSlice';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import ErrorIcon from '@mui/icons-material/Error';
 import PendingIcon from '@mui/icons-material/Pending';

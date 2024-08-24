@@ -40,9 +40,25 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
             }
 
         }),
-        getReviewsById: builder.query({
+        getReviewsByUser: builder.query({
             query: (id) => ({
-                url: `/reviews/${id}`,
+                url: `/reviews/user/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError;
+                },
+            }),
+            transformResponse: responseData => {
+                // Adjust the response data if necessary
+                responseData.id = responseData._id;
+                return responseData;
+            },
+            providesTags: (result, error, arg) => [
+                { type: 'Review', id: arg.id }
+            ]
+        }),
+        getReviewsByMovie: builder.query({
+            query: (id) => ({
+                url: `/reviews/movie/${id}`,
                 validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError;
                 },
@@ -95,8 +111,9 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetReviewsQuery,
-    useGetReviewsByIdQuery,
-    useLazyGetReviewsByIdQuery,
+    useGetReviewsByUserQuery,
+    useGetReviewsByMovieQuery,
+    useLazyGetReviewsByUserQuery,
     useAddNewReviewMutation,
     useUpdateReviewMutation,
     useDeleteReviewMutation,

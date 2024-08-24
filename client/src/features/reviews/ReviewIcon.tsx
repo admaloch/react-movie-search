@@ -1,5 +1,5 @@
 
-import { useGetReviewsByIdQuery } from './reviewsApiSlice';
+import { useGetReviewsByUserQuery } from './reviewsApiSlice';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import ErrorIcon from '@mui/icons-material/Error';
 import PendingIcon from '@mui/icons-material/Pending';
@@ -23,7 +23,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
 
   if (!id) return null
   //Movie is liked: grab reviews and see if it is already reviewed
-  const { data: reviews, isLoading, isError, error, isSuccess } = useGetReviewsByIdQuery(id);
+  const { data: reviews, isLoading, isError, error, isSuccess } = useGetReviewsByUserQuery(id);
 
   if (isLoading) return <PendingIcon />
 
@@ -35,7 +35,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
 
   const reviewedMovie = reviews.find(review => review.imdbId === imdbId);
 
-  console.log(reviews.map(review => review.title))
+  // console.log(reviews.map(review => review.title))
 
   const popoverText = !reviewedMovie
     ? "Review this movie"
@@ -45,7 +45,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
     ? <NewReviewForm imdbId={imdbId} title={title} closeModal={closeReviewModal} />
     : <EditReviewForm movie={reviewedMovie} closeModal={closeReviewModal} />
 
-  console.log(reviewedMovie)
+  // console.log(reviewedMovie)
   return (
     <>
       <div onClick={openReviewModal}>
