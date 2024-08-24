@@ -7,7 +7,7 @@ import useAuth from '../../hooks/useAuth';
 import PopoverIcon from './PopoverIcon';
 
 import Modal from '../../components/UI/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NewReviewForm from './NewReviewForm';
 import EditReviewForm from './EditReviewForm';
 
@@ -33,8 +33,9 @@ export default function ReviewIcon({ imdbId, size, title }) {
     setIsModalOpen(true)
   }
 
-
   const reviewedMovie = reviews.find(review => review.imdbId === imdbId);
+
+  console.log(reviews.map(review => review.title))
 
   const popoverText = !reviewedMovie
     ? "Review this movie"
@@ -44,7 +45,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
     ? <NewReviewForm imdbId={imdbId} title={title} closeModal={closeReviewModal} />
     : <EditReviewForm movie={reviewedMovie} closeModal={closeReviewModal} />
 
-    console.log(reviewedMovie)
+  console.log(reviewedMovie)
   return (
     <>
       <div onClick={openReviewModal}>

@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
 }
+
 .modal-overlay {
   z-index: 100;
   transition: opacity 500ms ease-in-out;
@@ -19,6 +20,7 @@
   opacity: 0;
   transition: .5s all;
 }
+
 .modal-container {
   position: fixed;
   left: 50%;
@@ -31,33 +33,69 @@
   visibility: hidden;
   opacity: 0;
   transition: 0.5s all;
-  /* border: black solid 1px; */
   padding: 2rem 1rem;
-  border-radius: 5px;
+  border-radius: 0px;
   background-color: var(--mainBackground);
-  width: 95%;
-  max-width: 500px;
+  width: 100%;
 }
+
 .modal-container .game-btn {
   color: var(--background);
   border: var(--background) solid 1px;
 }
+
 .modal-container .game-btn:hover {
   color: var(--text);
   background-color: var(--background);
   border: var(--text) solid 1px;
 }
+
 .active {
   opacity: 1;
   visibility: visible;
+}
+
+.modal-close-icon {
+ position: absolute;
+ right: .5rem;
+ top: .5rem;
 }
 .modal-close-icon:hover {
   opacity: .6;
   cursor: pointer;
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 450px) {
   .modal-container {
-    padding: 3rem 3rem;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .modal-container {
+    height: 95%;
+
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .modal-container {
+    border-radius: 5px;
+    max-width: 700px;
+    /* max-height: 700px; */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal-container {
+    width: 100%;
+    max-width: 700px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .modal-container {
+    max-width: 800px;
   }
 }

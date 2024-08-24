@@ -16,6 +16,7 @@ const ItemModal = ({ item, isLoading, isError }: ModalContentProps): React.JSX.E
         content = <Error text={`Error: ${error.data.message} Try refreshing your internet connection and try again.`} />
     } else {
         content = <div className='modal-content-container'>
+            
             {item.Poster !== 'N/A' &&
                 <div className='modal-img-container'>
                     <img src={item.Poster} alt={`${item.Title} poster`} />

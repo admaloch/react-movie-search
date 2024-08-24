@@ -25,6 +25,7 @@ export default function NewReview({ imdbId, size, title }) {
     if (!alreadyLiked) return null;
   }
 
+  //click review icon to open modal
   return <ReviewIcon
     title={title}
     imdbId={imdbId}

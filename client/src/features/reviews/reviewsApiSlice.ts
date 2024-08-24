@@ -53,7 +53,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 return responseData;
             },
             providesTags: (result, error, arg) => [
-                { type: 'Review', id: arg }
+                { type: 'Review', id: arg.id }
             ]
         }),
         addNewReview: builder.mutation({
@@ -64,8 +64,8 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                     ...initialReviewData,
                 }
             }),
-            invalidatesTags: [
-                { type: 'Review', id: "LIST" }
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Review', id: arg.id }
             ]
         }),
         updateReview: builder.mutation({

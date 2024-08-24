@@ -65,7 +65,7 @@ html {
     --color1: #5e548e; 
     --color2: #03045e; 
     --color3: #1F7A8C; 
-    --overlay: rgba(2, 43, 58, 1);
+    --overlay: rgba(2, 43, 58, .7);
 }
 
 
@@ -117,7 +117,9 @@ body {
    align-items: center;
 }
 
-
+.no-scroll {
+    overflow: hidden;
+  }
 
 /* .img-flex-container {
     background-color: aliceblue;

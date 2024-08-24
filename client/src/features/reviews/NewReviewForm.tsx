@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,6 +8,9 @@ import { useAddNewReviewMutation } from './reviewsApiSlice';
 import useAuth from '../../hooks/useAuth';
 import './Reviews.css'
 import CloseIcon from '@mui/icons-material/Close';
+import Rating from 'react-rating';
+import { FaStar } from 'react-icons/fa';
+import StarRating from '../../components/UI/StarRating';
 
 
 
@@ -15,11 +18,14 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const NewReviewForm = ({ imdbId, title, closeModal }) => {
 
+    const [starRating, setStarRating] = useState(3);
+
     const { id } = useAuth()
 
     if (!id) return null
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+
 
     const [addNewReview, {
         isLoading,
@@ -31,8 +37,8 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
 
     const submitForm: SubmitHandler<IFormInput> = async (data) => {
         try {
-            console.log({ ...data, imdbId, user: id, title })
-            await addNewReview({ ...data, imdbId, user: id, title }).unwrap();
+            // console.log({ ...data, imdbId, user: id, title })
+            await addNewReview({ ...data, imdbId, user: id, title, rating: starRating }).unwrap();
         } catch (err) {
             console.log('Error', err)
         }
@@ -62,45 +68,11 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
 
                     <div className="form-group review-star-input">
                         <label htmlFor="rating">Star Rating:</label>
-                        <div className="starability-basic">
-                            <input
-                                type="radio"
-                                id="rate-1"
-                                value={1}
-                                {...register('rating', { required: true, valueAsNumber: true })}
-                            />
-                            <label htmlFor="rate-1" title="Terrible">1 star</label>
-                            <input
-                                type="radio"
-                                id="rate-2"
-                                value={2}
-                                {...register('rating', { required: true, valueAsNumber: true })}
-                            />
-                            <label htmlFor="rate-2" title="Not good">2 stars</label>
-                            <input
-checked
-                                type="radio"
-                                id="rate-3"
-                                value={3}
-                                {...register('rating', { required: true, valueAsNumber: true })}
-                            />
-                            <label htmlFor="rate-3" title="Average">3 stars</label>
-                            <input
-                                
-                                type="radio"
-                                id="rate-4"
-                                value={4}
-                                {...register('rating', { required: true, valueAsNumber: true })}
-                            />
-                            <label htmlFor="rate-4" title="Very good">4 stars</label>
-                            <input
-                                type="radio"
-                                id="rate-5"
-                                value={5}
-                                {...register('rating', { required: true, valueAsNumber: true })}
-                            />
-                            <label htmlFor="rate-5" title="Amazing">5 stars</label>
-                        </div>
+                        <StarRating
+                            starRating={starRating}
+                            setStarRating={setStarRating}
+                        />
+                        <p>Rating: {starRating}</p>
                         {errors.rating && <div className="error-message">Rating is required</div>}
                     </div>
 

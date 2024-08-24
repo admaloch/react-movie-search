@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
+import CloseIcon from '@mui/icons-material/Close';
 
 export interface ModalProps {
     closeModal: () => void;
@@ -22,12 +23,16 @@ export default function Modal({ open, children, closeModal, isTimer = false, isC
         if (!isTimer && isCloseOnClick) {
             setIsVisible(false);
             closeModal();
+            document.body.classList.remove('no-scroll');
+
         }
     }, [closeModal, isTimer, isCloseOnClick])
 
     useEffect(() => {
         if (open) {
             setIsVisible(true);
+            document.body.classList.add('no-scroll');
+
         }
     }, [open]);
 
@@ -41,6 +46,9 @@ export default function Modal({ open, children, closeModal, isTimer = false, isC
             >
             </div>
             <div className={isVisible ? "modal-container active" : "modal-container"}>
+                <div onClick={closeModalHandler} className="modal-close-icon">
+                    <CloseIcon fontSize="large" />
+                </div>
                 {children && children}
             </div>
         </>,
