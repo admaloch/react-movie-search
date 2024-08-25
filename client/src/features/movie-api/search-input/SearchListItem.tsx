@@ -41,7 +41,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                 <UpdateLikedList
                     title={Title}
                     imdbId={imdbID}
-                    size="medium"
+                    size={25}
                 />
             </li>
 

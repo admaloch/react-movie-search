@@ -97,17 +97,26 @@
 
 
 
-.result-info h3 {
+
+.result-info-container h3 {
   font-size: 2rem;
   color: var(--color2);
   margin-bottom: 1rem;
   text-align: center;
   /* max-width: 400px; */
 }
+.result-info h4 {
+  font-size: 1.3rem;
+  color: var(--color2);
+}
 
 .result-info span {
-  color: var(--color1);
-  font-weight: bold;
+  color: var(--color4);
+  font-weight: 900;
+}
+.movie-reviews span {
+  color: var(--color3);
+  font-weight: 900;
 }
 
 

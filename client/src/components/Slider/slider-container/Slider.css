@@ -98,7 +98,7 @@
 
 .movie-container:hover .info-container,
 .movie-item:hover .info-container {
-    opacity: 1;
+    opacity: .9;
 }
 
 .title-container {

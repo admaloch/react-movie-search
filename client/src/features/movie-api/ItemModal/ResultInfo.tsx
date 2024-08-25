@@ -21,6 +21,7 @@ export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.E
         {item.Actors !== 'N/A' && <p><span>Actors: </span>{item.Actors}</p>}
         {item.Plot !== 'N/A' && <p><span>Plot: </span>{item.Plot}</p>}
         {item.Language !== 'N/A' && <p><span>Language:</span> {item.Language}</p>}
+        <h4>Reviews:</h4>
         <ShowMovieReviews imdbId={item.imdbID}/>
       </div>
     </>

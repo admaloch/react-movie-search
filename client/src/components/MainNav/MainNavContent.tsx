@@ -10,7 +10,7 @@ export default function MainNavContent() {
 
     const { isLoggedIn, id } = useAuth()
 
-    console.log(id)
+    // console.log(id)
 
     const navRef = useRef();
 

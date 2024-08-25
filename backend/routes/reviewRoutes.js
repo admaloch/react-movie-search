@@ -11,7 +11,7 @@ router.route('/')
 
 
 router.route('/:id')
-    .patch(reviewsController.updateReview)        // Update a specific review
+    .patch(reviewsController.updateReview)        
     .delete(reviewsController.deleteReview);
 
 router.route('/user/:userId')

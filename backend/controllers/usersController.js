@@ -34,7 +34,7 @@ const getUserById = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-    const { email, username, password, likedMovies } = req.body
+    const { email, username, password } = req.body
 
     // Confirm data
     if (!username || !password || !email) {
@@ -57,7 +57,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     // Hash password 
     const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
 
-    const userObject = { username, email, "password": hashedPwd, likedMovies }
+    const userObject = { username, email, "password": hashedPwd }
 
     // Create and store new user 
     const user = await UserModel.create(userObject)
@@ -75,7 +75,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, password, imdbId, title } = req.body
+    const { id, email, username, password, imdbId, title, hasWatched } = req.body
     // const { id } = req.params
 
     if (!id) {
@@ -83,6 +83,7 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     const user = await UserModel.findById(id).exec()
+    
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
     }
@@ -110,14 +111,15 @@ const updateUser = asyncHandler(async (req, res) => {
         const movieExists = user.likedMovies.some(movie => movie.imdbId === imdbId);
 
         if (!movieExists) {
-            user.likedMovies.push({ imdbId, title });
+            user.likedMovies.push({ imdbId, title, hasWatched: false });
         } else {
             return res.status(400).json({ message: 'Movie already liked' });
         }
     }
 
-    if (imdbId && !title) {
-        user.likedMovies = user.likedMovies.filter(movie => movie.imdbId !== imdbId);
+    if (hasWatched && imdbId) {
+        const currMovie = user.likedMovies.filter(movie => movie.imdbId === imdbId);
+        currMovie.hasWatched = hasWatched
     }
 
     const updatedUser = await user.save()

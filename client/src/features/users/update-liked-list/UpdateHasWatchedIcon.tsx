@@ -7,9 +7,9 @@ import { toast } from 'react-toastify';
 import './LikeIcons.css'
 import useAuth from '../../../hooks/useAuth';
 import { red } from '@mui/material/colors';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
-    const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId);
+export default function UpdateHasWatchedIcon({  size,  imdbId }) {
 
     const { id } = useAuth()
 
@@ -20,10 +20,10 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
         error
     }] = useUpdateUserMutation();
 
-    const updateLikedList = async (event) => {
+    const updateHasWatched = async (event) => {
         console.log('this worked')
         event.stopPropagation()
-        const movieData = !alreadyLiked ? { imdbId, title, id } : { imdbId, id };
+        const movieData = { imdbId, id, hasWatched: true };
         try {
             await updateUser(movieData).unwrap();
         } catch (err) {
@@ -38,19 +38,14 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
     if (isError) {
         toast.error(`Error: ${error?.data?.message}`);
         content = <ErrorIcon />;
-    } else if (!alreadyLiked) {
-        content = <FavoriteBorderIcon
+    } 
+    else  {
+        content = <VisibilityIcon
             className='like-icon'
             sx={{ fontSize: size }}
-            onClick={updateLikedList}
+            onClick={updateHasWatched}
         />;
-    } else {
-        content = <FavoriteIcon
-            className='like-icon'
-            sx={{ fontSize: size, color: red[500] }}
-            onClick={updateLikedList}
-        />;
-    }
+    } 
 
     return (
         <div className="like-icon-container">

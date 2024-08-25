@@ -5,6 +5,7 @@ import React from 'react'
 import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList'
 import NewReview from '../../reviews/NewReview'
 import DeleteReview from '../../reviews/DeleteReview'
+import UpdateHasWatched from '../../users/update-liked-list/UpdateHasWatched'
 
 export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 
@@ -27,7 +28,14 @@ export default function ModalContent({ item }: ModalContentProps): React.JSX.Ele
           imdbId={item.imdbID}
           size={30}
         />
-        <NewReview size={30} imdbId={item.imdbID} title={item.Title} />
+        <UpdateHasWatched
+          imdbId={item.imdbID}
+          size={30}
+        />
+        <NewReview
+          size={30}
+          imdbId={item.imdbID}
+          title={item.Title} />
       </div>
 
     </div>

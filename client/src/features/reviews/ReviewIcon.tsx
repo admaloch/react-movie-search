@@ -33,7 +33,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
   const openReviewModal = () => {
     setIsModalOpen(true)
   }
-  console.log(typeof reviews, reviews)
+  // console.log(typeof reviews, reviews)
 
   const reviewedMovie = reviews.find(review => review.imdbId === imdbId);
 

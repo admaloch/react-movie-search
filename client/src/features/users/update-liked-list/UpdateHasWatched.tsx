@@ -6,8 +6,9 @@ import LoadAnimation from '../../../components/UI/LoadAnimation/LoadAnimation';
 import LikeOrDislike from './LIkeOrDislike';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 import { red } from '@mui/material/colors';
+import UpdateHasWatchedIcon from './UpdateHasWatchedIcon';
 
-export default function UpdateLikedList({ imdbId, title, size = 30 }) {
+export default function UpdateHasWatched({ imdbId, size = 30 }) {
 
     const { id } = useAuth()
 
@@ -24,26 +25,30 @@ export default function UpdateLikedList({ imdbId, title, size = 30 }) {
             <div className="waiting-icon">
                 <HourglassTopIcon fontSize='medium' />
             </div>
-
         </div>
 
-    else if (isError) content =
-        <div className="like-icon-container">
-            <div className="disable-icon">
-                <ErrorIcon fontSize='medium' sx={{ color: red[500] }} />
+    else if (isError) {
+        console.log(`Error: ${error}`)
+        content =
+            <div className="like-icon-container">
+                <div className="disable-icon">
+                    <ErrorIcon fontSize='medium' sx={{ color: red[500] }} />
+                </div>
             </div>
-        </div>
+    }
 
     else if (isSuccess) {
-        // console.log(user)
+
         const { likedMovies } = user
+        const likedMovie = likedMovies.find(movie => movie.imdbId === imdbId);
+        if (!likedMovie) return null;
+        const alreadyWatched = likedMovie.hasWatched
+        if (alreadyWatched) return null;
 
         content =
-            <LikeOrDislike
+            <UpdateHasWatchedIcon
                 size={size}
-                likedMovies={likedMovies}
                 imdbId={imdbId}
-                title={title}
             />
     }
 

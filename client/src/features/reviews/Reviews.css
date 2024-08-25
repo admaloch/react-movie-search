@@ -102,8 +102,25 @@
     opacity: .8;
 }
 
-
-
+.review-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.review-header h5{
+    margin-bottom: 0;
+}
+.review-header .user-link {
+    margin-bottom: 0;
+    font-size: 1rem;
+    margin-right: .2rem;
+    color: var(--color2);
+    text-decoration: none;
+    transition: .15s ease-in-out opacity;
+}
+.review-header .user-link:hover {
+   opacity: .6;
+}
 .no-reviews-yet {
     border: black solid 1px;
     border-radius: 5px;
@@ -117,13 +134,14 @@
 }
 
 .movie-review-item {
-    width: 100%;
+    width: 90%;
+    line-height: 15px;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     /* border: var(--text) solid 1px; */
     border-radius: 3px;
-    padding: .5rem;
+    padding: .2rem;
 
-background-color: rgba(210, 220, 223, 0.398);
+background-color: rgba(229, 233, 240, 0.979);
 }

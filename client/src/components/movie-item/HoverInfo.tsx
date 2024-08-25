@@ -30,7 +30,7 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
             <UpdateLikedList
                 title={item.Title}
                 imdbId={item.imdbID}
-                size="large"
+                size={30}
             />
             <Modal
                 closeModal={closeItemModal}
