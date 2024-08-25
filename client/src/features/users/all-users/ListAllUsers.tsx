@@ -17,11 +17,11 @@ export default function ListAllUsers() {
         refetchOnMountOrArgChange: true
     });
 
+
+
     // console.log("Users data in ListAllUsers:", users); // Log users data
-  
     if (isLoading) return <CircleAnimation />;
     if (isError) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
-    if (!users) return <div>User not found</div>;
 
 
     return (

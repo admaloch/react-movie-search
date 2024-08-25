@@ -14,32 +14,26 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: '/users',
                 validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError
+                    return response.status === 200 && !result.isError;
                 },
             }),
-            //The transformResponse function modifies the response data before it’s stored in the Redux store.
             transformResponse: responseData => {
-                const filteredUsers = responseData.filter(user => user.likedMovies.length);
-                const loadedUsers = filteredUsers.map(user => {
+                const loadedUsers = responseData.map(user => {
                     user.id = user._id;
                     return user;
                 });
                 return usersAdapter.setAll(initialState, loadedUsers);
             },
             providesTags: (result, error, arg) => {
-
                 if (result?.ids) {
-                    const tags = [
+                    return [
                         { type: 'User', id: 'LIST' },
                         ...result.ids.map(id => ({ type: 'User', id }))
                     ];
-
-                    return tags;
                 } else {
                     return [{ type: 'User', id: 'LIST' }];
                 }
             }
-
         }),
         getUserById: builder.query({
             query: (id) => ({
@@ -71,24 +65,22 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         }),
         updateUser: builder.mutation({
             query: initialUserData => ({
-                url: '/users',
+                url: `/users/${initialUserData.id}`, // Assuming you pass the user ID to the endpoint
                 method: 'PATCH',
-                body: {
-                    ...initialUserData,
-                }
+                body: initialUserData
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'User', id: arg.id }
+                { type: 'User', id: arg.id } // This invalidates the specific user
             ]
         }),
         deleteUser: builder.mutation({
-            query: ({ id }) => ({
-                url: `/users`,
-                method: 'DELETE',
-                body: { id }
+            query: (id) => ({
+                url: `/users/${id}`, // Include the ID in the URL
+                method: 'DELETE'
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'User', id: arg.id }
+                { type: 'User', id: 'LIST' }, // Optionally invalidate the entire list
+                { type: 'User', id: arg } // Invalidate the specific user
             ]
         }),
     }),

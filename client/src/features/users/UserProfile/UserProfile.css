@@ -16,8 +16,17 @@
 .user-profile-container h2 {
     margin: 1rem 0;
 }
+.user-profile-container h3 {
+    font-size: 1.5rem;
+    text-align: center;
+}
 .user-profile-container h1 {
     margin: 0;
+}
+
+.no-movies-container {
+    width: 100%;
+    max-width: 800px;
 }
 
 .user-profile-container #result-type-container {
@@ -25,10 +34,10 @@
 }
 
 .movie-items-container {
-    margin-top: 2rem;
-    width: 95%;
+    margin: 2rem 0 10rem 0;
+    width: 100%;
     height: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     /* border: pink solid 1px; */
     /* flex-grow: 1; */
     flex-wrap: wrap;
@@ -37,25 +46,49 @@
 }
 
 .movie-item-container {
-    width: 20%;
+    width: 100%;
+    max-width: 300px;
     border-radius: 7px;
     aspect-ratio: 1/1;
     /* border: black solid 1px; */
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+@media screen and (min-width: 576px) {
+    .movie-item-container {
+        width: calc(100%/2);    }
+}
+@media screen and (min-width: 768px) {
+    .movie-item-container {
+        width: calc(100%/3);
+    }
+}
+@media screen and (min-width: 992px) {
+    .movie-item-container {
+        width: calc(100%/4);
+    }
+}
+@media screen and (min-width: 1200px) {
+    .movie-item-container {
+        width: calc(100%/5);
+    }
 }
 
 .movie-item {
-    
     border-radius: 7px;
     width: 100%;
+    padding: 1rem;
     height: 100%;
     background-color: lightblue;
     margin: .5rem;
     position: relative;
     transition: .3s ease-in-out all;
     z-index: 0;
+    /* border: var(--color1) solid 3px; */
+
 }
 
 .movie-item:hover {

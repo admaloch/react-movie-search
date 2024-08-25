@@ -11,6 +11,7 @@ import UserInfo from './UserInfo';
 import FilterContentOptions from './FilterContentOptions';
 import LikedMovieItem from './LikedMovieItem';
 import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation';
+import LikedMovieItems from './LikedMovieItems';
 
 
 export default function UserProfile() {
@@ -25,16 +26,11 @@ export default function UserProfile() {
   if (isError || !user) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
 
   // console.log(user)
-  const { username, likedMovies, isAdmin, email } = user
+  const { likedMovies } = user
 
-  // console.log(likedMovies)
-  const hideSlider = () => {
-    return;
-  }
+  const hideSlider = () => { return }
 
-  const smallLikedMovies = [likedMovies[0], likedMovies[1]]
-  // console.log(smallLikedMovies)
-  // console.log(likedMovies)
+
   return (
     <main className='user-profile-container'>
 
@@ -45,17 +41,9 @@ export default function UserProfile() {
         isWatched={isWatched}
         setIsWatched={setIsWatched}
       />
-      <div className="movie-items-container">
-        {smallLikedMovies.map((movie) => (
-          <LikedMovieItem
-            imdbId={movie.imdbId}
-            hasWatched={movie.hasWatched}
-            key={movie.imdbId}
-            isWatchedFilter={isWatched}
-          />
-        ))}
+      <LikedMovieItems isWatched={isWatched} likedMovies={likedMovies} />
 
-      </div>
+
     </main>
   )
 }

@@ -8,8 +8,9 @@ import './LikeIcons.css'
 import useAuth from '../../../hooks/useAuth';
 import { red } from '@mui/material/colors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import PopoverIcon from '../../reviews/PopoverIcon';
 
-export default function UpdateHasWatchedIcon({  size,  imdbId }) {
+export default function UpdateHasWatchedIcon({ size, imdbId }) {
 
     const { id } = useAuth()
 
@@ -21,7 +22,7 @@ export default function UpdateHasWatchedIcon({  size,  imdbId }) {
     }] = useUpdateUserMutation();
 
     const updateHasWatched = async (event) => {
-        console.log('this worked')
+        console.log('has watched clicked')
         event.stopPropagation()
         const movieData = { imdbId, id, hasWatched: true };
         try {
@@ -38,14 +39,18 @@ export default function UpdateHasWatchedIcon({  size,  imdbId }) {
     if (isError) {
         toast.error(`Error: ${error?.data?.message}`);
         content = <ErrorIcon />;
-    } 
-    else  {
-        content = <VisibilityIcon
-            className='like-icon'
-            sx={{ fontSize: size }}
-            onClick={updateHasWatched}
-        />;
-    } 
+    }
+    else {
+
+        content =
+            <PopoverIcon popoverText={"I've seen this"}>
+                <VisibilityIcon
+                    className='like-icon'
+                    sx={{ fontSize: size }}
+                    onClick={updateHasWatched}
+                />
+            </PopoverIcon>
+    }
 
     return (
         <div className="like-icon-container">

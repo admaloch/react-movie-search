@@ -22,7 +22,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @route GET /user/:id
 // @access Private
 const getUserById = asyncHandler(async (req, res) => {
-    const user = await UserModel.findById(req.params.id).select('-password').lean()
+    const { id } = req.params;
+
+    const user = await UserModel.findById(id).select('-password').lean()
 
     if (!user) {
         return res.status(400).json({ message: 'No user found' })
@@ -72,18 +74,18 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 
 // @desc Update user
-// @route PATCH /users
+// @route PATCH /users/:id
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { id, email, username, password, imdbId, title, hasWatched } = req.body
-    // const { id } = req.params
+    const { email, username, password, imdbId, title, hasWatched } = req.body
+    const { id } = req.params
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
     }
 
     const user = await UserModel.findById(id).exec()
-    
+
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
     }
@@ -117,9 +119,17 @@ const updateUser = asyncHandler(async (req, res) => {
         }
     }
 
-    if (hasWatched && imdbId) {
-        const currMovie = user.likedMovies.filter(movie => movie.imdbId === imdbId);
-        currMovie.hasWatched = hasWatched
+    if (imdbId && !title && !hasWatched) {
+        user.likedMovies = user.likedMovies.filter(movie => movie.imdbId !== imdbId);
+    }
+
+    if (hasWatched) {
+        const currMovie = user.likedMovies.find(movie => movie.imdbId === imdbId);
+        if (currMovie) {
+            currMovie.hasWatched = hasWatched;
+            user.markModified('likedMovies');
+            await user.save();
+        }
     }
 
     const updatedUser = await user.save()

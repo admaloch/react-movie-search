@@ -1,9 +1,10 @@
 
-import { useDeleteReviewMutation, useGetReviewsByUserQuery } from './reviewsApiSlice';
-import useAuth from '../../hooks/useAuth';
+import { useDeleteReviewMutation, useGetReviewsByUserQuery } from '../reviewsApiSlice';
+import useAuth from '../../../hooks/useAuth';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import InfoIcon from '@mui/icons-material/Info';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import PopoverIcon from '../PopoverIcon';
 
 export default function DeleteReviewIcon({ imdbId, reviewId }) {
     const { id } = useAuth()
@@ -38,9 +39,9 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
 
     else {
         content =
-            <div onClick={deleteReviewHandler} >
-                <DeleteForeverIcon sx={{ fontSize: 33 }} />
-            </div>
+            <PopoverIcon popoverText='Delete review'>
+                <DeleteForeverIcon onClick={deleteReviewHandler} sx={{ fontSize: 33 }} />
+            </PopoverIcon>
     }
 
 
