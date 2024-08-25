@@ -123,3 +123,14 @@
     opacity: 1;
     color: var(--containerBackground);
   } */
+
+  .passwordInputWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .passwordInputWrapper button {
+margin-top: 0;
+  }
+  .user-profile-container .credentials-form {
+    margin: 2rem 0;
+  }

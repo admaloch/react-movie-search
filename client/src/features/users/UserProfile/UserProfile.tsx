@@ -12,6 +12,7 @@ import FilterContentOptions from './FilterContentOptions';
 import LikedMovieItem from './LikedMovieItem';
 import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation';
 import LikedMovieItems from './LikedMovieItems';
+import UserSettingsIcon from './UserSettingsIcon';
 
 
 export default function UserProfile() {
@@ -42,7 +43,7 @@ export default function UserProfile() {
         setIsWatched={setIsWatched}
       />
       <LikedMovieItems isWatched={isWatched} likedMovies={likedMovies} />
-
+      <UserSettingsIcon />
 
     </main>
   )

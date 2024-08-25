@@ -14,6 +14,8 @@ import Prefetch from './features/auth/Prefetch'
 import { ToastContainer } from 'react-toastify'
 import PersistLogin from './features/auth/PersistLogin'
 import ListAllUsers from './features/users/all-users/ListAllUsers'
+import SettingsPage from './features/users/UserProfile/settings-page/SettingsPage'
+import EditPassword from './features/users/EditPassword'
 
 function App() {
     // const state = useSelector((state: RootState) => state);
@@ -39,13 +41,14 @@ function App() {
                     </Route>
 
                     <Route path='/' element={<Footer />} >
-                    <Route element={<PersistLogin />}>
-                        <Route path='/search' element={<MainPage />} />
-                        
+                        <Route element={<PersistLogin />}>
+                            <Route path='/search' element={<MainPage />} />
+
                             <Route path="profiles">
                                 <Route index element={<ListAllUsers />} />
                                 <Route path=":id" element={<UserProfile />} />
                                 <Route path=":id/edit" element={<EditUser />} />
+                                <Route path=":id/password" element={<EditPassword />} />
                             </Route>
 
 

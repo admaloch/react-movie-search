@@ -10,7 +10,7 @@ import MainLoadAnimation from "../../../components/UI/LoadAnimation/MainLoadAnim
 
 export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) {
 
-    console.log(imdbId)
+    // console.log(imdbId)
 
     const { currType } = useSearchType()
     const mainTypeFilter = currType.type

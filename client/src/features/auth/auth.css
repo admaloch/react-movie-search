@@ -8,7 +8,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* width: 300px; */
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     /* text-align: center; */
     z-index: 2;
   }
@@ -17,7 +17,7 @@
   
   .credentials-form h2 {
     text-align: center;
-    color: var(--mainBackground);
+    color: var(--text);
     font-size: 3rem;
     /* margin: 2rem 0; */
     margin: 0 0 2rem 0;
@@ -26,7 +26,16 @@
   
   .credentials-form p {
     text-align: center;
-    color: var(--mainBackground);
+    color: var(--text);
+  }
+
+  .form__persist {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .form__checkbox {
+    margin-right: .2rem;
   }
   
   

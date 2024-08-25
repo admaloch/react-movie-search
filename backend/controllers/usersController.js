@@ -106,6 +106,8 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     if (password) {
+        const match = await bcrypt.compare(oldPassword, foundUser.password)
+
         user.password = await bcrypt.hash(password, 10)
     }
 

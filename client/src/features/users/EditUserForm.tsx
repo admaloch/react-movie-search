@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-// import './auth.css';
+import './users.css';
 import { NavLink } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { useUpdateUserMutation } from "./usersApiSlice"
-import DeleteUser from './DeleteUser';
+import { useAddNewUserMutation, useUpdateUserMutation } from "./usersApiSlice"
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
 
 interface IFormInput {
     email: string;
@@ -14,43 +15,65 @@ interface IFormInput {
     password: string;
 }
 
-const EditUserForm: React.FC = () => {
+const EditUserForm: React.FC = ({user}) => {
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
 
     const [updateUser, {
         isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateUserMutation()
-
-
+    }] = useUpdateUserMutation();
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+
         try {
             await updateUser(data).unwrap();
+
         } catch (err) {
-            console.log('Error processing registration data', err)
-            toast.error('Account registration failed. Try again later.');
+            console.log('Error', err)
         }
     };
 
+
     useEffect(() => {
         if (isSuccess) {
-            toast.success('You successfully updated your information!');
-            navigate('/myprofile');
+            toast.success('Account info successfully updated!');
+            setTimeout(() => {
+                navigate('/myprofile');
+            }, 2300);
         }
         if (isError) {
-            toast.error(`Error: ${error}`);
+            toast.error(`Error: ${error?.data?.message || 'Failed to update account info. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);
+
+    const password = watch('password', '');
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword((prev) => !prev);
+    };
+
 
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
-                <h2>Edit Account info:</h2>
+                <h2>Edit account details</h2>
                 <div className="formGroup">
                     <label htmlFor="email" className="label">Email:</label>
                     <input
@@ -79,38 +102,15 @@ const EditUserForm: React.FC = () => {
                     />
                     {errors.username && <span className="error">{errors.username.message}</span>}
                 </div>
-                <div className="formGroup">
-                    <label htmlFor="password" className="label">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        {...register('password', {
-                            required: 'Password is required',
-                            minLength: {
-                                value: 6,
-                                message: 'Password must be at least 6 characters'
-                            }
-                        })}
-                        name="password"
-                        className="input"
-                    />
-                    {errors.password && <span className="error">{errors.password.message}</span>}
-                </div>
+              
                 <button type="submit" disabled={isLoading} className="button">
                     {isLoading ? 'Registering...' : 'Register'}
                 </button>
-                <DeleteUser user = {user}/>
+            
+                <p> <NavLink className="link-class" to="/profiles/:id/password">Edit user details</NavLink></p>
             </form>
-            <p>Already have an account?</p>
-            <p>Click <NavLink className="link-class" to="/login">here</NavLink> to login</p>
-            <ToastContainer
-                position="top-center"
-                autoClose={1200}
-                closeOnClick={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+
+
         </>
     );
 };

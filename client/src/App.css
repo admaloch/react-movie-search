@@ -60,6 +60,7 @@ html {
 :root {
     --text: #022B3A; 
     --mainBackground: #edf2f4; 
+    --navBackground: rgba(237, 242, 244, .8); 
     --containertext: #f7ede2; 
     --containerBackground: #022B3A; 
     --color1: #5e548e; 

@@ -11,10 +11,12 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 100;
-	
+	background-color: var(--navBackground);
+
 }
 
-nav a, nav button {
+nav a,
+nav button {
 	position: relative;
 	margin: 0 1rem;
 	color: var(--text);
@@ -134,12 +136,14 @@ nav {
 		opacity: 1;
 		z-index: 100;
 		border: var(--containertext) solid 10px;
+		
 	}
 
 	header nav a {
 		color: var(--mainBackground);
-opacity: 1;
+		opacity: 1;
 	}
+
 	nav a::after {
 
 		background-color: var(--mainBackground);

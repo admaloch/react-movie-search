@@ -7,8 +7,9 @@ import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation'
 import useAuth from '../../hooks/useAuth'
 import { containerClasses } from '@mui/material'
 import Error from '../../components/UI/errors/Error'
+import EditPasswordForm from './EditPasswordForm'
 
-const EditUser = () => {
+const EditPassword = () => {
     const { id } = useAuth()
 
     const { data: user, isLoading, isError, error, isSuccess } = useGetUserByIdQuery(id);
@@ -20,11 +21,11 @@ const EditUser = () => {
     else {
         content =
             <main className='user-profile-container'>
-                <EditUserForm user={user} />
+                <EditPasswordForm user={user} />
             </main>
     }
 
 
     return content
 }
-export default EditUser
+export default EditPassword

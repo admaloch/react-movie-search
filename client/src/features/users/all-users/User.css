@@ -50,3 +50,11 @@
 .user-item:hover svg {
     opacity: 1;
 }
+
+.user-movie-item {
+    cursor: pointer;
+    transition: .15s ease-in-out opacity;
+}
+.user-movie-item:hover {
+    opacity: .6;
+}

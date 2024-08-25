@@ -21,6 +21,7 @@ const User = ({ userId }) => {
                         <LikedMovieList
                             title={movie.title}
                             key={movie._id}
+                            imdbId={movie.imdbId}
                         />
                     ))}
                 </ul>

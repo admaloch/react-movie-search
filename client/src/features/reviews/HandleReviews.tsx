@@ -17,7 +17,7 @@ export default function HandleReviews({ imdbId, size, title }) {
 
 
 
-    const alreadyLiked = user.likedMovies.find(movie => movie.imdbId === imdbId);
+    const alreadyLiked =  user?.likedMovies?.find(movie => movie.imdbId === imdbId);
     const alreadyWatched = alreadyLiked ? alreadyLiked.hasWatched : null
    
     // if (!alreadyLiked || !alreadyWatched) return null;
