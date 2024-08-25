@@ -43,7 +43,7 @@
     max-width: calc(100%/var(--images-per-screen));
     flex: 0 0 calc(100%/var(--images-per-screen));
     padding: 0 .3rem;
-    border-radius: 50%;
+    border-radius: 7px;
     transition: transform .5s ease-in-out;
     display: inline-block;
 
@@ -63,6 +63,8 @@
     /* min-height: 100; */
     max-height: 275px;
     transition: filter 500ms ease-in-out;
+    border-radius: 7px;
+
 }
 
 
@@ -88,6 +90,8 @@
     right: 0;
     left: 0;
     padding: .2rem;
+    border-radius: 7px;
+
 }
 
 
@@ -200,7 +204,7 @@
     align-items: center;
     -webkit-box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
     box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
-
+border-radius: 7px;
     display: block;
     opacity: 0;
     height: 0;

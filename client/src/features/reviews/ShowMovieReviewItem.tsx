@@ -1,11 +1,11 @@
 
 export default function ShowMovieReviewItem({review}) {
-  console.log(review)
+  // console.log(review)
   return (
     <li className='movie-review-item'>
-        <p><span>Author:</span> {review.author}</p>
-        <p><span>Rating</span>{review.rating}</p>
-        <p><span>Body</span>{review.body}</p>
+        <p><span>Username: </span> {review.user.username}</p>
+        <p><span>Rating: </span>{review.rating}</p>
+        <p><span>Review: </span>{review.body}</p>
     </li>
   )
 }

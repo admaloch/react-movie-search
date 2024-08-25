@@ -92,6 +92,17 @@
 .close-modal-icon:hover {
     opacity: .8;
 }
+.delete-review-icon {
+    position: relative;
+    right: .8rem;
+    /* bottom: .2rem; */
+}
+
+.close-modal-icon:hover {
+    opacity: .8;
+}
+
+
 
 .no-reviews-yet {
     border: black solid 1px;

@@ -18,7 +18,7 @@ const EditReviewForm = ({ closeModal, movie }) => {
 
   let defaultRating = parseInt(rating)
 
-  console.log(defaultRating)
+  // console.log(defaultRating)
 
   const { id } = useAuth()
 
@@ -37,7 +37,7 @@ const EditReviewForm = ({ closeModal, movie }) => {
 
   const submitForm: SubmitHandler<IFormInput> = async (data) => {
     try {
-      await updateReview({ ...data, rating: starRating, reviewId: _id }).unwrap();
+      await updateReview({ ...data, rating: starRating, id: _id }).unwrap();
     } catch (err) {
       console.log('Error', err)
     }

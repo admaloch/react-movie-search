@@ -8,8 +8,11 @@ const verifyJWT = require('../middleware/verifyJWT')
 router.route('/')
     .get(reviewsController.getAllReviews)
     .post(reviewsController.createReview)
-    .patch(reviewsController.updateReview)
-    .delete(reviewsController.deleteReview)
+
+
+router.route('/:id')
+    .patch(reviewsController.updateReview)        // Update a specific review
+    .delete(reviewsController.deleteReview);
 
 router.route('/user/:userId')
     .get(reviewsController.getUserReviews);

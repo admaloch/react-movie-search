@@ -14,32 +14,28 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: '/reviews',
                 validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError
+                    return response.status === 200 && !result.isError;
                 },
             }),
-            //The transformResponse function modifies the response data before it’s stored in the Redux store.
             transformResponse: responseData => {
-                const loadedReviews = filteredReviews.map(review => {
+                const loadedReviews = responseData.map(review => {
                     review.id = review._id;
                     return review;
                 });
                 return reviewsAdapter.setAll(initialState, loadedReviews);
             },
             providesTags: (result, error, arg) => {
-
                 if (result?.ids) {
-                    const tags = [
+                    return [
                         { type: 'Review', id: 'LIST' },
                         ...result.ids.map(id => ({ type: 'Review', id }))
                     ];
-
-                    return tags;
                 } else {
                     return [{ type: 'Review', id: 'LIST' }];
                 }
             }
-
         }),
+
         getReviewsByUser: builder.query({
             query: (id) => ({
                 url: `/reviews/user/${id}`,
@@ -48,14 +44,30 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 },
             }),
             transformResponse: responseData => {
-                // Adjust the response data if necessary
-                responseData.id = responseData._id;
-                return responseData;
+              
+                if (Array.isArray(responseData)) {
+                    return responseData.map(review => {
+                        review.id = review._id;
+                        return review;
+                    });
+                } else {
+                    responseData.id = responseData._id;
+                    return responseData;
+                }
             },
-            providesTags: (result, error, arg) => [
-                { type: 'Review', id: arg.id }
-            ]
+            providesTags: (result, error, arg) => {
+                // This assumes the response is an array of reviews
+                if (result?.length) {
+                    return [
+                        { type: 'Review', id: 'LIST' },
+                        ...result.map(({ id }) => ({ type: 'Review', id }))
+                    ];
+                } else {
+                    return [{ type: 'Review', id: 'LIST' }];
+                }
+            }
         }),
+        
         getReviewsByMovie: builder.query({
             query: (id) => ({
                 url: `/reviews/movie/${id}`,
@@ -64,21 +76,35 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 },
             }),
             transformResponse: responseData => {
-                // Adjust the response data if necessary
-                responseData.id = responseData._id;
-                return responseData;
+                // Assuming responseData could be an array of reviews, not a single review.
+                if (Array.isArray(responseData)) {
+                    return responseData.map(review => {
+                        review.id = review._id;
+                        return review;
+                    });
+                } else {
+                    // If a single review is returned (less common for this use case)
+                    responseData.id = responseData._id;
+                    return responseData;
+                }
             },
-            providesTags: (result, error, arg) => [
-                { type: 'Review', id: arg.id }
-            ]
+            providesTags: (result, error, arg) => {
+                if (result?.length) {
+                    return [
+                        { type: 'Review', id: 'LIST' },
+                        ...result.map(({ id }) => ({ type: 'Review', id }))
+                    ];
+                } else {
+                    return [{ type: 'Review', id: 'LIST' }];
+                }
+            }
         }),
+        
         addNewReview: builder.mutation({
             query: initialReviewData => ({
                 url: '/reviews',
                 method: 'POST',
-                body: {
-                    ...initialReviewData,
-                }
+                body: initialReviewData
             }),
             invalidatesTags: (result, error, arg) => [
                 { type: 'Review', id: arg.id }
@@ -86,24 +112,25 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
         }),
         updateReview: builder.mutation({
             query: initialReviewData => ({
-                url: '/reviews',
+                url: `/reviews/${initialReviewData.id}`, // Assuming you pass the review ID to the endpoint
                 method: 'PATCH',
-                body: {
-                    ...initialReviewData,
-                }
+                body: initialReviewData
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'Review', id: arg.id }
+                { type: 'Review', id: arg.id } // This invalidates the specific review
             ]
         }),
+        
+
         deleteReview: builder.mutation({
-            query: ({ id }) => ({
-                url: `/reviews`,
-                method: 'DELETE',
-                body: { id }
+            query: (id) => ({
+                url: `/reviews/${id}`, // Include the ID in the URL
+                method: 'DELETE'
+                // No body needed for DELETE requests
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'Review', id: arg.id }
+                { type: 'Review', id: 'LIST' }, // Optionally invalidate the entire list
+                { type: 'Review', id: arg } // Invalidate the specific review
             ]
         }),
     }),

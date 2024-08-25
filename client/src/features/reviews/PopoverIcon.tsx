@@ -5,7 +5,7 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-function PopoverIcon({ size, popoverText }) {
+function PopoverIcon({ popoverText, children }) {
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handlePopoverOpen = (event) => {
@@ -25,7 +25,7 @@ function PopoverIcon({ size, popoverText }) {
                 onMouseLeave={handlePopoverClose}
 
             >
-                <RateReviewIcon sx={{ fontSize: size }} />
+                {children}
 
             </IconButton>
 

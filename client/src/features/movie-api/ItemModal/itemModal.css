@@ -23,7 +23,8 @@
   max-height: 100%;
   width: auto;
   height: auto;
-  border-radius: 5px;
+  border-radius: 7px;
+  border: var(--color2) solid 1px;
 }
 
 .result-info-container {

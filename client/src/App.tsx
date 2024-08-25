@@ -49,7 +49,6 @@ function App() {
                             </Route>
 
 
-                            <Route path='/myprofile' element={<UserProfile />} />
 
                         </Route>
                         <Route path='*' element={<Navigate to='/' />} />

@@ -10,6 +10,7 @@ import Modal from '../../components/UI/Modal';
 import { useEffect, useState } from 'react';
 import NewReviewForm from './NewReviewForm';
 import EditReviewForm from './EditReviewForm';
+import DeleteReviewIcon from './DeleteReviewIcon';
 
 export default function ReviewIcon({ imdbId, size, title }) {
 
@@ -32,6 +33,7 @@ export default function ReviewIcon({ imdbId, size, title }) {
   const openReviewModal = () => {
     setIsModalOpen(true)
   }
+  console.log(typeof reviews, reviews)
 
   const reviewedMovie = reviews.find(review => review.imdbId === imdbId);
 
@@ -49,12 +51,20 @@ export default function ReviewIcon({ imdbId, size, title }) {
   return (
     <>
       <div onClick={openReviewModal}>
-        <PopoverIcon
-          size={size}
-          popoverText={popoverText}
-
-        />
+        <PopoverIcon popoverText={popoverText}>
+          <RateReviewIcon sx={{ fontSize: 30 }} />
+        </PopoverIcon>
       </div>
+
+      {reviewedMovie && (
+        <div className="delete-review-icon">
+          <PopoverIcon popoverText='Delete review'>
+            <DeleteReviewIcon imdbId={imdbId} reviewId={reviewedMovie._id} />
+          </PopoverIcon>
+        </div>
+
+      )
+      }
       <Modal
         closeModal={closeReviewModal}
         open={isModalOpen}

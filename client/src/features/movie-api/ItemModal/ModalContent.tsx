@@ -4,6 +4,7 @@ import { ModalContentProps } from '../../../models/ListItemProps'
 import React from 'react'
 import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList'
 import NewReview from '../../reviews/NewReview'
+import DeleteReview from '../../reviews/DeleteReview'
 
 export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
 

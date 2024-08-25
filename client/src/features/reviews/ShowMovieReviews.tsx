@@ -14,7 +14,7 @@ export default function ShowMovieReviews({ imdbId }) {
     content = <p>Unable to find content</p>
   }
 
-
+  // console.log(movieReviews)
   if (isSuccess && !movieReviews.length) {
     content = <div className='no-reviews-yet'>
       <p>This movie has not been reviewed yet.</p>

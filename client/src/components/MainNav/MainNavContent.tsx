@@ -8,7 +8,9 @@ export default function MainNavContent() {
 
 
 
-    const { isLoggedIn } = useAuth()
+    const { isLoggedIn, id } = useAuth()
+
+    console.log(id)
 
     const navRef = useRef();
 
@@ -60,7 +62,7 @@ export default function MainNavContent() {
                             closeNavbar={closeNavbar}
                             navDelay={navDelay}
                         />
-                        <a onClick={() => handleNavClick('/myprofile')} href="#">MyProfile</a>
+                        <a onClick={() => handleNavClick(`/profiles/${id}`)} href="#">MyProfile</a>
                     </>
                 ) : (
                     <>
