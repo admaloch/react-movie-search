@@ -28,6 +28,7 @@ nav button {
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 3px;
+
 }
 
 nav button::after,
@@ -69,14 +70,24 @@ header .nav-btn {
 	opacity: 0;
 	font-size: 1.8rem;
 	transition: .15s ease-in-out opacity;
+	color: var;
 }
 
 header .nav-close-btn {
 	color: var(--mainBackground);
+	font-size: 2.5rem;
+
+}
+
+header .nav-close-btn:hover {
+	color: var(--mainBackground);
+	
 }
 
 header .nav-btn:hover {
 	opacity: .7;
+
+
 }
 
 
@@ -139,9 +150,11 @@ nav {
 		
 	}
 
+	header nav button,
 	header nav a {
 		color: var(--mainBackground);
 		opacity: 1;
+		font-size: 2.5rem;
 	}
 
 	nav a::after {
@@ -151,8 +164,9 @@ nav {
 	}
 
 	nav a:hover,
-	nav a.active {
-
+	nav a.active,
+	nav button:hover,
+	nav button.active {
 		color: var(--mainBackground);
 	}
 
@@ -167,7 +181,5 @@ nav {
 		right: 2rem;
 	}
 
-	nav a {
-		font-size: 2.5rem;
-	}
+
 }

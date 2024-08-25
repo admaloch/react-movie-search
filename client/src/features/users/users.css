@@ -11,6 +11,7 @@
     max-width: 350px;
     /* text-align: center; */
     z-index: 2;
+    position: relative;
   }
   
   
@@ -134,3 +135,11 @@ margin-top: 0;
   .user-profile-container .credentials-form {
     margin: 2rem 0;
   }
+
+  .edit-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+

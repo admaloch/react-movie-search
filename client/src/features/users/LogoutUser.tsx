@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSendLogoutMutation } from '../auth/authApiSlice'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify';
+import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
 
 export default function LogoutUser({ closeNavbar, navDelay }) {
 
@@ -10,22 +11,26 @@ export default function LogoutUser({ closeNavbar, navDelay }) {
     const [sendLogout, { isLoading, isSuccess, isError, error }] = useSendLogoutMutation();
 
     const handleLogoutBtnClick = () => {
-        closeNavbar()
+        closeNavbar();
+
         setTimeout(() => {
-            sendLogout()
+            if (!isLoading) {
+                sendLogout();
+                navigate('/login');
+            }
         }, navDelay);
-    }
+    };
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/');
-            toast.success('Successfully logged out!');
+
+            navigate('/login'); // or wherever you want to redirect after logout
         }
-    }, [isSuccess, navigate]);
-
-    if (isLoading) return <p>Logging Out...</p>;
-
-    if (isError) return <p>Error: {error?.data?.message || 'Failed to logout'}</p>;
+        if (isError) {
+            // Handle error (e.g., show a toast notification or error message)
+            console.error('Logout failed:', error);
+        }
+    }, [isSuccess, isError, navigate, error]);
 
     return (
         <button

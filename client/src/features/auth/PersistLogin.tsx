@@ -4,6 +4,8 @@ import { useRefreshMutation } from "./authApiSlice"
 import usePersist from "../../hooks/usePersist"
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from "./authSlice"
+import CircleAnimation from "../../components/UI/LoadAnimation/CircleAnimation"
+import Error from "../../components/UI/errors/Error"
 
 const PersistLogin = () => {
 
@@ -54,14 +56,14 @@ const PersistLogin = () => {
         content = <Outlet />
     } else if (isLoading) { //persist: yes, token: no
         // console.log('loading')
-        content = <p>Loading...</p>
+        content = <CircleAnimation/>
     } else if (isError) { //persist: yes, token: no
         // console.log('error')
         content = (
-            <p className='errmsg'>
-                {error.data?.message}
-                <Link to="/login">Please login again</Link>.
-            </p>
+            <>
+                {/* {error.data?.message} */}
+                <Error text={"Must be logged in to see this"} item={<Link to="/login">Please login again</Link>}/>
+            </>
         )
     } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
         // console.log('success')

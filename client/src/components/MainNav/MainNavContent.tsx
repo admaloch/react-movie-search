@@ -76,7 +76,7 @@ export default function MainNavContent() {
 
 
                 <button
-                    className="nav-btn nav-close-btn"
+                    className=" nav-close-btn"
                     onClick={closeNavbar}>
                     <FaTimes />
                 </button>

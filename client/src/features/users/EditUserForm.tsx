@@ -8,24 +8,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAddNewUserMutation, useUpdateUserMutation } from "./usersApiSlice"
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 interface IFormInput {
     email: string;
     username: string;
     password: string;
 }
 
-const EditUserForm: React.FC = ({user}) => {
+const EditUserForm: React.FC = ({ user }) => {
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm();
 
@@ -39,7 +36,7 @@ const EditUserForm: React.FC = ({user}) => {
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
 
         try {
-            await updateUser(data).unwrap();
+            await updateUser({ ...data, id: user._id }).unwrap();
 
         } catch (err) {
             console.log('Error', err)
@@ -59,15 +56,6 @@ const EditUserForm: React.FC = ({user}) => {
         }
     }, [isSuccess, isError, error, navigate]);
 
-    const password = watch('password', '');
-
-    const togglePasswordVisibility = () => {
-        setShowPassword((prev) => !prev);
-    };
-
-    const toggleConfirmPasswordVisibility = () => {
-        setShowConfirmPassword((prev) => !prev);
-    };
 
 
     return (
@@ -102,12 +90,20 @@ const EditUserForm: React.FC = ({user}) => {
                     />
                     {errors.username && <span className="error">{errors.username.message}</span>}
                 </div>
-              
+
                 <button type="submit" disabled={isLoading} className="button">
-                    {isLoading ? 'Registering...' : 'Register'}
+                    {isLoading ? 'Updating...' : 'Update'}
                 </button>
-            
-                <p> <NavLink className="link-class" to="/profiles/:id/password">Edit user details</NavLink></p>
+                <div className="edit-message">
+                    <NavLink className="link-class" to={`/profiles/${user._id}/password`}>
+                        Edit password
+                    </NavLink>
+                    <NavLink className="link-class" to={`/profiles/${user._id}`}>
+                        <ArrowBackIcon />
+                        Return to profile
+                    </NavLink>
+                </div>
+
             </form>
 
 

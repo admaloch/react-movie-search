@@ -77,8 +77,10 @@ const createNewUser = asyncHandler(async (req, res) => {
 // @route PATCH /users/:id
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    const { email, username, password, imdbId, title, hasWatched } = req.body
+    const { email, username, newPassword, oldPassword, imdbId, title, hasWatched } = req.body
     const { id } = req.params
+
+
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -90,6 +92,7 @@ const updateUser = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'User not found' })
     }
     if (username) {
+        console.log('updating username')
         const isUsernameTaken = await UserModel.findOne({ username });
         if (isUsernameTaken) {
             return res.status(400).json({ message: "Username already exists" });
@@ -98,6 +101,8 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     if (email) {
+        console.log('updating email')
+
         const isEmailTaken = await UserModel.findOne({ email });
         if (isEmailTaken) {
             return res.status(400).json({ message: "Email already exists" });
@@ -105,10 +110,17 @@ const updateUser = asyncHandler(async (req, res) => {
         user.email = email
     }
 
-    if (password) {
-        const match = await bcrypt.compare(oldPassword, foundUser.password)
+    if (newPassword && oldPassword) {
+        console.log('in passwords change')
+        const match = await bcrypt.compare(oldPassword, user.password)
+        if (match) {
+            console.log('Old password is a match')
+            user.password = await bcrypt.hash(newPassword, 10)
+        } else {
+            console.log('Old password not a match')
+            return res.status(400).json({ message: "Incorrect password" });
 
-        user.password = await bcrypt.hash(password, 10)
+        }
     }
 
     if (imdbId && title) {

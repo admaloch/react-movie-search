@@ -3,7 +3,7 @@ module.exports.userModelData = [
     {
         username: "RetroDreamer",
         email: "retro.dreamer@vintage.com",
-        password: "Retro$2024",
+        password: "Retro$2024", //Kik0@d0ggie
         likedMovies: [
             { imdbId: "tt0076765", title: "Network", hasWatched: false },
             { imdbId: "tt0067541", title: "A Clockwork Orange", hasWatched: true },
