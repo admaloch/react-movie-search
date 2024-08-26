@@ -46,9 +46,9 @@ export default function Modal({ open, children, closeModal, isTimer = false, isC
             >
             </div>
             <div className={isVisible ? "modal-container active" : "modal-container"}>
-                <div onClick={closeModalHandler} className="modal-close-icon">
+                {/* <div onClick={closeModalHandler} className="modal-close-icon">
                     <CloseIcon fontSize="large" />
-                </div>
+                </div> */}
                 {children && children}
             </div>
         </>,

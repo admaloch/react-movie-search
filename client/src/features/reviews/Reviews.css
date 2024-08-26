@@ -23,7 +23,15 @@
     color: var(--mainBackground);
     padding: 5rem 1rem;
     font-size: 1.4rem;
+    text-align: center;
+    
 }
+@media (min-width: 500px) {
+    .review-form form {
+      padding: 1rem 3rem;
+    }
+  }
+  
 
 .review-star-input {
     display: flex;
@@ -58,7 +66,7 @@
     padding: .2rem .4rem;
     background-color: var(--mainBackground);
     color: var(--text);
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: none;
     border: var(--text) solid 1px;
 }
@@ -122,7 +130,10 @@
    opacity: .6;
 }
 .no-reviews-yet {
-    border: black solid 1px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    border: black solid 2px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -140,8 +151,8 @@
     flex-direction: column;
     align-items: center;
     /* border: var(--text) solid 1px; */
-    border-radius: 3px;
+    border-radius: 5px;
     padding: .2rem;
-
-background-color: rgba(229, 233, 240, 0.979);
+/* border: black solid 1px; */
+background-color: rgb(223 236 238 / 48%);
 }

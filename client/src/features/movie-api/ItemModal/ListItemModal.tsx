@@ -16,7 +16,9 @@ export default function ListItemModal({ item, open, closeModal, isLoading, isErr
             <ItemModal
                 isError={isError}
                 isLoading={isLoading}
-                item={item} />
+                item={item}
+                closeModal={closeModal}
+            />
         </Modal>
     )
 }

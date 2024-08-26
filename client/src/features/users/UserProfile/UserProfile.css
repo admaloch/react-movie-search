@@ -12,13 +12,13 @@
 }
 
 .user-profile-container p {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 }
 .user-profile-container h2 {
     margin: 1rem 0;
 }
 .user-profile-container h3 {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     text-align: center;
 }
 .user-profile-container h1 {
@@ -55,7 +55,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 @media screen and (min-width: 576px) {
