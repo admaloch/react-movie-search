@@ -62,7 +62,7 @@ const PersistLogin = () => {
         content = (
             <>
                 {/* {error.data?.message} */}
-                <Error text={"Must be logged in to see this"} item={<Link to="/login">Please login again</Link>}/>
+                <Error text={"Must be logged in to see this"} />
             </>
         )
     } else if (isSuccess && trueSuccess) { //persist: yes, token: yes

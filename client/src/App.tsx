@@ -16,6 +16,7 @@ import PersistLogin from './features/auth/PersistLogin'
 import ListAllUsers from './features/users/all-users/ListAllUsers'
 import SettingsPage from './features/users/UserProfile/settings-page/SettingsPage'
 import EditPassword from './features/users/EditPassword'
+import Error from './components/UI/errors/Error'
 
 function App() {
     // const state = useSelector((state: RootState) => state);
@@ -28,37 +29,37 @@ function App() {
 
         <APIProvider>
             <Routes>
-                <Route path='/' element={<MainNavBar />} >
-                    <Route path='/' element={<HomeLayout />} >
+                <Route path='/' element={<MainNavBar />}>
+                    <Route path='/' element={<HomeLayout />}>
                         <Route index element={<HomePageContent />} />
-
                         <Route path="users">
-                            {/* <Route path=":id" element={<EditUser />} /> */}
                             <Route path="register" element={<Register />} />
                         </Route>
                         <Route path='login' element={<Login />} />
-
                     </Route>
 
-                    <Route path='/' element={<Footer />} >
-                        <Route element={<PersistLogin />}>
-                            <Route path='/search' element={<MainPage />} />
+                    <Route path='/' element={<Footer />}>
+                        {/* <Route element={<PersistLogin />}> */}
+                            <Route element={<Prefetch />}>
 
-                            <Route path="profiles">
-                                <Route index element={<ListAllUsers />} />
-                                <Route path=":id" element={<UserProfile />} />
-                                <Route path=":id/edit" element={<EditUser />} />
-                                <Route path=":id/password" element={<EditPassword />} />
+                                <Route path='/search' element={<MainPage />} />
+
+                                <Route path="profiles">
+                                    <Route index element={<ListAllUsers />} />
+                                    <Route path=":id" element={<UserProfile />} />
+                                    <Route path=":id/edit" element={<EditUser />} />
+                                    <Route path=":id/password" element={<EditPassword />} />
+                                </Route>
                             </Route>
-
-
-
-                        </Route>
-                        <Route path='*' element={<Navigate to='/' />} />
+                        {/* </Route> */}
+                        {/* Catch-all route for undefined URLs */}
+                        <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
                     </Route>
 
                 </Route>
-            </Routes >
+
+
+            </Routes>
             <ToastContainer
                 position="top-center"
                 autoClose={1700}

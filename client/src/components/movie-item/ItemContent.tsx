@@ -1,11 +1,12 @@
 import ItemInfo from './ItemInfo'
-import MoreInfoBtn from './MoreInfoBtn'
 import BioOverlay from './BioOverlay'
 import HoverInfoBtn from './HoverInfoBtn'
 import { useState } from 'react'
 import ItemContentProps from '../../models/ItemContentProps'
+import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
+import ListItemModal from '../../features/movie-api/ItemModal/ListItemModal'
 
-export default function ItemContent({ item, openItemModal }: ItemContentProps): JSX.Element {
+export default function ItemContent({ item }: ItemContentProps): JSX.Element {
 
     const [revealBio, setRevealBio] = useState(false)
 
@@ -30,7 +31,13 @@ export default function ItemContent({ item, openItemModal }: ItemContentProps): 
                 {item.Plot !== 'N/A'
                     && <HoverInfoBtn openBioOverlay={openBioOverlay} />
                 }
-                <MoreInfoBtn openItemModal={openItemModal} />
+
+
+                <ListItemModal
+                    imdbId={item.imdbID}
+                >
+                    <MoreHorizSharpIcon className='popover-icon' sx={{ fontSize: 30 }} />
+                </ListItemModal>
             </div>
 
             <BioOverlay

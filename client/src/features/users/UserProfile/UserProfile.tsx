@@ -24,10 +24,12 @@ export default function UserProfile() {
   const { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
 
   if (isLoading) return <MainLoadAnimation />;
-  if (isError || !user) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
+  if (isError) return <Error text={`Error: ${error.data.message}`} />
 
   // console.log(user)
   const { likedMovies } = user
+
+  console.log(user)
 
   const hideSlider = () => { return }
 

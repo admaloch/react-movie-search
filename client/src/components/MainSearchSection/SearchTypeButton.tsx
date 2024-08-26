@@ -9,7 +9,7 @@ const SearchTypeButton = ({ type, isActive, colorScheme, hideSlider }: SearchTyp
 
     const clickHandler = () => {
         searchTypeHandler(type)
-        changeColorVars()
+        // changeColorVars()
         // hideSlider()
     }
 

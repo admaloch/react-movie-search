@@ -31,7 +31,7 @@ nav button {
 
 }
 
-nav button::after,
+nav button:not(.nav-close-btn)::after,
 nav a::after {
 	content: '';
 	position: absolute;
@@ -85,7 +85,7 @@ header .nav-close-btn:hover {
 }
 
 header .nav-btn:hover {
-	opacity: .7;
+	opacity: .5;
 
 
 }
@@ -157,6 +157,7 @@ nav {
 		font-size: 2.5rem;
 	}
 
+	nav button:not(.nav-close-btn)::after,
 	nav a::after {
 
 		background-color: var(--mainBackground);
@@ -177,8 +178,12 @@ nav {
 
 	nav .nav-close-btn {
 		position: absolute;
-		top: 2rem;
-		right: 2rem;
+		top: .3rem;
+		right: 0rem;
+		transition: .15s ease-in-out opacity;
+	}
+	nav .nav-close-btn:hover {
+		opacity: .6;
 	}
 
 

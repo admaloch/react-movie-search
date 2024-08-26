@@ -8,15 +8,6 @@ import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedL
 
 const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
 
-    // console.log(item)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const closeItemModal = () => {
-        setIsModalOpen(false)
-    }
-    const openItemModal = () => {
-        setIsModalOpen(true)
-    }
 
     return (
         <div className="info-container">
@@ -24,7 +15,6 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
                 ? <CircleAnimation />
                 : <ItemContent
                     item={item}
-                    openItemModal={openItemModal}
                 />
             }
             <UpdateLikedList
@@ -32,11 +22,7 @@ const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
                 imdbId={item.imdbID}
                 size={30}
             />
-            <Modal
-                closeModal={closeItemModal}
-                open={isModalOpen}>
-                <ItemModal item={item} />
-            </Modal>
+           
         </div>
     )
 }

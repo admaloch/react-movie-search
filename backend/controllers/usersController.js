@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { genDupErrMsg } = require('../utils/controllerHelpers')
 const handlePatchDuplication = require('../utils/controllerHelpers')
+const mongoose = require('mongoose'); // For CommonJS modules
 
 // @desc Get all users
 // @route GET /users
@@ -24,13 +25,19 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const getUserById = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
-    const user = await UserModel.findById(id).select('-password').lean()
+    // Check if the id is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'Could not locate user.' });
+    }
+
+    const user = await UserModel.findById(id).select('-password').lean();
 
     if (!user) {
-        return res.status(400).json({ message: 'No user found' })
+        return res.status(400).json({ message: 'Could not locate user.' });
     }
-    res.json(user)
-})
+
+    res.json(user);
+});
 
 // @desc Create new user
 // @route POST /users

@@ -9,6 +9,7 @@ export default function MainNavContent() {
 
 
     const { isLoggedIn, id } = useAuth()
+    console.log(isLoggedIn)
 
     // console.log(id)
 
@@ -70,7 +71,7 @@ export default function MainNavContent() {
                         <a onClick={(e) => { e.preventDefault(); handleNavClick('/login'); }} href="#">Login</a>
                     </>
                 )}
-                <a onClick={() => handleNavClick('/profiles')} href="#">All users</a>
+                <a onClick={() => handleNavClick('/profiles')} href="#">All Users</a>
 
 
 
