@@ -11,7 +11,6 @@ export default function LikedMovieList({ title, imdbId }) {
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     async function handleListItemClick() {
-        // console.log('this clicked')
         setIsModalOpen(true)
         triggerGetMovieById(imdbId);
     }

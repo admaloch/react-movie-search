@@ -7,6 +7,7 @@ import Error from '../../../components/UI/errors/Error';
 import CloseIcon from '@mui/icons-material/Close';
 
 const ItemModal = ({ item, isLoading, isError, closeModal }: ModalContentProps): React.JSX.Element => {
+    // if (!item) return null;
 
     const closeModalHandler = useCallback(() => {
         closeModal();
