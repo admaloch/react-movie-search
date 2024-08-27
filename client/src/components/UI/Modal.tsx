@@ -45,7 +45,7 @@ export default function Modal({ open, children, closeModal, isTimer = false, isC
                 className={isVisible ? "modal-overlay active" : "modal-overlay"}
             >
             </div>
-            <div className={isVisible ? "modal-container active" : "modal-container"}>
+            <div aria-hidden="false" aria-modal="true" className={isVisible ? "modal-container active" : "modal-container"}>
                 {/* <div onClick={closeModalHandler} className="modal-close-icon">
                     <CloseIcon fontSize="large" />
                 </div> */}

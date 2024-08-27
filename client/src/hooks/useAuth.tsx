@@ -7,16 +7,18 @@ const useAuth = () => {
     let isLoggedIn = false;
     let id = "";
     let isAdmin = false;
+    let username = "";
+    let email = "";
 
     if (token) {
         const decoded = jwtDecode(token);
         if (decoded && decoded.UserInfo) {
-            ({ isAdmin, id } = decoded.UserInfo);
+            ({ isAdmin, id, email, username } = decoded.UserInfo);
             isLoggedIn = true;
         }
     }
 
-    return { id, isAdmin, isLoggedIn };
+    return { id, isAdmin, isLoggedIn, email, username };
 };
 
 export default useAuth;

@@ -17,6 +17,9 @@ import ListAllUsers from './features/users/all-users/ListAllUsers'
 import SettingsPage from './features/users/UserProfile/settings-page/SettingsPage'
 import EditPassword from './features/users/EditPassword'
 import Error from './components/UI/errors/Error'
+import EditPasswordForm from './features/users/EditPasswordForm'
+import EditUserForm from './features/users/EditUserForm'
+import RequireAuth from './features/auth/RequireAuth'
 
 function App() {
     // const state = useSelector((state: RootState) => state);
@@ -40,26 +43,24 @@ function App() {
                         </Route>
 
                         <Route path='/' element={<Footer />}>
-                            {/* <Route element={<PersistLogin />}> */}
                             <Route element={<Prefetch />}>
-
                                 <Route path='/search' element={<MainPage />} />
-
                                 <Route path="profiles">
                                     <Route index element={<ListAllUsers />} />
                                     <Route path=":id" element={<UserProfile />} />
-                                    <Route path=":id/edit" element={<EditUser />} />
-                                    <Route path=":id/password" element={<EditPassword />} />
+                                    <Route element={<RequireAuth />}>
+                                        <Route path=":id/edit" element={<EditUserForm />} />
+                                        <Route path=":id/password" element={<EditPasswordForm />} />
+                                    </Route>
                                 </Route>
                             </Route>
-                            {/* </Route> */}
-                            {/* Catch-all route for undefined URLs */}
+                   
                             <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
                         </Route>
 
                     </Route>
                 </Route>
-
+                
             </Routes>
             <ToastContainer
                 position="top-center"

@@ -8,6 +8,9 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist';
+import MainLoadAnimation from '../../components/UI/LoadAnimation/MainLoadAnimation';
+import useAuth from '../../hooks/useAuth';
+import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
 
 
 interface IFormInput {
@@ -18,6 +21,7 @@ interface IFormInput {
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -30,12 +34,12 @@ const Login: React.FC = () => {
     const onSubmit: SubmitHandler<IFormInput> = async ({ email, password }) => {
         try {
             // const { email, password } = data
-            const { accessToken } = await login({ email, password }).unwrap()
+            const { accessToken, id } = await login({ email, password }).unwrap()
             dispatch(setCredentials({ accessToken }))
             toast.dismiss();
             toast.success('Login successful!');
             setTimeout(() => {
-                navigate('/profiles');
+                navigate(`/profiles/${id}`);
             }, 2300);
         } catch (err) {
             let errMsg
@@ -51,7 +55,7 @@ const Login: React.FC = () => {
 
     const handlePersistToggle = () => setPersist(prev => !prev)
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <CircleAnimation />
 
     return (
         <>

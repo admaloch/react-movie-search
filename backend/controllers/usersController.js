@@ -51,14 +51,12 @@ const createNewUser = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate username
-    const duplicateUsername = await UserModel.findOne({ username }).lean().exec()
-
+    const duplicateUsername = await UserModel.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
     if (duplicateUsername) {
         return res.status(409).json({ message: 'Username is already in use' })
     }
     // Check for duplicate email
-    const duplicateEmail = await UserModel.findOne({ email }).lean().exec()
-
+    const duplicateEmail = await UserModel.findOne({ email }).collation({ locale: 'en', strength: 2 }).lean().exec()
     if (duplicateEmail) {
         return res.status(409).json({ message: 'Email is already in use' })
     }
@@ -100,7 +98,8 @@ const updateUser = asyncHandler(async (req, res) => {
     }
     if (username) {
         console.log('updating username')
-        const isUsernameTaken = await UserModel.findOne({ username });
+      
+        const isUsernameTaken = await UserModel.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
         if (isUsernameTaken) {
             return res.status(400).json({ message: "Username already exists" });
         }
@@ -108,9 +107,7 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     if (email) {
-        console.log('updating email')
-
-        const isEmailTaken = await UserModel.findOne({ email });
+        const isEmailTaken = await UserModel.findOne({ email }).collation({ locale: 'en', strength: 2 }).lean().exec()
         if (isEmailTaken) {
             return res.status(400).json({ message: "Email already exists" });
         }
@@ -118,7 +115,6 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 
     if (newPassword && oldPassword) {
-        console.log('in passwords change')
         const match = await bcrypt.compare(oldPassword, user.password)
         if (match) {
             console.log('Old password is a match')
@@ -126,7 +122,6 @@ const updateUser = asyncHandler(async (req, res) => {
         } else {
             console.log('Old password not a match')
             return res.status(400).json({ message: "Incorrect password" });
-
         }
     }
 

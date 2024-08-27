@@ -5,6 +5,9 @@ import { useState } from 'react'
 import ItemContentProps from '../../models/ItemContentProps'
 import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 import ListItemModal from '../../features/movie-api/ItemModal/ListItemModal'
+import { IconButton } from '@mui/material'
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 export default function ItemContent({ item }: ItemContentProps): JSX.Element {
 
@@ -36,7 +39,17 @@ export default function ItemContent({ item }: ItemContentProps): JSX.Element {
                 <ListItemModal
                     imdbId={item.imdbID}
                 >
-                    <MoreHorizSharpIcon className='popover-icon' sx={{ fontSize: 30 }} />
+
+                    <IconButton
+                        aria-label={'view more content'}
+                        className='custom-icon-button'
+                
+                    >
+                        <Tippy content="View synopsus">
+                            <MoreHorizSharpIcon sx={{ fontSize: 30 }} />
+                        </Tippy>
+                    </IconButton>
+
                 </ListItemModal>
             </div>
 

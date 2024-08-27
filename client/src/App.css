@@ -58,15 +58,15 @@ html {
 }
 
 :root {
-    --text: #022B3A; 
-    --mainBackground: #edf2f4; 
-    --navBackground: rgba(237, 242, 244, .8); 
-    --containertext: #f7ede2; 
-    --containerBackground: #022B3A; 
-    --color1: #5e548e; 
-    --color2: #03045e; 
-    --color3: #1F7A8C; 
-    --color4: #e63946; 
+    --text: #022B3A;
+    --mainBackground: #edf2f4;
+    --navBackground: rgba(237, 242, 244, .8);
+    --containertext: #f7ede2;
+    --containerBackground: #022B3A;
+    --color1: #5e548e;
+    --color2: #03045e;
+    --color3: #1F7A8C;
+    --color4: #e63946;
     --overlay: rgba(2, 43, 58, .7);
 }
 
@@ -84,7 +84,7 @@ body {
     letter-spacing: .3rem;
     display: flex;
     width: 100%;
-   overflow-x: hidden;
+    overflow-x: hidden;
     flex-direction: column;
     align-items: center;
     /* overscroll-behavior: none; */
@@ -99,6 +99,7 @@ body {
     overflow-x: hidden;
     width: 100vw;
 }
+
 .main-item-content {
     height: 100%;
     width: 100%;
@@ -113,15 +114,15 @@ body {
 
 .content-container {
     height: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-self: center;
-   align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
 }
 
 .no-scroll {
     overflow: hidden;
-  }
+}
 
 .disable {
     pointer-events: none;
@@ -130,6 +131,23 @@ body {
 
 }
 
+
+.custom-icon-button {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    opacity: 1;
+    transition: .15s ease-in-out opacity;
+  }
+  
+  .custom-icon-button:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    opacity: 0.6;
+  }
+  
 
 
 
@@ -147,30 +165,22 @@ Extra extra large	xxl	≥1400px */
     :root {
         font-size: 9px;
     }
-} 
+}
+
 @media screen and (min-width: 414px) {
     :root {
         font-size: 11px;
     }
-} 
+}
+
 @media screen and (min-width: 540px) {
     :root {
         font-size: 12px;
     }
-} 
+}
+
 @media screen and (min-width: 768px) {
     :root {
         font-size: 13px;
     }
-} 
-
-
-
-
-
-
-
-
-
-
-
+}

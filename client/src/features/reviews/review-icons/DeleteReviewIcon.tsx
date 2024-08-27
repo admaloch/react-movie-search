@@ -5,6 +5,11 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import InfoIcon from '@mui/icons-material/Info';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import PopoverIcon from '../PopoverIcon';
+import IconButton from '@mui/material/IconButton';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; 
+
+
 
 export default function DeleteReviewIcon({ imdbId, reviewId }) {
     const { id } = useAuth()
@@ -39,11 +44,11 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
 
     else {
         content =
-            <div onClick={deleteReviewHandler}>
-                <PopoverIcon popoverText='Delete review'>
-                    <DeleteForeverIcon  sx={{ fontSize: 33 }} />
-                </PopoverIcon>
-            </div>
+            <IconButton className='custom-icon-button' onClick={deleteReviewHandler} aria-label="delete">
+                <Tippy content="Delete review">
+                    <DeleteForeverIcon sx={{ fontSize: 33 }} />
+                </Tippy>
+            </IconButton>
 
     }
 

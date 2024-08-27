@@ -7,6 +7,7 @@ import ItemError from '../../../components/UI/errors/ItemError';
 import CloseIcon from '@mui/icons-material/Close';
 import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation';
 import imageNotFound from '../../../assets/image_not_found.png'
+import { Circle } from '@mui/icons-material';
 
 const ItemModal = ({ item, isLoading, isError, closeModal, error }: ModalContentProps): React.JSX.Element => {
     if (!item) return null;
@@ -23,7 +24,7 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ModalContent
     const imageAlt = item.Poster !== 'N/A' ? `${item.Title}-poster` : 'image not found placeholder'
     const isLoadingg = true
 
-    if (isLoading) content = <MainLoadAnimation />
+    if (isLoading) content = <CircleAnimation />
         
      else if (isError) {
         content =<ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />  

@@ -5,6 +5,9 @@ import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import LikeOrDislike from './LIkeOrDislike';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 import { red } from '@mui/material/colors';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import { IconButton } from '@mui/material';
 
 export default function UpdateLikedList({ imdbId, title, size = 30 }) {
 
@@ -38,12 +41,14 @@ export default function UpdateLikedList({ imdbId, title, size = 30 }) {
         const { likedMovies } = user
 
         content =
-            <LikeOrDislike
-                size={size}
-                likedMovies={likedMovies}
-                imdbId={imdbId}
-                title={title}
-            />
+           
+                <LikeOrDislike
+                    size={size}
+                    likedMovies={likedMovies}
+                    imdbId={imdbId}
+                    title={title}
+                />
+          
     }
 
     return content

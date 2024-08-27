@@ -6,66 +6,26 @@ import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import openBioOverlayProps from '../../models/OpenBioOverlayProps';
 import { useState } from 'react';
-
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import { IconButton } from '@mui/material';
 
 
 export default function HoverInfoBtn({ openBioOverlay }: openBioOverlayProps): JSX.Element {
 
-    const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(anchorEl ? null : event.currentTarget);
-        setOpen((previousOpen) => !previousOpen);
-    };
-
-    const canBeOpen = open && Boolean(anchorEl);
-    const id = canBeOpen ? 'transition-popper' : undefined;
 
     return (
-        <>
 
-            <div
-                aria-describedby={id}
-                onMouseEnter={handleClick}
-                onMouseLeave={handleClick}
-                className="popover-icon"
-
-                onClick={openBioOverlay}>
+        <IconButton aria-label={'show more info'}
+            className='custom-icon-button'
+            onClick={openBioOverlay}
+        >
+            <Tippy content="View synopsus">
                 <ViewHeadlineSharpIcon sx={{ fontSize: 25 }} />
-            </div>
+            </Tippy>
+        </IconButton>
 
-            <Popper
-                className='item-popover'
-                disablePortal={true}
-                placement="top"
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                transition
-            >
-                {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
-                        <Box
-                            sx={{
-                                border: 1,
-                                borderRadius: 1,
-                                marginBottom: 1,
-                                p: .5,
-                                bgcolor: 'background.paper',
-                                fontSize: '9px', // Adjust the font size as needed
-                                color: 'black',
-                            }}
-                        >
-                            Synopsus
-                        </Box>
-                    </Fade>
-                )}
-            </Popper>
-
-        </>
     );
 }
 

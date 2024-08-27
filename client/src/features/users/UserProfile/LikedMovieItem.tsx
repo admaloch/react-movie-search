@@ -21,6 +21,7 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
 
     let content
 
+
     if (isLoading) content = <CircleAnimation />;
 
     else if (isError) {

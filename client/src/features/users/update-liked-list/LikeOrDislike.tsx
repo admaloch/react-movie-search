@@ -5,8 +5,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { toast } from 'react-toastify';
 import './LikeIcons.css'
 import useAuth from '../../../hooks/useAuth';
-import { red } from '@mui/material/colors';
+import { grey, red } from '@mui/material/colors';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import { IconButton } from '@mui/material';
 
 export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
 
@@ -39,27 +42,42 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
 
     if (isLoading) content = <HourglassLoadingIcon />;
 
+    let popoverText = ''
+
     if (isError) {
-        toast.error(`Error: ${error?.data?.message}`);
+        toast.error(`Error: ${error?.data?.message || 'Failed to like item.'}`);
         content = <ErrorIcon />;
     } else if (!alreadyLiked) {
-        content = <FavoriteBorderIcon
-            className='like-icon'
-            sx={{ fontSize: size }}
-            onClick={updateLikedList}
-        />;
+
+        content =
+
+            <FavoriteBorderIcon
+                aria-label='like-icon'
+                className='like-icon'
+                sx={{ fontSize: size, color: grey[500] }}
+                onClick={updateLikedList}
+            />;
+        popoverText = "Like"
     } else {
-        content = <FavoriteIcon
-            className='like-icon'
-            sx={{ fontSize: size, color: red[500] }}
-            onClick={updateLikedList}
-        />;
+        content =
+            <FavoriteIcon
+                aria-label='like-icon'
+                className='like-icon'
+                sx={{ fontSize: size, color: red[500] }}
+                onClick={updateLikedList}
+            />;
+        popoverText = "Unlike"
+
     }
 
     return (
-        <div className="like-icon-container">
-            {content}
-        </div>
-    ); // Return content or a default element
+        <IconButton className='custom-icon-button' aria-label="update liked list">
+            <Tippy content={popoverText}>
+                {content}
+            </Tippy>
+        </IconButton>
+
+
+    ); 
 }
 

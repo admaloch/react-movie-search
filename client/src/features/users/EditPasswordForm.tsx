@@ -17,10 +17,10 @@ interface IFormInput {
     password: string;
 }
 
-const EditPasswordForm: React.FC = ({ user }) => {
+const EditPasswordForm: React.FC = () => {
 
     const { id } = useAuth()
-    if (!id) return null
+
 
 
     const [showOldPassword, setShowOldPassword] = useState(false);
@@ -59,7 +59,7 @@ const EditPasswordForm: React.FC = ({ user }) => {
         if (isSuccess) {
             toast.success('Password successfully updated!');
             setTimeout(() => {
-                navigate('/myprofile');
+                navigate(`/profiles/${id}`);
             }, 2300);
         }
         if (isError) {
@@ -84,7 +84,8 @@ const EditPasswordForm: React.FC = ({ user }) => {
 
 
     return (
-        <>
+
+        <main className='user-profile-container'>
             <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
                 <h2>Edit password</h2>
                 <div className="formGroup">
@@ -166,10 +167,10 @@ const EditPasswordForm: React.FC = ({ user }) => {
                     {isLoading ? 'Updating...' : 'Update'}
                 </button>
                 <div className="edit-message">
-                    <NavLink className="link-class" to={`/profiles/${user._id}/edit`}>
+                    <NavLink className="link-class" to={`/profiles/${id}/edit`}>
                         Edit user details
                     </NavLink>
-                    <NavLink className="link-class" to={`/profiles/${user._id}`}>
+                    <NavLink className="link-class" to={`/profiles/${id}`}>
                         <ArrowBackIcon />
                         Return to profile
                     </NavLink>
@@ -179,8 +180,8 @@ const EditPasswordForm: React.FC = ({ user }) => {
 
             </form>
 
+        </main>
 
-        </>
     );
 };
 

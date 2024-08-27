@@ -9,7 +9,7 @@ const HoverInfo = ({ item, isLoading, isError, error }: HoverInfoProps): JSX.Ele
     if (!item) return null
 
     let content
-    
+
     if (isLoading) {
         content = <CircleAnimation />
     } else if (isError) {
@@ -20,11 +20,14 @@ const HoverInfo = ({ item, isLoading, isError, error }: HoverInfoProps): JSX.Ele
                 <ItemContent
                     item={item}
                 />
-                <UpdateLikedList
-                    title={item.Title}
-                    imdbId={item.imdbID}
-                    size={30}
-                />
+                <div className="liked-btn">
+                    <UpdateLikedList
+                        title={item.Title}
+                        imdbId={item.imdbID}
+                        size={30}
+                    />
+                </div>
+
             </>
     }
 

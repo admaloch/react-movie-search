@@ -27,7 +27,9 @@ const login = asyncHandler(async (req, res) => {
         {
             "UserInfo": {
                 "id": foundUser._id,
-                "isAdmin": foundUser.isAdmin
+                "isAdmin": foundUser.isAdmin,
+                "username": foundUser.username,
+                "email": foundUser.email,
             }
         },
         process.env.ACCESS_TOKEN_SECRET,
@@ -37,7 +39,7 @@ const login = asyncHandler(async (req, res) => {
     const refreshToken = jwt.sign(
         { "username": foundUser.username },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '30d' }
     )
 
     // Create secure cookie with refresh token 
@@ -49,7 +51,7 @@ const login = asyncHandler(async (req, res) => {
     })
 
     // Send accessToken containing username and roles 
-    res.json({ accessToken })
+    res.json({ accessToken, id: foundUser._id })
 })
 
 // @desc Refresh
@@ -76,7 +78,9 @@ const refresh = (req, res) => {
                 {
                     "UserInfo": {
                         "id": foundUser._id,
-                        "isAdmin": foundUser.isAdmin
+                        "isAdmin": foundUser.isAdmin,
+                        "username": foundUser.username,
+                        "email": foundUser.email,
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,

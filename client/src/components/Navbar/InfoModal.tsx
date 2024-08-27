@@ -10,6 +10,8 @@ export default function InfoModal({ open, closeModal }: ModalProps): JSX.Element
 
     return (
         <Modal
+        
+            role="dialog"
             closeModal={closeModal}
             open={open}
         >

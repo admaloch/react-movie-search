@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutUser from '../../features/users/LogoutUser';
 import useAuth from '../../hooks/useAuth';
 
@@ -26,67 +26,34 @@ export default function MainNavContent() {
         navRef.current.classList.remove("responsive_nav");
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 1024) {
-                setNavDelay(0);
-                closeNavbar()
-            } else {
-                setNavDelay(500);
-            }
-        };
-        window.addEventListener('resize', handleResize);
-        // Initial check
-        handleResize();
-        // Cleanup function
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const handleNavClick = (path) => {
-        closeNavbar()
-        setTimeout(() => {
-            navigate(path);
-        }, navDelay);
-    };
+   
 
     return (
         <>
             <nav ref={navRef}>
-                <a onClick={() => handleNavClick('/')} href="#">Home</a>
-                <a onClick={() => handleNavClick('/search')} href="#">Search</a>
-                <a onClick={() => handleNavClick('/profiles')} href="#">All Users</a>
+                <NavLink to="/" onClick={closeNavbar}>Home</NavLink>
+                <NavLink to="/search" onClick={closeNavbar}>Search</NavLink>
+                <NavLink to="/profiles" onClick={closeNavbar} end>All Users</NavLink>
 
                 {isLoggedIn && id ? (
                     <>
-                        <LogoutUser
-                            closeNavbar={closeNavbar}
-                            navDelay={navDelay}
-                        />
-                        <a onClick={() => handleNavClick(`/profiles/${id}`)} href="#">MyProfile</a>
+                        <LogoutUser closeNavbar={closeNavbar} navDelay={navDelay} />
+                        <NavLink to={`/profiles/${id}`} onClick={closeNavbar}>My Profile</NavLink>
                     </>
                 ) : (
                     <>
-                        <a onClick={(e) => { e.preventDefault(); handleNavClick('/users/register'); }} href="#">Register</a>
-                        <a onClick={(e) => { e.preventDefault(); handleNavClick('/login'); }} href="#">Login</a>
+                        <NavLink to="/users/register" onClick={closeNavbar}>Register</NavLink>
+                        <NavLink to="/login" onClick={closeNavbar}>Login</NavLink>
                     </>
                 )}
 
-
-
-
-                <button
-                    className=" nav-close-btn"
-                    onClick={closeNavbar}>
+                <button className="nav-close-btn" onClick={closeNavbar}>
                     <FaTimes />
                 </button>
             </nav>
-            <button
-                className="nav-btn"
-                onClick={showNavbar}>
+            <button className="nav-btn" onClick={showNavbar}>
                 <FaBars />
             </button>
         </>
-    )
+    );
 }

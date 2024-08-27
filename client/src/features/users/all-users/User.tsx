@@ -8,6 +8,7 @@ import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
 const User = ({ userId }) => {
     const user = useSelector(state => selectUserById(state, userId))
     if (!user || !user.likedMovies.length) return null
+    
 
     return (
         <div className="user-container">

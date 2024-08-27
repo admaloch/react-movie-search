@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 function PopoverIcon({ popoverText, children }) {
+
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handlePopoverOpen = (event) => {
@@ -21,6 +22,7 @@ function PopoverIcon({ popoverText, children }) {
     return (
         < >
             <IconButton
+                className='custom-icon-button'
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
 

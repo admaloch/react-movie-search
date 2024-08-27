@@ -9,6 +9,9 @@ import { red } from '@mui/material/colors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import PopoverIcon from '../../reviews/PopoverIcon';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
+import { IconButton } from '@mui/material';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 export default function UpdateHasWatchedIcon({ size, imdbId }) {
 
@@ -46,13 +49,14 @@ export default function UpdateHasWatchedIcon({ size, imdbId }) {
     else {
 
         content =
-            <PopoverIcon popoverText={"I've seen this"}>
-                <VisibilityIcon
-                    className='like-icon'
-                    sx={{ fontSize: size }}
-                    onClick={updateHasWatched}
-                />
-            </PopoverIcon>
+            <IconButton className='custom-icon-button' onClick={updateHasWatched} aria-label="update liked list">
+                <Tippy content="I've seen this!">
+                    <VisibilityIcon
+                        className='like-icon'
+                        sx={{ fontSize: size }}
+                    />
+                </Tippy>
+            </IconButton>
     }
 
     return (

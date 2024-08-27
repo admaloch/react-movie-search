@@ -155,6 +155,16 @@
     }
 }
 
+
+
+.info-container .liked-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+
 .hover-btn-container {
     width: 100%;
     display: flex;
@@ -162,29 +172,6 @@
     align-items: center;
     z-index: 5;
 }
-
-.popover-icon {
-    margin: .7rem .2rem 0 .2rem;
-    display: inline-block;
-    color: var(--color2);
-    border: transparent solid 1px;
-    background-color: var(--mainBackground);
-    cursor: pointer;
-    opacity: .6;
-    transition: .25s all ease-in-out;
-    padding: 0 .15rem .1rem .15rem;
-}
-
-.popover-icon:hover {
-    opacity: 1;
-    color: var(--color1);
-    border: var(--color2) solid 1px;
-    background-color: var(--mainBackground);
-
-}
-
-
-
 
 .bio-overlay {
     background: var(--text);

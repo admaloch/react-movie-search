@@ -8,8 +8,10 @@ function MainNavBar() {
     return (
         <>
             <header>
-                <MainNavLogo />
-                <MainNavContent />
+                <div className="header-content">
+                    <MainNavLogo />
+                    <MainNavContent />
+                </div>
             </header>
             <Outlet />
         </>

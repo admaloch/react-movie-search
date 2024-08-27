@@ -10,7 +10,7 @@ import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
 
-  
+
 
     return (
         <>
@@ -27,11 +27,14 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
                         <h3>{Title}</h3>
                         {Year && <p>{Year}</p>}
                     </div>
-                    <UpdateLikedList
-                        title={Title}
-                        imdbId={imdbID}
-                        size={25}
-                    />
+                    <div className="like-icon-container">
+                        <UpdateLikedList
+                            title={Title}
+                            imdbId={imdbID}
+                            size={25}
+                        />
+                    </div>
+
                 </li>
             </ListItemModal>
         </>

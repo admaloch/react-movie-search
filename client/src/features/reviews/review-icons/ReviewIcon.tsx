@@ -2,9 +2,13 @@
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import PopoverIcon from '../PopoverIcon';
 import Modal from '../../../components/UI/Modal';
-import {useState } from 'react';
+import { useState } from 'react';
 import NewReviewForm from '../NewReviewForm';
 import EditReviewForm from '../EditReviewForm';
+import IconButton from '@mui/material/IconButton';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
 
 export default function ReviewIcon({ reviewedMovie, imdbId, title }) {
 
@@ -28,12 +32,12 @@ export default function ReviewIcon({ reviewedMovie, imdbId, title }) {
 
     return (
         <>
-            <PopoverIcon popoverText={popoverText} >
-                <RateReviewIcon
-                    onClick={openReviewModal}
-                    sx={{ fontSize: 30 }}
-                />
-            </PopoverIcon>
+            <IconButton className='custom-icon-button' onClick={openReviewModal} aria-label='open review modal'>
+                <Tippy content={popoverText}>
+                    <RateReviewIcon sx={{ fontSize: 30 }} />
+                </Tippy>
+            </IconButton>
+
             <Modal
                 closeModal={closeReviewModal}
                 open={isModalOpen}
