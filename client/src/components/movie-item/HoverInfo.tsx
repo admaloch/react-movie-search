@@ -1,16 +1,15 @@
 
 import ItemContent from "./ItemContent"
-import HoverInfoProps from "../../models/HoverInfoProps"
 import CircleAnimation from "../UI/LoadAnimation/CircleAnimation"
 import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedList"
 import ItemError from "../UI/errors/ItemError"
-import { OmdbItem } from "../../models/ItemApiProps"
 import { ModalContentProps } from "../../models/ListItemProps"
 import { RTKQueryInterface } from "../../models/RTKQueryProps"
 
-interface HoverInfoProps extends ModalContentProps, RTKQueryInterface, OmdbItem {}
+interface HoverInfoProps extends ModalContentProps, RTKQueryInterface {}
 
 const HoverInfo = ({ item, isLoading, isError }: HoverInfoProps): JSX.Element => {
+
 
     if (!item) return null;
 
