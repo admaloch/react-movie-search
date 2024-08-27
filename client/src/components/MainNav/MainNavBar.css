@@ -1,8 +1,6 @@
 header {
-	
 	height: 80px;
 	padding: 0 2rem;
-	/* background-color: var(--color1); */
 	color: var(--text);
 	width: 100%;
 	position: fixed;
@@ -17,8 +15,14 @@ header {
 	height: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 	position: relative;
+}
+
+@media only screen and (min-width: 1300px) {
+	.header-content {
+		justify-content: center;
+	}
 }
 
 nav a,
@@ -64,7 +68,6 @@ nav button.active {
 	color: var(--containerBackground);
 }
 
-
 header .nav-btn {
 	padding: 5px;
 	cursor: pointer;
@@ -87,16 +90,11 @@ header .nav-close-btn {
 
 header .nav-close-btn:hover {
 	color: var(--mainBackground);
-
 }
 
 header .nav-btn:hover {
 	opacity: .5;
-
-
 }
-
-
 
 header div,
 nav {
@@ -110,14 +108,12 @@ nav {
 	text-decoration: none;
 	position: absolute;
 	left: 0;
-	/* top: 0; */
 }
 
 .logo h3 {
 	font-size: 2.5rem;
 	color: var(--text);
 }
-
 
 .logo img {
 	width: 50px;
@@ -134,11 +130,11 @@ nav {
 	opacity: .7;
 }
 
-
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 900px) {
 	header .nav-btn {
 		visibility: visible;
 		opacity: 1;
+		margin-left: auto;
 	}
 
 	header nav {
@@ -157,7 +153,6 @@ nav {
 		opacity: 1;
 		z-index: 100;
 		border: var(--containertext) solid 10px;
-
 	}
 
 	header nav button,
@@ -169,7 +164,6 @@ nav {
 
 	nav button:not(.nav-close-btn)::after,
 	nav a::after {
-
 		background-color: var(--mainBackground);
 		transition: width 0.3s ease-in-out;
 	}
@@ -183,7 +177,6 @@ nav {
 
 	header .responsive_nav {
 		transform: translateY(100vh);
-
 	}
 
 	nav .nav-close-btn {
@@ -192,12 +185,9 @@ nav {
 		right: 0rem;
 		transition: .15s ease-in-out opacity;
 		display: block;
-
 	}
 
 	nav .nav-close-btn:hover {
 		opacity: .6;
 	}
-
-
 }

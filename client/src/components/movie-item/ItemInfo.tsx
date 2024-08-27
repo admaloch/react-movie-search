@@ -1,11 +1,11 @@
-import { APIItem } from '../../models/ItemApiProps' 
+import { OmdbItem } from '../../models/ItemApiProps'
 import ItemInfoProps from '../../models/ItemInfoProps'
 
 export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element {
 
     // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
-    const genItemRating = (obj: APIItem): string | undefined => {
+    const genItemRating = (obj: OmdbItem): string | undefined => {
         const rottenScore = obj.Ratings.filter(x => x.Source === "Rotten Tomatoes")
         const imdbScore = obj.Ratings.filter(x => x.Source === "Internet Movie Database")
         const metaScore = obj.Ratings.filter(x => x.Source === "Metacritic")

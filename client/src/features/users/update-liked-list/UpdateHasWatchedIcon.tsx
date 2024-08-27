@@ -1,13 +1,9 @@
 import { useUpdateUserMutation } from '../usersApiSlice'
 import ErrorIcon from '@mui/icons-material/Error';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { toast } from 'react-toastify';
 import './LikeIcons.css'
 import useAuth from '../../../hooks/useAuth';
-import { red } from '@mui/material/colors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import PopoverIcon from '../../reviews/PopoverIcon';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 import { IconButton } from '@mui/material';
 import Tippy from '@tippyjs/react';
@@ -18,7 +14,6 @@ export default function UpdateHasWatchedIcon({ size, imdbId }) {
     const { id } = useAuth()
 
     if (!id) return null
-
 
     const [updateUser, {
         isLoading,

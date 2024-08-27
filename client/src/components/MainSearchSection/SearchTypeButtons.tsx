@@ -5,14 +5,13 @@ import { SliderProps } from '../../models/SliderProps'
 import { SearchType } from "../../features/search-options/SearchTypeOptions";
 
 const SearchTypeButtons = ({ hideSlider }: SliderProps) => {
+
     const { searchTypes } = useSearchType()
 
     return (
-
         <ul id="result-type-container">
             {searchTypes.map((type: SearchType) => (
                 <SearchTypeButton
-
                     key={type.type}
                     type={type.type}
                     isActive={type.isActive}

@@ -20,30 +20,27 @@ import Error from './components/UI/errors/Error'
 import EditPasswordForm from './features/users/EditPasswordForm'
 import EditUserForm from './features/users/EditUserForm'
 import RequireAuth from './features/auth/RequireAuth'
+import useTitle from './hooks/useTitle'
 
 function App() {
-    // const state = useSelector((state: RootState) => state);
 
-    // console.log(state)
-    // const state = useSearchType()
-    //     console.log(state)
+    useTitle('Movie Brain')
 
     return (
 
         <APIProvider>
             <Routes>
                 <Route element={<PersistLogin />}>
-                    <Route path='/' element={<MainNavBar />}>
-                        <Route path='/' element={<HomeLayout />}>
-                            <Route index element={<HomePageContent />} />
-                            <Route path="users">
-                                <Route path="register" element={<Register />} />
+                    <Route element={<Prefetch />}>
+                        <Route path='/' element={<MainNavBar />}>
+                            <Route path='/' element={<HomeLayout />}>
+                                <Route index element={<HomePageContent />} />
+                                <Route path="users">
+                                    <Route path="register" element={<Register />} />
+                                </Route>
+                                <Route path='login' element={<Login />} />
                             </Route>
-                            <Route path='login' element={<Login />} />
-                        </Route>
-
-                        <Route path='/' element={<Footer />}>
-                            <Route element={<Prefetch />}>
+                            <Route path='/' element={<Footer />}>
                                 <Route path='/search' element={<MainPage />} />
                                 <Route path="profiles">
                                     <Route index element={<ListAllUsers />} />
@@ -53,15 +50,13 @@ function App() {
                                         <Route path=":id/password" element={<EditPasswordForm />} />
                                     </Route>
                                 </Route>
+                                <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
                             </Route>
-                   
-                            <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
                         </Route>
-
                     </Route>
                 </Route>
-                
             </Routes>
+            
             <ToastContainer
                 position="top-center"
                 autoClose={1700}

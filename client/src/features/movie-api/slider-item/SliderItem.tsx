@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HoverInfo from "../../../components/movie-item/HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import SliderItemProps from "../../../models/SliderItemProps";
@@ -10,12 +10,18 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
     if (!item) return null
 
     const { imdbID, Poster } = item
+    const [fetchedIds, setFetchedIds] = useState(new Set());
 
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     function mouseEnterHandler() {
         hideArrowFunc();
-        triggerGetMovieById(imdbID);
+
+        // Check if the imdbID has already been fetched
+        if (!fetchedIds.has(imdbID)) {
+            triggerGetMovieById(imdbID);
+            setFetchedIds(prevIds => new Set(prevIds).add(imdbID));
+        }
     }
 
     return (

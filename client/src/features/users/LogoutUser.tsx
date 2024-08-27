@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { useSendLogoutMutation } from '../auth/authApiSlice'
 import { useEffect } from 'react'
-import { toast } from 'react-toastify';
-import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
 
-export default function LogoutUser({ closeNavbar, navDelay }) {
+
+export default function LogoutUser({ closeNavbar }) {
 
     const navigate = useNavigate();
 
@@ -12,18 +11,14 @@ export default function LogoutUser({ closeNavbar, navDelay }) {
 
     const handleLogoutBtnClick = () => {
         closeNavbar();
-
-        setTimeout(() => {
-            if (!isLoading) {
-                sendLogout();
-                navigate('/login');
-            }
-        }, navDelay);
+        if (!isLoading) {
+            sendLogout();
+            navigate('/login');
+        }
     };
 
     useEffect(() => {
         if (isSuccess) {
-
             navigate('/login'); // or wherever you want to redirect after logout
         }
         if (isError) {

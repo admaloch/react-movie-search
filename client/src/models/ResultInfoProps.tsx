@@ -1,6 +1,6 @@
-import { APIItem } from "./ItemApiProps";
+import { OmdbItem } from "./ItemApiProps";
 
 export default interface ResultInfoProps {
-    item: APIItem;
+    item: OmdbItem;
     year: number;
 }

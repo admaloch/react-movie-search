@@ -7,20 +7,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-margin-top: auto;
-
+    margin-top: auto;
 }
 
-.footer p, .footer a {
+.footer p,
+.footer a {
     font-size: 1.2rem;
 }
 
 .footer a {
-  color: var(--mainBackground);
+    color: var(--mainBackground);
     transition: .3s all ease-in-out;
     text-decoration: underline;
 }
+
 .footer a:hover {
     opacity: .6;
-letter-spacing: 5px;
+    letter-spacing: 5px;
 }

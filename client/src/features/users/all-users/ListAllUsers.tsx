@@ -21,7 +21,6 @@ export default function ListAllUsers() {
 
 
     // console.log("Users data in ListAllUsers:", users); // Log users data
-    const isLoadingg = true
     if (isLoading) return <CircleAnimation />;
     if (isError) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
 

@@ -1,14 +1,19 @@
 
-import { useSelector } from 'react-redux'
-import { selectUserById } from '../usersApiSlice'
+import {  useGetUsersQuery } from '../usersApiSlice'
 import UserPageLinkIcon from './UserPageLinkIcon';
 import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
+import { memo } from 'react';
 
 
 const User = ({ userId }) => {
-    const user = useSelector(state => selectUserById(state, userId))
+
+    const { user } = useGetUsersQuery("usersList", {
+        selectFromResult: ({ data }) => ({
+            user: data?.entities[userId]
+        }),
+    })
+
     if (!user || !user.likedMovies.length) return null
-    
 
     return (
         <div className="user-container">
@@ -31,4 +36,6 @@ const User = ({ userId }) => {
 
 
 }
-export default User
+const memoizedUser = memo(User)
+
+export default memoizedUser

@@ -1,7 +1,7 @@
 import BGSection from '../UI/BGSection/BGSection'
 import './HomeLayout.css'
 import { Outlet } from 'react-router-dom'
-import bgBrain from '../../../public/big-brain.png'
+import bgBrain from '../../assets/big-brain.png'
 
 export default function HomeLayout() {
   return (

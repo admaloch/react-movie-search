@@ -1,18 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
+import { RootState } from './store'; // Adjust the path according to where your store is defined
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:3500',
     credentials: 'include',
-    prepareHeaders: (headers, { getState }) => {
-        const token = getState().auth.token
-
+    prepareHeaders: (headers, { getState }: { getState: () => RootState }) => {
+        const token = getState().auth.token;
         if (token) {
-            headers.set("authorization", `Bearer ${token}`)
+            headers.set("authorization", `Bearer ${token}`);
         }
-        return headers
+        return headers;
     }
-})
+});
+
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     // console.log(args) // request url, method, body

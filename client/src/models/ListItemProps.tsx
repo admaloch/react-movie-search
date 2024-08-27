@@ -1,8 +1,8 @@
-import { APIItem } from "./ItemApiProps"
+import { OmdbItem } from "./ItemApiProps"
 import LoadingProps from "./LoadingProps";
 
 export interface ModalContentProps {
-    item: APIItem;
+    item: OmdbItem;
 }
 
 export interface ListItemProps extends ModalContentProps, LoadingProps {

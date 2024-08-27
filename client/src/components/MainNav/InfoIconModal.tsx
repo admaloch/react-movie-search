@@ -11,7 +11,6 @@ export default function InfoIconModal() {
     return (
         <>
             <FaCircleInfo onClick={openModal} />
-
             <InfoModal
                 closeModal={closeModal}
                 open={isModalOpen}

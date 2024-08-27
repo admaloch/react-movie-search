@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import brain from '../../../public/brain.png'
+import brain from '../../assets/brain.png'
 
 export default function MainNavLogo() {
     return (

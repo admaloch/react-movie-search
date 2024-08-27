@@ -30,7 +30,6 @@ export default function HomePageContent() {
       <h2>The smartest way to search</h2>
       <h2>Create lists, leave reviews and check out what other people are watching</h2>
       {button}
-
     </Card>
   )
 }

@@ -4,19 +4,10 @@
     border-radius: 7px;
 }
 
-/* .main-content-container .main-card *,
-.main-content-container form * {
-    z-index: 2;
-} */
-
 .main-content-container h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    /* color: var(--mainBackground); */
-
 }
-
-
 
 .background-img {
     position: absolute;
@@ -26,5 +17,4 @@
     z-index: -1;
     opacity: .3;
     width: 100%;
-
 }

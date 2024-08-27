@@ -26,19 +26,15 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
     ? { opacity: '1', height: '100%', zIndex: 50 }
     : { opacity: '0', height: '0', zIndex: 0 };
 
-
   return (
     <div
       ref={scrollDivRef}
       onMouseLeave={mouseLeaveHandler}
-      // onTouchEnd={mouseLeaveHandler}
       style={styles}
       className='bio-overlay'>
       <h4>Overview</h4>
       <p>{plot}</p>
-
         <IoClose onClick={closeBio} className="icon-large close-bio-text"/>
-  
     </div>
   );
 };

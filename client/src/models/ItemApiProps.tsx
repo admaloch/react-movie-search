@@ -3,7 +3,7 @@ interface Ratings {
     "Value": string;
 }
 
-export interface APIItem {
+export interface OmdbItem {
     "Title": string;
     "Year": string;
     "Rated": string;
@@ -23,7 +23,7 @@ export interface APIItem {
     "Response": string;
 }
 
-export const defaultAPIItem: APIItem = {
+export const defaultOmdbItem: OmdbItem = {
     Title: '',
     Year: '',
     Rated: '',
