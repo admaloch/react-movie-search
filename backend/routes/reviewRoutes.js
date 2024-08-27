@@ -3,21 +3,18 @@ const router = express.Router()
 const reviewsController = require('../controllers/reviewsController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-router.use(verifyJWT)
-
 router.route('/')
     .get(reviewsController.getAllReviews)
-    .post(reviewsController.createReview)
-
+    .post(verifyJWT, reviewsController.createReview) 
 
 router.route('/:id')
-    .patch(reviewsController.updateReview)        
-    .delete(reviewsController.deleteReview);
+    .patch(verifyJWT, reviewsController.updateReview) 
+    .delete(verifyJWT, reviewsController.deleteReview) 
 
 router.route('/user/:userId')
-    .get(reviewsController.getUserReviews);
+    .get(reviewsController.getUserReviews)
 
 router.route('/movie/:movieId')
-    .get(reviewsController.getMovieReviews);
+    .get(reviewsController.getMovieReviews)
 
 module.exports = router

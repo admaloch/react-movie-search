@@ -1,6 +1,5 @@
 const UserModel = require('../models/User')
 const ReviewModel = require('../models/Review')
-const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { genDupErrMsg } = require('../utils/controllerHelpers')
@@ -9,8 +8,8 @@ const mongoose = require('mongoose'); // For CommonJS modules
 
 // @desc Get all users
 // @route GET /users
-// @access Private
-const getAllUsers = asyncHandler(async (req, res) => {
+// @access Public
+const getAllUsers = async (req, res) => {
     // Get all users from MongoDB
     const users = await UserModel.find().select('-password').lean()
     // If no users 
@@ -18,11 +17,12 @@ const getAllUsers = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'No users found' })
     }
     res.json(users)
-})
+};
+
 // @desc Get user
-// @route GET /user/:id
-// @access Private
-const getUserById = asyncHandler(async (req, res) => {
+// @route GET /users/:id
+// @access Public
+const getUserById = async (req, res) => {
     const { id } = req.params;
 
     // Check if the id is a valid ObjectId
@@ -37,12 +37,12 @@ const getUserById = asyncHandler(async (req, res) => {
     }
 
     res.json(user);
-});
+};
 
 // @desc Create new user
 // @route POST /users
 // @access Private
-const createNewUser = asyncHandler(async (req, res) => {
+const createNewUser = async (req, res) => {
     const { email, username, password } = req.body
 
     // Confirm data
@@ -74,18 +74,14 @@ const createNewUser = asyncHandler(async (req, res) => {
     } else {
         res.status(400).json({ message: 'Invalid user data received' })
     }
-})
-
-
+}
 
 // @desc Update user
 // @route PATCH /users/:id
 // @access Private
-const updateUser = asyncHandler(async (req, res) => {
+const updateUser = async (req, res) => {
     const { email, username, newPassword, oldPassword, imdbId, title, hasWatched } = req.body
     const { id } = req.params
-
-
 
     if (!id) {
         return res.status(400).json({ message: 'No user id found' })
@@ -96,9 +92,7 @@ const updateUser = asyncHandler(async (req, res) => {
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
     }
-    if (username) {
-        console.log('updating username')
-      
+    if (username) {    
         const isUsernameTaken = await UserModel.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
         if (isUsernameTaken) {
             return res.status(400).json({ message: "Username already exists" });
@@ -150,12 +144,12 @@ const updateUser = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save()
     res.json({ message: `${updatedUser.username} updated` })
-})
+};
 
 // @desc Delete user
-// @route DELETE /user
+// @route DELETE /users/:id
 // @access Private
-const deleteUser = asyncHandler(async (req, res) => {
+const deleteUser = async (req, res) => {
     const { id } = req.params
 
     if (!id) {
@@ -177,7 +171,7 @@ const deleteUser = asyncHandler(async (req, res) => {
     const reply = `Username ${result.username} with ID ${result.id} deleted`
 
     res.json(reply)
-})
+}
 
 module.exports = {
     getAllUsers,
