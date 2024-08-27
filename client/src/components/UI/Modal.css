@@ -37,6 +37,7 @@
   border-radius: 0px;
   background-color: var(--mainBackground);
   width: 100%;
+  min-height: 400px;
 }
 
 .modal-container .game-btn {

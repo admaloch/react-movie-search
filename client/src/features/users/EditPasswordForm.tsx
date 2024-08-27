@@ -20,6 +20,7 @@ interface IFormInput {
 const EditPasswordForm: React.FC = ({ user }) => {
 
     const { id } = useAuth()
+    if (!id) return null
 
 
     const [showOldPassword, setShowOldPassword] = useState(false);

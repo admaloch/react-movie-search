@@ -1,19 +1,14 @@
-import { Outlet, Link } from "react-router-dom"
-import { useEffect, useRef, useState } from 'react'
-import { useRefreshMutation } from "./authApiSlice"
-import usePersist from "../../hooks/usePersist"
-import { useSelector } from 'react-redux'
-import { selectCurrentToken } from "./authSlice"
-import CircleAnimation from "../../components/UI/LoadAnimation/CircleAnimation"
-import Error from "../../components/UI/errors/Error"
+import { Outlet } from "react-router-dom";
+import { useEffect, useRef, useState } from 'react';
+import { useRefreshMutation } from "./authApiSlice";
+import usePersist from "../../hooks/usePersist";
+import { useSelector } from 'react-redux';
+import { selectCurrentToken } from "./authSlice";
 
 const PersistLogin = () => {
-
-    const [persist] = usePersist()
-    const token = useSelector(selectCurrentToken)
-    const effectRan = useRef(false)
-
-    const [trueSuccess, setTrueSuccess] = useState(false)
+    const [persist] = usePersist();
+    const token = useSelector(selectCurrentToken);
+    const effectRan = useRef(false);
 
     const [refresh, {
         isUninitialized,
@@ -21,59 +16,27 @@ const PersistLogin = () => {
         isSuccess,
         isError,
         error
-    }] = useRefreshMutation()
-
+    }] = useRefreshMutation();
 
     useEffect(() => {
-
-        if (effectRan.current === true || process.env.NODE_ENV !== 'development') { // React 18 Strict Mode -- this can have issues if it runs twice
-
+        if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
             const verifyRefreshToken = async () => {
-                // console.log('verifying refresh token')
                 try {
-                    //const response = 
-                    await refresh()
-                    //const { accessToken } = response.data
-                    setTrueSuccess(true) //necessary to give time to truly verify
-                }
-                catch (err) {
-                    console.error(err)
+                    await refresh();
+                } catch (err) {
+                    // Handle any errors if needed
                 }
             }
 
-            if (!token && persist) verifyRefreshToken()
+            if (!token && persist) {
+                verifyRefreshToken();
+            }
         }
-
-        return () => effectRan.current = true
-
+        return () => effectRan.current = true;
         // eslint-disable-next-line
-    }, [])
+    }, [token, persist, refresh]);
 
+    return <Outlet />;
+};
 
-    let content
-    if (!persist) { // persist: no
-        // console.log('no persist')
-        content = <Outlet />
-    } else if (isLoading) { //persist: yes, token: no
-        // console.log('loading')
-        content = <CircleAnimation/>
-    } else if (isError) { //persist: yes, token: no
-        // console.log('error')
-        content = (
-            <>
-                {/* {error.data?.message} */}
-                <Error text={"Must be logged in to see this"} />
-            </>
-        )
-    } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
-        // console.log('success')
-        content = <Outlet />
-    } else if (token && isUninitialized) { //persist: yes, token: yes
-        // console.log('token and uninit')
-        console.log(isUninitialized)
-        content = <Outlet />
-    }
-
-    return content
-}
-export default PersistLogin
+export default PersistLogin;

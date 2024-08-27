@@ -3,6 +3,7 @@ import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimatio
 import Error from '../../../components/UI/errors/Error'
 import './User.css'
 import User from './User'
+import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation'
 
 export default function ListAllUsers() {
     const {
@@ -20,7 +21,8 @@ export default function ListAllUsers() {
 
 
     // console.log("Users data in ListAllUsers:", users); // Log users data
-    if (isLoading) return <CircleAnimation />;
+    const isLoadingg = true
+    if (isLoading) return <MainLoadAnimation />;
     if (isError) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
 
 

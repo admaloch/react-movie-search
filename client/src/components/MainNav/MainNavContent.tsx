@@ -9,7 +9,7 @@ export default function MainNavContent() {
 
 
     const { isLoggedIn, id } = useAuth()
-    console.log(isLoggedIn)
+    // console.log(isLoggedIn)
 
     // console.log(id)
 
@@ -56,8 +56,9 @@ export default function MainNavContent() {
             <nav ref={navRef}>
                 <a onClick={() => handleNavClick('/')} href="#">Home</a>
                 <a onClick={() => handleNavClick('/search')} href="#">Search</a>
+                <a onClick={() => handleNavClick('/profiles')} href="#">All Users</a>
 
-                {isLoggedIn ? (
+                {isLoggedIn && id ? (
                     <>
                         <LogoutUser
                             closeNavbar={closeNavbar}
@@ -71,7 +72,6 @@ export default function MainNavContent() {
                         <a onClick={(e) => { e.preventDefault(); handleNavClick('/login'); }} href="#">Login</a>
                     </>
                 )}
-                <a onClick={() => handleNavClick('/profiles')} href="#">All Users</a>
 
 
 

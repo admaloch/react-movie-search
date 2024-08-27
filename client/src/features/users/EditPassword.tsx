@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUserById, useGetUserByIdQuery } from './usersApiSlice'
 import EditUserForm from './EditUserForm'
-import LoadAnimation from '../../components/UI/LoadAnimation/LoadAnimation'
 import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation'
 import useAuth from '../../hooks/useAuth'
 import { containerClasses } from '@mui/material'
@@ -11,6 +10,8 @@ import EditPasswordForm from './EditPasswordForm'
 
 const EditPassword = () => {
     const { id } = useAuth()
+
+    if (!id) return null
 
     const { data: user, isLoading, isError, error, isSuccess } = useGetUserByIdQuery(id);
 

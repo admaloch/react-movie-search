@@ -104,6 +104,7 @@
 
 
 #searchForm button {
+    width: 80px;
     border: var(--color2) solid 3px;
     color: var(--containertext);
     background-color: var(--containerBackground);
@@ -182,7 +183,6 @@
     align-items: center;
     /* display: none;  */
     opacity: 0;
-    z-index: 150;
     transition: all .3s ease-in-out;
 }
 

@@ -8,8 +8,6 @@ export default function SettingsPage() {
     const isCurrUser = urlUserId === currUserId
     if (!isCurrUser) return null
 
-
-
   return (
     <div className="movie-items-container">
         <p>Edit account info</p>

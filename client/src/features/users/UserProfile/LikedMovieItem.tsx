@@ -3,7 +3,7 @@ import { useSearchType } from "../../../hooks/useSearchType";
 import LikedMovieContent from "./LikedMovieContent";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 import { useGetMovieByIdQuery } from "../../movie-api/omdbApiSlice";
-import Error from "../../../components/UI/errors/Error";
+import ItemError from "../../../components/UI/errors/ItemError";
 import MainLoadAnimation from "../../../components/UI/LoadAnimation/MainLoadAnimation";
 
 
@@ -19,11 +19,29 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
     const { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
 
 
-    if (isLoading) return <MainLoadAnimation />;
-    if (isError || !movieItem) return <Error text={`Error: ${error.data.message} Check your internet connection and try again.`}/>
-    // console.log(movieItem)
-    const itemTypeFilter = movieItem.Type
+    let content
 
+    if (isLoading) content = <CircleAnimation />;
+
+    else if (isError) {
+        content =
+            <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
+    }
+
+    else if (isSuccess) {
+        content =
+            <LikedMovieContent
+                key={imdbId}
+                apiItem={movieItem}
+                imdbId={imdbId}
+                isLoading={isLoading}
+            />
+    }
+
+    // if (!movieItem) return null
+
+    const itemTypeFilter = movieItem && movieItem.Type
+    if (!itemTypeFilter) return null
     if (hasWatched && isWatchedFilter === 'notWatched') {
         return
     } else if (!hasWatched && isWatchedFilter === 'watched') {
@@ -35,12 +53,7 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
     return (
         <div className="movie-item-container">
             <div className="movie-item">
-                <LikedMovieContent
-                    key={imdbId}
-                    apiItem={movieItem}
-                    imdbId={imdbId}
-                    isLoading={isLoading}
-                />
+                {content}
             </div>
         </div>
 

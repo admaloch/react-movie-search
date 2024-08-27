@@ -9,6 +9,8 @@ export default function UserSettingsIcon() {
     const { id: urlUserId } = useParams()
     const { id: currUserId } = useAuth()
 
+    if (!urlUserId || !currUserId) return null
+
     const isCurrUser = urlUserId === currUserId
 
     if (!isCurrUser) return null

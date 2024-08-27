@@ -3,7 +3,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    
+}
 
+.item-error {
+    text-align: center;
+    background-color: rgba(216, 224, 227, 0.3);
+    border-radius: 5px;
 
 }
 
@@ -16,11 +24,15 @@
 .error-content p {
     cursor: pointer;
     color: var(--color3);
-    font-size: 1.5rem;
     transition: .15s ease-in-out opacity;
 }
+.page-error p {
+    font-size: 1.5rem;
+}
+
+
 .error-content p:hover {
-   opacity: .6;
+    opacity: .6;
 }
 
 .err-link {
@@ -28,4 +40,3 @@
     justify-content: center;
     align-items: center;
 }
-

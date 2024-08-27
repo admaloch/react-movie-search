@@ -2,7 +2,6 @@ import useAuth from '../../../hooks/useAuth'
 import { useGetUserByIdQuery } from '../usersApiSlice';
 import ErrorIcon from '@mui/icons-material/Error';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
-import LoadAnimation from '../../../components/UI/LoadAnimation/LoadAnimation';
 import LikeOrDislike from './LIkeOrDislike';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 import { red } from '@mui/material/colors';
@@ -22,7 +21,7 @@ export default function UpdateLikedList({ imdbId, title, size = 30 }) {
     if (isLoading) content =
         <div className="like-icon-container">
             <div className="waiting-icon">
-                <HourglassTopIcon fontSize='medium' />
+                <HourglassLoadingIcon fontSize='medium' />
             </div>
 
         </div>

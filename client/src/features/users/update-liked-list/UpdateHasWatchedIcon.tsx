@@ -1,4 +1,3 @@
-import LoadAnimation from '../../../components/UI/LoadAnimation/LoadAnimation';
 import { useUpdateUserMutation } from '../usersApiSlice'
 import ErrorIcon from '@mui/icons-material/Error';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -9,10 +8,14 @@ import useAuth from '../../../hooks/useAuth';
 import { red } from '@mui/material/colors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import PopoverIcon from '../../reviews/PopoverIcon';
+import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 
 export default function UpdateHasWatchedIcon({ size, imdbId }) {
 
     const { id } = useAuth()
+
+    if (!id) return null
+
 
     const [updateUser, {
         isLoading,
@@ -34,7 +37,7 @@ export default function UpdateHasWatchedIcon({ size, imdbId }) {
 
     let content;
 
-    if (isLoading) content = <LoadAnimation />;
+    if (isLoading) content = <HourglassLoadingIcon />;
 
     if (isError) {
         toast.error(`Error: ${error?.data?.message}`);

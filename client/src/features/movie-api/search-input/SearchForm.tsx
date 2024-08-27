@@ -2,12 +2,11 @@ import SearchList from "./SearchList";
 import React, { useEffect } from "react";
 import { useSearchType } from "../../../hooks/useSearchType";
 import { useState } from "react";
-import KeyRequestAnimation from "./KeyRequestAnimation";
 import { useOmdbState } from "../../../hooks/useOmdbState";
 import { useSearchMoviesQuery } from "../omdbApiSlice";
 import useDoubleOmdbRes from "../../../hooks/useDoubleOmdbRes";
 import { toast } from "react-toastify";
-
+import InputLoadAnimation from "../../../components/UI/LoadAnimation/InputLoadAnimation";
 const SearchForm = (): JSX.Element => {
 
     const { updateOmdbState } = useOmdbState()
@@ -61,10 +60,17 @@ const SearchForm = (): JSX.Element => {
                 id="search-input"
                 onChange={(e) => setSearchInput(e.target.value)}
             />
+            {isKeyLoading &&
+                <InputLoadAnimation placementStyle={{ top: '.7rem', right: '90px' }} />
+            }
 
-            <KeyRequestAnimation isLoading={isKeyLoading} />
+
+
             <button>
-                {isSubmitLoading ? 'Submitting...' : 'Submit'}
+                {isSubmitLoading
+                    ? <InputLoadAnimation placementStyle={{ inset: '.5rem 0px auto auto' }} />
+                    : 'Submit'
+                }
             </button>
             {isKeySuccess && Array.isArray(movieItems.Search) && (
                 <SearchList

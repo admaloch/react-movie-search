@@ -15,7 +15,7 @@ export default function Error({ text }) {
 
     return (
         <div className="main-item-content">
-            <div className="error-content">
+            <div className="error-content page-error">
                 <SentimentDissatisfiedIcon sx={{ fontSize: 100 }} />
                 <h2>{text}</h2>
                 {!isLoggedIn &&

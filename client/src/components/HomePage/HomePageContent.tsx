@@ -24,10 +24,6 @@ export default function HomePageContent() {
       </NavLink>
   }
 
-
-
-
-
   return (
     <Card bgColor='transparent'>
       <h1>MovieBrain</h1>

@@ -1,6 +1,5 @@
 export default function UserInfo({ user }) {
 
-console.log(user)
     return (
         <>
             <h1>{user.username}'s Profile</h1>

@@ -29,17 +29,18 @@ function App() {
 
         <APIProvider>
             <Routes>
-                <Route path='/' element={<MainNavBar />}>
-                    <Route path='/' element={<HomeLayout />}>
-                        <Route index element={<HomePageContent />} />
-                        <Route path="users">
-                            <Route path="register" element={<Register />} />
+                <Route element={<PersistLogin />}>
+                    <Route path='/' element={<MainNavBar />}>
+                        <Route path='/' element={<HomeLayout />}>
+                            <Route index element={<HomePageContent />} />
+                            <Route path="users">
+                                <Route path="register" element={<Register />} />
+                            </Route>
+                            <Route path='login' element={<Login />} />
                         </Route>
-                        <Route path='login' element={<Login />} />
-                    </Route>
 
-                    <Route path='/' element={<Footer />}>
-                        {/* <Route element={<PersistLogin />}> */}
+                        <Route path='/' element={<Footer />}>
+                            {/* <Route element={<PersistLogin />}> */}
                             <Route element={<Prefetch />}>
 
                                 <Route path='/search' element={<MainPage />} />
@@ -51,13 +52,13 @@ function App() {
                                     <Route path=":id/password" element={<EditPassword />} />
                                 </Route>
                             </Route>
-                        {/* </Route> */}
-                        {/* Catch-all route for undefined URLs */}
-                        <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
+                            {/* </Route> */}
+                            {/* Catch-all route for undefined URLs */}
+                            <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
+                        </Route>
+
                     </Route>
-
                 </Route>
-
 
             </Routes>
             <ToastContainer

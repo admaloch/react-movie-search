@@ -8,6 +8,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: rgba(216, 224, 227, 0.3);
 }
 
 .circle-container span {

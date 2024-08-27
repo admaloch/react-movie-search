@@ -76,12 +76,12 @@ header .nav-btn {
 header .nav-close-btn {
 	color: var(--mainBackground);
 	font-size: 2.5rem;
-
+	display: none;
 }
 
 header .nav-close-btn:hover {
 	color: var(--mainBackground);
-	
+
 }
 
 header .nav-btn:hover {
@@ -147,7 +147,7 @@ nav {
 		opacity: 1;
 		z-index: 100;
 		border: var(--containertext) solid 10px;
-		
+
 	}
 
 	header nav button,
@@ -181,7 +181,10 @@ nav {
 		top: .3rem;
 		right: 0rem;
 		transition: .15s ease-in-out opacity;
+		display: block;
+
 	}
+
 	nav .nav-close-btn:hover {
 		opacity: .6;
 	}

@@ -1,4 +1,3 @@
-import LoadAnimation from '../../../components/UI/LoadAnimation/LoadAnimation';
 import { useUpdateUserMutation } from '../usersApiSlice'
 import ErrorIcon from '@mui/icons-material/Error';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -7,11 +6,16 @@ import { toast } from 'react-toastify';
 import './LikeIcons.css'
 import useAuth from '../../../hooks/useAuth';
 import { red } from '@mui/material/colors';
+import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 
 export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
-    const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId);
 
     const { id } = useAuth()
+
+    if (!id) return null;
+
+    const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId);
+
 
     const [updateUser, {
         isLoading,
@@ -33,7 +37,7 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
 
     let content;
 
-    if (isLoading) content = <LoadAnimation />;
+    if (isLoading) content = <HourglassLoadingIcon />;
 
     if (isError) {
         toast.error(`Error: ${error?.data?.message}`);

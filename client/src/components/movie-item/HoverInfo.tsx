@@ -1,28 +1,37 @@
-import { useState } from "react"
-import ItemModal from "../../features/movie-api/ItemModal/ItemModal"
-import Modal from "../UI/Modal"
+
 import ItemContent from "./ItemContent"
 import HoverInfoProps from "../../models/HoverInfoProps"
 import CircleAnimation from "../UI/LoadAnimation/CircleAnimation"
 import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedList"
+import ItemError from "../UI/errors/ItemError"
 
-const HoverInfo = ({ item, isLoading }: HoverInfoProps): JSX.Element => {
+const HoverInfo = ({ item, isLoading, isError, error }: HoverInfoProps): JSX.Element => {
+    if (!item) return null
+
+    let content
+    
+    if (isLoading) {
+        content = <CircleAnimation />
+    } else if (isError) {
+        content = <ItemError text={'Failed to load content'} />
+    } else {
+        content =
+            <>
+                <ItemContent
+                    item={item}
+                />
+                <UpdateLikedList
+                    title={item.Title}
+                    imdbId={item.imdbID}
+                    size={30}
+                />
+            </>
+    }
 
 
     return (
         <div className="info-container">
-            {isLoading
-                ? <CircleAnimation />
-                : <ItemContent
-                    item={item}
-                />
-            }
-            <UpdateLikedList
-                title={item.Title}
-                imdbId={item.imdbID}
-                size={30}
-            />
-           
+            {content}
         </div>
     )
 }

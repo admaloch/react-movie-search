@@ -37,6 +37,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
         }),
 
         getReviewsByUser: builder.query({
+        
             query: (id) => ({
                 url: `/reviews/user/${id}`,
                 validateStatus: (response, result) => {

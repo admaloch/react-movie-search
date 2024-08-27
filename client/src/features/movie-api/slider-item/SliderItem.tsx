@@ -7,22 +7,15 @@ import { toast } from "react-toastify";
 
 const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element => {
 
+    if (!item) return null
+
     const { imdbID, Poster } = item
-
-    // console.log(item.Poster)
-
 
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
-
-
-    if (isError) {
-        toast.error(`Error: ${error}`);
-    }
-
     function mouseEnterHandler() {
         hideArrowFunc();
-        triggerGetMovieById( imdbID );
+        triggerGetMovieById(imdbID);
     }
 
     return (
@@ -40,6 +33,8 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
                 <HoverInfo
                     item={movieItem}
                     isLoading={isLoading}
+                    isError={isError}
+                    error={error}
                 />
             }
 

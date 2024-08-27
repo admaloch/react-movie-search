@@ -17,9 +17,8 @@ export default function ListItemModal({  children, imdbId }: ListItemProps): Rea
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     async function handleClick() {
-        console.log('this clicked')
         setIsModalOpen(true)
-        triggerGetMovieById(imdbId);
+       await triggerGetMovieById(imdbId);
     }
 
     const closeItemModal = () => {
@@ -49,6 +48,7 @@ export default function ListItemModal({  children, imdbId }: ListItemProps): Rea
                     isLoading={isLoading}
                     item={movieItem}
                     closeModal={closeItemModal}
+                    error={error}
                 />
             </Modal>
         </>

@@ -1,5 +1,5 @@
 
-import { useDeleteReviewMutation, useGetReviewsByUserQuery } from '../reviewsApiSlice';
+import { useDeleteReviewMutation } from '../reviewsApiSlice';
 import useAuth from '../../../hooks/useAuth';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import InfoIcon from '@mui/icons-material/Info';
@@ -33,15 +33,18 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
     }
 
     else if (isError) {
-        console.log(`Error: Could not delete. ${error}`)
+        console.log(`Error: ${error?.data?.message || 'Could not delete review'}`)
         content = <InfoIcon sx={{ fontSize: 25 }} />
     }
 
     else {
         content =
-            <PopoverIcon popoverText='Delete review'>
-                <DeleteForeverIcon onClick={deleteReviewHandler} sx={{ fontSize: 33 }} />
-            </PopoverIcon>
+            <div onClick={deleteReviewHandler}>
+                <PopoverIcon popoverText='Delete review'>
+                    <DeleteForeverIcon  sx={{ fontSize: 33 }} />
+                </PopoverIcon>
+            </div>
+
     }
 
 
