@@ -46,7 +46,7 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
         content =
             <IconButton className='custom-icon-button' onClick={deleteReviewHandler} aria-label="delete">
                 <Tippy content="Delete review">
-                    <DeleteForeverIcon sx={{ fontSize: 33 }} />
+                    <DeleteForeverIcon sx={{ fontSize: 33,color: 'var(--color1)' }} />
                 </Tippy>
             </IconButton>
 

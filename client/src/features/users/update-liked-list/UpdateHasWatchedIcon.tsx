@@ -48,7 +48,7 @@ export default function UpdateHasWatchedIcon({ size, imdbId }) {
                 <Tippy content="I've seen this!">
                     <VisibilityIcon
                         className='like-icon'
-                        sx={{ fontSize: size }}
+                        sx={{ fontSize: size, color: 'var(--color1)' }}
                     />
                 </Tippy>
             </IconButton>

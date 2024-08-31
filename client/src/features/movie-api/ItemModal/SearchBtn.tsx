@@ -9,18 +9,24 @@ import 'tippy.js/dist/tippy.css';
 import { IconButton } from '@mui/material';
 import searchIcon from '../../../assets/searchIcon'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-
 export default function SearchBtn({ searchLink, type }: SearchBtnProps): JSX.Element {
-  return (
-    <IconButton aria-label={'show more info'} className='custom-icon-button'>
-      <a href={searchLink} target="_blank" rel="noopener noreferrer">
-        <Tippy content="Google search">
 
-            <FontAwesomeIcon size="lg" icon={faGoogle} />
+
+  return (
+    <IconButton aria-label={'show more info'}
+      className='custom-icon-button'
+    >
+      <a
+        href={searchLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Tippy content="Google search">
+          <GoogleIcon className='google-icon' sx={{ fontSize: 30,color: 'var(--color1)' }} />
         </Tippy>
       </a>
+
     </IconButton>
+
   );
 }
