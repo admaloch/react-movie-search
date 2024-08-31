@@ -51,6 +51,7 @@
   border: var(--text) solid 1px;
 }
 
+
 .active {
   opacity: 1;
   visibility: visible;

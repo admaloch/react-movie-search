@@ -13,8 +13,6 @@ const HoverInfo = ({ item, isLoading, isError }: HoverInfoProps): JSX.Element =>
 
     if (!item) return null;
 
-    console.log(item)
-
     let content
 
     if (isLoading) {

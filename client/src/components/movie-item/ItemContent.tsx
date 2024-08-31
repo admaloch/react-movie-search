@@ -45,7 +45,7 @@ export default function ItemContent({ item }: ItemContentProps): JSX.Element {
                         className='custom-icon-button'
                 
                     >
-                        <Tippy content="View synopsus">
+                        <Tippy content="View more information">
                             <MoreHorizSharpIcon sx={{ fontSize: 30 }} />
                         </Tippy>
                     </IconButton>

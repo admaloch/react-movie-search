@@ -54,7 +54,7 @@ const Register: React.FC = () => {
         if (isSuccess) {
             toast.success('Registration successful!');
             setTimeout(() => {
-                navigate('/myprofile');
+                navigate('/login');
             }, 2300);
         }
         if (isError) {

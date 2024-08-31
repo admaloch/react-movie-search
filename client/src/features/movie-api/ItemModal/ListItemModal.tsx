@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 
 
 
-export default function ListItemModal({  children, imdbId }: ListItemProps): React.JSX.Element {
+export default function ListItemModal({ children, imdbId }: ListItemProps): React.JSX.Element {
 
 
 
@@ -18,11 +18,14 @@ export default function ListItemModal({  children, imdbId }: ListItemProps): Rea
 
     async function handleClick() {
         setIsModalOpen(true)
-       await triggerGetMovieById(imdbId);
+        document.body.classList.add('no-scroll');
+        await triggerGetMovieById(imdbId);
     }
 
     const closeItemModal = () => {
         setIsModalOpen(false)
+        // document.body.classList.remove('no-scroll');
+
     }
     if (isError) {
         closeItemModal()
@@ -38,7 +41,7 @@ export default function ListItemModal({  children, imdbId }: ListItemProps): Rea
                     ? React.cloneElement(child, { onClick: handleClick })
                     : child
             )}
-            
+
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}

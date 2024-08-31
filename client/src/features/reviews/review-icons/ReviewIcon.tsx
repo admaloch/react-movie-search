@@ -16,10 +16,12 @@ export default function ReviewIcon({ reviewedMovie, imdbId, title }) {
 
     const closeReviewModal = () => {
         setIsModalOpen(false)
+        document.body.classList.remove('no-scroll');
     }
 
     const openReviewModal = () => {
         setIsModalOpen(true)
+        document.body.classList.add('no-scroll');
     }
 
     const popoverText = !reviewedMovie

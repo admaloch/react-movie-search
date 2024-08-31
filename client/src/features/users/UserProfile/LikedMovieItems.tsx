@@ -8,13 +8,13 @@ export default function LikedMovieItems({ likedMovies, isWatched }) {
 
     let content
 
-    const smallMovieList = [likedMovies[0], likedMovies[1]]
+    // const smallMovieList = [likedMovies[0], likedMovies[1]]
 
 
     if (likedMovies.length) {
         content =
             <div className="movie-items-container">
-                {smallMovieList.map((movie) => (
+                {likedMovies.map((movie) => (
                     <LikedMovieItem
                         imdbId={movie.imdbId}
                         hasWatched={movie.hasWatched}

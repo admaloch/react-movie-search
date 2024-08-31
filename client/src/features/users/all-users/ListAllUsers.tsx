@@ -3,7 +3,6 @@ import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimatio
 import Error from '../../../components/UI/errors/Error'
 import './User.css'
 import User from './User'
-import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation'
 
 export default function ListAllUsers() {
     const {
@@ -13,9 +12,8 @@ export default function ListAllUsers() {
         isError,
         error
     } = useGetUsersQuery('usersList', {
-        pollingInterval: 60000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true
+        refetchOnFocus: true, // or set to false if you don't need it
+        refetchOnMountOrArgChange: false, // avoid refetching on every mount
     });
 
 

@@ -27,7 +27,7 @@ export default function Error({ text }) {
                                     marginTop: '4px'    // Adjust this value as needed
                                 }}
                             />
-                            <NavLink className="logo" to="/login">
+                            <NavLink className='navlink-style' to="/login">
                                 <p>Login</p>
                             </NavLink>
                         </div>
@@ -38,7 +38,7 @@ export default function Error({ text }) {
                                     marginTop: '4px'    // Adjust this value as needed
                                 }}
                             />
-                            <NavLink className="logo" to="/users/register">
+                            <NavLink className='navlink-style' to="/users/register">
                                 <p>Register a new account</p>
                             </NavLink>
                         </div>
@@ -60,7 +60,7 @@ export default function Error({ text }) {
                             marginTop: '4px'    // Adjust this value as needed
                         }}
                     />
-                    <NavLink className="logo" to="/">
+                    <NavLink className='navlink-style' to="/">
                         <p>Return to homepage</p>
                     </NavLink>
                 </div>
