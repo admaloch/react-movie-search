@@ -3,7 +3,6 @@ import { Box, IconButton, Popover, Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 function UserPageLink({ userId }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const navigate = useNavigate();

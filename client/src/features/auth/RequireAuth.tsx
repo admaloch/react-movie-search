@@ -20,12 +20,8 @@ const RequireAuth = () => {
             setIsLoading(false);
         }, 600);
 
-        // Cleanup function to clear the timeout if the component unmounts
         return () => clearTimeout(timer);
     }, []);
-
-    // console.log('userid:', id)
-    // console.log('parami:', paramId)
 
     let content
 
@@ -41,7 +37,6 @@ const RequireAuth = () => {
         const navDestination = isLoggedIn ? `/profiles/${id}` : '/login'
         content = <Navigate to={navDestination} state={{ from: location }} replace />
     }
-
 
     return content
 }

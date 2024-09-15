@@ -1,7 +1,9 @@
 import { OmdbItem } from '../../models/ItemApiProps'
 import ItemInfoProps from '../../models/ItemInfoProps'
 
-export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element {
+export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element | null {
+
+    if (!item) return null;
 
     // not all items have same ratings or any at all
     //preference... 1 rotten, 2 imbd, 3 metacritic, 4 null
@@ -35,14 +37,11 @@ export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.
         itemType = null
     }
 
-
-
     return (
         <div
             className='item-info'
             onMouseEnter={closeBioOverlay}
             onTouchEnd={closeBioOverlay}
-
         >
             {item.Title !== 'N/A' &&
                 <div className="title-container">

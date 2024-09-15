@@ -1,6 +1,4 @@
 /* Register.css */
-
-
 .credentials-form {
     background-color: #DCDBFF;
     padding: 4rem 2.5rem;
@@ -12,9 +10,6 @@
     /* text-align: center; */
     z-index: 2;
   }
-  
-  
-  
   .credentials-form h2 {
     text-align: center;
     color: var(--text);
@@ -28,7 +23,6 @@
     text-align: center;
     color: var(--text);
   }
-
   .form__persist {
     width: 100%;
     display: flex;
@@ -37,8 +31,6 @@
   .form__checkbox {
     margin-right: .2rem;
   }
-  
-  
   .credentials-form .formGroup {
     margin-bottom: 15px;
   }
@@ -75,8 +67,6 @@
   
     background-color: var(--text);
     color: var(--mainBackground);
-  
-  
   }
   
   .credentials-form .error {

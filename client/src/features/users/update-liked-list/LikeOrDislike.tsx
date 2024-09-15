@@ -19,7 +19,6 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
 
     const alreadyLiked = likedMovies.some(movie => movie.imdbId === imdbId);
 
-
     const [updateUser, {
         isLoading,
         isSuccess,
@@ -76,7 +75,6 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
                 {content}
             </Tippy>
         </IconButton>
-
 
     ); 
 }

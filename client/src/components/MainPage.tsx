@@ -2,7 +2,6 @@ import { useState } from 'react'
 import MainSearch from './MainSearchSection/MainSearch'
 import MainSlider from './Slider/MainSlider'
 
-
 function MainPage() {
 
   const [isSliderActive, setIsSliderActive] = useState(false)
@@ -11,7 +10,6 @@ function MainPage() {
 
   return (
 
-       
        <div className="main-slider-content main-item-content">
          <div className="content-container">
           <MainSearch
@@ -25,8 +23,6 @@ function MainPage() {
           />
         </div>
        </div>
-       
-        
 
   )
 }

@@ -31,6 +31,5 @@ export default function UserSettingsIcon() {
             </IconButton>
         </div>
 
-
     )
 }

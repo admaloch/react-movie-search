@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: rgba(216, 224, 227, 0.3);
 }
 
@@ -32,8 +31,6 @@
   /* border: black solid 1px; */
 
 }
-
-
 
 .circle-animation {
   display: inline-block;

@@ -6,19 +6,14 @@
     border: black;
     opacity: 0;
     transition: all .8s ease-in-out;
-    /* position: relative; */
-    /* bottom: 7rem; */
 }
 
 @media screen and (min-width:816px) {
     .error-msg-container {
         position: relative;
         bottom: 4rem;
-        /* position: relative; */
-        /* bottom: 7rem; */
     }
 }
-
 
 .error-msg-container p {
     color: var(--color2);

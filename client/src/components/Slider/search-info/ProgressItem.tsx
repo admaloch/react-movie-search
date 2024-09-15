@@ -1,9 +1,11 @@
 import ProgressItemProps from "../../../models/ProgressItemProps"
 
 const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): JSX.Element => {
+
     const progItemHandler = (id: number) => {
         changeIndexHandler(id)
     }
+
     return (
         <div
             onClick={() => progItemHandler(id)}
@@ -12,4 +14,5 @@ const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): 
         </div>
     )
 }
+
 export default ProgressItem;

@@ -2,14 +2,11 @@ import './UserProfile.css'
 import LikedMovieItem from './LikedMovieItem';
 import { Link } from 'react-router-dom';
 
-
 export default function LikedMovieItems({ likedMovies, isWatched }) {
-
 
     let content
 
     // const smallMovieList = [likedMovies[0], likedMovies[1]]
-
 
     if (likedMovies.length) {
         content =
@@ -34,7 +31,6 @@ export default function LikedMovieItems({ likedMovies, isWatched }) {
 
             </div>
     }
-
 
     return content;
 }

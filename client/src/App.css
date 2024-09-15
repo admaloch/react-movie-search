@@ -3,9 +3,6 @@
 *::before {
     box-sizing: border-box;
 }
-
-
-
 /* * {
     border: red solid 2px;
 } */
@@ -14,7 +11,6 @@ u,
 p {
     margin: 0;
 }
-
 html {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -25,10 +21,6 @@ html {
     font-size: 7px;
 
 }
-
-
-
-
 /* scrollbar style change */
 ::-webkit-scrollbar {
     width: 6px;
@@ -69,13 +61,6 @@ html {
     --color4: #e63946;
     --overlay: rgba(2, 43, 58, .7);
 }
-
-
-
-
-
-
-
 body {
     margin: 0;
     background-color: var(--mainBackground);
@@ -110,8 +95,6 @@ body {
     justify-content: center;
     flex-grow: 1;
 }
-
-
 .content-container {
     height: 100%;
     display: flex;
@@ -130,8 +113,6 @@ body {
     cursor: wait;
 
 }
-
-
 .custom-icon-button {
     background-color: transparent !important;
     box-shadow: none !important;
@@ -148,15 +129,9 @@ body {
     opacity: 0.6;
   }
   
-
-
   .no-scroll {
     overflow-y: hidden;
   }
-
-
-
-
 /* bootstrap Breakpoints
 X-Small	None	<576px
 Small	sm	≥576px

@@ -17,4 +17,3 @@ const ProgressBar = ({ progBar, changeIndexHandler }: ProgressBarProps):JSX.Elem
 }
 export default ProgressBar;
 
-

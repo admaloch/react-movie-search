@@ -1,8 +1,18 @@
-import { apiSlice } from "../../app/api/apiSlice"
-import { logOut, setCredentials } from "./authSlice"
+import { apiSlice } from "../../app/api/apiSlice";
+import { logOut, setCredentials } from "./authSlice";
 
+interface Credentials {
+    username: string;
+    password: string;
+}
+
+interface ItemResponse {
+    accessToken: string;
+}
+
+// Inject endpoints with the appropriate types
 export const authApiSlice = apiSlice.injectEndpoints({
-    endpoints: builder => ({
+    endpoints: (builder) => ({
         login: builder.mutation({
             query: credentials => ({
                 url: '/auth',
@@ -10,45 +20,44 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 body: { ...credentials }
             })
         }),
-        sendLogout: builder.mutation({
+        sendLogout: builder.mutation<void, void>({
             query: () => ({
                 url: '/auth/logout',
                 method: 'POST',
             }),
-            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
-                    const { data } = await queryFulfilled
-                    // console.log(data)
-                    dispatch(logOut())
+                    await queryFulfilled;
+                    dispatch(logOut());
                     setTimeout(() => {
-                        dispatch(apiSlice.util.resetApiState())
-                    }, 1000)
+                        dispatch(apiSlice.util.resetApiState());
+                    }, 1000);
                 } catch (err) {
-                    console.log(err)
+                    console.log(err);
                 }
-            }
+            },
         }),
-        refresh: builder.mutation({
+        refresh: builder.mutation<ItemResponse, void>({
             query: () => ({
                 url: '/auth/refresh',
                 method: 'GET',
             }),
-            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
-                    const { data } = await queryFulfilled
-                    // console.log(data)
-                    const { accessToken } = data
-                    dispatch(setCredentials({ accessToken }))
+                    const { data } = await queryFulfilled;
+                    const { accessToken } = data;
+                    dispatch(setCredentials({ accessToken }));
                 } catch (err) {
-                    // console.log(err)
+                    console.log(err);
                 }
-            }
+            },
         }),
-    })
-})
+    }),
+});
 
+// Export the hooks
 export const {
     useLoginMutation,
     useSendLogoutMutation,
     useRefreshMutation,
-} = authApiSlice 
+} = authApiSlice;

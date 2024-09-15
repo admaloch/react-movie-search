@@ -21,7 +21,6 @@ export default function HandleReviews({ imdbId, size, title }) {
   // if (!alreadyLiked || !alreadyWatched) return null;
   if (!alreadyLiked || !alreadyWatched) return null;
 
-
   //click review icon to open modal
   return <ReviewIcons
     title={title}

@@ -1,11 +1,9 @@
-/* results slider */
 
 :root {
     --slider-index: 0;
 }
 
 .slider-container {
-    /* margin-top: 3rem; */
     display: flex;
     width: 100%;
     height: auto;
@@ -15,16 +13,10 @@
 }
 
 @media only screen and (orientation: landscape) {
-
-    /* Your styles for landscape orientation go here */
     .slider-container {
-        /* margin-top: 3rem; */
         margin-bottom: 4rem;
     }
-
-    /* Add more styles as needed */
 }
-
 
 .slider {
     --images-per-screen: 5;
@@ -36,8 +28,6 @@
     z-index: 50;
 }
 
-
-
 .movie-container {
     position: relative;
     max-width: calc(100%/var(--images-per-screen));
@@ -46,13 +36,10 @@
     border-radius: 7px;
     transition: transform .5s ease-in-out;
     display: inline-block;
-
 }
 
 .movie-container:hover {
-
     transform: scale(1.5);
-    /* filter: blur(3px); */
     z-index: 200;
     flex-basis: 3;
 }
@@ -60,16 +47,10 @@
 .movie-container img {
     width: 100%;
     aspect-ratio: 16/16;
-    /* min-height: 100; */
     max-height: 275px;
     transition: filter 500ms ease-in-out;
     border-radius: 7px;
-
 }
-
-
-
-
 
 .info-container {
     position: absolute;
@@ -91,10 +72,7 @@
     left: 0;
     padding: .2rem;
     border-radius: 7px;
-
 }
-
-
 
 .movie-container:hover .info-container,
 .movie-item:hover .info-container {
@@ -113,23 +91,12 @@
     }
 }
 
-
 .info-container h3 {
-    /* font-size: 1rem; */
     color: var(--color2);
     margin-bottom: 1rem;
     text-align: center;
     line-height: 23px;
-    /* max-width: 90%; */
 }
-
-@media screen and (min-width: 600px) {
-    .info-container h3 {
-        /* font-size: 1.3rem; */
-    }
-}
-
-
 
 .info-container h4 {
     letter-spacing: .1rem;
@@ -143,7 +110,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-
 }
 
 @media screen and (min-width: 992px) {
@@ -155,15 +121,11 @@
     }
 }
 
-
-
 .info-container .liked-btn {
     position: absolute;
     top: 0;
     right: 0;
-
 }
-
 
 .hover-btn-container {
     width: 100%;
@@ -194,7 +156,7 @@
     align-items: center;
     -webkit-box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
     box-shadow: 0px 0px 15px 7px rgba(0, 0, 0, 0.17);
-border-radius: 7px;
+    border-radius: 7px;
     display: block;
     opacity: 0;
     height: 0;
@@ -217,19 +179,14 @@ border-radius: 7px;
     font-size: 1.2rem;
     text-align: center;
     margin-top: 2rem;
-
     color: var(--mainBackground);
 }
 
 .bio-overlay p {
-    /* margin: 1.5rem 1rem 1rem; */
     text-align: center;
     font-size: .75rem;
     letter-spacing: 1px;
-
 }
-
-
 
 .close-bio-text {
     position: absolute;
@@ -245,28 +202,17 @@ border-radius: 7px;
     opacity: 1;
 }
 
-
-
-
-
-
-
-
 .handle {
     border: none;
-
     flex-grow: 0;
     background-color: rgba(0, 0, 0, 0.25);
     display: flex;
     cursor: pointer;
-
     align-items: center;
     justify-content: center;
     color: rgba(255, 255, 255, 0.5);
     transition: all .2s ease-in-out;
-    /* opacity: 0; */
     z-index: 60;
-
 }
 
 .handle:hover {
@@ -306,40 +252,25 @@ border-radius: 7px;
 .arrow-icon:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-
 }
-
-
-
-
 
 .row {
     --bs-gutter-x: 0;
 }
 
-
-
 @media screen and (max-width: 1500px) {
-
-
     .main-container {
         margin-top: 4rem;
     }
 }
 
 @media screen and (max-width: 1375px) {
-
-
-
-
-
     .slider {
         --images-per-screen: 4;
     }
 
     .movie-container:hover {
         transform: scale(1.3);
-
     }
 }
 
@@ -353,16 +284,11 @@ border-radius: 7px;
     }
 
     .result-container {
-
         padding: 3rem 2rem;
-
-
     }
 }
 
 @media screen and (max-width: 992px) {
-
-
     .movie-container img {
         aspect-ratio: 16/27;
     }
@@ -376,9 +302,6 @@ border-radius: 7px;
     .movie-container img {
         aspect-ratio: 16/25;
     }
-
-
-
 
     .result-container {
         padding: 3rem 2rem;
@@ -409,24 +332,13 @@ border-radius: 7px;
         --images-per-screen: 3;
     }
 
-
-
     .movie-container img {
         aspect-ratio: 16/30;
     }
-
-
-
-
-
     .main-container {
         margin-top: 5rem;
     }
 }
-
-
-
-
 
 .circle-container {
     position: absolute;
@@ -438,8 +350,6 @@ border-radius: 7px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 }
 
 .circle-container span {

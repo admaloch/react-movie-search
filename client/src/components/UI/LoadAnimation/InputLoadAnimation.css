@@ -1,28 +1,18 @@
 :root {
-
     --dot1: #d1495b;
     --dot2: #00798c;
     --dot3: #edae49;
     --small-dotSize: 8px;
     --dotGap: 3px;
     --dotRise: -10px;
-
 }
-
-
 .small-dots {
     display: flex;
     align-items: center;
     height: 100%;
     z-index: 10;
     position: absolute;
-    /* right: 90px;
-    top: .5rem; */
-    /* inset: .5rem 90px auto auto */
 }
-
-/* dot animation */
-
 .small-dots>span {
     display: inline-block;
     background-color: var(--dot1);
@@ -33,17 +23,14 @@
     transform: translate3d(0);
     animation: smallDotBounce 0.8s infinite alternate;
 }
-
 .small-dots>span:nth-child(2) {
     background-color: var(--dot2);
     animation-delay: .2s;
 }
-
 .small-dots>span:nth-child(3) {
     background-color: var(--dot3);
     animation-delay: .4s;
 }
-
 @keyframes smallDotBounce {
     to {
         width: var(--small-dotSize);
@@ -51,8 +38,6 @@
         transform: translate3d(0, var(--dotRise), 0);
     }
 }
-
-/* input css class */
 .search-form-placement {
     inset: .5rem 90px auto auto;
 }

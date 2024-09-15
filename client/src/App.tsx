@@ -21,7 +21,6 @@ import EditPasswordForm from './features/users/EditPasswordForm'
 import EditUserForm from './features/users/EditUserForm'
 import RequireAuth from './features/auth/RequireAuth'
 import useTitle from './hooks/useTitle'
-
 function App() {
 
     useTitle('Movie Brain')

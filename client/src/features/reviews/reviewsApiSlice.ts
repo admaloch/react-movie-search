@@ -121,7 +121,6 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 { type: 'Review', id: arg.id } // This invalidates the specific review
             ]
         }),
-        
 
         deleteReview: builder.mutation({
             query: (id) => ({
@@ -158,7 +157,6 @@ const selectReviewsData = createSelector(
         return data;
     }
 );
-
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {

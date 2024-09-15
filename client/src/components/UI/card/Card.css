@@ -1,8 +1,6 @@
 .main-card {
     width: 100%;
     max-width: 600px;
-    /* border: var(--mainBackground) solid 1px; */
-    /* background-color: var(--mainBackground); */
     border-radius: 5px;
     color: var(--text);
     display: flex;
@@ -11,6 +9,5 @@
     align-items: center;
     text-align: center;
     padding: 1.5rem 1.5rem;
-    /* z-index: 2; */
 }
 

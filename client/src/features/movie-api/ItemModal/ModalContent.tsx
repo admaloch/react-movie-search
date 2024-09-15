@@ -1,13 +1,14 @@
 import SearchBtn from './SearchBtn'
 import ResultInfo from './ResultInfo'
-import { ModalContentProps } from '../../../models/ListItemProps'
 import React from 'react'
 import UpdateLikedList from '../../users/update-liked-list/UpdateLikedList'
 import HandleReviews from '../../reviews/HandleReviews'
-import DeleteReview from '../../reviews/DeleteReview'
 import UpdateHasWatched from '../../users/update-liked-list/UpdateHasWatched'
+import {  OmdbItemInterface } from '../../../models/ItemApiProps'
 
-export default function ModalContent({ item }: ModalContentProps): React.JSX.Element {
+export default function ModalContent({ item }: OmdbItemInterface): React.JSX.Element | null {
+
+  if (!item) return null;
 
   const year = new Date(item.Released).getFullYear()
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`

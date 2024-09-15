@@ -7,16 +7,13 @@ import { useSearchType } from "../../../hooks/useSearchType"
 import { SearchInfoProps } from "../../../models/SearchInfoProps"
 import { useOmdbState } from "../../../hooks/useOmdbState"
 
-
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
+   
     const { currType } = useSearchType()
     const { submittedSearch, omdbSearchResults } = useOmdbState()
 
-    // console.log(submittedSearch, omdbSearchResults)
-
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
-    // const currSearch = submittedSearch.charAt(0).toUpperCase() + submittedSearch.slice(1)
 
     const currSearch = submittedSearch
 
@@ -44,9 +41,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         ? 'header-info show-header'
         : 'header-info remove-header'
 
-
     return (
-
         <div className={headerClass}>
             <h2>{currType.description} about: <span style={spanColor}>{currSearch}</span>
             </h2>

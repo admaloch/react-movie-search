@@ -1,20 +1,13 @@
 import React from "react"
-import { useState } from "react"
 import ListItemModal from "../ItemModal/ListItemModal"
-import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import image_not_found from '../../../assets/image_not_found.png'
 import { APIResults } from "../../../store/APIContext/APIContextInterface"
-import { toast } from "react-toastify"
 import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
-
 
 const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
 
-
-
     return (
         <>
-
 
             <ListItemModal
                 imdbId={imdbID}

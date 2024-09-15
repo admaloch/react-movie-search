@@ -1,9 +1,16 @@
 import SearchListItem from "./SearchListItem";
-import SearchProps from "../../../models/SearchProps";
 import React, { useEffect } from "react";
+import { SmallOmdbItem } from "../../../models/ItemApiProps";
 
-const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.JSX.Element => {
+interface SearchListProps {
+    isListShown: boolean;
+    hideList: () => void;
+    movieItems: SmallOmdbItem[]
+}
 
+const SearchList = ({ isListShown, hideList, movieItems }: SearchListProps): React.JSX.Element | null => {
+
+    if (!movieItems?.length) return null
     useEffect(() => {
         //handle clicking off screen and certain reserved items to prevent dropdown list from being closed at awkward times
         function handleClickOutside(event: MouseEvent) {
@@ -27,10 +34,9 @@ const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.J
 
     return (
         <ul style={{ height: isListShown ? "300px" : "0", opacity: isListShown ? 1 : 0 }}
-           
             className="search-list"
             id="search-list">
-                
+
             {movieItems?.map((item) => (
                 <SearchListItem
                     key={item.imdbID}
@@ -45,5 +51,4 @@ const SearchList = ({ isListShown, hideList, movieItems }: SearchProps): React.J
     )
 }
 export default React.memo(SearchList);
-
 

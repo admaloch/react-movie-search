@@ -2,15 +2,12 @@ import React, { useState } from 'react'
 import ItemModal from './ItemModal'
 import Modal from '../../../components/UI/Modal'
 import { ListItemProps } from '../../../models/ListItemProps'
-import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation'
 import { useLazyGetMovieByIdQuery } from '../omdbApiSlice'
 import { toast } from 'react-toastify'
 
+export default function ListItemModal({ children, imdbId }: ListItemProps): React.JSX.Element | null {
 
-
-export default function ListItemModal({ children, imdbId }: ListItemProps): React.JSX.Element {
-
-
+    if (!children) return null;
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -24,14 +21,12 @@ export default function ListItemModal({ children, imdbId }: ListItemProps): Reac
 
     const closeItemModal = () => {
         setIsModalOpen(false)
-        // document.body.classList.remove('no-scroll');
-
     }
+
     if (isError) {
         closeItemModal()
         toast.error(`Error: ${error}`);
     }
-
 
     return (
         <>

@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-
 export default function ReviewIcon({ reviewedMovie, imdbId, title }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false)

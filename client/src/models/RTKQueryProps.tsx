@@ -7,3 +7,4 @@ export interface RTKQueryInterface {
     isError?: Boolean;
     error?: FetchBaseQueryError | SerializedError | null;
 }
+

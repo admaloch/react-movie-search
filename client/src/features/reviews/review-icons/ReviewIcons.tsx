@@ -11,8 +11,6 @@ export default function ReviewIcons({ imdbId, size, title}) {
   //add/edit review icon will trigger modal
   //delete review icon will delete the review
 
-
-
   const { id } = useAuth()
 
   if (!id) return null

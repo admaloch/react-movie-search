@@ -7,6 +7,7 @@ import { useSearchMoviesQuery } from "../omdbApiSlice";
 import useDoubleOmdbRes from "../../../hooks/useDoubleOmdbRes";
 import { toast } from "react-toastify";
 import InputLoadAnimation from "../../../components/UI/LoadAnimation/InputLoadAnimation";
+
 const SearchForm = (): JSX.Element => {
 
     const { updateOmdbState } = useOmdbState()
@@ -15,7 +16,7 @@ const SearchForm = (): JSX.Element => {
     const [searchInput, setSearchInput] = useState<string>('')
     const currTypeParam = currType.apiParam;
 
-    const { fetchSubmittedResults, isLoading: isSubmitLoading, isSuccess: isSubmitSuccess, isError: isSubmitError, error: submitError } = useDoubleOmdbRes();
+    const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
 
     const { data: movieItems, isLoading: isKeyLoading, isSuccess: isKeySuccess, isError, error } = useSearchMoviesQuery(
         { searchInput, currTypeParam },
@@ -37,7 +38,7 @@ const SearchForm = (): JSX.Element => {
         }
     }, [searchInput])
 
-    const formSubmitHandler = async (e) => {
+    const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
             const omdbResults = await fetchSubmittedResults(searchInput);
@@ -61,14 +62,13 @@ const SearchForm = (): JSX.Element => {
                 onChange={(e) => setSearchInput(e.target.value)}
             />
             {isKeyLoading &&
-                <InputLoadAnimation placementStyle={{ top: '.7rem', right: '90px' }} />
+                <InputLoadAnimation style={{ top: '.8rem', right: '120px' }} />
             }
-
-
 
             <button className="submit-btn">
                 {isSubmitLoading
-                    ? <InputLoadAnimation placementStyle={{ inset: '.5rem 0px auto auto' }} />
+                    // ? <InputLoadAnimation placementStyle={{ inset: '.7rem 17px auto auto' }} />
+                    ? 'Submitting'
                     : 'Submit'
                 }
             </button>

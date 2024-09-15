@@ -6,9 +6,9 @@ import './ErrorMsg.css'
 import { useOmdbState } from '../../../hooks/useOmdbState'
 
 function ErrorMsg() {
+
     const { currType, searchTypes } = useSearchType()
     const { submittedSearch, omdbSearchResults } = useOmdbState()
-
     const [showErrorMsg, setShowErrorMsg] = useState(false)
 
     useEffect(
@@ -23,6 +23,7 @@ function ErrorMsg() {
         },
         [submittedSearch]
     )
+    
     useEffect(
         function eraseErrOnTypeChange() {
             setShowErrorMsg(false)

@@ -9,8 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; 
 
-
-
 export default function DeleteReviewIcon({ imdbId, reviewId }) {
     const { id } = useAuth()
 
@@ -32,8 +30,7 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
     if (isLoading) {
         content =
             <>
-                <HourglassTopIcon sx={{ fontSize: 25 }} />
-                <span>Loading...</span>
+                <HourglassTopIcon sx={{ fontSize: 27 }} />
             </>
     }
 
@@ -51,10 +48,6 @@ export default function DeleteReviewIcon({ imdbId, reviewId }) {
             </IconButton>
 
     }
-
-
-
-
 
     return content;
 }

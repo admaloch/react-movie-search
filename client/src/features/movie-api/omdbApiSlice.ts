@@ -20,7 +20,6 @@ interface SearchResponse {
 const BASE_URL = 'https://omdbapi.com/';
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
-
 export const omdbApiSlice = createApi({
   reducerPath: 'omdbApi',
   baseQuery: fetchBaseQuery({

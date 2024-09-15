@@ -25,9 +25,3 @@ export const { setSearchType } = searchTypeSlice.actions;
 
 export default searchTypeSlice.reducer
 
-
-
-
-
-
-

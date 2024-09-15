@@ -2,8 +2,8 @@ import { useRef } from "react";
 import BioOverlayProps from "../../models/BioOverlayProps";
 import { IoClose } from "react-icons/io5";
 
-
 const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element => {
+  
   const scrollDivRef = useRef<HTMLDivElement>(null);
 
   const mouseLeaveHandler = () => {

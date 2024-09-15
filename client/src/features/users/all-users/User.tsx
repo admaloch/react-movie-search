@@ -4,7 +4,6 @@ import UserPageLinkIcon from './UserPageLinkIcon';
 import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
 import { memo } from 'react';
 
-
 const User = ({ userId }) => {
 
     const { user } = useGetUsersQuery("usersList", {
@@ -33,7 +32,6 @@ const User = ({ userId }) => {
             </div>
         </div>
     )
-
 
 }
 const memoizedUser = memo(User)

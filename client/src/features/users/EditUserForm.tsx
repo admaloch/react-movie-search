@@ -45,7 +45,6 @@ const EditUserForm: React.FC = () => {
         }
     };
 
-
     useEffect(() => {
         if (isSuccess) {
             toast.success('Account info successfully updated!');
@@ -57,8 +56,6 @@ const EditUserForm: React.FC = () => {
             toast.error(`Error: ${error?.data?.message || 'Failed to update account info. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);
-
-
 
     return (
         <main className='user-profile-container'>

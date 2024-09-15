@@ -6,8 +6,6 @@ import { useGetMovieByIdQuery } from "../../movie-api/omdbApiSlice";
 import ItemError from "../../../components/UI/errors/ItemError";
 import MainLoadAnimation from "../../../components/UI/LoadAnimation/MainLoadAnimation";
 
-
-
 export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) {
 
     // console.log(imdbId)
@@ -15,12 +13,9 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }) 
     const { currType } = useSearchType()
     const mainTypeFilter = currType.type
 
-
     const { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
 
-
     let content
-
 
     if (isLoading) content = <CircleAnimation />;
 

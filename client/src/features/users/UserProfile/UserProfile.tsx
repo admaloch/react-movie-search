@@ -14,7 +14,6 @@ import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnim
 import LikedMovieItems from './LikedMovieItems';
 import UserSettingsIcon from './UserSettingsIcon';
 
-
 export default function UserProfile() {
 
   const [isWatched, setIsWatched] = useState('both')
@@ -29,9 +28,7 @@ export default function UserProfile() {
   // console.log(user)
   const { likedMovies } = user
 
-
   const hideSlider = () => { return }
-
 
   return (
     <main className='user-profile-container'>

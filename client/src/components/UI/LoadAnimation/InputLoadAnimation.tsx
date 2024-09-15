@@ -1,8 +1,12 @@
 import './InputLoadAnimation.css'
 
-export default function InputLoadAnimation({ placementStyle }): JSX.Element {
+interface InputLoadAnimationProps {
+    style: object;
+}
+
+export default function InputLoadAnimation({ style }: InputLoadAnimationProps): JSX.Element {
     return (
-        <div style={placementStyle} className="small-dots">
+        <div style={style} className="small-dots">
             <span></span>
             <span></span>
             <span></span>

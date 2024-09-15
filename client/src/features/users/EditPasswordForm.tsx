@@ -21,8 +21,6 @@ const EditPasswordForm: React.FC = () => {
 
     const { id } = useAuth()
 
-
-
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -54,7 +52,6 @@ const EditPasswordForm: React.FC = () => {
         }
     };
 
-
     useEffect(() => {
         if (isSuccess) {
             toast.success('Password successfully updated!');
@@ -81,7 +78,6 @@ const EditPasswordForm: React.FC = () => {
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword((prev) => !prev);
     };
-
 
     return (
 
@@ -175,8 +171,6 @@ const EditPasswordForm: React.FC = () => {
                         Return to profile
                     </NavLink>
                 </div>
-
-
 
             </form>
 

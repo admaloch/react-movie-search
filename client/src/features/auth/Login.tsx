@@ -8,10 +8,7 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist';
-import MainLoadAnimation from '../../components/UI/LoadAnimation/MainLoadAnimation';
-import useAuth from '../../hooks/useAuth';
 import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
-
 
 interface IFormInput {
     email: string;
@@ -22,14 +19,12 @@ interface IFormInput {
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
-
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
     const [login, { isLoading }] = useLoginMutation()
 
     const [persist, setPersist] = usePersist()
-
 
     const onSubmit: SubmitHandler<IFormInput> = async ({ email, password }) => {
         try {
@@ -43,10 +38,11 @@ const Login: React.FC = () => {
             }, 2300);
         } catch (err) {
             let errMsg
-            if (!err.status) {
-                errMsg = 'No Server Response'
+            if (err instanceof Error && 'status' in err) {
+                const typedError = err as { status: number, data?: { message?: string } };
+                errMsg = typedError.data?.message || 'Unknown error occurred';
             } else {
-                errMsg = err.data?.message
+                errMsg = 'No Server Response';
             }
             toast.dismiss();
             toast.error(`Error: ${errMsg}`);

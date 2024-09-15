@@ -3,14 +3,15 @@ import './Error.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import useAuth from '../../../hooks/useAuth';
+import TextProps from '../../../models/TextProps';
 
-export default function Error({ text }) {
+export default function Error({ text }: TextProps): JSX.Element {
     const navigate = useNavigate();
 
     const { isLoggedIn } = useAuth()
 
     const handleGoBack = () => {
-        navigate(-1); // Navigate to the previous page
+        navigate(-1); 
     };
 
     return (
@@ -23,8 +24,8 @@ export default function Error({ text }) {
                         <div className="err-link">
                             <ArrowCircleLeftIcon
                                 style={{
-                                    marginRight: '5px',  // Adjust this value as needed
-                                    marginTop: '4px'    // Adjust this value as needed
+                                    marginRight: '5px',  
+                                    marginTop: '4px'    
                                 }}
                             />
                             <NavLink className='navlink-style' to="/login">
@@ -34,8 +35,8 @@ export default function Error({ text }) {
                         <div className="err-link">
                             <ArrowCircleLeftIcon
                                 style={{
-                                    marginRight: '5px',  // Adjust this value as needed
-                                    marginTop: '4px'    // Adjust this value as needed
+                                    marginRight: '5px', 
+                                    marginTop: '4px'    
                                 }}
                             />
                             <NavLink className='navlink-style' to="/users/register">
@@ -47,8 +48,8 @@ export default function Error({ text }) {
                 <div className="err-link">
                     <ArrowCircleLeftIcon
                         style={{
-                            marginRight: '5px',  // Adjust this value as needed
-                            marginTop: '4px'    // Adjust this value as needed
+                            marginRight: '5px', 
+                            marginTop: '4px'   
                         }}
                     />
                     <p onClick={handleGoBack}>Return to previous page</p>
@@ -56,15 +57,14 @@ export default function Error({ text }) {
                 <div className="err-link">
                     <ArrowCircleLeftIcon
                         style={{
-                            marginRight: '5px',  // Adjust this value as needed
-                            marginTop: '4px'    // Adjust this value as needed
+                            marginRight: '5px', 
+                            marginTop: '4px'   
                         }}
                     />
                     <NavLink className='navlink-style' to="/">
                         <p>Return to homepage</p>
                     </NavLink>
                 </div>
-
             </div>
         </div>
     );

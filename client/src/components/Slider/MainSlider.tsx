@@ -31,7 +31,6 @@ const reducer = (sliderIndex: SliderIndexState, action: SliderActions) => {
     }
 }
 
-
 const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps): JSX.Element => {
 
     const [sliderIndex, dispatch] = useReducer(reducer, { progBar: [], index: 0, })
@@ -66,7 +65,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
 
     return (
         <>
-
             <SearchInfo
                 progBar={sliderIndex.progBar}
                 isSliderActive={isSliderActive}
@@ -81,8 +79,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
                 isSliderActive={isSliderActive}
             />
             <ErrorMsg />
-
-
         </>
     )
 }

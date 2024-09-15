@@ -9,7 +9,6 @@
   border-radius: 7px;
 }
 
-
 .modal-img-container {
   display: flex;
   justify-content: center;
@@ -95,9 +94,6 @@
   margin-bottom: .2rem;
 }
 
-
-
-
 .result-info-container h3 {
   font-size: 2rem;
   color: var(--color2);
@@ -118,8 +114,6 @@
   color: var(--color3);
   font-weight: 900;
 }
-
-
 
 .results-icons {
   margin-top: 2rem;
@@ -151,7 +145,6 @@
 }
 
 .load-modal-container {
-  /* background-color: white; */
   height: 500px;
   width: 700px;
 }

@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { useSendLogoutMutation } from '../auth/authApiSlice'
 import { useEffect } from 'react'
 
-
 export default function LogoutUser({ closeNavbar }) {
 
     const navigate = useNavigate();

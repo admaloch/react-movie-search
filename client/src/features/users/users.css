@@ -1,6 +1,5 @@
 /* Register.css */
 
-
 .credentials-form {
     background-color: #DCDBFF;
     padding: 4rem 2.5rem;
@@ -13,9 +12,7 @@
     z-index: 2;
     position: relative;
   }
-  
-  
-  
+
   .credentials-form h2 {
     text-align: center;
     color: var(--mainBackground);
@@ -29,8 +26,7 @@
     text-align: center;
     color: var(--mainBackground);
   }
-  
-  
+
   .credentials-form .formGroup {
     margin-bottom: 15px;
   }
@@ -67,8 +63,7 @@
   
     background-color: var(--text);
     color: var(--mainBackground);
-  
-  
+
   }
   
   .credentials-form .error {

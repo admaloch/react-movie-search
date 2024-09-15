@@ -1,5 +1,4 @@
-import { useCallback, useEffect } from 'react';
-import { useState } from 'react';
+
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
@@ -16,16 +15,6 @@ export interface MainModalProps extends ModalProps {
 
 export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element | null {
 
-
-    // useEffect(() => {
-    //     if (open) {
-    //         document.body.classList.add('no-scroll');
-    //     }
-    //    else {
-    //         document.body.classList.remove('no-scroll');
-    //     }
-    // }, [open]);
-
     if (!open) return null;
 
     return ReactDOM.createPortal(
@@ -36,9 +25,6 @@ export default function Modal({ open, children, closeModal }: MainModalProps): J
             >
             </div>
             <div aria-hidden="false" aria-modal="true" className={open ? "modal-container active" : "modal-container"}>
-                {/* <div onClick={closeModalHandler} className="modal-close-icon">
-                    <CloseIcon fontSize="large" />
-                </div> */}
                 {children && children}
             </div>
         </>,

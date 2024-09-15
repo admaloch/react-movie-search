@@ -49,7 +49,6 @@ const Register: React.FC = () => {
         }
     };
 
-
     useEffect(() => {
         if (isSuccess) {
             toast.success('Registration successful!');
@@ -71,7 +70,6 @@ const Register: React.FC = () => {
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword((prev) => !prev);
     };
-
 
     return (
         <>
@@ -164,7 +162,6 @@ const Register: React.FC = () => {
                 <p>Already have an account?</p>
                 <p>Click <NavLink className="link-class" to="/login">here</NavLink> to login</p>
             </form>
-
 
         </>
     );

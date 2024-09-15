@@ -18,8 +18,6 @@ interface SearchType {
     colorScheme: ColorScheme;
 }
 
-
-
 interface TypeObj {
     searchTypeHandler: (typeInput: string) => void;
     searchTypes: SearchType[];

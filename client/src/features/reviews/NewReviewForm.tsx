@@ -12,10 +12,6 @@ import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
 import StarRating from '../../components/UI/StarRating';
 
-
-
-
-
 const NewReviewForm = ({ imdbId, title, closeModal }) => {
 
     const [starRating, setStarRating] = useState(3);
@@ -26,14 +22,12 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-
     const [addNewReview, {
         isLoading,
         isSuccess,
         isError,
         error
     }] = useAddNewReviewMutation()
-
 
     const submitForm: SubmitHandler<IFormInput> = async (data) => {
         try {
@@ -43,7 +37,6 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
             console.log('Error', err)
         }
     };
-
 
     useEffect(() => {
         if (isSuccess) {
@@ -83,14 +76,12 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
                     </div>
                     <div className="review-btn-container">
                         <button className='review-btn' type="submit">
-                            {isLoading ? 'Loading...' : 'Submit Review'}
+                            {isLoading ? 'Submitting...' : 'Submit Review'}
                         </button>
 
                     </div>
                 </form>
             </div>
-
-
 
         </>
     );

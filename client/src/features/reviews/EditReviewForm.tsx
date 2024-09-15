@@ -34,7 +34,6 @@ const EditReviewForm = ({ closeModal, movie }) => {
     error
   }] = useUpdateReviewMutation()
 
-
   const submitForm: SubmitHandler<IFormInput> = async (data) => {
     try {
       await updateReview({ ...data, rating: starRating, id: _id }).unwrap();
@@ -42,7 +41,6 @@ const EditReviewForm = ({ closeModal, movie }) => {
       console.log('Error', err)
     }
   };
-
 
   useEffect(() => {
     if (isSuccess) {
@@ -88,14 +86,12 @@ const EditReviewForm = ({ closeModal, movie }) => {
 
           <div className="review-btn-container">
             <button className='review-btn' type="submit">
-              {isLoading ? 'Loading...' : 'Submit Review'}
+              {isLoading ? 'Submitting...' : 'Submit Review'}
             </button>
 
           </div>
         </form>
       </div>
-
-
 
     </>
   );
