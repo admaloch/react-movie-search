@@ -1,9 +1,16 @@
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import MovieReviewProps from '../../models/MovieReviewProps';
 
-export default function ShowMovieReviewItem({ review }) {
-  // console.log(review)
+interface ShowMovieReviewItemProps {
+  review: MovieReviewProps;
+}
+
+export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps): JSX.Element | null {
+
+  // if (!review._id) return null;
+
   return (
     <li className='movie-review-item'>
       <div className="review-header">

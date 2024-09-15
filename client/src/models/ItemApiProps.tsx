@@ -49,7 +49,7 @@ export const defaultOmdbItem: OmdbItem = {
 };
 
 export interface OmdbItemInterface {
-    item: OmdbItem | null;
+    item: OmdbItem | null | undefined;
   }
 //for rtk query 
   export interface OmdbItemWithRTK extends RTKQueryInterface, OmdbItemInterface {}

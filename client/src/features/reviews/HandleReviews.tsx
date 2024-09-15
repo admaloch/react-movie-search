@@ -1,31 +1,34 @@
 import useAuth from '../../hooks/useAuth';
+import UserItemProps from '../../models/UserItemProps';
 import { useGetUserByIdQuery } from '../users/usersApiSlice';
-import ReviewIcons from './review-icons/ReviewIcons';
+import ReviewIcons, { ReviewProps } from './review-icons/ReviewIcons';
 
-export default function HandleReviews({ imdbId, size, title }) {
+interface HandleReviewsProps extends ReviewProps {
+  size: number;
+}
+
+export default function HandleReviews({ imdbId, title }: HandleReviewsProps): React.JSX.Element | null {
   //test if movie is liked to determine if review icon shows up
   const { id } = useAuth()
-
-  if (!id) return null
 
   const { data: user, isError, error } = useGetUserByIdQuery(id);
 
   if (isError) {
+    //@ts-ignore
     console.log(`Error: ${error.data.message}`)
     return null;
   }
 
-  const alreadyLiked = user?.likedMovies?.find(movie => movie.imdbId === imdbId);
+  const typedUser = user as UserItemProps;
+
+  const alreadyLiked = typedUser.likedMovies.find(movie => movie.imdbId === imdbId);
   const alreadyWatched = alreadyLiked ? alreadyLiked.hasWatched : null
 
-  // if (!alreadyLiked || !alreadyWatched) return null;
   if (!alreadyLiked || !alreadyWatched) return null;
 
-  //click review icon to open modal
   return <ReviewIcons
     title={title}
     imdbId={imdbId}
-    size={size}
   />
 
 }

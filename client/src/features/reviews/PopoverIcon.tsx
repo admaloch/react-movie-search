@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { Box, IconButton, Popover, Typography } from '@mui/material';
-import RateReviewIcon from '@mui/icons-material/RateReview';
+import { useState } from 'react';
+import { IconButton, Popover, Typography } from '@mui/material';
+import ChildrenProps from '../../models/ChildrenProps';
 
-import { Link, useNavigate } from 'react-router-dom';
+interface PopoverIconProps extends ChildrenProps {
+    popoverText: string;
+}
 
-function PopoverIcon({ popoverText, children }) {
+function PopoverIcon({ popoverText, children }: PopoverIconProps): JSX.Element {
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-    const handlePopoverOpen = (event) => {
+    // Correctly typing the event
+    const handlePopoverOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
 
     const handlePopoverClose = () => {
         setAnchorEl(null);

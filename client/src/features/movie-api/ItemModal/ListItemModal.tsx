@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import ItemModal from './ItemModal'
 import Modal from '../../../components/UI/Modal'
-import { ListItemProps } from '../../../models/ListItemProps'
 import { useLazyGetMovieByIdQuery } from '../omdbApiSlice'
 import { toast } from 'react-toastify'
+import ChildrenProps from '../../../models/ChildrenProps'
 
-export default function ListItemModal({ children, imdbId }: ListItemProps): React.JSX.Element | null {
+//this accepts an item like a li or btn as children.. and an imdbId then wraps a div around it and generates a request to omdb endpoint to get the movie by id and displays the movie in a modal
 
-    if (!children) return null;
+interface ListItemModalProps extends ChildrenProps {
+    imdbId: string;
+}
+
+export default function ListItemModal({ children, imdbId }: ListItemModalProps): React.JSX.Element | null {
+
+    if (!imdbId) return null;
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -26,17 +32,12 @@ export default function ListItemModal({ children, imdbId }: ListItemProps): Reac
     if (isError) {
         closeItemModal()
         toast.error(`Error: ${error}`);
+        return null;
     }
 
     return (
         <>
-            {/* Ensure children can receive and handle the click event */}
-            {React.Children.map(children, child =>
-                React.isValidElement(child)
-                    ? React.cloneElement(child, { onClick: handleClick })
-                    : child
-            )}
-
+            <div onClick={handleClick}>{children}</div>
             <Modal
                 closeModal={closeItemModal}
                 open={isModalOpen}

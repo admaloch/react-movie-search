@@ -1,6 +1,5 @@
 
 import RateReviewIcon from '@mui/icons-material/RateReview';
-import PopoverIcon from '../PopoverIcon';
 import Modal from '../../../components/UI/Modal';
 import { useState } from 'react';
 import NewReviewForm from '../NewReviewForm';
@@ -8,8 +7,17 @@ import EditReviewForm from '../EditReviewForm';
 import IconButton from '@mui/material/IconButton';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import MovieReviewProps from '../../../models/MovieReviewProps';
 
-export default function ReviewIcon({ reviewedMovie, imdbId, title }) {
+interface ReviewIconProps  {
+    reviewedMovie: MovieReviewProps | undefined;
+    imdbId: string;
+    title: string;
+}
+
+export default function ReviewIcon({ reviewedMovie, imdbId, title }: ReviewIconProps): React.JSX.Element | null {
+
+    // if(!imdbId) return null
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 

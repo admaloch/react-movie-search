@@ -3,8 +3,13 @@ import {  useGetUsersQuery } from '../usersApiSlice'
 import UserPageLinkIcon from './UserPageLinkIcon';
 import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
 import { memo } from 'react';
+import  { LikedUserMovies } from '../../../models/UserItemProps';
 
-const User = ({ userId }) => {
+interface UserProps {   
+    userId: string;
+}
+
+const User = ({ userId }: UserProps) => {
 
     const { user } = useGetUsersQuery("usersList", {
         selectFromResult: ({ data }) => ({
@@ -14,12 +19,14 @@ const User = ({ userId }) => {
 
     if (!user || !user.likedMovies.length) return null
 
+    const userLikedMovies = user.likedMovies as LikedUserMovies[]
+
     return (
         <div className="user-container">
             <div className="user-item">
                 <h3>{user.username}</h3>
                 <ul className="liked-list">
-                    {user.likedMovies?.map(movie => (
+                    {userLikedMovies.map(movie => (
                         <ListItemModal
                             imdbId={movie.imdbId}
                             key={movie._id}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,26 +6,30 @@ import { useUpdateReviewMutation } from './reviewsApiSlice';
 import useAuth from '../../hooks/useAuth';
 import './Reviews.css'
 import CloseIcon from '@mui/icons-material/Close';
-import Rating from 'react-rating';
-import { FaStar } from 'react-icons/fa';
 import StarRating from '../../components/UI/StarRating';
+import MovieReviewProps from '../../models/MovieReviewProps';
 
-const EditReviewForm = ({ closeModal, movie }) => {
+export interface IFormInput {
+  body: string;
+  rating: number;
+}
+
+interface EditReviewFormProps {
+  closeModal: () => void;
+  movie: MovieReviewProps
+}
+
+const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
+  const { id } = useAuth()
+
+  // if (!id) return null
 
   const { body, title, _id, rating } = movie
 
-  const [starRating, setStarRating] = useState(rating);
+  const [starRating, setStarRating] = useState<number>(parseInt(rating));
 
-  let defaultRating = parseInt(rating)
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
-  // console.log(defaultRating)
-
-  const { id } = useAuth()
-
-  if (!id) return null
-
-  const { register, handleSubmit, formState: { errors } } = useForm({
-  });
 
   const [updateReview, {
     isLoading,
@@ -50,6 +54,7 @@ const EditReviewForm = ({ closeModal, movie }) => {
       }, 2300);
     }
     if (isError) {
+      //@ts-ignore
       toast.error(`Error: ${error?.data?.message || 'Failed to update review. Try again later.'}`);
     }
   }, [isSuccess, isError, error]);

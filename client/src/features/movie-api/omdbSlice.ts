@@ -13,7 +13,7 @@ const omdbSlice = createSlice({
             const searchInput  = action.payload
             state.submittedSearch = searchInput
         },
-        clearSearch: (state, action) => {
+        clearSearch: (state) => {
             state.submittedSearch = ''
         },
         setOmdbState: (state,action) =>{
@@ -21,7 +21,7 @@ const omdbSlice = createSlice({
             state.submittedSearch = searchInput
             state.omdbSearchResults = omdbResults
         },
-        clearOmdbSearchResults: (state,action) =>{
+        clearOmdbSearchResults: (state) =>{
             state.omdbSearchResults = []
         },
     }

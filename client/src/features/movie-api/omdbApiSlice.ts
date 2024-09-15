@@ -1,23 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { useSearchType } from '../../hooks/useSearchType'; // Import your custom hook
-
-interface MovieResponse {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-  Plot: string;
-  // Add more fields as needed
-}
+import { OmdbItem } from '../../models/ItemApiProps';
 
 interface SearchResponse {
-  Search: MovieResponse[];
+  Search: OmdbItem[];
   totalResults: string;
   Response: string;
 }
 
 const BASE_URL = 'https://omdbapi.com/';
+//@ts-ignore
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 export const omdbApiSlice = createApi({
@@ -30,7 +21,7 @@ export const omdbApiSlice = createApi({
       query: ({ searchInput, currTypeParam, page = 1 }) =>
         `?s=${searchInput}&page=${page}&${API_KEY}${currTypeParam}`,
     }),
-    getMovieById: builder.query<MovieResponse, string>({
+    getMovieById: builder.query<OmdbItem, string>({
       query: ( imdbId ) => {
         const queryString = `?i=${imdbId}&plot=full&${API_KEY}`;
         return queryString;
@@ -38,6 +29,5 @@ export const omdbApiSlice = createApi({
     }),
   }),
 });
-// https://omdbapi.com/?i=tt0105624&plot=full&apikey=84200d7a
 
 export const { useSearchMoviesQuery, useLazySearchMoviesQuery, useGetMovieByIdQuery, useLazyGetMovieByIdQuery } = omdbApiSlice;

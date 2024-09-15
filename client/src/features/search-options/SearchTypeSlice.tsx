@@ -1,7 +1,6 @@
 
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { TypeObj, searchTypeOptions } from "./SearchTypeOptions";
-import TypeProviderContextProps from "../../models/TypeProviderContextProps";
+import { searchTypeOptions } from "./SearchTypeOptions";
 
 // Create a slice for managing search types
 const searchTypeSlice = createSlice({

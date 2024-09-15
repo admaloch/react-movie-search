@@ -4,5 +4,4 @@ export default interface SliderItemProps {
     poster: string;
     showArrowFunc: () => void;
     hideArrowFunc: () => void;
-
 }

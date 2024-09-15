@@ -5,24 +5,33 @@ import PendingIcon from '@mui/icons-material/Pending';
 import useAuth from '../../../hooks/useAuth';
 import DeleteReviewIcon from './DeleteReviewIcon';
 import ReviewIcon from './ReviewIcon';
+import MovieReviewProps from '../../../models/MovieReviewProps';
 
-export default function ReviewIcons({ imdbId, size, title}) {
+export interface ReviewProps {
+  imdbId: string;
+  title: string;
+}
+
+export default function ReviewIcons({ imdbId, title }: ReviewProps): React.JSX.Element | null {
 
   //add/edit review icon will trigger modal
   //delete review icon will delete the review
 
   const { id } = useAuth()
 
-  if (!id) return null
+  // if (!imdbId) return null
 
-  const { data: reviews, isLoading, isError, error, isSuccess } = useGetReviewsByUserQuery(id);
+  const { data: reviews, isLoading, isError } = useGetReviewsByUserQuery(id);
 
   if (isLoading) return <PendingIcon />
 
   if (isError) return <ErrorIcon />
 
-  const reviewedMovie = reviews.find(review => review.imdbId === imdbId);
+  const typedReviews = reviews as MovieReviewProps[]; 
 
+  const reviewedMovie = typedReviews.find(review => review.imdbId === imdbId);
+
+  if (reviewedMovie) console.log(reviewedMovie)
   return (
     <>
       <ReviewIcon
@@ -33,7 +42,6 @@ export default function ReviewIcons({ imdbId, size, title}) {
       {reviewedMovie &&
         <DeleteReviewIcon
           reviewId={reviewedMovie._id}
-          imdbId={imdbId}
         />
       }
     </>

@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAddNewReviewMutation } from './reviewsApiSlice';
 import useAuth from '../../hooks/useAuth';
 import './Reviews.css'
 import CloseIcon from '@mui/icons-material/Close';
-import Rating from 'react-rating';
-import { FaStar } from 'react-icons/fa';
 import StarRating from '../../components/UI/StarRating';
+import { IFormInput } from './EditReviewForm';
 
-const NewReviewForm = ({ imdbId, title, closeModal }) => {
+interface NewReviewFormProps {
+    imdbId: string;
+    title: string;
+    closeModal: () => void;
+}
+const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
 
     const [starRating, setStarRating] = useState(3);
 
     const { id } = useAuth()
 
-    if (!id) return null
+    // if (!id || !imdbId) return null
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
     const [addNewReview, {
         isLoading,
@@ -46,6 +48,7 @@ const NewReviewForm = ({ imdbId, title, closeModal }) => {
             }, 2300);
         }
         if (isError) {
+            //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to create review. Try again later.'}`);
         }
     }, [isSuccess, isError, error]);

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import HoverInfo from "../../../components/movie-item/HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
-import SliderItemProps from "../../../models/SliderItemProps";
 import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
-import { toast } from "react-toastify";
+import { OmdbItemInterface } from "../../../models/ItemApiProps";
 
-const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element => {
+interface SliderItemProps extends OmdbItemInterface {
+    showArrowFunc: () => void;
+    hideArrowFunc: () => void;
+}
+
+const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element | null => {
 
     if (!item) return null
 
