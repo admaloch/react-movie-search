@@ -8,22 +8,21 @@ import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/Hourglass
 import { IconButton } from '@mui/material';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { UpdateHasWatchedProps } from './UpdateHasWatched';
 
-export default function UpdateHasWatchedIcon({ size, imdbId }) {
+export default function UpdateHasWatchedIcon({ size, imdbId }: UpdateHasWatchedProps): React.JSX.Element | null {
 
     const { id } = useAuth()
 
-    if (!id) return null
+    if (!id || !imdbId) return null
 
     const [updateUser, {
         isLoading,
-        isSuccess,
         isError,
         error
     }] = useUpdateUserMutation();
 
-    const updateHasWatched = async (event) => {
-        console.log('has watched clicked')
+    const updateHasWatched = async (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation()
         const movieData = { imdbId, id, hasWatched: true };
         try {
@@ -38,6 +37,7 @@ export default function UpdateHasWatchedIcon({ size, imdbId }) {
     if (isLoading) content = <HourglassLoadingIcon />;
 
     if (isError) {
+        //@ts-ignore
         toast.error(`Error: ${error?.data?.message}`);
         content = <ErrorIcon />;
     }

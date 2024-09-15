@@ -17,7 +17,7 @@ interface ReviewIconProps  {
 
 export default function ReviewIcon({ reviewedMovie, imdbId, title }: ReviewIconProps): React.JSX.Element | null {
 
-    // if(!imdbId) return null
+    if(!imdbId) return null
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 

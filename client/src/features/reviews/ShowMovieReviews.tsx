@@ -10,7 +10,7 @@ interface ShowMovieReviewsProps {
 
 export default function ShowMovieReviews({ imdbId }: ShowMovieReviewsProps): JSX.Element | null {
 
-  // if (!imdbId) return null
+  if (!imdbId) return null
 
   const { data: movieReviews, isLoading, isError, error, isSuccess } = useGetReviewsByMovieQuery(imdbId);
   let content;

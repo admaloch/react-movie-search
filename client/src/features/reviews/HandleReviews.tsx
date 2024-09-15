@@ -1,5 +1,5 @@
 import useAuth from '../../hooks/useAuth';
-import UserItemProps from '../../models/UserItemProps';
+import { UserItemProps } from '../../models/UserItemProps';
 import { useGetUserByIdQuery } from '../users/usersApiSlice';
 import ReviewIcons, { ReviewProps } from './review-icons/ReviewIcons';
 
@@ -9,6 +9,7 @@ interface HandleReviewsProps extends ReviewProps {
 
 export default function HandleReviews({ imdbId, title }: HandleReviewsProps): React.JSX.Element | null {
   //test if movie is liked to determine if review icon shows up
+  if (!imdbId) return null
   const { id } = useAuth()
 
   const { data: user, isError, error } = useGetUserByIdQuery(id);

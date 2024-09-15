@@ -9,7 +9,7 @@ interface ShowMovieReviewItemProps {
 
 export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps): JSX.Element | null {
 
-  // if (!review._id) return null;
+  if (!review._id) return null;
 
   return (
     <li className='movie-review-item'>

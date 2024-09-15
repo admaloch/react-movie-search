@@ -4,7 +4,7 @@ import './HourglassLoadingIcon.css'
 export default function HourglassLoadingIcon() {
     return (
         <div className="hour-glass-icon">
-            <HourglassTopIcon />
+            <HourglassTopIcon fontSize='medium'/>
         </div>
     )
 }

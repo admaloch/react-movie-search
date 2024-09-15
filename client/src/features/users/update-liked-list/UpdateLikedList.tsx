@@ -1,54 +1,57 @@
 import useAuth from '../../../hooks/useAuth'
 import { useGetUserByIdQuery } from '../usersApiSlice';
 import ErrorIcon from '@mui/icons-material/Error';
-import HourglassTopIcon from '@mui/icons-material/HourglassTop';
-import LikeOrDislike from './LIkeOrDislike';
+import LikeOrDislike from './LikeOrDislike';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
 import { red } from '@mui/material/colors';
-import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { IconButton } from '@mui/material';
+import { UpdateHasWatchedProps } from './UpdateHasWatched';
+import { UserItemProps } from '../../../models/UserItemProps';
 
-export default function UpdateLikedList({ imdbId, title, size = 30 }) {
+interface UpdateLikedListProps extends UpdateHasWatchedProps {
+    title: string;
+}
+
+export default function UpdateLikedList({ imdbId, title, size = 30 }: UpdateLikedListProps): React.JSX.Element | null {
 
     const { id } = useAuth()
 
-    if (!id) return null
+    if (!id || !imdbId) return null
 
-    const { data: user, isLoading, isError, error, isSuccess } = useGetUserByIdQuery(id);
+    const { data: user, isLoading, isSuccess } = useGetUserByIdQuery(id);
 
     let content
 
-    // console.log(user)
+    if (isLoading) {
+        content =
+            <div className="like-icon-container">
+                <div className="waiting-icon">
+                    <HourglassLoadingIcon />
+                </div>
 
-    if (isLoading) content =
-        <div className="like-icon-container">
-            <div className="waiting-icon">
-                <HourglassLoadingIcon fontSize='medium' />
             </div>
-
-        </div>
-
-    else if (isError) content =
-        <div className="like-icon-container">
-            <div className="disable-icon">
-                <ErrorIcon fontSize='medium' sx={{ color: red[500] }} />
-            </div>
-        </div>
-
-    else if (isSuccess) {
-        // console.log(user)
-        const { likedMovies } = user
+    } else if (isSuccess) {
+        const typedUser = user as UserItemProps;
+        const { likedMovies } = typedUser
 
         content =
-           
-                <LikeOrDislike
-                    size={size}
-                    likedMovies={likedMovies}
-                    imdbId={imdbId}
-                    title={title}
-                />
-          
+
+            <LikeOrDislike
+                size={size}
+                likedMovies={likedMovies}
+                imdbId={imdbId}
+                title={title}
+            />
+
+    } else {
+        content =
+            <div className="like-icon-container">
+                <div className="disable-icon">
+                    <ErrorIcon fontSize='medium' sx={{ color: red[500] }} />
+                </div>
+            </div>
+        //@ts-ignore
+        console.log(`Error: ${error?.data?.message || 'Failed to load content.'}`)
     }
 
     return content

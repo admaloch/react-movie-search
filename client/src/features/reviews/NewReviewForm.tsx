@@ -16,11 +16,11 @@ interface NewReviewFormProps {
 }
 const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
 
-    const [starRating, setStarRating] = useState(3);
-
     const { id } = useAuth()
 
-    // if (!id || !imdbId) return null
+    if (!id || !imdbId) return null
+
+    const [starRating, setStarRating] = useState(3);
 
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 

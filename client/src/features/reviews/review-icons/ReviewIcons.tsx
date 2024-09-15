@@ -19,7 +19,7 @@ export default function ReviewIcons({ imdbId, title }: ReviewProps): React.JSX.E
 
   const { id } = useAuth()
 
-  // if (!imdbId) return null
+  if (!imdbId) return null
 
   const { data: reviews, isLoading, isError } = useGetReviewsByUserQuery(id);
 

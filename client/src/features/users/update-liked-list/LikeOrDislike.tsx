@@ -10,8 +10,16 @@ import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/Hourglass
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { IconButton } from '@mui/material';
+import { LikedUserMovies } from '../../../models/UserItemProps';
 
-export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
+interface LikeOrDislikeProps {
+    likedMovies: LikedUserMovies[];
+    size: number
+    title: string;
+    imdbId: string;
+}
+
+export default function LikeOrDislike({ likedMovies, size, title, imdbId }: LikeOrDislikeProps) {
 
     const { id } = useAuth()
 
@@ -21,13 +29,11 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
 
     const [updateUser, {
         isLoading,
-        isSuccess,
         isError,
         error
     }] = useUpdateUserMutation();
 
-    const updateLikedList = async (event) => {
-        // console.log('this worked')
+    const updateLikedList = async (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation()
         const movieData = !alreadyLiked ? { imdbId, title, id } : { imdbId, id };
         try {
@@ -44,17 +50,16 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
     let popoverText = ''
 
     if (isError) {
+        //@ts-ignore
         toast.error(`Error: ${error?.data?.message || 'Failed to like item.'}`);
         content = <ErrorIcon />;
     } else if (!alreadyLiked) {
 
         content =
-
             <FavoriteBorderIcon
                 aria-label='like-icon'
                 className='like-icon'
                 sx={{ fontSize: size, color: grey[500] }}
-                onClick={updateLikedList}
             />;
         popoverText = "Like"
     } else {
@@ -63,19 +68,18 @@ export default function LikeOrDislike({ likedMovies, size, title, imdbId }) {
                 aria-label='like-icon'
                 className='like-icon'
                 sx={{ fontSize: size, color: red[500] }}
-                onClick={updateLikedList}
             />;
         popoverText = "Unlike"
 
     }
 
     return (
-        <IconButton className='custom-icon-button' aria-label="update liked list">
+        <IconButton onClick={updateLikedList} className='custom-icon-button' aria-label="update liked list">
             <Tippy content={popoverText}>
                 {content}
             </Tippy>
         </IconButton>
 
-    ); 
+    );
 }
 

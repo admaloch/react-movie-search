@@ -20,9 +20,8 @@ interface EditReviewFormProps {
 }
 
 const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
-  const { id } = useAuth()
 
-  // if (!id) return null
+  if (!movie) return null;
 
   const { body, title, _id, rating } = movie
 

@@ -3,12 +3,17 @@ import { Box, IconButton, Popover, Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link, useNavigate } from 'react-router-dom';
 
-function UserPageLink({ userId }) {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const navigate = useNavigate();
+interface UserPageLinkProps {  
+    userId: string;
+}
 
-    const handlePopoverOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+function UserPageLink({ userId }: UserPageLinkProps) {
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handlePopoverOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const target: Element = event.currentTarget as Element
+       //@ts-ignore  come back to this.. can't get rid of ts error
+        setAnchorEl(target);
     };
 
     const handlePopoverClose = () => {
