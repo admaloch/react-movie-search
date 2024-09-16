@@ -11,7 +11,6 @@ export default function SettingsPage() {
   return (
     <div className="movie-items-container">
         <p>Edit account info</p>
-        
     </div>
   )
 }

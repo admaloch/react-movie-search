@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUpdateReviewMutation } from './reviewsApiSlice';
-import useAuth from '../../hooks/useAuth';
 import './Reviews.css'
 import CloseIcon from '@mui/icons-material/Close';
 import StarRating from '../../components/UI/StarRating';
@@ -85,18 +84,14 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
               {...register('body', { required: 'Review is required', minLength: { value: 1, message: 'Review cannot be empty' } })}
             />
             {errors.body && <div className="error-message">{errors.body.message}</div>}
-
           </div>
-
           <div className="review-btn-container">
             <button className='review-btn' type="submit">
               {isLoading ? 'Submitting...' : 'Submit Review'}
             </button>
-
           </div>
         </form>
       </div>
-
     </>
   );
 };

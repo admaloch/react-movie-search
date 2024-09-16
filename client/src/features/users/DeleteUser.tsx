@@ -37,7 +37,6 @@ function DeleteUser({ user }: UserInfoProps): React.JSX.Element | null {
     }, [isSuccess, isError, error, navigate]);
 
     return <button onClick={deleteUserBtnHandler}>Delete User</button>
-
 }
 
 export default DeleteUser

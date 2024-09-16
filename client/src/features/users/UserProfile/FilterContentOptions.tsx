@@ -17,6 +17,5 @@ export default function FilterContentOptions({ hideSlider, isWatched, setIsWatch
                 setIsWatched={setIsWatched}
             />
         </>
-
     )
 }

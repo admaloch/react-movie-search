@@ -8,7 +8,6 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.
 
     return (
         <>
-
             <ListItemModal
                 imdbId={imdbID}
             >

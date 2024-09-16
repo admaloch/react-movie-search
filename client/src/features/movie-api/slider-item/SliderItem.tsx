@@ -47,7 +47,6 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
                     error={error}
                 />
             }
-
         </div>
     )
 }

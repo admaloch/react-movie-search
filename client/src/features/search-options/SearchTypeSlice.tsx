@@ -1,5 +1,5 @@
 
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { searchTypeOptions } from "./SearchTypeOptions";
 
 // Create a slice for managing search types

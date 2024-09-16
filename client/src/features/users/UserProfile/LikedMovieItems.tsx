@@ -27,7 +27,6 @@ export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieIt
 
             </div>
     } else {
-        console.log("there aren't any liked movies")
         content =
             <div className="movie-items-container">
                 <div className="no-movies-container">
