@@ -5,22 +5,21 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAddNewUserMutation, useUpdateUserMutation } from "./usersApiSlice"
+import {  useUpdateUserMutation } from "./usersApiSlice"
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useAuth from '../../hooks/useAuth';
 
 interface IFormInput {
-    email: string;
-    username: string;
-    password: string;
+    oldPassword: string;
+    newPassword: string;
+    confirmPassword: string;
 }
 
 const EditPasswordForm: React.FC = () => {
 
     const { id } = useAuth()
-
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -32,7 +31,7 @@ const EditPasswordForm: React.FC = () => {
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm();
+    } = useForm<IFormInput>();
 
     const [updateUser, {
         isLoading,
@@ -42,9 +41,7 @@ const EditPasswordForm: React.FC = () => {
     }] = useUpdateUserMutation();
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-
         try {
-
             await updateUser({ ...data, id }).unwrap();
 
         } catch (err) {
@@ -60,6 +57,7 @@ const EditPasswordForm: React.FC = () => {
             }, 2300);
         }
         if (isError) {
+            //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to update password. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);

@@ -1,6 +1,15 @@
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from "../features/auth/authSlice"
-import { jwtDecode } from 'jwt-decode'; // Note the named import
+import { jwtDecode } from 'jwt-decode'; 
+
+interface AuthProps {
+    UserInfo: {
+        isAdmin: boolean;
+        id: string;
+        email: string;
+        username: string;
+    };
+}
 
 const useAuth = () => {
     const token = useSelector(selectCurrentToken);
@@ -11,13 +20,12 @@ const useAuth = () => {
     let email = "";
 
     if (token) {
-        const decoded = jwtDecode(token);
+        const decoded: AuthProps = jwtDecode(token);
         if (decoded && decoded.UserInfo) {
             ({ isAdmin, id, email, username } = decoded.UserInfo);
             isLoggedIn = true;
         }
     }
-
     return { id, isAdmin, isLoggedIn, email, username };
 };
 

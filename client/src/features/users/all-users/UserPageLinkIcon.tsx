@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, IconButton, Popover, Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface UserPageLinkProps {  
     userId: string;

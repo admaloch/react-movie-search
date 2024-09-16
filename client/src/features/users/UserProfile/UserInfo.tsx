@@ -1,4 +1,12 @@
-export default function UserInfo({ user }) {
+import { UserItemProps } from "../../../models/UserItemProps";
+
+export interface UserInfoProps {
+    user: UserItemProps;
+}
+
+export default function UserInfo({ user }: UserInfoProps): React.JSX.Element | null {
+
+    if (!user) return null
 
     return (
         <>

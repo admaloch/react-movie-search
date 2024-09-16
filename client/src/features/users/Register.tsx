@@ -13,6 +13,7 @@ interface IFormInput {
     email: string;
     username: string;
     password: string;
+    confirmPassword: string;
 }
 
 const Register: React.FC = () => {
@@ -27,7 +28,7 @@ const Register: React.FC = () => {
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm();
+    } = useForm<IFormInput>();
 
     const [addNewUser, {
         isLoading,
@@ -57,6 +58,7 @@ const Register: React.FC = () => {
             }, 2300);
         }
         if (isError) {
+            //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to register new account. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);

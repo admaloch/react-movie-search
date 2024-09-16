@@ -3,8 +3,12 @@ import { useDeleteUserMutation } from "./usersApiSlice"
 import { useNavigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserInfoProps } from "./UserProfile/UserInfo";
 
-function DeleteUser({ user }) {
+function DeleteUser({ user }: UserInfoProps): React.JSX.Element | null {
+
+    if (!user) return null
+
     const navigate = useNavigate();
 
     const [deleteUser, {
@@ -27,6 +31,7 @@ function DeleteUser({ user }) {
             navigate('/users/register');
         }
         if (isError) {
+            //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to delete user'}`);
         }
     }, [isSuccess, isError, error, navigate]);

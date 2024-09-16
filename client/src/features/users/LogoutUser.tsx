@@ -2,7 +2,11 @@ import { useNavigate } from 'react-router-dom'
 import { useSendLogoutMutation } from '../auth/authApiSlice'
 import { useEffect } from 'react'
 
-export default function LogoutUser({ closeNavbar }) {
+interface LogoutUserProps {
+    closeNavbar: () => void;
+}
+
+export default function LogoutUser({ closeNavbar }: LogoutUserProps) {
 
     const navigate = useNavigate();
 
@@ -18,10 +22,9 @@ export default function LogoutUser({ closeNavbar }) {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate('/login'); // or wherever you want to redirect after logout
+            navigate('/login');
         }
         if (isError) {
-            // Handle error (e.g., show a toast notification or error message)
             console.error('Logout failed:', error);
         }
     }, [isSuccess, isError, navigate, error]);

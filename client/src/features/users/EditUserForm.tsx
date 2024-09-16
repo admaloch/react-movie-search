@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './users.css';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAddNewUserMutation, useUpdateUserMutation } from "./usersApiSlice"
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import IconButton from '@mui/material/IconButton';
+import { useUpdateUserMutation } from "./usersApiSlice"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useAuth from '../../hooks/useAuth';
+
 interface IFormInput {
     email: string;
     username: string;
@@ -26,7 +25,7 @@ const EditUserForm: React.FC = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm<IFormInput>();
 
     const [updateUser, {
         isLoading,
@@ -53,6 +52,7 @@ const EditUserForm: React.FC = () => {
             }, 2300);
         }
         if (isError) {
+            //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to update account info. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);

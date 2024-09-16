@@ -1,5 +1,4 @@
 import SettingsIcon from '@mui/icons-material/Settings';
-import PopoverIcon from '../../reviews/PopoverIcon';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IconButton } from '@mui/material';
@@ -10,6 +9,7 @@ export default function UserSettingsIcon() {
     const navigate = useNavigate()
 
     const { id: urlUserId } = useParams()
+    
     const { id: currUserId } = useAuth()
 
     if (!urlUserId || !currUserId) return null

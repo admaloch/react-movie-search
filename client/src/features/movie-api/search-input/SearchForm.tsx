@@ -16,7 +16,7 @@ const SearchForm = (): JSX.Element => {
     const [searchInput, setSearchInput] = useState<string>('')
     const currTypeParam = currType.apiParam;
 
-    const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
+    // const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
 
     const { data: movieItems, isLoading: isKeyLoading, isSuccess: isKeySuccess, isError, error } = useSearchMoviesQuery(
         { searchInput, currTypeParam },

@@ -1,8 +1,12 @@
 
+interface IsWatchedBtnsProps {
+    isWatched: string;
+    setIsWatched: (isWatched: string) => void;
+}
 
-export default function IsWatchedBtns({ isWatched, setIsWatched }) {
+export default function IsWatchedBtns({ isWatched, setIsWatched }: IsWatchedBtnsProps) {
 
-    const btnHandler = (value) => {
+    const btnHandler = (value: string) => {
         setIsWatched(value);
     };
 

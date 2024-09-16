@@ -1,6 +1,8 @@
 import { useLazySearchMoviesQuery } from "../features/movie-api/omdbApiSlice";
 import { useSearchType } from "./useSearchType";
 
+//omdb only returns 10 results per page, so we need to make 2 requests to get 20 results for slider
+
 const useDoubleOmdbRes = () => {
   const { currType } = useSearchType();
   const currTypeParam = currType.apiParam;

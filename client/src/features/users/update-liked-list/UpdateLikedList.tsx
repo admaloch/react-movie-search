@@ -28,21 +28,17 @@ export default function UpdateLikedList({ imdbId, title, size = 30 }: UpdateLike
                 <div className="waiting-icon">
                     <HourglassLoadingIcon />
                 </div>
-
             </div>
     } else if (isSuccess) {
         const typedUser = user as UserItemProps;
         const { likedMovies } = typedUser
-
         content =
-
             <LikeOrDislike
                 size={size}
                 likedMovies={likedMovies}
                 imdbId={imdbId}
                 title={title}
             />
-
     } else {
         content =
             <div className="like-icon-container">

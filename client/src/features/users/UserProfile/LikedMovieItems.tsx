@@ -1,12 +1,17 @@
 import './UserProfile.css'
 import LikedMovieItem from './LikedMovieItem';
 import { Link } from 'react-router-dom';
+import { LikedUserMovies } from '../../../models/UserItemProps';
 
-export default function LikedMovieItems({ likedMovies, isWatched }) {
+interface LikedMovieItemsProps {
+    likedMovies: LikedUserMovies[];
+    isWatched: string;
+}
 
+export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieItemsProps): React.JSX.Element | null {
+
+    if (!likedMovies.length) return null
     let content
-
-    // const smallMovieList = [likedMovies[0], likedMovies[1]]
 
     if (likedMovies.length) {
         content =
