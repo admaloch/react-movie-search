@@ -25,7 +25,6 @@ const useDoubleOmdbRes = () => {
     return updatedResults;
   };
 
-  console.log(page1Results, page2Results);
 
   let isLoading = isLoadingPage1 || isLoadingPage2;
   const isSuccess = isSuccessPage1 && isSuccessPage2;

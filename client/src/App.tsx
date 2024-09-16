@@ -8,14 +8,10 @@ import HomeLayout from './components/HomePage/HomeLayout'
 import MainNavBar from './components/MainNav/MainNavBar'
 import Footer from './components/Footer/Footer'
 import UserProfile from './features/users/UserProfile/UserProfile'
-import { APIProvider } from './store/APIContext/APIContext'
-import EditUser from './features/users/EditUser'
 import Prefetch from './features/auth/Prefetch'
 import { ToastContainer } from 'react-toastify'
 import PersistLogin from './features/auth/PersistLogin'
 import ListAllUsers from './features/users/all-users/ListAllUsers'
-import SettingsPage from './features/users/UserProfile/settings-page/SettingsPage'
-import EditPassword from './features/users/EditPassword'
 import Error from './components/UI/errors/Error'
 import EditPasswordForm from './features/users/EditPasswordForm'
 import EditUserForm from './features/users/EditUserForm'
@@ -27,7 +23,7 @@ function App() {
 
     return (
 
-        <APIProvider>
+        <>
             <Routes>
                 <Route element={<PersistLogin />}>
                     <Route element={<Prefetch />}>
@@ -55,7 +51,7 @@ function App() {
                     </Route>
                 </Route>
             </Routes>
-            
+
             <ToastContainer
                 position="top-center"
                 autoClose={1700}
@@ -67,7 +63,7 @@ function App() {
                 draggable
                 pauseOnHover
                 theme="colored" />
-        </APIProvider>
+        </>
 
     )
 }

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {setSearchType} from "../features/search-options/SearchTypeSlice";
 import { RootState } from "../app/store";
+import { SearchType } from "../features/search-options/SearchTypeOptions";
 
 // Create a custom hook to use the types state
 export const useSearchType = () => {
@@ -11,7 +12,7 @@ export const useSearchType = () => {
         dispatch(setSearchType(typeInput));
     };
 
-    const currType = searchTypes.find(item => item.isActive)
+    const currType: SearchType | undefined = searchTypes.find(item => item.isActive)
 
     return { searchTypes, currType, searchTypeHandler };
 };

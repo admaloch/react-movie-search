@@ -8,15 +8,14 @@ import useDoubleOmdbRes from "../../../hooks/useDoubleOmdbRes";
 import { toast } from "react-toastify";
 import InputLoadAnimation from "../../../components/UI/LoadAnimation/InputLoadAnimation";
 
-
-
 const SearchForm = (): JSX.Element => {
 
     const { updateOmdbState } = useOmdbState()
     const [isListShown, setIsListShown] = useState(false)
     const { currType } = useSearchType()
     const [searchInput, setSearchInput] = useState<string>('')
-    const currTypeParam = currType.apiParam;
+    let currTypeParam = currType?.apiParam;
+    currTypeParam = currTypeParam as string;
 
     const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
 
@@ -56,7 +55,7 @@ const SearchForm = (): JSX.Element => {
             <input
                 type="text"
                 className="form-control"
-                placeholder={`${currType.description}...`}
+                placeholder={`${currType?.description}...`}
                 autoComplete="off"
                 name="query"
                 value={searchInput}

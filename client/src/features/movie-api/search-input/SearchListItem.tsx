@@ -1,10 +1,10 @@
 import React from "react"
 import ListItemModal from "../ItemModal/ListItemModal"
 import image_not_found from '../../../assets/image_not_found.png'
-import { APIResults } from "../../../store/APIContext/APIContextInterface"
 import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
+import { SmallOmdbItem } from "../../../models/ItemApiProps";
 
-const SearchListItem = ({ imdbID, Poster, Title, Year }: APIResults): React.JSX.Element => {
+const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.JSX.Element => {
 
     return (
         <>

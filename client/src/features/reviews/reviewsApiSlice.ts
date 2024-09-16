@@ -4,83 +4,57 @@ import {
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
 import MovieReviewProps from "../../models/MovieReviewProps";
+import { RootState } from "../../app/store";
+import { RTKReviewResultInterface } from "../../models/RTKQueryProps";
 
-interface ReviewsResponse {
-    reviews: MovieReviewProps[];
-}
-
-interface FetchBaseQueryError {
-    status: number;
-    data?: {
-        isError: boolean;
-    };
-}
-
-const reviewsAdapter = createEntityAdapter<MovieReviewProps>()
+const reviewsAdapter = createEntityAdapter({})
 
 const initialState = reviewsAdapter.getInitialState()
-
-// Type guard to check if result is an error
-const isFetchBaseQueryError = (result: any): result is FetchBaseQueryError => {
-    return (result as FetchBaseQueryError).data?.isError !== undefined;
-};
 
 export const reviewsApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getReviews: builder.query({
             query: () => ({
                 url: '/reviews',
-                validateStatus: (response: Response, result: ReviewsResponse | FetchBaseQueryError) => {
-                    if (isFetchBaseQueryError(result)) {
-                        return response.status === 200 && !result.data?.isError;
-                    }
-                    return response.status === 200;
-                },
+                validateStatus: (response: Response) => response.status === 200,
             }),
-            transformResponse: (responseData: ReviewsResponse) => {
-                // Access the reviews array in responseData
-                const loadedReviews = responseData.reviews.map((review) => {
-                    return {
-                        ...review,
-                        id: review._id, // Map _id to id
-                    };
-                });
+            transformResponse: (responseData: MovieReviewProps[]) => {
+                const loadedReviews = responseData.map(review => ({
+                    ...review,
+                    id: review._id,
+                }));
                 return reviewsAdapter.setAll(initialState, loadedReviews);
             },
-            providesTags: (result: ReviewsResponse | undefined) => {
+            //@ts-ignore -- look into this issue later
+            providesTags: (result: RTKReviewResultInterface) => {
                 if (result?.ids) {
-                  return [
-                    { type: 'Review', id: 'LIST' },
-                    ...result.ids.map(id => ({ type: 'Review', id }))
-                  ];
+                    return [
+                        { type: 'Review', id: 'LIST' },
+                        ...result.ids.map(id => ({ type: 'Review', id })),
+                    ];
                 } else {
-                  return [{ type: 'Review', id: 'LIST' }];
+                    return [{ type: 'Review', id: 'LIST' }];
                 }
-              }
+            },
         }),
 
         getReviewsByUser: builder.query({
-
             query: (id) => ({
                 url: `/reviews/user/${id}`,
-                validateStatus: (response: Response, result: ReviewsResponse | FetchBaseQueryError) => {
-                    return response.status === 200 && !result.isError;
+                validateStatus: (response: Response) => {
+                    return response.status === 200;
                 },
             }),
-            transformResponse: responseData => {
-
+            transformResponse: (responseData: MovieReviewProps[]) => {
                 if (Array.isArray(responseData)) {
                     return responseData.map(review => {
                         review.id = review._id;
                         return review;
                     });
-                } else {
-                    responseData.id = responseData._id;
-                    return responseData;
                 }
             },
-            providesTags: (result, error, arg) => {
-                // This assumes the response is an array of reviews
+            //@ts-ignore -- look into this issue later
+            providesTags: (result) => {
                 if (result?.length) {
                     return [
                         { type: 'Review', id: 'LIST' },
@@ -95,24 +69,22 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
         getReviewsByMovie: builder.query({
             query: (id) => ({
                 url: `/reviews/movie/${id}`,
-                validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError;
+                validateStatus: (response: Response) => {
+                    return response.status === 200;
                 },
             }),
-            transformResponse: responseData => {
+            transformResponse: (responseData: MovieReviewProps[]) => {
                 // Assuming responseData could be an array of reviews, not a single review.
                 if (Array.isArray(responseData)) {
                     return responseData.map(review => {
                         review.id = review._id;
                         return review;
                     });
-                } else {
-                    // If a single review is returned (less common for this use case)
-                    responseData.id = responseData._id;
-                    return responseData;
                 }
             },
-            providesTags: (result, error, arg) => {
+            //@ts-ignore -- look into this issue later
+            providesTags: (result) => {
+
                 if (result?.length) {
                     return [
                         { type: 'Review', id: 'LIST' },
@@ -130,7 +102,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: initialReviewData
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: (arg) => [
                 { type: 'Review', id: arg.id }
             ]
         }),
@@ -140,7 +112,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: initialReviewData
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: (arg) => [
                 { type: 'Review', id: arg.id } // This invalidates the specific review
             ]
         }),
@@ -151,7 +123,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
                 method: 'DELETE'
                 // No body needed for DELETE requests
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: (arg) => [
                 { type: 'Review', id: 'LIST' }, // Optionally invalidate the entire list
                 { type: 'Review', id: arg } // Invalidate the specific review
             ]
@@ -187,4 +159,4 @@ export const {
     selectById: selectReviewById,
     selectIds: selectReviewIds
     // Pass in a selector that returns the reviews slice of state
-} = reviewsAdapter.getSelectors(state => selectReviewsData(state) ?? initialState)
+} = reviewsAdapter.getSelectors((state: RootState) => selectReviewsData(state) ?? initialState)

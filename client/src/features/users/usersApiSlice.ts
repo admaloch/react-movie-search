@@ -3,6 +3,8 @@ import {
     createEntityAdapter
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
+import { UserItemProps } from "../../models/UserItemProps";
+import { RootState } from "../../app/store";
 
 const usersAdapter = createEntityAdapter({})
 
@@ -13,11 +15,11 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         getUsers: builder.query({
             query: () => ({
                 url: '/users',
-                validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError;
+                validateStatus: (response: Response) => {
+                    return response.status === 200;
                 },
             }),
-            transformResponse: responseData => {
+            transformResponse: (responseData: UserItemProps[]) => {
                 const loadedUsers = responseData.map(user => {
                     user.id = user._id;
                     return user;
@@ -25,31 +27,25 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 return usersAdapter.setAll(initialState, loadedUsers);
             },
             providesTags: (result, error, arg) => {
-                if (result?.ids) {
-                    return [
-                        { type: 'User', id: 'LIST' },
-                        ...result.ids.map(id => ({ type: 'User', id }))
-                    ];
-                } else {
-                    return [{ type: 'User', id: 'LIST' }];
-                }
-            }
+                console.log(result, error)
+                return [{ type: 'User', id: arg }]
+            } 
         }),
         getUserById: builder.query({
             query: (id) => ({
                 url: `/users/${id}`,
-                validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError;
+                validateStatus: (response: Response) => {
+                    return response.status === 200;
                 },
             }),
-            transformResponse: responseData => {
-                // Adjust the response data if necessary
+            transformResponse: (responseData:UserItemProps) => {
                 responseData.id = responseData._id;
                 return responseData;
             },
-            providesTags: (result, error, arg) => [
-                { type: 'User', id: arg }
-            ]
+            providesTags: (result, error, arg) => {
+                console.log(result, error)
+                return [{ type: 'User', id: arg }]
+            } 
         }),
         addNewUser: builder.mutation({
             query: initialUserData => ({
@@ -69,7 +65,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: initialUserData
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: ( arg) => [
                 { type: 'User', id: arg.id } // This invalidates the specific user
             ]
         }),
@@ -78,7 +74,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 url: `/users/${id}`, // Include the ID in the URL
                 method: 'DELETE'
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: (arg) => [
                 { type: 'User', id: 'LIST' }, // Optionally invalidate the entire list
                 { type: 'User', id: arg } // Invalidate the specific user
             ]
@@ -113,4 +109,4 @@ export const {
     selectById: selectUserById,
     selectIds: selectUserIds
     // Pass in a selector that returns the users slice of state
-} = usersAdapter.getSelectors(state => selectUsersData(state) ?? initialState)
+} = usersAdapter.getSelectors((state: RootState) => selectUsersData(state) ?? initialState)

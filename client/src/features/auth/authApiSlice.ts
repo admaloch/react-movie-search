@@ -1,11 +1,6 @@
 import { apiSlice } from "../../app/api/apiSlice";
 import { logOut, setCredentials } from "./authSlice";
 
-interface Credentials {
-    username: string;
-    password: string;
-}
-
 interface ItemResponse {
     accessToken: string;
 }
