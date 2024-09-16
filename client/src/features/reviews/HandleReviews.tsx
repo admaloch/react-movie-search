@@ -9,8 +9,10 @@ interface HandleReviewsProps extends ReviewProps {
 
 export default function HandleReviews({ imdbId, title }: HandleReviewsProps): React.JSX.Element | null {
   //test if movie is liked to determine if review icon shows up
-  if (!imdbId) return null
+
   const { id } = useAuth()
+
+  if (!imdbId || !id) return null
 
   const { data: user, isError, error } = useGetUserByIdQuery(id);
 
@@ -19,6 +21,8 @@ export default function HandleReviews({ imdbId, title }: HandleReviewsProps): Re
     console.log(`Error: ${error.data.message}`)
     return null;
   }
+
+  if (!user) return null;
 
   const typedUser = user as UserItemProps;
 

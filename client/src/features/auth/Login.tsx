@@ -37,15 +37,8 @@ const Login: React.FC = () => {
                 navigate(`/profiles/${id}`);
             }, 2300);
         } catch (err) {
-            let errMsg
-            if (err instanceof Error && 'status' in err) {
-                const typedError = err as { status: number, data?: { message?: string } };
-                errMsg = typedError.data?.message || 'Unknown error occurred';
-            } else {
-                errMsg = 'No Server Response';
-            }
-            toast.dismiss();
-            toast.error(`Error: ${errMsg}`);
+            //@ts-ignore
+            toast.error(`Error: ${err?.data?.message || 'Failed to load content.'}`);
         }
     };
 
@@ -107,7 +100,7 @@ const Login: React.FC = () => {
                     Trust This Device
                 </label>
                 <p>Haven't set up an account?</p>
-                <p>Click <NavLink className="link-class" to="/auth/register">here</NavLink> to register</p>
+                <p>Click <NavLink className="link-class" to="/users/register">here</NavLink> to register</p>
 
             </form>
 

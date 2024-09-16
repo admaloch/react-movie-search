@@ -10,6 +10,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useAuth from '../../hooks/useAuth';
+import { useSendLogoutMutation } from '../auth/authApiSlice';
 
 interface IFormInput {
     oldPassword: string;
@@ -40,6 +41,9 @@ const EditPasswordForm: React.FC = () => {
         error
     }] = useUpdateUserMutation();
 
+    const [sendLogout, { isError: isLogoutError }] = useSendLogoutMutation();
+
+
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
         try {
             await updateUser({ ...data, id }).unwrap();
@@ -53,7 +57,9 @@ const EditPasswordForm: React.FC = () => {
         if (isSuccess) {
             toast.success('Password successfully updated!');
             setTimeout(() => {
-                navigate(`/profiles/${id}`);
+                sendLogout()
+                navigate('/login');
+                toast.success('Please login with your new credentials!');
             }, 2300);
         }
         if (isError) {
@@ -61,6 +67,12 @@ const EditPasswordForm: React.FC = () => {
             toast.error(`Error: ${error?.data?.message || 'Failed to update password. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);
+
+    useEffect(() => {
+        if (isLogoutError) {
+            window.location.reload();
+        }
+    }, [isLogoutError]);
 
     // Watch the new password field to compare it with the confirmation
     const newPassword = watch('newPassword', '');

@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import MainPage from './components/MainPage'
 import HomePageContent from './components/HomePage/HomePageContent'
 import Register from './features/users/Register'

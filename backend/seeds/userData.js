@@ -18,9 +18,9 @@ module.exports.userModelData = [
         ]
     },
     {
-        username: "IndieGuru",
-        email: "indie.guru@filmbiz.com",
-        password: "Indie$567",
+        username: "IndieGuru666",
+        email: "indie.guru666@filmbiz.com",
+        password: "Indie$5678",
         likedMovies: [
             { imdbId: "tt0114709", title: "Toy Story", hasWatched: true },
             { imdbId: "tt0137523", title: "Fight Club", hasWatched: false },

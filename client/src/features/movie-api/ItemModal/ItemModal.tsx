@@ -24,7 +24,6 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
 
     const image = item.Poster !== 'N/A' ? item.Poster : imageNotFound
     const imageAlt = item.Poster !== 'N/A' ? `${item.Title}-poster` : 'image not found placeholder'
-
     if (isLoading) content = <CircleAnimation />
     else if (isError) {
         // @ts-ignore

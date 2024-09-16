@@ -27,7 +27,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 return usersAdapter.setAll(initialState, loadedUsers);
             },
             providesTags: (result, error, arg) => {
-                console.log(result, error)
+                // console.log(result, error)
                 return [{ type: 'User', id: arg }]
             } 
         }),
@@ -43,7 +43,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 return responseData;
             },
             providesTags: (result, error, arg) => {
-                console.log(result, error)
+                // console.log(result, error)
                 return [{ type: 'User', id: arg }]
             } 
         }),

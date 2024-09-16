@@ -10,7 +10,6 @@ interface LikedMovieItemsProps {
 
 export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieItemsProps): React.JSX.Element | null {
 
-    if (!likedMovies.length) return null
     let content
 
     if (likedMovies.length) {

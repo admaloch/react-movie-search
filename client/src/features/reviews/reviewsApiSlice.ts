@@ -7,7 +7,7 @@ import MovieReviewProps from "../../models/MovieReviewProps";
 import { RootState } from "../../app/store";
 import { RTKReviewResultInterface } from "../../models/RTKQueryProps";
 
-const reviewsAdapter = createEntityAdapter({})
+const reviewsAdapter = createEntityAdapter<MovieReviewProps>()
 
 const initialState = reviewsAdapter.getInitialState()
 

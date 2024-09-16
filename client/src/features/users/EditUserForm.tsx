@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useUpdateUserMutation } from "./usersApiSlice"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import useAuth from '../../hooks/useAuth';
+import { useSendLogoutMutation } from '../auth/authApiSlice';
 
 interface IFormInput {
     email: string;
@@ -19,13 +20,15 @@ const EditUserForm: React.FC = () => {
 
     const { username, email, id } = useAuth()
 
+
     const navigate = useNavigate();
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<IFormInput>();
+    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+        defaultValues: {
+            email: email || '', // Prepopulate with email from useAuth
+            username: username || '' // Prepopulate with username from useAuth
+        }
+    });
 
     const [updateUser, {
         isLoading,
@@ -34,11 +37,11 @@ const EditUserForm: React.FC = () => {
         error
     }] = useUpdateUserMutation();
 
-    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    const [sendLogout, { isError: isLogoutError }] = useSendLogoutMutation();
 
+    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
         try {
             await updateUser({ ...data, id }).unwrap();
-
         } catch (err) {
             console.log('Error', err)
         }
@@ -48,7 +51,9 @@ const EditUserForm: React.FC = () => {
         if (isSuccess) {
             toast.success('Account info successfully updated!');
             setTimeout(() => {
-                navigate(`/profiles/}`);
+                sendLogout()
+                navigate('/login');
+                toast.success('Please login with your new credentials!');
             }, 2300);
         }
         if (isError) {
@@ -56,6 +61,12 @@ const EditUserForm: React.FC = () => {
             toast.error(`Error: ${error?.data?.message || 'Failed to update account info. Try again later.'}`);
         }
     }, [isSuccess, isError, error, navigate]);
+
+    useEffect(() => {
+        if (isLogoutError) {
+            window.location.reload();
+        }
+    }, [isLogoutError]);
 
     return (
         <main className='user-profile-container'>
@@ -75,7 +86,7 @@ const EditUserForm: React.FC = () => {
                         })}
                         name="email"
                         className="input"
-                        value={email}
+
                     />
                     {errors.email && <span className="error">{errors.email.message}</span>}
                 </div>
@@ -87,7 +98,6 @@ const EditUserForm: React.FC = () => {
                         {...register('username', { required: 'Username is required' })}
                         className="input"
                         name="username"
-                        value={username}
                     />
                     {errors.username && <span className="error">{errors.username.message}</span>}
                 </div>

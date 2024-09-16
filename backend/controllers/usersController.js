@@ -92,19 +92,27 @@ const updateUser = async (req, res) => {
     if (!user) {
         return res.status(400).json({ message: 'User not found' })
     }
-    if (username) {    
-        const isUsernameTaken = await UserModel.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
-        if (isUsernameTaken) {
-            return res.status(400).json({ message: "Username already exists" });
-        }
-        user.username = username
-    }
+    if (username && email) {
+        // Find if the username is taken by another user
+        const isUsernameTaken = await UserModel.findOne({
+            username,
+            _id: { $ne: id } // Exclude the current user by their ID
+        }).collation({ locale: 'en', strength: 2 }).lean().exec();
 
-    if (email) {
-        const isEmailTaken = await UserModel.findOne({ email }).collation({ locale: 'en', strength: 2 }).lean().exec()
-        if (isEmailTaken) {
-            return res.status(400).json({ message: "Email already exists" });
+        if (isUsernameTaken) {
+            return res.status(400).json({ message: "Username already taken." });
         }
+        //check email 
+        const isEmailTaken = await UserModel.findOne({
+            email,
+            _id: { $ne: id }
+        }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+        if (isEmailTaken) {
+            return res.status(400).json({ message: "Email already taken." });
+        }
+
+        user.username = username;
         user.email = email
     }
 
