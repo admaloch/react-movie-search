@@ -12,7 +12,7 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
     const { currType } = useSearchType()
     const { submittedSearch, omdbSearchResults } = useOmdbState()
 
-    currType = currType as SearchType
+ 
     let lightOrDarkText = currType.type === 'Movie' ? 'light' : 'dark'
     const spanColor = { color: randomColorGen(lightOrDarkText) }
 

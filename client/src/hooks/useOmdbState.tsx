@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setOmdbState } from "../features/movie-api/omdbSlice";
-import { OmdbItem, OmdbItemInterface, SmallOmdbItem } from "../models/ItemApiProps";
+import { OmdbItem} from "../models/ItemApiProps";
 import { RootState } from "../app/store";
 
 // Create a custom hook to use the types state

@@ -20,6 +20,8 @@ export default function ListAllUsers() {
     //@ts-ignore
     if (isError ) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
 
+    if (!users) return null
+
     const usersIds = users.ids as string[]
 
     return (

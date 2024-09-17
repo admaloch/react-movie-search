@@ -14,8 +14,7 @@ const SearchForm = (): JSX.Element => {
     const [isListShown, setIsListShown] = useState(false)
     const { currType } = useSearchType()
     const [searchInput, setSearchInput] = useState<string>('')
-    let currTypeParam = currType?.apiParam;
-    currTypeParam = currTypeParam as string;
+    let currTypeParam = currType.apiParam;
 
     const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
 

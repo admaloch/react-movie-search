@@ -6,11 +6,12 @@ import { useSearchType } from "./useSearchType";
 const useDoubleOmdbRes = () => {
 
   const { currType } = useSearchType();
+  
   let currTypeParam = currType?.apiParam;
 
-  const [triggerPage1, { data: page1Results, isLoading: isLoadingPage1, isSuccess: isSuccessPage1, isError: isErrorPage1, error: errorPage1 }] = useLazySearchMoviesQuery();
+  const [triggerPage1, { isLoading: isLoadingPage1, isSuccess: isSuccessPage1, isError: isErrorPage1, error: errorPage1 }] = useLazySearchMoviesQuery();
 
-  const [triggerPage2, { data: page2Results, isLoading: isLoadingPage2, isSuccess: isSuccessPage2, isError: isErrorPage2, error: errorPage2 }] = useLazySearchMoviesQuery();
+  const [triggerPage2, { isLoading: isLoadingPage2, isSuccess: isSuccessPage2, isError: isErrorPage2, error: errorPage2 }] = useLazySearchMoviesQuery();
 
   const fetchSubmittedResults = async (searchInput: string) => {
     currTypeParam = currTypeParam as string;
