@@ -55,12 +55,11 @@ const EditPasswordForm: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            toast.success('Password successfully updated!');
-            setTimeout(() => {
+            toast.success('Password successfully updated! Please login with your new credentials.');
+             setTimeout(() => {
                 sendLogout()
                 navigate('/login');
-                toast.success('Please login with your new credentials!');
-            }, 2300);
+            }, 1000);
         }
         if (isError) {
             //@ts-ignore

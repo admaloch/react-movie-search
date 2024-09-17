@@ -46,12 +46,14 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
 
   useEffect(() => {
     if (isSuccess) {
+      toast.dismiss();
       toast.success('Review successfully updated');
       setTimeout(() => {
         closeModal()
-      }, 2300);
+      }, 600);
     }
     if (isError) {
+      toast.dismiss();
       //@ts-ignore
       toast.error(`Error: ${error?.data?.message || 'Failed to update review. Try again later.'}`);
     }

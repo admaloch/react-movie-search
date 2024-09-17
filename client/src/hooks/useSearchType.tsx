@@ -12,7 +12,7 @@ export const useSearchType = () => {
         dispatch(setSearchType(typeInput));
     };
 
-    const currType: SearchType | undefined = searchTypes.find(item => item.isActive)
+    const currType: SearchType = searchTypes.find(item => item.isActive)
 
     return { searchTypes, currType, searchTypeHandler };
 };

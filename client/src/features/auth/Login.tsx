@@ -35,7 +35,7 @@ const Login: React.FC = () => {
             toast.success('Login successful!');
             setTimeout(() => {
                 navigate(`/profiles/${id}`);
-            }, 2300);
+            }, 1000);
         } catch (err) {
             //@ts-ignore
             toast.error(`Error: ${err?.data?.message || 'Failed to load content.'}`);

@@ -45,7 +45,7 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
             toast.success('Review successfully submitted');
             setTimeout(() => {
                 closeModal()
-            }, 2300);
+            }, 600);
         }
         if (isError) {
             //@ts-ignore

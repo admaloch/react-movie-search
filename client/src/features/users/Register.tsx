@@ -52,10 +52,11 @@ const Register: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            toast.success('Registration successful!');
+            toast.dismiss();
+            toast.success('Registration successful! Please login with your new credentials.');
             setTimeout(() => {
                 navigate('/login');
-            }, 2300);
+            }, 1000);
         }
         if (isError) {
             //@ts-ignore

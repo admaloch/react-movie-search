@@ -7,6 +7,7 @@ import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import IconButton from '@mui/material/IconButton';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { toast } from 'react-toastify';
 
 interface DeleteReviewIconProps {
     reviewId: string;
@@ -21,6 +22,7 @@ export default function DeleteReviewIcon({ reviewId }: DeleteReviewIconProps): R
     const [deleteReview, {
         isLoading,
         isError,
+        isSuccess,
         error
     }] = useDeleteReviewMutation()
 
@@ -33,22 +35,21 @@ export default function DeleteReviewIcon({ reviewId }: DeleteReviewIconProps): R
 
     if (isLoading) {
         content = <HourglassTopIcon sx={{ fontSize: 27 }} />   
-    }
-
-    else if (isError) {
+    } else if (isError) {
         //@ts-ignore
         console.log(`Error: ${error?.data?.message || 'Could not delete review'}`)
         content = <InfoIcon sx={{ fontSize: 25 }} />
-    }
-
-    else {
+    } else if(isSuccess) {
+        toast.dismiss();
+        toast.success('Review successfully deleted');
+        content = null;
+    } else {
         content =
             <IconButton className='custom-icon-button' onClick={deleteReviewHandler} aria-label="delete">
                 <Tippy content="Delete review">
                     <DeleteForeverIcon sx={{ fontSize: 33, color: 'var(--color1)' }} />
                 </Tippy>
             </IconButton>
-
     }
     return content;
 }

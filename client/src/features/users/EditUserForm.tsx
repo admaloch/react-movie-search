@@ -49,12 +49,11 @@ const EditUserForm: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            toast.success('Account info successfully updated!');
+            toast.success('Account info successfully updated! Please login with your new credentials.');
             setTimeout(() => {
                 sendLogout()
                 navigate('/login');
-                toast.success('Please login with your new credentials!');
-            }, 2300);
+            }, 1000);
         }
         if (isError) {
             //@ts-ignore

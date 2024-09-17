@@ -8,7 +8,7 @@ import { MainSearchProps } from '../../models/SliderProps'
 function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
 
     const { currType } = useSearchType()
-    const currItemHeader = `Search ${currType.description}`
+    const currItemHeader = currType ? `Search ${currType.description}` : null
     let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'hide-slider main-search-section'
 
     return (
