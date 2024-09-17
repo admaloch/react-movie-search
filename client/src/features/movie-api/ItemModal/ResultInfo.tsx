@@ -1,6 +1,11 @@
-import ResultInfoProps from '../../../models/ResultInfoProps'
 import React from 'react'
 import ShowMovieReviews from '../../reviews/ShowMovieReviews'
+import { OmdbItem } from '../../../models/ItemApiProps';
+
+interface ResultInfoProps {
+  item: OmdbItem;
+  year: number;
+}
 
 export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.Element {
   return (

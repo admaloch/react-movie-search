@@ -3,12 +3,12 @@ import ItemModal from './ItemModal'
 import Modal from '../../../components/UI/Modal'
 import { useLazyGetMovieByIdQuery } from '../omdbApiSlice'
 import { toast } from 'react-toastify'
-import ChildrenProps from '../../../models/ChildrenProps'
 
 //this accepts an item like a li or btn as children.. and an imdbId then wraps a div around it and generates a request to omdb endpoint to get the movie by id and displays the movie in a modal
 
-interface ListItemModalProps extends ChildrenProps {
+interface ListItemModalProps {
     imdbId: string;
+    children: JSX.Element;
 }
 
 export default function ListItemModal({ children, imdbId }: ListItemModalProps): React.JSX.Element | null {

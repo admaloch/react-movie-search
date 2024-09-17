@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { IconButton, Popover, Typography } from '@mui/material';
-import ChildrenProps from '../../models/ChildrenProps';
 
-interface PopoverIconProps extends ChildrenProps {
+interface PopoverIconProps {
     popoverText: string;
+    children: JSX.Element;
 }
 
 function PopoverIcon({ popoverText, children }: PopoverIconProps): JSX.Element {

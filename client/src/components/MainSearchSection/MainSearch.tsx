@@ -3,9 +3,12 @@ import { useSearchType } from "../../hooks/useSearchType";
 import "./MainSearch.css"
 import SearchForm from "../../features/movie-api/search-input/SearchForm.js"
 import SearchTypeButtons from "./SearchTypeButtons";
-import { MainSearchProps } from '../../models/SliderProps'
 
-function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Element {
+ interface MainSearchProps  {
+    isSliderActive: Boolean;
+}
+
+function MainSearch({ isSliderActive }: MainSearchProps): JSX.Element {
 
     const { currType } = useSearchType()
     const currItemHeader = currType ? `Search ${currType.description}` : null
@@ -14,7 +17,7 @@ function MainSearch({ isSliderActive, hideSlider }: MainSearchProps): JSX.Elemen
     return (
         <div className={sliderClass}>
             <h1 className="text-center">{currItemHeader}</h1>
-            <SearchTypeButtons hideSlider={hideSlider} />
+            <SearchTypeButtons  />
             <SearchForm />
         </div>
     )

@@ -4,8 +4,16 @@ import { randomColorGen } from '../../../utility/utility'
 import ProgressBar from "./ProgressBar"
 import { useEffect } from "react"
 import { useSearchType } from "../../../hooks/useSearchType"
-import { SearchInfoProps } from "../../../models/SearchInfoProps"
 import { useOmdbState } from "../../../hooks/useOmdbState"
+import ProgBar from "../../../models/ProgBar"
+
+interface SearchInfoProps {
+    progBar: ProgBar[];
+    isSliderActive: Boolean;
+    setProgBar: (progBarArr: ProgBar[]) => void;
+    sliderIndex: number;
+    changeIndexHandler: (newIndex: number) => void;
+}
 
 const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIndexHandler }: SearchInfoProps): JSX.Element => {
    

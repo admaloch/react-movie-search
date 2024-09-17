@@ -3,7 +3,6 @@ import HoverInfo from "../../../components/movie-item/HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import { OmdbItemInterface } from "../../../models/ItemApiProps";
-
 interface SliderItemProps extends OmdbItemInterface {
     showArrowFunc: () => void;
     hideArrowFunc: () => void;

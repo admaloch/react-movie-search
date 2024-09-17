@@ -1,5 +1,10 @@
+import ProgBar from "../../../models/ProgBar";
 import ProgressItem from "./ProgressItem";
-import ProgressBarProps from "../../../models/ProgressBar";
+
+interface ProgressBarProps {
+    progBar: ProgBar[];
+    changeIndexHandler: (newIndex: number) => void;
+}
 
 const ProgressBar = ({ progBar, changeIndexHandler }: ProgressBarProps):JSX.Element => {
     return (

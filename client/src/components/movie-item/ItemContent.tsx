@@ -7,11 +7,11 @@ import ListItemModal from "../../features/movie-api/ItemModal/ListItemModal";
 import { IconButton } from "@mui/material";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { ModalContentProps } from "../../models/ListItemProps";
+import { OmdbItemInterface } from "../../models/ItemApiProps";
 
 export default function ItemContent({
   item,
-}: ModalContentProps): JSX.Element | null {
+}: OmdbItemInterface): JSX.Element | null {
     
   if (!item) return null;
   

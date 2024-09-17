@@ -1,4 +1,9 @@
-import ProgressItemProps from "../../../models/ProgressItemProps"
+
+interface ProgressItemProps {
+    id: number; 
+    isActive: Boolean;
+    changeIndexHandler: (newIndex: number) => void;
+}
 
 const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): JSX.Element => {
 

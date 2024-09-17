@@ -2,10 +2,17 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Slider from '../../../features/movie-api/slider-item/Slider';
 import './Slider.css'
-import SliderContainerProps from '../../../models/SliderContainerProps';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useOmdbState } from '../../../hooks/useOmdbState';
+import ProgBar from '../../../models/ProgBar';
+
+interface SliderContainerProps {
+    increaseIndexHandler: () => void;
+    decreaseIndexHandler: () => void;
+    isSliderActive: Boolean;
+    progBar: ProgBar[];
+}
 
 const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderActive, progBar }: SliderContainerProps): JSX.Element => {
 

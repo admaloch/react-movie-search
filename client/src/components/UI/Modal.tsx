@@ -2,18 +2,15 @@
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
-export interface ModalProps {
+ interface ModalProps {
     closeModal: () => void;
     open: boolean;
     isTimer?: boolean;
     isCloseOnClick?: boolean;
-}
-
-export interface MainModalProps extends ModalProps {
     children: JSX.Element | null;
 }
 
-export default function Modal({ open, children, closeModal }: MainModalProps): JSX.Element | null {
+export default function Modal({ open, children, closeModal }: ModalProps): JSX.Element | null {
 
     if (!open) return null;
 

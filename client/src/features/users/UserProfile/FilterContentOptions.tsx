@@ -7,11 +7,11 @@ interface FilterContentOptionsProps {
     setIsWatched: (isWatched: string) => void;
 }
 
-export default function FilterContentOptions({ hideSlider, isWatched, setIsWatched }: FilterContentOptionsProps) { 
+export default function FilterContentOptions({ isWatched, setIsWatched }: FilterContentOptionsProps) { 
     
     return (
         <>
-            <SearchTypeButtons hideSlider={hideSlider} />
+            <SearchTypeButtons/>
             <IsWatchedBtns
                 isWatched={isWatched}
                 setIsWatched={setIsWatched}

@@ -3,9 +3,8 @@ import './Error.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import useAuth from '../../../hooks/useAuth';
-import TextProps from '../../../models/TextProps';
 
-export default function Error({ text }: TextProps): JSX.Element {
+export default function Error({ text }: {text: string} ): JSX.Element {
     const navigate = useNavigate();
 
     const { isLoggedIn } = useAuth()

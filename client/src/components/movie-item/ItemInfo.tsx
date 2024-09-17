@@ -1,5 +1,9 @@
 import { OmdbItem } from '../../models/ItemApiProps'
-import ItemInfoProps from '../../models/ItemInfoProps'
+
+interface ItemInfoProps {
+    closeBioOverlay: () => void;
+    item: OmdbItem;
+}
 
 export default function ItemInfo({ item, closeBioOverlay }: ItemInfoProps): JSX.Element | null {
 

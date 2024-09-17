@@ -5,7 +5,7 @@ import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimatio
 import ItemError from '../../../components/UI/errors/ItemError';
 import CloseIcon from '@mui/icons-material/Close';
 import imageNotFound from '../../../assets/image_not_found.png'
-import { OmdbItemWithRTK } from '../../../models/ItemApiProps';
+import { OmdbItemWithRTK } from '../../../models/RTKQueryProps'; 
 
 interface ItemModalInterface extends OmdbItemWithRTK {
     closeModal: () => void;

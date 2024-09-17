@@ -4,10 +4,34 @@ import ErrorMsg from './ErrorMsg/ErrorMsg';
 import React from 'react';
 import SearchInfo from './search-info/SearchInfo';
 import SliderContainer from './slider-container/SliderContainer';
-import { MainSliderProps } from '../../models/SliderProps';
-import { SliderIndexState, SliderActions } from '../../models/SliderIndexState';
 import ProgBar from '../../models/ProgBar';
 import { useOmdbState } from '../../hooks/useOmdbState';
+
+export interface SliderIndexState {
+    progBar: ProgBar[];
+    index: number;
+}
+interface IncrementType {
+    type: 'increment';
+}
+interface DecrementType {
+    type: 'decrement';
+}
+interface ChangeIndexType {
+    type: 'changeIndex';
+    newIndex: number;
+}
+interface UpdateProgType {
+    type: 'updateProgBar';
+    progBarArr: ProgBar[];
+}
+interface MainSliderProps {
+    showSlider: () => void;
+    isSliderActive: Boolean;
+    hideSlider: () => void;
+}
+
+type SliderActions = IncrementType| DecrementType| ChangeIndexType| UpdateProgType;
 
 const reducer = (sliderIndex: SliderIndexState, action: SliderActions) => {
     let newIndexVal = 0

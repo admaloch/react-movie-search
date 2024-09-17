@@ -1,9 +1,5 @@
-import { RTKQueryInterface } from "./RTKQueryProps";
 
-interface Ratings {
-    Source: string;
-    Value: string;
-}
+
 
 export interface SmallOmdbItem {
     Title: string;
@@ -28,28 +24,33 @@ export interface OmdbItem extends SmallOmdbItem {
     Response: string;
 }
 
-export const defaultOmdbItem: OmdbItem = {
-    Title: '',
-    Year: '',
-    Rated: '',
-    Released: '',
-    Runtime: '',
-    Genre: '',
-    Director: '',
-    Writer: '',
-    Actors: '',
-    Plot: '',
-    Language: '',
-    Country: '',
-    Poster: '',
-    Ratings: [],
-    imdbID: '',
-    Type: '',
-    Response: '',
-};
+interface Ratings {
+    Source: string;
+    Value: string;
+}
+
+// export const defaultOmdbItem: OmdbItem = {
+//     Title: '',
+//     Year: '',
+//     Rated: '',
+//     Released: '',
+//     Runtime: '',
+//     Genre: '',
+//     Director: '',
+//     Writer: '',
+//     Actors: '',
+//     Plot: '',
+//     Language: '',
+//     Country: '',
+//     Poster: '',
+//     Ratings: [],
+//     imdbID: '',
+//     Type: '',
+//     Response: '',
+// };
 
 export interface OmdbItemInterface {
     item: OmdbItem | null | undefined;
   }
-//for rtk query 
-  export interface OmdbItemWithRTK extends RTKQueryInterface, OmdbItemInterface {}
+  
+

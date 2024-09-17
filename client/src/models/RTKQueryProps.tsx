@@ -1,6 +1,6 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import MovieReviewProps from "./MovieReviewProps";
+import { OmdbItemInterface } from "./ItemApiProps";
 
 export interface RTKQueryInterface {
     isLoading?: Boolean;
@@ -9,11 +9,6 @@ export interface RTKQueryInterface {
     error?: FetchBaseQueryError | SerializedError | null;
 }
 
-export interface RTKReviewResultInterface {
-    ids: string[];
-    entities: {
-        [key: string]: MovieReviewProps;
-    };
-}
-
+//for rtk query with omdbAPI item 
+export interface OmdbItemWithRTK extends RTKQueryInterface, OmdbItemInterface {}
 

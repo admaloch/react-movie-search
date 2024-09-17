@@ -1,8 +1,12 @@
 import GoogleIcon from '@mui/icons-material/Google';
-import { SearchBtnProps } from '../../../models/SearchBtnProps';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { IconButton } from '@mui/material';
+
+interface SearchBtnProps {
+  type: string;
+  searchLink: string;
+}
 
 export default function SearchBtn({ searchLink }: SearchBtnProps): JSX.Element {
 

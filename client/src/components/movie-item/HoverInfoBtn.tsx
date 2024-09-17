@@ -1,9 +1,12 @@
 
 import ViewHeadlineSharpIcon from '@mui/icons-material/ViewHeadlineSharp';
-import openBioOverlayProps from '../../models/OpenBioOverlayProps';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { IconButton } from '@mui/material';
+
+interface openBioOverlayProps {
+    openBioOverlay: () => void;
+}
 
 export default function HoverInfoBtn({ openBioOverlay }: openBioOverlayProps): JSX.Element {
 

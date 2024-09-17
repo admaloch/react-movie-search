@@ -5,7 +5,13 @@ import {
 import { apiSlice } from "../../app/api/apiSlice"
 import MovieReviewProps from "../../models/MovieReviewProps";
 import { RootState } from "../../app/store";
-import { RTKReviewResultInterface } from "../../models/RTKQueryProps";
+
+interface RTKReviewResultInterface {
+    ids: string[];
+    entities: {
+        [key: string]: MovieReviewProps;
+    };
+}
 
 const reviewsAdapter = createEntityAdapter<MovieReviewProps>()
 

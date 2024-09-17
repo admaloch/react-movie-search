@@ -1,6 +1,10 @@
 import React from "react";
-import { SearchTypeBtnProps } from "../../models/SliderProps";
 import { useSearchType } from "../../hooks/useSearchType";
+
+interface SearchTypeBtnProps  {
+    type: string;
+    isActive: Boolean;
+}
 
 const SearchTypeButton = ({ type, isActive }: SearchTypeBtnProps): JSX.Element => {
 

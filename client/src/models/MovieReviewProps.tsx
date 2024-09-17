@@ -4,12 +4,11 @@ export default interface MovieReviewProps {
     imdbId: string;
     rating: string;
     title: string;
-    user: MovieReviewUserProps;
+    user: {
+        _id: string;
+        username: string;
+    };
     __v: string;
     _id: string;
 }
 
-interface MovieReviewUserProps {
-    _id: string;
-    username: string;
-}

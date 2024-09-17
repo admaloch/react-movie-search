@@ -13,9 +13,7 @@ function MainPage() {
        <div className="main-slider-content main-item-content">
          <div className="content-container">
           <MainSearch
-            isSliderActive={isSliderActive}
-            hideSlider={hideSlider}
-          />
+            isSliderActive={isSliderActive}/>
           <MainSlider
             isSliderActive={isSliderActive}
             showSlider={showSlider}
