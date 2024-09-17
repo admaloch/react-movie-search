@@ -27,7 +27,7 @@ export default function ListAllUsers() {
     return (
         <div className="main-item-content all-users-section">
 
-            <h2>All Users:</h2>
+            <h1>All Users:</h1>
             <div className="user-list">
                 {usersIds.map(id => <User key={id} userId={id} />)}
             </div>

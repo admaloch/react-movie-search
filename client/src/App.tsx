@@ -17,6 +17,7 @@ import EditPasswordForm from './features/users/EditPasswordForm'
 import EditUserForm from './features/users/EditUserForm'
 import RequireAuth from './features/auth/RequireAuth'
 import useTitle from './hooks/useTitle'
+import Credits from './components/credits/Credits'
 function App() {
 
     useTitle('Movie Brain')
@@ -45,6 +46,7 @@ function App() {
                                         <Route path=":id/password" element={<EditPasswordForm />} />
                                     </Route>
                                 </Route>
+                                <Route path='/credits' element={<Credits />} />
                                 <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
                             </Route>
                         </Route>

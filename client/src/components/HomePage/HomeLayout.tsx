@@ -5,7 +5,7 @@ import bgBrain from '../../assets/big-brain.png'
 
 export default function HomeLayout() {
   return (
-    <BGSection bgClass="theatre-bg4">
+    <BGSection bgClass="theatre-bg">
       <main className='main-content-container'>
         <Outlet />
         <img className='background-img' src={bgBrain} alt="background-brain" />

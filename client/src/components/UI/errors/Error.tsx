@@ -17,7 +17,7 @@ export default function Error({ text }: {text: string} ): JSX.Element {
         <div className="main-item-content">
             <div className="error-content page-error">
                 <SentimentDissatisfiedIcon sx={{ fontSize: 100 }} />
-                <h2>{text}</h2>
+                <h1>{text}</h1>
                 {!isLoggedIn &&
                     <>
                         <div className="err-link">

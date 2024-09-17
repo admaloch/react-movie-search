@@ -27,11 +27,11 @@ const Login: React.FC = () => {
     const [persist, setPersist] = usePersist()
 
     const onSubmit: SubmitHandler<IFormInput> = async ({ email, password }) => {
+        toast.dismiss();
         try {
             // const { email, password } = data
             const { accessToken, id } = await login({ email, password }).unwrap()
             dispatch(setCredentials({ accessToken }))
-            toast.dismiss();
             toast.success('Login successful!');
             setTimeout(() => {
                 navigate(`/profiles/${id}`);
