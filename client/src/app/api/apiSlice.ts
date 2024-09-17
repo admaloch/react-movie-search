@@ -4,7 +4,7 @@ import { RootState } from '../store';
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:3500',
+    baseUrl: 'https://moviebrain-api.onrender.com',
     credentials: 'include',
     //@ts-ignore - return to type issue later
     prepareHeaders: (headers, { getState }: { getState: () => RootState }) => {
