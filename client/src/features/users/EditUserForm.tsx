@@ -49,6 +49,7 @@ const EditUserForm: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
+            toast.dismiss()
             toast.success('Account info successfully updated! Please login with your new credentials.');
             setTimeout(() => {
                 sendLogout()

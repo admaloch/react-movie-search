@@ -41,10 +41,6 @@ const Register: React.FC = () => {
         toast.dismiss()
         try {
             await addNewUser(data).unwrap();
-            // toast.success('Registration successful!');
-            // setTimeout(() => {
-            //     navigate('/myprofile');
-            // }, 2300);
         } catch (err) {
             console.log('Error', err)
         }

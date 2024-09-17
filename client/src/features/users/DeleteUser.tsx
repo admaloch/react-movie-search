@@ -27,6 +27,7 @@ function DeleteUser({ user }: UserInfoProps): React.JSX.Element | null {
 
     useEffect(() => {
         if (isSuccess) {
+            toast.dismiss()
             toast.success('Successfully deleted account!');
             navigate('/users/register');
         }
