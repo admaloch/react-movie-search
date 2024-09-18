@@ -2,9 +2,11 @@ import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchB
 import { setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../store';
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3500' : 'https://moviebrain.onrender.com'
+
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://moviebrain-api.onrender.com',
+    baseUrl: url,
     credentials: 'include',
     //@ts-ignore - return to type issue later
     prepareHeaders: (headers, { getState }: { getState: () => RootState }) => {
