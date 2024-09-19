@@ -2,7 +2,6 @@ import SearchTypeButtons from '../../../components/MainSearchSection/SearchTypeB
 import IsWatchedBtns from './IsWatchedBtns'
 
 interface FilterContentOptionsProps {
-    hideSlider: () => void;
     isWatched: string;
     setIsWatched: (isWatched: string) => void;
 }

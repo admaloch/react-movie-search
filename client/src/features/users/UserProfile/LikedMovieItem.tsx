@@ -1,4 +1,3 @@
-
 import { useSearchType } from "../../../hooks/useSearchType";
 import LikedMovieContent from "./LikedMovieContent";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
@@ -12,51 +11,54 @@ interface LikedMovieItemProps {
 }
 
 export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }: LikedMovieItemProps): React.JSX.Element | null {
+    
+    const { currType } = useSearchType();
+    const mainTypeFilter = currType.type;
 
-    const { currType } = useSearchType()
-
-    const mainTypeFilter = currType.type
-
+    // Hook call is always executed
     const { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
 
-    let content
-
+    // Early return if loading
     if (isLoading) {
-        content = <CircleAnimation />;
-    } 
+        return <CircleAnimation />;
+    }
 
-    else if (isError) {
-        content =
+    // Early return if there's an error
+    if (isError) {
+        return (
             //@ts-ignore
             <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
+        );
     }
 
-    else if (isSuccess) {
-        content =
-            <LikedMovieContent
-                key={imdbId}
-                apiItem={movieItem}
-                imdbID={imdbId}
-                isLoading={isLoading}
-            />
-    }
+    // Ensure movieItem is defined before accessing its properties
+    if (isSuccess && movieItem) {
+        const itemTypeFilter = movieItem.Type;
 
-    const itemTypeFilter = movieItem && movieItem.Type
+        // Check the filter logic to return null if conditions are not met
+        if (
+            (hasWatched && isWatchedFilter === 'notWatched') ||
+            (!hasWatched && isWatchedFilter === 'watched') ||
+            (mainTypeFilter === 'Movie' && itemTypeFilter !== 'movie') ||
+            (mainTypeFilter === 'TV' && itemTypeFilter !== 'series')
+        ) {
+            return null;
+        }
 
-    if (!itemTypeFilter ||
-        hasWatched && isWatchedFilter === 'notWatched' ||
-        !hasWatched && isWatchedFilter === 'watched' ||
-        mainTypeFilter === 'Movie' && itemTypeFilter !== 'movie' ||
-        mainTypeFilter === 'TV' && itemTypeFilter !== 'series') {
-        return null
-    }
-
-    return (
-        <div className="movie-item-container">
-            <div className="movie-item">
-                {content}
+        return (
+            <div className="movie-item-container">
+                <div className="movie-item">
+                    <LikedMovieContent
+                        key={imdbId}
+                        apiItem={movieItem}
+                        imdbID={imdbId}
+                        isLoading={isLoading}
+                    />
+                </div>
             </div>
-        </div>
+        );
+    }
 
-    )
+    // Return null if no conditions match
+    return null;
 }

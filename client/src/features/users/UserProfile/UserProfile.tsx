@@ -19,13 +19,11 @@ export default function UserProfile() {
   let { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
   if (isLoading) return <CircleAnimation />;
   //@ts-ignore
-  else if (isError) return <Error text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
+  else if (isError || !user) return <Error text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
 
   const typedUser = user as UserItemProps;
 
   const { likedMovies } = typedUser
-
-  const hideSlider = () => { return }
 
   return (
     <main className='user-profile-container'>
@@ -33,7 +31,6 @@ export default function UserProfile() {
       <UserInfo user={typedUser} />
 
       <FilterContentOptions
-        hideSlider={hideSlider}
         isWatched={isWatched}
         setIsWatched={setIsWatched}
       />
