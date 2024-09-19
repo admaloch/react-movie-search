@@ -1,10 +1,12 @@
 import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../store';
+//@ts-ignore
+const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3500' : 'https://moviebrain.onrender.com'
+const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://moviebrain.onrender.com'
 
-
+console.log(nodeEnvironment)
 const baseQuery = fetchBaseQuery({
     baseUrl: url,
     credentials: 'include',

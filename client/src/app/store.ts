@@ -6,7 +6,8 @@ import searchTypeReducer from '../features/search-options/SearchTypeSlice'
 import omdbStateReducer from '../features/movie-api/omdbSlice'
 import { omdbApiSlice } from "../features/movie-api/omdbApiSlice"
 
-const isDevTools = process.env.NODE_ENV === 'development' ? true : false;
+//@ts-ignore
+const nodeEnvironment = import.meta.env.VITE_NODE_ENV;
 
 export const store = configureStore({
     reducer: {
@@ -18,7 +19,7 @@ export const store = configureStore({
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(apiSlice.middleware, omdbApiSlice.middleware),
-    devTools: isDevTools,
+    devTools: nodeEnvironment === 'development' ? true : false,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

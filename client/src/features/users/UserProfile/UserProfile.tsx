@@ -16,8 +16,7 @@ export default function UserProfile() {
 
   const { id } = useParams()
 
-  const { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
-
+  let { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
   if (isLoading) return <CircleAnimation />;
   //@ts-ignore
   else if (isError) return <Error text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
