@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist" # Adjust this if your build folder is different
+  publish = "client/dist" # Adjust this if your build folder is different
 
 [build.environment]
   NODE_VERSION = "22"
