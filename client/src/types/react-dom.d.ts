@@ -1,4 +1,8 @@
-declare module 'react-dom' {
-    import * as React from 'react';
-    export function createPortal(children: React.ReactNode, container: Element): React.ReactPortal;
-  }
+declare module 'react-dom/client' {
+    import * as ReactDOM from 'react-dom';
+    export * from 'react-dom';
+    export const createRoot: (container: Element | DocumentFragment) => {
+        render: (element: React.ReactNode) => void;
+        unmount: () => void;
+    };
+}
