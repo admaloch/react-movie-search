@@ -2,8 +2,7 @@ import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchB
 import { setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../store';
 //@ts-ignore
-// const nodeEnvironment = import.meta.env.VITE_NODE_ENV
-const nodeEnvironment = 'development'
+const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 
 const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://movie-brain.netlify.app'
 

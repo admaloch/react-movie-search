@@ -9,8 +9,7 @@ interface SearchResponse {
 
 const BASE_URL = 'https://omdbapi.com/';
 //@ts-ignore
-// const API_KEY = import.meta.env.VITE_OMDB_API_KEY
-const API_KEY = '&apikey=84200d7a';
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 export const omdbApiSlice = createApi({
   reducerPath: 'omdbApi',
