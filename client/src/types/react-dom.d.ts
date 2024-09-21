@@ -1,8 +1,8 @@
-declare module 'react-dom/client' {
+declare module 'react-dom' {
     import * as ReactDOM from 'react-dom';
-    export * from 'react-dom';
-    export const createRoot: (container: Element | DocumentFragment) => {
-        render: (element: React.ReactNode) => void;
-        unmount: () => void;
-    };
+    export = ReactDOM;
+}
+declare module 'react-dom/client' {
+    import * as ReactDOMClient from 'react-dom/client';
+    export = ReactDOMClient;
 }
