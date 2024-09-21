@@ -12,6 +12,7 @@
     /* Bundler mode */
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "jsx": "react-jsx",
     /* Linting */
