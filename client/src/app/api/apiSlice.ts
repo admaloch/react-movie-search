@@ -6,6 +6,7 @@ const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 
 const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://movie-brain-api.onrender.com'
 
+
 const baseQuery = fetchBaseQuery({
     baseUrl: url,
     credentials: 'include',
