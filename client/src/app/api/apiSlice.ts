@@ -4,8 +4,7 @@ import { RootState } from '../store';
 //@ts-ignore
 const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 
-const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://movie-brain.netlify.app'
-
+const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://movie-brain-api.onrender.com'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: url,
