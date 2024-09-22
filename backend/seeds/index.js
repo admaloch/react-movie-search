@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/User'); // Adjust the path as necessary
 const {userModelData} = require('./userData')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const dbURI = 'mongodb+srv://admaloch:Kik0d0ggie246810@cluster0.5ji8t1s.mongodb.net/MoviesDB?retryWrites=true&w=majority&appName=Cluster0'
 

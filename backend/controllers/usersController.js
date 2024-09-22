@@ -1,6 +1,6 @@
 const UserModel = require('../models/User')
 const ReviewModel = require('../models/Review')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { genDupErrMsg } = require('../utils/controllerHelpers')
 const handlePatchDuplication = require('../utils/controllerHelpers')

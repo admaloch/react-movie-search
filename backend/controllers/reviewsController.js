@@ -1,6 +1,6 @@
 const UserModel = require('../models/User')
 const ReviewModel = require('../models/Review')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 // @desc Get all reviews
 // @route GET /reviews
