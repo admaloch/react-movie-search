@@ -16,19 +16,21 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }: 
     const mainTypeFilter = currType.type;
 
     // Hook call is always executed
-    const { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
+    let { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
+    let isLoadingg = true;
+    let content;
 
-    // Early return if loading
-    if (isLoading) {
-        return <CircleAnimation />;
+    if (isLoadingg) {
+        content = <CircleAnimation />;
     }
-
+          
     // Early return if there's an error
-    if (isError) {
-        return (
-            //@ts-ignore
+          
+        if (isError) {
+            
+        content =
+            //@ts-ignore  
             <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
-        );
     }
 
     // Ensure movieItem is defined before accessing its properties
@@ -45,20 +47,25 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }: 
             return null;
         }
 
-        return (
-            <div className="movie-item-container">
-                <div className="movie-item">
-                    <LikedMovieContent
-                        key={imdbId}
-                        apiItem={movieItem}
-                        imdbID={imdbId}
-                        isLoading={isLoading}
-                    />
-                </div>
-            </div>
-        );
+        content = 
+            <LikedMovieContent
+            key={imdbId}
+            apiItem={movieItem}
+            imdbID={imdbId}
+            isLoading={isLoading}
+        />
+
+       
     }
+  
+       
 
     // Return null if no conditions match
-    return null;
+    return (
+        <div className="movie-item-container">
+            <div className="movie-item">
+               {content}
+            </div>
+        </div>
+    );
 }

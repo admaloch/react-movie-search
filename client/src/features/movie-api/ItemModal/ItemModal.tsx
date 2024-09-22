@@ -28,7 +28,8 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
     else if (isError) {
         // @ts-ignore
         content = <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
-    } else {
+     } 
+    else  {
         content = <div className='modal-content-container'>
             <div onClick={closeModalHandler} className="modal-close-icon">
                 <CloseIcon fontSize="large" />
@@ -40,7 +41,6 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
             <ModalContent
                 item={item}
             />
-
         </div>
     }
 
