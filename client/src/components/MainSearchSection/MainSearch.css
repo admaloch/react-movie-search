@@ -77,13 +77,14 @@
 }
 
 #searchForm .submit-btn {
-    width: 110px;
+    width: 120px;
     border: var(--color2) solid 3px;
     color: var(--containertext);
     background-color: var(--containerBackground);
     transition: all 300ms ease-in-out;
     font-size: 1.5rem;
-    padding: 0 1rem .2rem;
+    padding: 0;
+    z-index: 100;
 }
 
 #searchForm button:hover {

@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+
 *,
 *::after,
 *::before {
     box-sizing: border-box;
 }
-/* * {
-    border: red solid 2px;
-} */
 
 u,
 p {
@@ -65,7 +65,6 @@ body {
     margin: 0;
     background-color: var(--mainBackground);
     color: var(--text);
-    font-family: 'Oswald', sans-serif;
     letter-spacing: .3rem;
     display: flex;
     width: 100%;
@@ -74,7 +73,14 @@ body {
     align-items: center;
     /* overscroll-behavior: none; */
     font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+
 }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo', sans-serif;
+  }
 
 #root {
     min-height: 100vh;
@@ -84,6 +90,7 @@ body {
     overflow-x: hidden;
     width: 100vw;
 }
+
 
 .main-item-content {
     height: 100%;

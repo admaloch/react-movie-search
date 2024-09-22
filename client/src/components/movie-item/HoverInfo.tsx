@@ -12,16 +12,17 @@ const HoverInfo = ({
   error
 }: OmdbItemWithRTK): JSX.Element | null => {
     
-  if (!item) return null;
 
   let content;
 
-  if (isLoading) {
+   if (isLoading) {
     content = <CircleAnimation />;
-  } else if (isError) {
+  } 
+   else if (isError ||  !item) {
     // @ts-ignore
     content = <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`}/>
-  } else {
+  }
+   else {
     content = (
       <>
         <ItemContent item={item} />

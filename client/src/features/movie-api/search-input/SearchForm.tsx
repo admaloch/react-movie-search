@@ -27,6 +27,8 @@ const SearchForm = (): JSX.Element => {
         console.log(error)
     }
 
+    const isSubmitLoadingg = true
+
     const showSearchList = () => setIsListShown(true)
     const hideSearchList = () => setIsListShown(false)
 

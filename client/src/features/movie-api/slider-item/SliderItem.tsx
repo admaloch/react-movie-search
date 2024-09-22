@@ -38,14 +38,14 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
                 src={Poster !== 'N/A' ? Poster : image_not_found}
                 alt={imdbID}
             />
-            {movieItem &&
+     
                 <HoverInfo
                     item={movieItem}
                     isLoading={isLoading}
                     isError={isError}
                     error={error}
                 />
-            }
+            
         </div>
     )
 }
