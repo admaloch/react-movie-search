@@ -18,7 +18,7 @@ export default function HandleReviews({ imdbId, title }: HandleReviewsProps): Re
 
   if (isError) {
     //@ts-ignore
-    console.log(`Error: ${error.data.message}`)
+    console.log(`Error: ${error?.data?.message || 'Failed to load content.'}`)
     return null;
   }
 

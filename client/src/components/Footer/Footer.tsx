@@ -6,13 +6,13 @@ export default function Footer(): JSX.Element {
     return (
         <>
             <Outlet />
-            <div className='footer'>
+            <footer className='footer'>
                 <p>Developed by Davis Maloch</p>
                 <p>Created using OMDB API</p>
                 <a href="https://github.com/admaloch">
                     <GitHubIcon sx={{ marginRight: .5 }} />
                     Github</a>
-            </div>
+            </footer>
         </>
 
     )

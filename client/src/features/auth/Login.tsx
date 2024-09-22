@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './auth.css';
 import { toast } from 'react-toastify';
@@ -9,6 +9,8 @@ import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist';
 import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
+import { IconButton } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 interface IFormInput {
     email: string;
@@ -18,6 +20,7 @@ interface IFormInput {
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -46,6 +49,10 @@ const Login: React.FC = () => {
 
     if (isLoading) return <CircleAnimation />
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
@@ -70,19 +77,31 @@ const Login: React.FC = () => {
 
                 <div className="formGroup">
                     <label htmlFor="password" className="label">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        {...register('password', {
-                            required: 'Password is required',
-                            minLength: {
-                                value: 6,
-                                message: 'Password must be at least 6 characters'
-                            }
-                        })}
-                        name="password"
-                        className="input"
-                    />
+                    <div className="passwordInputWrapper">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="password"
+                            {...register('password', {
+                                required: 'Password is required',
+                                minLength: {
+                                    value: 8,
+                                    message: 'Password must be at least 8 characters long',
+                                },
+                                pattern: {
+                                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                    message: 'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character',
+                                },
+                            })}
+                            name="password"
+                            className="input"
+                        />
+                        <IconButton
+                            onClick={togglePasswordVisibility}
+                            aria-label="toggle password visibility"
+                        >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                    </div>
                     {errors.password && <span className="error">{errors.password.message}</span>}
                 </div>
 

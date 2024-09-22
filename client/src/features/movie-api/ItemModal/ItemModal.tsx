@@ -13,7 +13,6 @@ interface ItemModalInterface extends OmdbItemWithRTK {
 
 const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInterface): React.JSX.Element | null => {
 
-    if (!item) return null;
 
     const closeModalHandler = useCallback(() => {
         closeModal();
@@ -22,15 +21,18 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
 
     let content;
 
-    const image = item.Poster !== 'N/A' ? item.Poster : imageNotFound
-    const imageAlt = item.Poster !== 'N/A' ? `${item.Title}-poster` : 'image not found placeholder'
+
+
     if (isLoading) content = <CircleAnimation />
-    else if (isError) {
+    else if (isError || !item) {
         // @ts-ignore
         content = <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
      } 
     else  {
-        content = <div className='modal-content-container'>
+            const image = item.Poster !== 'N/A' ? item.Poster : imageNotFound
+            const imageAlt = item.Poster !== 'N/A' ? `${item.Title}-poster` : 'image not found placeholder'
+            
+            content = <div className='modal-content-container'>
             <div onClick={closeModalHandler} className="modal-close-icon">
                 <CloseIcon fontSize="large" />
             </div>

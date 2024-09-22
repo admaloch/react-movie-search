@@ -10,8 +10,8 @@ function MainPage() {
 
   return (
 
-       <div className="main-slider-content main-item-content">
-         <div className="content-container">
+       <main className="main-slider-content main-item-content">
+         <section className="content-container">
           <MainSearch
             isSliderActive={isSliderActive}/>
           <MainSlider
@@ -19,8 +19,8 @@ function MainPage() {
             showSlider={showSlider}
             hideSlider={hideSlider}
           />
-        </div>
-       </div>
+        </section>
+       </main>
 
   )
 }

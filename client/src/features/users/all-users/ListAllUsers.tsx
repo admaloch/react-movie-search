@@ -18,8 +18,8 @@ export default function ListAllUsers() {
     if (isLoading) return <CircleAnimation />;
 
     //@ts-ignore
-    if (isError ) return <Error text={`Error: ${error.data.message}. Check your internet connection and try again.`} />
-
+    if (isError ) return <Error text={'Something went wrong. Check your internet connection and try again.'} />
+console.log(error)
     if (!users) return null
 
     const usersIds = users.ids as string[]

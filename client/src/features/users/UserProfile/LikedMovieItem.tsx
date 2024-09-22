@@ -17,24 +17,20 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }: 
 
     // Hook call is always executed
     let { data: movieItem, isSuccess, isLoading, isError, error } = useGetMovieByIdQuery(imdbId);
-    let isLoadingg = true;
     let content;
 
-    if (isLoadingg) {
+    if (isLoading) {
         content = <CircleAnimation />;
     }
-          
-    // Early return if there's an error
-          
-        if (isError) {
-            
+                    
+   else if (isError) {  
         content =
             //@ts-ignore  
             <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`} />
     }
 
     // Ensure movieItem is defined before accessing its properties
-    if (isSuccess && movieItem) {
+   else if (isSuccess && movieItem) {
         const itemTypeFilter = movieItem.Type;
 
         // Check the filter logic to return null if conditions are not met
@@ -55,7 +51,8 @@ export default function LikedMovieItem({ imdbId, hasWatched, isWatchedFilter }: 
             isLoading={isLoading}
         />
 
-       
+    } else {
+        <ItemError text={'Something went wrong. Try refreshing your browser and try again.'} />
     }
   
        

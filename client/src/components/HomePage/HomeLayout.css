@@ -2,12 +2,10 @@
     position: relative;
     background-color: var(--navBackground);
     border-radius: 7px;
+    margin: 5rem 0;
 }
 
-.main-content-container h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
+
 
 .background-img {
     position: absolute;

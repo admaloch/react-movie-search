@@ -141,7 +141,7 @@ body {
   }
   .user-profile-container h1,
   .main-item-content h1 {
-    color: var(--color3);
+
     font-size: 3.5rem;
   }
 /* bootstrap Breakpoints
