@@ -42,7 +42,6 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
     }
 
     return content;
-
 };
 
 export default ItemModal;
