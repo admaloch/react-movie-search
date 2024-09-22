@@ -37,10 +37,7 @@ const ItemModal = ({ item, isLoading, isError, closeModal, error }: ItemModalInt
             <div className='modal-img-container'>
                 <img src={image} alt={imageAlt} />
             </div>
-
-            <ModalContent
-                item={item}
-            />
+            <ModalContent item={item}/>
         </div>
     }
 
