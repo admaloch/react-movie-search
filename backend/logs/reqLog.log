@@ -8187,3 +8187,13 @@
 20240922	11:36:23	b8305ff8-f860-403d-898e-0f9c9d0ae80a	GET	/reviews	http://localhost:5173
 20240922	11:36:23	fec674a9-dc16-4135-8ebe-fccf59f49dfe	GET	/auth/refresh	http://localhost:5173
 20240922	11:36:26	446a17a0-2c94-4cb2-a083-2597ca959481	GET	/users/66b94b7442d1d2092debee47	http://localhost:5173
+20240922	11:39:40	8ed5065c-8112-4622-92bd-44eba3f1ef65	GET	/reviews	http://localhost:5173
+20240922	11:39:40	698b89a6-ef5a-4501-9980-93a6a16f4549	GET	/auth/refresh	http://localhost:5173
+20240922	11:39:40	216754d3-7a9e-4e25-b592-ec65f54b4b42	GET	/users	http://localhost:5173
+20240922	11:41:29	d78d0e09-e526-401a-a348-5d8889634add	OPTIONS	/reviews	https://movie-brain.netlify.app
+20240922	11:41:29	2e93a7aa-e420-48f9-9c4c-4c56d90ba412	OPTIONS	/users	https://movie-brain.netlify.app
+20240922	11:41:29	75f27026-51dc-426a-8f90-9f97e577bff3	GET	/reviews	https://movie-brain.netlify.app
+20240922	11:41:29	74b746e5-ceec-49b3-8e14-c6e916e33ce6	GET	/users	https://movie-brain.netlify.app
+20240922	11:49:26	67bdda42-1677-45c2-ab23-fd8c6fbd8555	GET	/users	http://localhost:5173
+20240922	11:49:26	b7988cb8-ce00-4b4c-915e-68a30cbc0de0	GET	/auth/refresh	http://localhost:5173
+20240922	11:49:26	077bc788-5ad4-4813-834f-1adb57982cfd	GET	/reviews	http://localhost:5173
