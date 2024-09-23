@@ -55,6 +55,7 @@ const Register: React.FC = () => {
             }, 1000);
         }
         if (isError) {
+            console.log(error)
             //@ts-ignore
             toast.error(`Error: ${error?.data?.message || 'Failed to register new account. Try again later.'}`);
         }

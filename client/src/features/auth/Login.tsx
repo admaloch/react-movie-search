@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './auth.css';
 import { toast } from 'react-toastify';
@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist';
-import CircleAnimation from '../../components/UI/LoadAnimation/CircleAnimation';
 import { IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -23,35 +22,44 @@ const Login: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const [login, { isLoading }] = useLoginMutation()
+    const [login, { isLoading, error, isError, isSuccess }] = useLoginMutation();
 
-    const [persist, setPersist] = usePersist()
+    const [persist, setPersist] = usePersist();
 
-    const onSubmit: SubmitHandler<IFormInput> = async ({ email, password }) => {
+    // Memoize the onSubmit function to prevent unnecessary re-renders
+    const onSubmit: SubmitHandler<IFormInput> = useCallback(async ({ email, password }) => {
         toast.dismiss();
         try {
-            // const { email, password } = data
-            const { accessToken, id } = await login({ email, password }).unwrap()
-            dispatch(setCredentials({ accessToken }))
-            toast.success('Login successful!');
+            const { accessToken, id } = await login({ email, password }).unwrap();
+            dispatch(setCredentials({ accessToken }));
             setTimeout(() => {
                 navigate(`/profiles/${id}`);
             }, 1000);
         } catch (err) {
-            //@ts-ignore
-            toast.error(`Error: ${err?.data?.message || 'Failed to load content.'}`);
+            console.log(err);
         }
-    };
+    }, [login, navigate, dispatch, error]);
 
-    const handlePersistToggle = () => setPersist(prev => !prev)
+    useEffect(() => {
+        if(isSuccess) {
+            toast.dismiss();
+            toast.success('Login successful!');
+        }
+        if (isError) {
+            toast.error(`Error: ${(error as any)?.data?.message || 'Failed to login. Try again later.'}`);
+        }
+    }, [isError, error]);
 
-    if (isLoading) return <CircleAnimation />
+    // Memoize handlePersistToggle to prevent unnecessary re-renders
+    const handlePersistToggle = useCallback(() => setPersist(prev => !prev), [setPersist]);
 
-    const togglePasswordVisibility = () => {
-        setShowPassword((prev) => !prev);
-    };
+    // Memoize togglePasswordVisibility to prevent unnecessary re-renders
+    const togglePasswordVisibility = useCallback(() => {
+        setShowPassword(prev => !prev);
+    }, []);
+
 
     return (
         <>

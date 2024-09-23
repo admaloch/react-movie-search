@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-// Define the return type as a tuple containing a boolean and a setter function
 const usePersist = (): [boolean, React.Dispatch<React.SetStateAction<boolean>>] => {
-    const [persist, setPersist] = useState<boolean>(() => {
-        // Parse localStorage value, ensuring it's treated as a boolean
+    const getPersistValue = useMemo(() => {
         const storedPersist = localStorage.getItem("persist");
-        return storedPersist ? JSON.parse(storedPersist) : false;
-    });
+        return storedPersist ? JSON.parse(storedPersist) === true : false;
+    }, []);
+
+    const [persist, setPersist] = useState<boolean>(getPersistValue);
 
     useEffect(() => {
         localStorage.setItem("persist", JSON.stringify(persist));
