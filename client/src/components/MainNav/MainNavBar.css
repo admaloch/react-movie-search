@@ -1,5 +1,5 @@
 header {
-	height: 80px;
+	height: var(--headerHeight);
 	padding: 0 2rem;
 	color: var(--text);
 	width: 100%;
@@ -113,10 +113,20 @@ nav {
 .logo h3 {
 	font-size: 2.5rem;
 	color: var(--text);
+	margin-bottom: 0;
 }
 
 .logo img {
-	width: 50px;
+	width: 30px;
+	/* display: none; */
+}
+
+@media screen and (min-width: 600px) {
+	.logo img {
+		display: block;
+		width: 50px;
+
+	}
 }
 
 .logo h3,

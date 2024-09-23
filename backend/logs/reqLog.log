@@ -8625,3 +8625,12 @@
 20240923	09:44:15	2205d768-6aab-43a4-9bba-214888d71833	POST	/users	http://localhost:5173
 20240923	09:44:23	9ccc2d61-fc1b-4216-8a87-2aa2e92450a6	OPTIONS	/users	http://localhost:5173
 20240923	09:44:23	6c0cce21-d4f1-42ab-a615-9828fc50e120	POST	/users	http://localhost:5173
+20240923	09:49:59	eab2e04f-b620-427d-8ab3-e4e790fbe222	GET	/users	http://localhost:5173
+20240923	09:49:59	3864f84a-59ae-4396-927c-645fb539da3c	GET	/reviews	http://localhost:5173
+20240923	09:49:59	92265daa-11f3-4788-8195-94932973d469	GET	/auth/refresh	http://localhost:5173
+20240923	09:50:28	d3aad86d-6ee1-409a-bb21-9136f672fcc9	GET	/reviews	http://localhost:5173
+20240923	09:50:28	f47f8ee1-14de-41f0-a72e-4c5f62af7588	GET	/users	http://localhost:5173
+20240923	09:50:28	49d8bf7e-d815-45af-853c-87ad84c29e76	GET	/auth/refresh	http://localhost:5173
+20240923	09:54:10	499e6aab-dac4-4719-a8f6-55819d2e2357	GET	/users	http://localhost:5173
+20240923	09:54:10	eb5fee2a-0db3-4d2b-a1c0-38801943cb96	GET	/reviews	http://localhost:5173
+20240923	09:54:10	69a5db2e-6f74-4578-85bc-ca2dbbc82f78	GET	/auth/refresh	http://localhost:5173

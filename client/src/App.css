@@ -60,7 +60,16 @@ html {
     --color3: #1F7A8C;
     --color4: #e63946;
     --overlay: rgba(2, 43, 58, .7);
+    --headerHeight: 40px;
 }
+
+@media screen and (min-width: 600px) {
+    :root {
+        --headerHeight: 80px;
+    }
+    
+}
+
 body {
     margin: 0;
     background-color: var(--mainBackground);
@@ -95,7 +104,7 @@ body {
 .main-item-content {
     height: 100%;
     width: 100%;
-    margin-top: 80px;
+    margin-top: var(--headerHeight);
     display: flex;
     align-items: center;
     flex-direction: column;

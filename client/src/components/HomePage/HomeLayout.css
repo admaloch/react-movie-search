@@ -3,6 +3,7 @@
     background-color: var(--navBackground);
     border-radius: 7px;
     margin: 5rem 0;
+    max-width: 90%;
 }
 
 
