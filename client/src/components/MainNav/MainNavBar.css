@@ -121,6 +121,17 @@ nav {
 	/* display: none; */
 }
 
+
+@media only screen and (max-device-width: 932px) and (orientation: landscape) {
+	.logo {
+		display: none;
+	}
+
+
+}
+
+
+
 @media screen and (min-width: 600px) {
 	.logo img {
 		display: block;
@@ -128,6 +139,8 @@ nav {
 
 	}
 }
+
+
 
 .logo h3,
 .logo img {
@@ -140,7 +153,7 @@ nav {
 	opacity: .7;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 933px) {
 	header .nav-btn {
 		visibility: visible;
 		opacity: 1;

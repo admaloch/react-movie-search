@@ -11,6 +11,13 @@ const HoverInfo = ({
   isError,
   error
 }: OmdbItemWithRTK): JSX.Element | null => {
+
+  let size: number = 30
+  if(window.innerWidth < 600) {
+    size = 15
+  } else {
+    size = 30
+  }
     
 
   let content;
@@ -27,7 +34,7 @@ const HoverInfo = ({
       <>
         <ItemContent item={item} />
         <div className="liked-btn">
-          <UpdateLikedList title={item.Title} imdbId={item.imdbID} size={30} />
+          <UpdateLikedList title={item.Title} imdbId={item.imdbID} size={size} />
         </div>
       </>
     );

@@ -9,7 +9,6 @@ export default function ListAllUsers() {
         data: users,
         isLoading,
         isError,
-        error
     } = useGetUsersQuery('usersList', {
         refetchOnFocus: true, // or set to false if you don't need it
         refetchOnMountOrArgChange: false, // avoid refetching on every mount
@@ -19,7 +18,7 @@ export default function ListAllUsers() {
 
     //@ts-ignore
     if (isError ) return <Error text={'Something went wrong. Check your internet connection and try again.'} />
-console.log(error)
+
     if (!users) return null
 
     const usersIds = users.ids as string[]

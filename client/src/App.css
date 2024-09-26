@@ -63,12 +63,20 @@ html {
     --headerHeight: 40px;
 }
 
+
+
 @media screen and (min-width: 600px) {
     :root {
         --headerHeight: 80px;
     }
     
 }
+@media only screen and (max-device-width: 932px) and (orientation: landscape) {
+    :root {
+        --headerHeight: 40px;
+    }
+}
+
 
 body {
     margin: 0;
