@@ -185,6 +185,8 @@ nav {
 		font-size: 2.5rem;
 	}
 
+
+
 	nav button:not(.nav-close-btn)::after,
 	nav a::after {
 		background-color: var(--mainBackground);
@@ -212,5 +214,12 @@ nav {
 
 	nav .nav-close-btn:hover {
 		opacity: .6;
+	}
+}
+
+@media only screen and (max-device-width: 932px) and (orientation: landscape) {
+	header nav button,
+	header nav a {
+		font-size: 1.8rem;
 	}
 }
