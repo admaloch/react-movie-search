@@ -9,7 +9,7 @@
 }
 
 .main-search-section h1 {
-    font-size: 3.7rem;
+    font-size: 3rem;
     color: var(--color2);
     padding: 0 .3rem;
     line-height: 35px;
@@ -233,11 +233,15 @@
         max-height: 300px;
     }
 
-    .search-list-item {
-        height: 50px;
-    }
+
 
     .search-item-thumbnail img {
         width: 27px;
+    }
+}
+
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+    .main-search-section h1 {
+        font-size: 3rem;
     }
 }

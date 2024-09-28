@@ -65,9 +65,10 @@
 }
 
 /* mobile */
-@media only screen and (max-device-width: 932px) and (orientation: landscape) {
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
   .modal-container {
-    height: 97%;
+    margin-top: 1%;
+    height: 93%;
     width: 98%;
   }}
 
