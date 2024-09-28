@@ -1,9 +1,7 @@
 import useAuth from '../../../hooks/useAuth'
 import { useGetUserByIdQuery } from '../usersApiSlice';
-import ErrorIcon from '@mui/icons-material/Error';
 import LikeOrDislike from './LikeIcon';
 import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
-import { red } from '@mui/material/colors';
 import 'tippy.js/dist/tippy.css';
 import { UpdateHasWatchedProps } from './UpdateHasWatched';
 import { UserItemProps } from '../../../models/UserItemProps';

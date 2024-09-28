@@ -5,10 +5,9 @@ interface BioOverlayProps {
   plot: string;
   revealBio: Boolean;
   closeBio: () => void;
-  title: string;
 }
 
-const BioOverlay = ({ plot, revealBio, closeBio, title }: BioOverlayProps): JSX.Element => {
+const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element => {
   
   const scrollDivRef = useRef<HTMLDivElement>(null);
 

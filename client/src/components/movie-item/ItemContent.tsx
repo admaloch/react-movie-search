@@ -50,7 +50,6 @@ export default function ItemContent({
         revealBio={revealBio}
         closeBio={closeBioOverlay}
         plot={item.Plot}
-        title={item.Title}
       />
     </>
   );

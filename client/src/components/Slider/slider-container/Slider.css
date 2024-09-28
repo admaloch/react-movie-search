@@ -135,8 +135,8 @@ font-size: 1.5rem;
 
 @media screen and (min-width: 500px) {
     .info-container .liked-btn {
-        top: -1rem;
-        right: -1rem;
+        top: 0rem;
+        right: 0rem;
     }
 }
 
