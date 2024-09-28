@@ -1,16 +1,18 @@
 import { useState } from "react";
 import './Heart.css';
-export default function Heart() {
 
-  const [likeCount, setLikeCount] = useState(0);
-  const [liked, setLiked] = useState(false);
+interface HeartProps {
+    isLiked: boolean;
+}
+
+export default function Heart({isLiked}: HeartProps): JSX.Element {
+
+  const [liked, setLiked] = useState(isLiked);
 
   const toggleDisplay = () => {
-    if (likeCount === 0) {
-      setLikeCount(likeCount + 1);
+    if (!isLiked) {
       setLiked(true);
     } else {
-      setLikeCount(likeCount - 1);
       setLiked(false);
     }
   };
@@ -23,7 +25,6 @@ export default function Heart() {
           onClick={toggleDisplay}
         ></div>
       </div>
-      <div className="likes-amount">{likeCount}</div>
     </div>
   );
 }

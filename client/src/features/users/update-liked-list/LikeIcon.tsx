@@ -1,32 +1,24 @@
 import { useUpdateUserMutation } from "../usersApiSlice";
 import ErrorIcon from "@mui/icons-material/Error";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { toast } from "react-toastify";
 import "./LikeIcons.css";
 import useAuth from "../../../hooks/useAuth";
-import { grey, red } from "@mui/material/colors";
 import HourglassLoadingIcon from "../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon";
-import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { IconButton } from "@mui/material";
 import { LikedUserMovies } from "../../../models/UserItemProps";
-import { useState } from "react";
 import Heart from "../../../components/UI/like-icon/Heart";
 
-interface LikeOrDislikeProps {
+interface LikeIconProps {
   likedMovies: LikedUserMovies[];
-  size: number;
   title: string;
   imdbId: string;
 }
 
-export default function LikeOrDislike({
+export default function LikeIcon({
   likedMovies,
-  size,
   title,
   imdbId,
-}: LikeOrDislikeProps) {
+}: LikeIconProps) {
   const { id } = useAuth();
 
   if (!id) return null;
@@ -49,26 +41,15 @@ export default function LikeOrDislike({
 
   if (isLoading) content = <HourglassLoadingIcon />;
 
-
   if (isError) {
-    //@ts-ignore
+    toast.dismiss();
+        //@ts-ignore
     toast.error(`Error: ${error?.data?.message || "Failed to like item."}`);
     content = <ErrorIcon />;
   } else {
-    content = <Heart />;
+    content = <Heart isLiked={alreadyLiked} />;
   }
 
-  const popoverText = alreadyLiked
-    ? "Remove from liked list"
-    : "Add to liked list";
 
-  return (
-    <IconButton
-      onClick={updateLikedList}
-      className="custom-icon-button"
-      aria-label="update liked list"
-    >
-      <Tippy content={popoverText}>{content}</Tippy>
-    </IconButton>
-  );
+  return <div onClick={updateLikedList}>{content}</div>;
 }

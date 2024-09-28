@@ -38,7 +38,6 @@ const BioOverlay = ({ plot, revealBio, closeBio, title }: BioOverlayProps): JSX.
       onMouseLeave={mouseLeaveHandler}
       style={styles}
       className='bio-overlay'>
-      <h4>{title} Overview</h4>
       <p>{plot}</p>
         <IoClose onClick={closeBio} className="icon-large close-bio-text"/>
     </div>
