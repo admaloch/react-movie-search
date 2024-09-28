@@ -95,6 +95,12 @@
     }
 }
 
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+    .movie-item-container {
+        width: calc(100%/4);
+    }
+}
+
 .movie-item {
     border-radius: 7px;
     width: 100%;

@@ -105,3 +105,8 @@
 20240922	15:09:51	95a2251b-5240-47b0-bd4f-d3464481a193	Error: Not allowed by CORS	GET	/users	http://localhost:5173
 20240922	15:09:51	21c9f485-33e5-4ce6-99f6-9eb9f0605278	Error: Not allowed by CORS	GET	/reviews	http://localhost:5173
 20240922	15:09:51	2652e23d-a9f4-4174-bedc-edead7d865f8	Error: Not allowed by CORS	GET	/auth/refresh	http://localhost:5173
+20240928	09:26:51	77af80ae-42d5-42f5-b668-6a48d4ff2769	Error: Not allowed by CORS	GET	/users	http://localhost:5174
+20240928	09:26:51	6e703d01-3f0e-4e4d-850e-d90cd452550b	Error: Not allowed by CORS	GET	/reviews	http://localhost:5174
+20240928	09:26:53	85b502e7-271d-4ce9-be16-9e9ece0c3a5f	Error: Not allowed by CORS	GET	/users	http://localhost:5174
+20240928	09:27:04	b03048fd-14f5-40f7-87d0-cebdc2093f56	Error: Not allowed by CORS	GET	/users	http://localhost:5174
+20240928	09:27:04	ae976b9d-8a36-40b7-9876-30d374547846	Error: Not allowed by CORS	GET	/reviews	http://localhost:5174

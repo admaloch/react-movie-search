@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 95%;
+    width: 100%;
     max-width: 1300px;
 }
 
@@ -30,6 +30,9 @@
     .user-container {
         width: calc(100%/3);
     }
+    .user-list {
+        width: 95%;
+    }
 }
 @media screen and (min-width: 992px) {
     .user-container {
@@ -41,6 +44,8 @@
         width: calc(100%/5);
     }
 }
+
+
 
 .user-item {
     width: 97%;
@@ -60,6 +65,19 @@
     position: relative;
 
 }
+
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+    .user-container {
+        width: calc(100%/4);
+        aspect-ratio: 1/1.5;
+        /* padding: 0; */
+    }
+    .user-item {
+        padding: 2rem .2rem;
+    }
+}
+
+
 
 .user-item h3 {
     text-align: center;

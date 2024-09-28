@@ -60,7 +60,7 @@ html {
     --color3: #1F7A8C;
     --color4: #e63946;
     --overlay: rgba(2, 43, 58, .7);
-    --headerHeight: 40px;
+    --headerHeight: 50px;
 }
 
 
@@ -71,7 +71,7 @@ html {
     }
     
 }
-@media only screen and (max-device-width: 932px) and (orientation: landscape) {
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
     :root {
         --headerHeight: 40px;
     }
