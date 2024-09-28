@@ -24,7 +24,7 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [login, { isLoading, error, isError, isSuccess }] = useLoginMutation();
+    const [login, { isLoading, error}] = useLoginMutation();
 
     const [persist, setPersist] = usePersist();
 
@@ -34,23 +34,17 @@ const Login: React.FC = () => {
         try {
             const { accessToken, id } = await login({ email, password }).unwrap();
             dispatch(setCredentials({ accessToken }));
+            toast.success('Login successful!');
             setTimeout(() => {
                 navigate(`/profiles/${id}`);
             }, 1000);
         } catch (err) {
+            toast.error(`Error: ${(error as any)?.data?.message || 'Failed to login. Try again later.'}`);
             console.log(err);
         }
     }, [login, navigate, dispatch, error]);
 
-    useEffect(() => {
-        if(isSuccess) {
-            toast.dismiss();
-            toast.success('Login successful!');
-        }
-        if (isError) {
-            toast.error(`Error: ${(error as any)?.data?.message || 'Failed to login. Try again later.'}`);
-        }
-    }, [isError, error]);
+ 
 
     // Memoize handlePersistToggle to prevent unnecessary re-renders
     const handlePersistToggle = useCallback(() => setPersist(prev => !prev), [setPersist]);
@@ -128,11 +122,8 @@ const Login: React.FC = () => {
                 </label>
                 <p>Haven't set up an account?</p>
                 <p>Click <NavLink className="link-class" to="/users/register">here</NavLink> to register</p>
-
             </form>
-
         </>
-
     );
 };
 

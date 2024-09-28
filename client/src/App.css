@@ -73,7 +73,7 @@ html {
 }
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
     :root {
-        --headerHeight: 40px;
+        --headerHeight: 50px;
     }
 }
 

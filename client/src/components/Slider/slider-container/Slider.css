@@ -205,7 +205,8 @@ font-size: 1.5rem;
     font-size: 1.2rem;
     text-align: center;
     margin-top: 2rem;
-    color: var(--mainBackground);
+    color: var(--color4);
+    font-weight: 600;
 }
 
 .bio-overlay p {
