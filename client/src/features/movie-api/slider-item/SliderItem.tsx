@@ -3,9 +3,12 @@ import HoverInfo from "../../../components/movie-item/HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import { OmdbItemInterface } from "../../../models/ItemApiProps";
+interface SliderItemProps extends OmdbItemInterface {
+    showArrowFunc: () => void;
+    hideArrowFunc: () => void;
+}
 
-
-const SliderItem = ({ item }: OmdbItemInterface): JSX.Element | null => {
+const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element | null => {
 
     if (!item) return null
 
@@ -15,6 +18,7 @@ const SliderItem = ({ item }: OmdbItemInterface): JSX.Element | null => {
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     function mouseEnterHandler() {
+        hideArrowFunc();
 
         // Check if the imdbID has already been fetched
         if (!fetchedIds.has(imdbID)) {
@@ -26,6 +30,7 @@ const SliderItem = ({ item }: OmdbItemInterface): JSX.Element | null => {
     return (
         <div
             onMouseEnter={mouseEnterHandler}
+            onMouseLeave={showArrowFunc}
             className="movie-container"
             data-id={imdbID}
         >
