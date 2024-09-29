@@ -20,6 +20,7 @@ import EditUserForm from './features/users/EditUserForm'
 import RequireAuth from './features/auth/RequireAuth'
 import useTitle from './hooks/useTitle'
 import Credits from './components/credits/Credits'
+import DeleteUser from './features/users/DeleteUser';
 function App() {
 
     useTitle('Movie Brain')
@@ -46,6 +47,7 @@ function App() {
                                     <Route element={<RequireAuth />}>
                                         <Route path=":id/edit" element={<EditUserForm />} />
                                         <Route path=":id/password" element={<EditPasswordForm />} />
+                                        <Route path=":id/delete" element={<DeleteUser />} />
                                     </Route>
                                 </Route>
                                 <Route path='/credits' element={<Credits />} />

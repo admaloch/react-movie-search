@@ -18,8 +18,7 @@ const HoverInfo = ({
   } else if (isError || !item) {
     content = (
       <ItemError
-          // @ts-ignore
-        text={`Error: ${error?.data?.message || "Failed to load content."}`}
+        text={`Error: ${(error as any)?.data?.message|| "Failed to load content."}`}
       />
     );
   } else {

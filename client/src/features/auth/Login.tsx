@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './auth.css';
 import { toast } from 'react-toastify';
@@ -18,13 +18,14 @@ interface IFormInput {
 }
 
 const Login: React.FC = () => {
+    
     const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
     const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [login, { isLoading, error}] = useLoginMutation();
+    const [login, { isLoading, isError, error, isSuccess}] = useLoginMutation();
 
     const [persist, setPersist] = usePersist();
 
@@ -34,15 +35,23 @@ const Login: React.FC = () => {
         try {
             const { accessToken, id } = await login({ email, password }).unwrap();
             dispatch(setCredentials({ accessToken }));
-            toast.success('Login successful!');
             setTimeout(() => {
                 navigate(`/profiles/${id}`);
             }, 1000);
         } catch (err) {
-            toast.error(`Error: ${(error as any)?.data?.message || 'Failed to login. Try again later.'}`);
             console.log(err);
         }
     }, [login, navigate, dispatch, error]);
+
+    useEffect(() => {
+        if (isSuccess) {
+          toast.dismiss();
+          toast.success("Login successful!");
+        }
+        if (isError) {
+          toast.error(`Error: ${(error as any)?.data?.message || "Failed to login. Try again later"}`);
+        }
+      }, [isSuccess, isError, error, navigate]);
 
  
 
