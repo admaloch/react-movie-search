@@ -1,7 +1,6 @@
 import './ReviewIcons.css';
 import { useGetReviewsByUserQuery } from '../reviewsApiSlice';
 import ErrorIcon from '@mui/icons-material/Error';
-import PendingIcon from '@mui/icons-material/Pending';
 import useAuth from '../../../hooks/useAuth';
 import DeleteReviewIcon from './DeleteReviewIcon';
 import ReviewIcon from './ReviewIcon';
@@ -23,7 +22,7 @@ export default function ReviewIcons({ imdbId, title }: ReviewProps): React.JSX.E
 
   const { data: reviews, isLoading, isError } = useGetReviewsByUserQuery(id);
 
-  if (isLoading) return <PendingIcon />
+  if (isLoading) return null;
 
   if (isError) return <ErrorIcon />
 

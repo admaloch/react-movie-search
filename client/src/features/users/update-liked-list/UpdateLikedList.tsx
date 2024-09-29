@@ -24,6 +24,7 @@ export default function UpdateLikedList({
 
   let content;
 
+
   if (isLoading) {
     content = (
         <div className="waiting-icon">

@@ -44,7 +44,7 @@ export default function UpdateHasWatchedIcon({ size, imdbId }: UpdateHasWatchedP
     else {
 
         content =
-            <IconButton className='custom-icon-button' onClick={updateHasWatched} aria-label="update liked list">
+            <IconButton className='custom-icon-button eye-icon' onClick={updateHasWatched} aria-label="update liked list">
                 <Tippy content="I've seen this!">
                     <VisibilityIcon
                         className='like-icon'

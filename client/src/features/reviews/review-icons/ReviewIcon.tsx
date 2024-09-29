@@ -41,7 +41,7 @@ export default function ReviewIcon({ reviewedMovie, imdbId, title }: ReviewIconP
 
     return (
         <>
-            <IconButton className='custom-icon-button' onClick={openReviewModal} aria-label='open review modal'>
+            <IconButton className='custom-icon-button review-icon' onClick={openReviewModal} aria-label='open review modal'>
                 <Tippy content={popoverText}>
                     <RateReviewIcon sx={{ fontSize: 30 }} />
                 </Tippy>

@@ -211,17 +211,31 @@
 }
 
 
+
 .search-list-item .heart-bg {
     position: absolute;
     top: 50%; /* Vertically center the heart */
     right: 0; /* Align it all the way to the right */
     transform: translateY(-50%) scale(0.8);
 }
+.search-list-item .waiting-icon{
+    position: absolute;
+    top: 50%; /* Vertically center the heart */
+    right: 1.5rem; /* Align it all the way to the right */
+    transform: translateY(-50%) scale(1.2);
+}
+
 
 @media screen and (max-width: 550px) {
     .search-list-item .heart-bg {
         transform: translateY(-50%) scale(.6);
         right: -1rem;
+    }
+    .search-list-item .waiting-icon{
+        position: absolute;
+        top: 50%; /* Vertically center the heart */
+        right: 1.5rem; /* Align it all the way to the right */
+        transform: translateY(-50%) scale(1.2);
     }
 }
 

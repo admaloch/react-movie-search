@@ -3,3 +3,9 @@
     left: 1.5rem;
     bottom: .2rem;
 }
+
+.review-icon, .eye-icon {
+    position: relative;
+    left: .4rem;
+    top: .1rem;
+}
