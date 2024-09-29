@@ -10,13 +10,7 @@ const HoverInfo = ({
   isError,
   error,
 }: OmdbItemWithRTK): JSX.Element | null => {
-  let size: number = 30;
-  if (window.innerWidth < 600) {
-    size = 15;
-  } else {
-    size = 30;
-  }
-
+  
   let content;
 
   if (isLoading) {

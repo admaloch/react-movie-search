@@ -97,7 +97,6 @@ const MainSlider = ({ isSliderActive, showSlider, hideSlider }: MainSliderProps)
                 changeIndexHandler={changeIndexHandler}
             />
             <SliderContainer
-                progBar={sliderIndex.progBar}
                 decreaseIndexHandler={decreaseIndexHandler}
                 increaseIndexHandler={increaseIndexHandler}
                 isSliderActive={isSliderActive}
