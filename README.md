@@ -1,23 +1,27 @@
-# React-movie-search
+# Movie-Brain
 
 <h2>About the Project:</h2>
-<p>This project is a reconstruction of a [movie search app project](https://github.com/admaloch/js-movie-search) initially developed with vanilla JS. It allows the user to search for movies, TV shows, or both, utilizing movie data from the OMDB API. The primary goal of this project was to practice my React and TypeScript skills.</p>
+<p>Custom movie search app complete with backend built with MERN stack and OMDb API for movie data. This is a long term project that is a rebuild of an older project, and has been used as a means to learn and apply new concepts. [movie search app project](https://github.com/admaloch/js-movie-search). Users can setup accounts, search movies, create liked lists, write reviews and see what others are watching.</p>
 
 
 <b>Technologies Used:</b><br/>
 <ul>
   <li>React</li>
+  <li>Redux</li>
+  <li>RTK Query</li>
   <li>TypeScript</li>
-  <li>JavaScript</li>
+  <li>Mongo DB</li>
+  <li>Mongoose</li>
+  <li>Node</li>
+  <li>Express</li>
   <li>[OMDB API](https://www.omdbapi.com/)</li>
 </ul>
 
 
 <h2>Takeaways:</h2>
-<p>While the core of the project was already completed in the original app, this rebuild presented an excellent opportunity to solely focus on implementing React concepts effectively and adopting best practices for state management and component structuring. The most challenging aspect involved using hooks that were unfamiliar, such as useReducer, useRef, portals, context API, and useMemo. Multiple parts of the project were reworked to experiment with different state management techniques, and the component structure underwent several revisions. This project served as a valuable exploration of React concepts.</p>
+<p>The primary challenge was linking up the backend and front end, but was a good opportunity to learn/work with RTK query. </p>
 
 <h2>Current Status:</h2>
-<p>I intent to add a backend and implement CRUD functionality by allowing a user to setup an account and review movies save lists of movies etc..
-</p>
+<p>Currently done unless I think of something I want to add for fun.</p>
 
 
