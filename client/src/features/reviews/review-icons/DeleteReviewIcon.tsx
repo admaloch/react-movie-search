@@ -37,7 +37,9 @@ export default function DeleteReviewIcon({
     );
   } else if (isError) {
     //@ts-ignore
-    console.log(`Error: ${error?.data?.message || "Could not delete review"}`);
+    console.log(
+      `Error: ${(error as any)?.data?.message || "Could not delete review"}`
+    );
     content = (
       <div className="delete-review-btn">
         <InfoIcon sx={{ fontSize: 25 }} />;

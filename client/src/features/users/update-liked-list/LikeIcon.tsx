@@ -45,13 +45,18 @@ export default function LikeIcon({
 
   if (isError) {
     toast.dismiss();
-        //@ts-ignore
-    toast.error(`Error: ${error?.data?.message || "Failed to like item."}`);
+    //@ts-ignore
+    toast.error(
+      `Error: ${(error as any)?.data?.message || "Failed to like item."}`
+    );
     content = <ErrorIcon />;
   } else {
     content = <Heart style={style} isLiked={alreadyLiked} />;
   }
 
-
-  return <div className="like-icon-container" onClick={updateLikedList}>{content}</div>;
+  return (
+    <div className="like-icon-container" onClick={updateLikedList}>
+      {content}
+    </div>
+  );
 }

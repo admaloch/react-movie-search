@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useUpdateReviewMutation } from './reviewsApiSlice';
-import './Reviews.css'
-import CloseIcon from '@mui/icons-material/Close';
-import StarRating from '../../components/UI/StarRating';
-import MovieReviewProps from '../../models/MovieReviewProps';
+import { useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useUpdateReviewMutation } from "./reviewsApiSlice";
+import "./Reviews.css";
+import CloseIcon from "@mui/icons-material/Close";
+import StarRating from "../../components/UI/StarRating";
+import MovieReviewProps from "../../models/MovieReviewProps";
 
 export interface IFormInput {
   body: string;
@@ -15,47 +15,50 @@ export interface IFormInput {
 
 interface EditReviewFormProps {
   closeModal: () => void;
-  movie: MovieReviewProps
+  movie: MovieReviewProps;
 }
 
 const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
-
   if (!movie) return null;
 
-  const { body, title, _id, rating } = movie
+  const { body, title, _id, rating } = movie;
 
   const [starRating, setStarRating] = useState<number>(parseInt(rating));
 
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
 
-
-  const [updateReview, {
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  }] = useUpdateReviewMutation()
+  const [updateReview, { isLoading, isSuccess, isError, error }] =
+    useUpdateReviewMutation();
 
   const submitForm: SubmitHandler<IFormInput> = async (data) => {
     try {
       await updateReview({ ...data, rating: starRating, id: _id }).unwrap();
     } catch (err) {
-      console.log('Error', err)
+      console.log("Error", err);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
       toast.dismiss();
-      toast.success('Review successfully updated');
+      toast.success("Review successfully updated");
       setTimeout(() => {
-        closeModal()
+        closeModal();
       }, 600);
     }
     if (isError) {
       toast.dismiss();
       //@ts-ignore
-      toast.error(`Error: ${error?.data?.message || 'Failed to update review. Try again later.'}`);
+      toast.error(
+        `Error: ${
+          (error as any)?.data?.message ||
+          "Failed to update review. Try again later."
+        }`
+      );
     }
   }, [isSuccess, isError, error]);
 
@@ -70,12 +73,11 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
 
           <div className="form-group review-star-input">
             <label htmlFor="rating">Star Rating:</label>
-            <StarRating
-              starRating={starRating}
-              setStarRating={setStarRating}
-            />
+            <StarRating starRating={starRating} setStarRating={setStarRating} />
             <p>You rated: {starRating}</p>
-            {errors.rating && <div className="error-message">Rating is required</div>}
+            {errors.rating && (
+              <div className="error-message">Rating is required</div>
+            )}
           </div>
 
           <div className="form-group review-body-input">
@@ -83,13 +85,18 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
             <textarea
               id="body"
               defaultValue={body} // Set the default value here
-              {...register('body', { required: 'Review is required', minLength: { value: 1, message: 'Review cannot be empty' } })}
+              {...register("body", {
+                required: "Review is required",
+                minLength: { value: 1, message: "Review cannot be empty" },
+              })}
             />
-            {errors.body && <div className="error-message">{errors.body.message}</div>}
+            {errors.body && (
+              <div className="error-message">{errors.body.message}</div>
+            )}
           </div>
           <div className="review-btn-container">
-            <button className='review-btn' type="submit">
-              {isLoading ? 'Submitting...' : 'Submit Review'}
+            <button className="review-btn" type="submit">
+              {isLoading ? "Submitting..." : "Submit Review"}
             </button>
           </div>
         </form>

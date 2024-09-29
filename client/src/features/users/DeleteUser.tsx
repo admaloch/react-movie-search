@@ -6,7 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../hooks/useAuth";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoCard from "../../components/UI/card/InfoCard";
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { useSendLogoutMutation } from "../auth/authApiSlice";
 
 function DeleteUser(): React.JSX.Element | null {
   const { id, username } = useAuth();
@@ -16,14 +17,19 @@ function DeleteUser(): React.JSX.Element | null {
   const navigate = useNavigate();
 
   const [deleteUser, { isSuccess, isError, error }] = useDeleteUserMutation();
+  const [sendLogout, {isError: isLogoutError, error: logoutError}] = useSendLogoutMutation();
 
   const deleteUserBtnHandler = async () => {
     try {
+      
       await deleteUser(id).unwrap();
+      await sendLogout();
     } catch (err) {
       console.error("Failed to delete user:", err);
     }
   };
+
+
 
   useEffect(() => {
     if (isSuccess) {
@@ -33,9 +39,21 @@ function DeleteUser(): React.JSX.Element | null {
     }
     if (isError) {
       //@ts-ignore
-      toast.error(`Error: ${error?.data?.message || "Failed to delete user"}`);
+      toast.error(
+        `Error: ${(error as any)?.data?.message || "Failed to delete user"}`
+      );
     }
   }, [isSuccess, isError, error, navigate]);
+
+  useEffect(() => {
+
+    if (isLogoutError) {
+      //@ts-ignore
+      toast.error(
+        `Error: ${(logoutError as any)?.data?.message || "Failed to delete user"}`
+      );
+    }
+  }, [isLogoutError, logoutError]);
 
   return (
     <main className="main-item-content">
@@ -48,12 +66,19 @@ function DeleteUser(): React.JSX.Element | null {
         <p>Are you sure you want to follow through with this?</p>
         <div className="button-container">
           <button className="delete-btn" onClick={deleteUserBtnHandler}>
-            <SentimentVeryDissatisfiedIcon sx={{ fontSize: 20, fill: 'white', marginRight: '.4rem' }} />
+            <SentimentVeryDissatisfiedIcon
+              sx={{ fontSize: 20, fill: "white", marginRight: ".4rem" }}
+            />
             I, {username}, want to delete my account
-            <SentimentVeryDissatisfiedIcon sx={{ fontSize: 20, fill: 'white', marginLeft: '.4rem' }} />
-
+            <SentimentVeryDissatisfiedIcon
+              sx={{ fontSize: 20, fill: "white", marginLeft: ".4rem" }}
+            />
           </button>
         </div>
+        <NavLink className="link-class" to={`/profiles/${id}/edit`}>
+          <ArrowBackIcon />
+          Edit account settings
+        </NavLink>{" "}
         <NavLink className="link-class" to={`/profiles/${id}`}>
           <ArrowBackIcon />
           Return to profile
