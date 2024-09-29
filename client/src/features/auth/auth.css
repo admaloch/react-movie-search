@@ -5,11 +5,18 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* width: 300px; */
-    width: 93%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 300px;
     /* text-align: center; */
     z-index: 2;
   }
+
+  @media screen and (min-width: 500px) {
+    .credentials-form {
+      max-width: 400px;
+    }
+  }
+
   .credentials-form h2 {
     text-align: center;
     color: var(--text);

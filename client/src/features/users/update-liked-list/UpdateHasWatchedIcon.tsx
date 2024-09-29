@@ -54,10 +54,6 @@ export default function UpdateHasWatchedIcon({ size, imdbId }: UpdateHasWatchedP
             </IconButton>
     }
 
-    return (
-        <div className="like-icon-container">
-            {content}
-        </div>
-    ); 
+    return content;
 }
 

@@ -19,13 +19,12 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.J
                         <h3>{Title}</h3>
                         {Year && <p>{Year}</p>}
                     </div>
-                    <div className="like-icon-container">
+                  
                         <UpdateLikedList
                             title={Title}
                             imdbId={imdbID}
-                            size={25}
                         />
-                    </div>
+                  
 
                 </li>
             </ListItemModal>

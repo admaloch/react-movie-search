@@ -4,38 +4,35 @@ import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedL
 import ItemError from "../UI/errors/ItemError";
 import { OmdbItemWithRTK } from "../../models/RTKQueryProps";
 
-
 const HoverInfo = ({
   item,
   isLoading,
   isError,
-  error
+  error,
 }: OmdbItemWithRTK): JSX.Element | null => {
-
-  let size: number = 30
-  if(window.innerWidth < 600) {
-    size = 15
+  let size: number = 30;
+  if (window.innerWidth < 600) {
+    size = 15;
   } else {
-    size = 30
+    size = 30;
   }
-    
 
   let content;
 
-   if (isLoading) {
+  if (isLoading) {
     content = <CircleAnimation />;
-  } 
-   else if (isError ||  !item) {
-    // @ts-ignore
-    content = <ItemError text={`Error: ${error?.data?.message || 'Failed to load content.'}`}/>
-  }
-   else {
+  } else if (isError || !item) {
+    content = (
+      <ItemError
+          // @ts-ignore
+        text={`Error: ${error?.data?.message || "Failed to load content."}`}
+      />
+    );
+  } else {
     content = (
       <>
         <ItemContent item={item} />
-        <div className="liked-btn">
-          <UpdateLikedList title={item.Title} imdbId={item.imdbID} size={size} />
-        </div>
+        <UpdateLikedList title={item.Title} imdbId={item.imdbID} />
       </>
     );
   }

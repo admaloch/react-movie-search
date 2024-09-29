@@ -27,7 +27,6 @@ export default function ModalContent({ item }: OmdbItemInterface): React.JSX.Ele
         <UpdateLikedList
           title={item.Title}
           imdbId={item.imdbID}
-          size={30}
         />
         <UpdateHasWatched
           imdbId={item.imdbID}

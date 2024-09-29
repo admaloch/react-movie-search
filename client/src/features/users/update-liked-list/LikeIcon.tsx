@@ -12,12 +12,14 @@ interface LikeIconProps {
   likedMovies: LikedUserMovies[];
   title: string;
   imdbId: string;
+  style?: string;
 }
 
 export default function LikeIcon({
   likedMovies,
   title,
   imdbId,
+  style,
 }: LikeIconProps) {
   const { id } = useAuth();
 
@@ -47,9 +49,9 @@ export default function LikeIcon({
     toast.error(`Error: ${error?.data?.message || "Failed to like item."}`);
     content = <ErrorIcon />;
   } else {
-    content = <Heart isLiked={alreadyLiked} />;
+    content = <Heart style={style} isLiked={alreadyLiked} />;
   }
 
 
-  return <div onClick={updateLikedList}>{content}</div>;
+  return <div className="like-icon-container" onClick={updateLikedList}>{content}</div>;
 }

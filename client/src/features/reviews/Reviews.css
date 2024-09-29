@@ -1,158 +1,167 @@
 .like-icon {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .review-form {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--text);
-    border-radius: 7px;
-    z-index: 1000;
-    color: var(--mainBackground);
-    padding: 5rem 1rem;
-    font-size: 1.4rem;
-    text-align: center;
-
-}
-
-@media (min-width: 500px) {
-    .review-form form {
-        padding: 1rem 3rem;
-    }
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text);
+  border-radius: 7px;
+  z-index: 1000;
+  color: var(--mainBackground);
+  padding: 5rem 1rem;
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .review-star-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .review-body-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem 0;
-    width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 .review-body-input label {
-    margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
 
 .starability-basic {
-    min-height: 0px;
+  min-height: 0px;
 }
 
 .review-body-input textarea {
-    width: 100%;
-    min-width: 300px;
-    height: 150px;
-    border-radius: 7px;
+  width: 100%;
+  min-width: 300px;
+  height: 150px;
+  border-radius: 7px;
 }
 
 .review-btn {
-    padding: .2rem .4rem;
-    background-color: var(--mainBackground);
-    color: var(--text);
-    border-radius: 5px;
-    box-shadow: none;
-    border: var(--text) solid 1px;
+  padding: 0.2rem 0.4rem;
+  background-color: var(--mainBackground);
+  color: var(--text);
+  border-radius: 5px;
+  box-shadow: none;
+  border: var(--text) solid 1px;
 }
 
 .review-btn:hover {
-    background-color: var(--text);
-    color: var(--mainBackground);
-    border: var(--mainBackground) solid 1px;
-
+  background-color: var(--text);
+  color: var(--mainBackground);
+  border: var(--mainBackground) solid 1px;
 }
 
 .review-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .error-message {
-    color: red;
-    font-size: 0.9em;
+  color: red;
+  font-size: 0.9em;
 }
 
 .close-modal-icon {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
 }
 
 .close-modal-icon:hover {
-    opacity: .8;
+  opacity: 0.8;
 }
 
 .delete-review-icon {
-    position: relative;
-    right: .8rem;
-    /* bottom: .2rem; */
+  position: relative;
+  right: 0.8rem;
+  /* bottom: .2rem; */
 }
 
 .close-modal-icon:hover {
-    opacity: .8;
+  opacity: 0.8;
 }
 
 .review-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .review-header h5 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .review-header .user-link {
-    margin-bottom: 0;
-    font-size: 1rem;
-    margin-right: .2rem;
-    color: var(--color2);
-    text-decoration: none;
-    transition: .15s ease-in-out opacity;
+  margin-bottom: 0;
+  font-size: 1rem;
+  margin-right: 0.2rem;
+  color: var(--color2);
+  text-decoration: none;
+  transition: 0.15s ease-in-out opacity;
 }
 
 .review-header .user-link:hover {
-    opacity: .6;
+  opacity: 0.6;
 }
 
 .no-reviews-yet {
-    width: 80%;
-    margin: 0 auto;
-    padding: 3rem 0;
-    border: black solid 2px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  border: black solid 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie-reviews {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .movie-review-item {
-    width: 90%;
-    line-height: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* border: var(--text) solid 1px; */
-    border-radius: 5px;
-    padding: .2rem;
-    /* border: black solid 1px; */
-    background-color: rgb(223 236 238 / 48%);
+  width: 90%;
+  line-height: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: var(--text) solid 1px; */
+  border-radius: 5px;
+  padding: 0.2rem;
+  /* border: black solid 1px; */
+  background-color: rgb(223 236 238 / 48%);
+}
+
+@media (min-width: 500px) {
+  .review-form form {
+    padding: 1rem 3rem;
+  }
+}
+
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+  .review-body-input textarea {
+    height: 50px;
+  }
+
+  .review-form {
+    padding: 0rem 1rem;
+    font-size: 1rem;
+    text-align: center;
+  }
 }

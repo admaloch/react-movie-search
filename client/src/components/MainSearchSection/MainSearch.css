@@ -168,12 +168,19 @@
     display: -ms-flexbox;
     display: flex;
     align-items: center;
+    position: relative;
     /* max-height: 50px; */
 }
 
 .search-list-item:Hover {
     background-color: var(--color3);
     border: var(--color1) solid 1px;
+}
+
+
+
+.search-item-info {
+    max-width: 80%;
 }
 
 .search-item-thumbnail img {
@@ -203,9 +210,19 @@
     margin: 0;
 }
 
-.search-list-item .like-icon-container {
-    margin-left: auto;
-    margin-right: .9rem;
+
+.search-list-item .heart-bg {
+    position: absolute;
+    top: 50%; /* Vertically center the heart */
+    right: 0; /* Align it all the way to the right */
+    transform: translateY(-50%) scale(0.8);
+}
+
+@media screen and (max-width: 550px) {
+    .search-list-item .heart-bg {
+        transform: translateY(-50%) scale(.6);
+        right: -1rem;
+    }
 }
 
 .search-list-item .waiting-icon {

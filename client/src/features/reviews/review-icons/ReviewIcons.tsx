@@ -1,4 +1,4 @@
-
+import './ReviewIcons.css';
 import { useGetReviewsByUserQuery } from '../reviewsApiSlice';
 import ErrorIcon from '@mui/icons-material/Error';
 import PendingIcon from '@mui/icons-material/Pending';

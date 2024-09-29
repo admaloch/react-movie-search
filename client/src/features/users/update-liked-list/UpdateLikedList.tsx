@@ -1,42 +1,47 @@
-import useAuth from '../../../hooks/useAuth'
-import { useGetUserByIdQuery } from '../usersApiSlice';
-import LikeOrDislike from './LikeIcon';
-import HourglassLoadingIcon from '../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon';
-import 'tippy.js/dist/tippy.css';
-import { UpdateHasWatchedProps } from './UpdateHasWatched';
-import { UserItemProps } from '../../../models/UserItemProps';
+import useAuth from "../../../hooks/useAuth";
+import { useGetUserByIdQuery } from "../usersApiSlice";
+import LikeIcon from "./LikeIcon";
+import HourglassLoadingIcon from "../../../components/UI/LoadAnimation/HourglassLoadingIcon.tsx/HourglassLoadingIcon";
+import "tippy.js/dist/tippy.css";
+import { UserItemProps } from "../../../models/UserItemProps";
 
-interface UpdateLikedListProps extends UpdateHasWatchedProps {
-    title: string;
+interface UpdateLikedListProps {
+  title: string;
+  style?: any;
+  imdbId: string;
 }
 
-export default function UpdateLikedList({ imdbId, title }: UpdateLikedListProps): React.JSX.Element | null {
+export default function UpdateLikedList({
+  imdbId,
+  title,
+  style
+}: UpdateLikedListProps): React.JSX.Element | null {
+  const { id } = useAuth();
 
-    const { id } = useAuth()
+  if (!id || !imdbId) return null;
 
-    if (!id || !imdbId) return null
+  const { data: user, isLoading, isSuccess } = useGetUserByIdQuery(id);
 
-    const { data: user, isLoading } = useGetUserByIdQuery(id);
+  let content;
 
-    let content
+  if (isLoading) {
+    content = (
+        <div className="waiting-icon">
+          <HourglassLoadingIcon />
+        </div>
+    );
+  } else if (isSuccess) {
+    const typedUser = user as UserItemProps;
+    const { likedMovies } = typedUser;
+    content = (
+      <LikeIcon
+        likedMovies={likedMovies}
+        imdbId={imdbId}
+        title={title}
+        style={style}
+      />
+    );
+  } else return null;
 
-    if (isLoading) {
-        content =
-            <div className="like-icon-container">
-                <div className="waiting-icon">
-                    <HourglassLoadingIcon />
-                </div>
-            </div>
-    } else  {
-        const typedUser = user as UserItemProps;
-        const { likedMovies } = typedUser
-        content =
-            <LikeOrDislike
-                likedMovies={likedMovies}
-                imdbId={imdbId}
-                title={title}
-            />
-    } 
-
-    return content
+  return content;
 }

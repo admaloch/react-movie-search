@@ -33,16 +33,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
         ? 'show-slider slider-container'
         : 'remove-slider slider-container'
 
-    useEffect(
-        function hideArrowsOnSmallRequests() {
-            if (progBar.length > 1) {
-                setShowArrows(true)
-            } else {
-                setShowArrows(false)
-            }
-        },
-        [progBar]
-    )
+
 
     return (
         <div className={sliderClass}>

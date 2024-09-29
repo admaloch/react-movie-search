@@ -44,6 +44,7 @@ export default function ItemContent({
             </Tippy>
           </IconButton>
         </ListItemModal>
+
       </div>
 
       <BioOverlay

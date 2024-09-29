@@ -5,9 +5,15 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 350px;
+  max-width: 300px;
   z-index: 2;
   position: relative;
+}
+
+@media screen and (min-width: 500px) {
+  .credentials-form {
+    max-width: 400px;
+  }
 }
 
 .credentials-form h2 {

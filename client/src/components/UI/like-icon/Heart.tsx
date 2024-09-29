@@ -3,9 +3,10 @@ import './Heart.css';
 
 interface HeartProps {
     isLiked: boolean;
+    style?: any;
 }
 
-export default function Heart({isLiked}: HeartProps): JSX.Element {
+export default function Heart({isLiked, style}: HeartProps): JSX.Element {
 
   const [liked, setLiked] = useState(isLiked);
 
@@ -18,13 +19,11 @@ export default function Heart({isLiked}: HeartProps): JSX.Element {
   };
 
   return (
-    <div className="heart">
-      <div className="heart-bg">
+      <div style={style} className="heart-bg">
         <div
           className={`heart-icon ${liked ? "liked" : ""}`}
           onClick={toggleDisplay}
         ></div>
       </div>
-    </div>
   );
 }
