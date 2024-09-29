@@ -127,6 +127,16 @@
   align-items: center;
 }
 
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+  .results-icons {
+    margin-top: 0;
+  }
+  .result-info-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+}
+
 .results-icons div {
   margin: 0 .2rem;
 }
@@ -153,3 +163,4 @@
   height: 500px;
   width: 700px;
 }
+

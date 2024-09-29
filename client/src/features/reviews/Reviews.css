@@ -19,6 +19,12 @@
   text-align: center;
 }
 
+@media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
+   .review-form p, .review-form label {
+display: none;
+  }
+}
+
 .review-star-input {
   display: flex;
   flex-direction: column;
