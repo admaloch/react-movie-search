@@ -18,16 +18,7 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
 
     const { submittedSearch } = useOmdbState()
 
-    const [showArrows, setShowArrows] = useState(true)
-    const arrowStyle = { opacity: showArrows ? 1 : 0 }
-
-    const showArrowHandler = () => {
-        setShowArrows(true)
-
-    }
-    const hideArrowHandler = () => {
-        setShowArrows(false)
-    }
+ 
 
     const sliderClass = isSliderActive
         ? 'show-slider slider-container'
@@ -38,7 +29,6 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     return (
         <div className={sliderClass}>
             <button
-                style={arrowStyle}
                 onClick={decreaseIndexHandler}
                 className="handle left-handle" >
                 <div className="arrow">
@@ -46,14 +36,11 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
                 </div>
             </button>
             {submittedSearch &&
-                <Slider
-                    showArrowFunc={showArrowHandler}
-                    hideArrowFunc={hideArrowHandler}
-                />
+                <Slider />
             }
 
             <button
-                style={arrowStyle}
+    
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
                 <div className="arrow">

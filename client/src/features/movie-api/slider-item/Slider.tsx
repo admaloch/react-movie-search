@@ -3,12 +3,9 @@ import SliderItem from './SliderItem';
 import { useOmdbState } from '../../../hooks/useOmdbState';
 import { OmdbItem } from '../../../models/ItemApiProps';
 
-interface SlidersProps {
-    showArrowFunc: () => void;
-    hideArrowFunc: () => void;
-}
 
-const Slider = ({ showArrowFunc, hideArrowFunc }: SlidersProps): JSX.Element => {
+
+const Slider = (): JSX.Element => {
 
     const { omdbSearchResults} = useOmdbState()
 
@@ -18,8 +15,6 @@ const Slider = ({ showArrowFunc, hideArrowFunc }: SlidersProps): JSX.Element => 
                 <SliderItem
                     key={item.imdbID}
                     item={item}
-                    showArrowFunc={showArrowFunc}
-                    hideArrowFunc={hideArrowFunc}
                 />
             ))}
         </div>
