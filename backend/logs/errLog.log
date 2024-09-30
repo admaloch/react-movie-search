@@ -144,3 +144,4 @@
 20240929	17:46:53	43201fbe-170f-4503-ba57-e1f3e22cd77b	ReferenceError: Review is not defined	DELETE	/users/66f09271fafc87e459e48e7c	http://localhost:5173
 20240929	18:13:27	ff37d098-5398-4406-b8e6-e609145bfd4d	ReferenceError: Review is not defined	DELETE	/users/66f09271fafc87e459e48e7c	http://localhost:5173
 20240929	18:30:45	6d39fb67-25a7-4692-a59b-7d56cd4f31fa	Error: Not allowed by CORS	GET	/users	http://10.0.0.104:5173
+20240930	17:18:48	33e9d32e-9a94-476b-93ac-64d32b909428	Error: Not allowed by CORS	GET	/users	http://10.0.0.104:5173
