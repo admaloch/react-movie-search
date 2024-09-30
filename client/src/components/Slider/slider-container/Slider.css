@@ -107,6 +107,7 @@
 @media screen and (min-width: 600px) {
     .info-container h3 {
 font-size: 1.5rem;
+margin-bottom: .7rem;
     }
     
     .info-container h4 {
@@ -202,13 +203,13 @@ font-size: 1.5rem;
     font-size: 1.2rem;
     text-align: center;
     margin-top: 2rem;
-    color: var(--color4);
+    
     font-weight: 600;
 }
 
 .bio-overlay p {
     text-align: center;
-    font-size: .75rem;
+    font-size: .85rem;
     letter-spacing: 1px;
 }
 
@@ -216,14 +217,14 @@ font-size: 1.5rem;
     position: absolute;
     left: 10px;
     top: 12px;
-    opacity: 0.3;
+    opacity: 1;
     cursor: pointer;
     transition: .15s ease-in-out opacity;
     font-size: 1.5rem;
 }
 
 .close-bio-text:hover {
-    opacity: 1;
+    opacity: .5;
 }
 
 .handle {

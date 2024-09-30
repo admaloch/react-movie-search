@@ -5,9 +5,10 @@ interface BioOverlayProps {
   plot: string;
   revealBio: Boolean;
   closeBio: () => void;
+  title: string;
 }
 
-const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element => {
+const BioOverlay = ({ plot, revealBio, closeBio, title }: BioOverlayProps): JSX.Element => {
   
   const scrollDivRef = useRef<HTMLDivElement>(null);
 
@@ -37,6 +38,7 @@ const BioOverlay = ({ plot, revealBio, closeBio }: BioOverlayProps): JSX.Element
       onMouseLeave={mouseLeaveHandler}
       style={styles}
       className='bio-overlay'>
+      <h4>{title} Synopsus:</h4>
       <p>{plot}</p>
         <IoClose onClick={closeBio} className="icon-large close-bio-text"/>
     </div>
