@@ -27,6 +27,7 @@ export default function ListItemModal({ children, imdbId }: ListItemModalProps):
 
     const closeItemModal = () => {
         setIsModalOpen(false)
+        document.body.classList.remove('no-scroll');
     }
 
     if (isError) {

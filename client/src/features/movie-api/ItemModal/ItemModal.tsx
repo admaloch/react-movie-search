@@ -18,6 +18,7 @@ const ItemModal = ({
   closeModal,
   error,
 }: ItemModalInterface): React.JSX.Element | null => {
+  
   const closeModalHandler = useCallback(() => {
     closeModal();
     document.body.classList.remove("no-scroll");

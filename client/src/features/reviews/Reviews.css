@@ -120,10 +120,11 @@ display: none;
   color: var(--color2);
   text-decoration: none;
   transition: 0.15s ease-in-out opacity;
+  cursor: pointer;
 }
 
 .review-header .user-link:hover {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .no-reviews-yet {

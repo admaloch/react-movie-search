@@ -1,6 +1,6 @@
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MovieReviewProps from '../../models/MovieReviewProps';
 
 interface ShowMovieReviewItemProps {
@@ -11,16 +11,20 @@ export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps
 
   if (!review._id) return null;
 
+  const navigate = useNavigate();
+
+
+  const userLinkHandler = () => {
+    navigate(`/profiles/${review.user._id}`);
+    document.body.classList.remove('no-scroll');
+  };
+
   return (
     <li className='movie-review-item'>
       <div className="review-header">
-        <h5 >
-          <Link
-            className='user-link'
-            to={`/profiles/${review.user._id}`}
-          >
+        <span className='user-link' onClick={userLinkHandler}>
             @{review.user.username}
-          </Link>        </h5>
+        </span>
         <Rating
           readonly={true}
           initialRating={review.rating}

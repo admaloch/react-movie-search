@@ -49,7 +49,7 @@ const login = async (req, res) => {
   res.cookie("jwt", refreshToken, {
     httpOnly: true, //accessible only by web server
     secure: true, //https
-    sameSite: "None", //cross-site cookie
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // None in prod, Lax for localhost
     maxAge: 7 * 24 * 60 * 60 * 1000, //cookie expiry: set to match rT
   });
 
