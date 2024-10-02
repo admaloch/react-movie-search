@@ -19,9 +19,12 @@
 
 
 <h2>Takeaways:</h2>
-<p>The primary challenge was linking up the backend and front end, but was a good opportunity to learn/work with RTK query. </p>
+<p>This was reworked multiple times as it is used as a means to implement/practice new skills </p>
 
 <h2>Current Status:</h2>
-<p>Currently done unless I think of something I want to add for fun.</p>
+<p>There are many ways it could be imporved and many new features/ideas I've had, but I don't currently plan to implement anything unless inspiration strikes.</p>
+
+<h2>Note:</h2>
+<p>The backend is deployed using the render.com free tier, so it takes a minute or so to kick into gear when you first visit the page.</p>
 
 

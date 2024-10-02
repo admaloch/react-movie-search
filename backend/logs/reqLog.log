@@ -11784,3 +11784,5 @@
 20240930	18:19:11	6deb27e4-4df6-4f64-ad3d-563227d2dd08	OPTIONS	/users	http://localhost:5173
 20240930	18:19:11	8729eade-bbaa-4ee8-8f99-348d6e1fcb8e	GET	/users/66f9e08b02451606506c6061	http://localhost:5173
 20240930	18:19:11	7952f3d4-ec73-427b-b705-866913d10678	GET	/users	http://localhost:5173
+20241002	17:45:45	43363bc6-1ffb-44ad-afb3-c09c2c504a6b	OPTIONS	/users	http://localhost:5173
+20241002	17:45:45	e7ab8b5a-9139-49c0-909d-84606a17bc7d	GET	/users	http://localhost:5173
