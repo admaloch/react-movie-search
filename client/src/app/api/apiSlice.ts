@@ -1,6 +1,7 @@
 import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../store';
+
 //@ts-ignore
 const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 
