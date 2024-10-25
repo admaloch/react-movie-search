@@ -3,9 +3,10 @@ import { setCredentials } from '../../features/auth/authSlice'
 import { RootState } from '../store';
 //@ts-ignore
 const nodeEnvironment = import.meta.env.VITE_NODE_ENV
+//@ts-ignore
+const backendUrl = import.meta.env.VITE_BACKEND_URL_BASE;
 
-const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://movie-brain-api.onrender.com'
-
+const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : backendUrl
 
 const baseQuery = fetchBaseQuery({
     baseUrl: url,
