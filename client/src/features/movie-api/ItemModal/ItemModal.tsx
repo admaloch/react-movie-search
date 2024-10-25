@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import ModalContent from "./ModalContent";
-import "./ItemModal.css";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 import ItemError from "../../../components/UI/errors/ItemError";
 import CloseIcon from "@mui/icons-material/Close";
 import imageNotFound from "../../../assets/image_not_found.png";
 import { OmdbItemWithRTK } from "../../../models/RTKQueryProps";
+import "./ItemModal.css";
 
 interface ItemModalInterface extends OmdbItemWithRTK {
   closeModal: () => void;

@@ -34,7 +34,6 @@
   justify-content: flex-start;
   align-items: center;
   height: 50%;
-
 }
 
 @media screen and (min-width: 576px) {
@@ -63,7 +62,7 @@
 
 .result-info {
   margin: 0 1rem 0;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   text-align: center;
   color: var(--text);
   overflow-y: auto;
@@ -87,11 +86,12 @@
 }
 
 .result-info li {
-  margin: 0 .3rem;
+  margin: 0 0.3rem;
 }
 
-.result-info li, .result-info p {
-  margin-bottom: .2rem;
+.result-info li,
+.result-info p {
+  margin-bottom: 0.2rem;
 }
 
 .result-info-container h3 {
@@ -138,29 +138,26 @@
 }
 
 .results-icons div {
-  margin: 0 .2rem;
+  margin: 0 0.2rem;
 }
 
 .google-icon {
   color: var(--color2);
   border: var(--color1) solid 1px;
   background-color: var(--mainBackground);
-  padding: .3rem;
+  padding: 0.3rem;
   border-radius: 20px;
   transition: 1s all;
-  margin-right: .4rem;
-
+  margin-right: 0.4rem;
 }
 
 .google-icon:hover {
   color: var(--color1);
   border: var(--color2) solid 1px;
   background-color: var(--mainBackground);
-
 }
 
 .load-modal-container {
   height: 500px;
   width: 700px;
 }
-
