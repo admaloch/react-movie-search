@@ -8,7 +8,7 @@ const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 const backendUrl = import.meta.env.VITE_BACKEND_URL_BASE;
 console.log(backendUrl)
 
-const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : backendUrl
+const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : 'https://react-movie-search-production.up.railway.app/'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: url,
