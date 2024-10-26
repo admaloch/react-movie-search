@@ -6,7 +6,6 @@ import { RootState } from '../store';
 const nodeEnvironment = import.meta.env.VITE_NODE_ENV
 //@ts-ignore
 const backendUrl = import.meta.env.VITE_BACKEND_URL_BASE;
-
 console.log(backendUrl)
 
 const url = nodeEnvironment === 'development' ? 'http://localhost:3500' : backendUrl
