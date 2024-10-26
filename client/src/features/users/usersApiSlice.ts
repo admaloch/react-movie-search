@@ -26,8 +26,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 });
                 return usersAdapter.setAll(initialState, loadedUsers);
             },
-            providesTags: (result, error, arg) => {
-                console.log(result, error)
+            //@ts-ignore
+            providesTags: (arg) => {
                 return [{ type: 'User', id: arg }]
             } 
         }),
@@ -42,8 +42,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 responseData.id = responseData._id;
                 return responseData;
             },
+            //@ts-ignore
             providesTags: (result, error, arg) => {
-                console.log(result, error)
                 return [{ type: 'User', id: arg }]
             } 
         }),
