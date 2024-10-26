@@ -30,7 +30,6 @@ export default function ReviewIcons({ imdbId, title }: ReviewProps): React.JSX.E
 
   const reviewedMovie = typedReviews.find(review => review.imdbId === imdbId);
 
-  if (reviewedMovie) console.log(reviewedMovie)
   return (
     <>
       <ReviewIcon
