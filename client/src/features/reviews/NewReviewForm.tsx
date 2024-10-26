@@ -32,7 +32,6 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
 
   const submitForm: SubmitHandler<IFormInput> = async (data) => {
     try {
-      // console.log({ ...data, imdbId, user: id, title })
       await addNewReview({
         ...data,
         imdbId,
