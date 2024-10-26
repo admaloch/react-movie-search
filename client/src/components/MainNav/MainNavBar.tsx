@@ -30,7 +30,7 @@ function MainNavBar() {
 
     return (
         <>
-            <header style={{ top: showNavbar ? '0' : '-80px', transition: 'top 0.3s' }}>
+            <header className='header-container' style={{ top: showNavbar ? '0' : '-80px', transition: 'top 0.3s' }}>
                 <div className="header-content">
                     <MainNavLogo />
                     <MainNavContent />

@@ -8,7 +8,7 @@ interface ProgressBarProps {
 
 const ProgressBar = ({ progBar, changeIndexHandler }: ProgressBarProps):JSX.Element => {
     return (
-        <div className="progress-bar">
+        <div id="progress-bar" className="progress-bar">
             {progBar && progBar.map(item => (
                 <ProgressItem
                     key={item.id}

@@ -157,6 +157,10 @@ margin-bottom: .7rem;
     position: relative;
 }
 
+.user-item-icon {
+    margin: 0 .3rem;
+}
+
 
 
 .bio-overlay {

@@ -45,13 +45,13 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     )
 
     return (
-        <div className={sliderClass}>
-            <button
+        <section className={sliderClass}>
+            <button id='left-arrow'
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
-                className="handle left-handle" >
-                <div className="arrow">
-                    <ArrowBackIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
+                className="handle left-handle" aria-label='decrease items'>
+                <div  aria-labelledby='left-arrow' className="arrow">
+                    <ArrowBackIcon aria-labelledby='left-arrow' className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
             {submittedSearch &&
@@ -62,14 +62,16 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
             }
 
             <button
+                id='right-arrow'
                 style={arrowStyle}
+                aria-label='increase items'
                 onClick={increaseIndexHandler}
                 className="handle right-handle">
-                <div className="arrow">
-                    <ArrowForwardIcon className='arrow-icon' sx={{ fontSize: '3rem' }} />
+                <div aria-labelledby='right-arrow' className="arrow">
+                    <ArrowForwardIcon aria-labelledby='right-arrow' className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
-        </div >
+        </section >
     )
 }
 

@@ -14,7 +14,7 @@ export default function ModalContent({ item }: OmdbItemInterface): React.JSX.Ele
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`
 
   return (
-    <div className="result-info-container">
+    <main className="result-info-container">
       <ResultInfo
         item={item}
         year={year}
@@ -38,6 +38,6 @@ export default function ModalContent({ item }: OmdbItemInterface): React.JSX.Ele
           title={item.Title} />
       </div>
 
-    </div>
+    </main>
   )
 }

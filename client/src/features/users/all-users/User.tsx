@@ -22,7 +22,7 @@ const User = ({ userId }: UserProps) => {
     if (!typedUser || !typedUser.likedMovies.length) return null;
 
     return (
-        <div className="user-container">
+        <article className="user-container">
             <div className="user-item">
                 <h3>{typedUser.username}</h3>
                 <ul className="liked-list">
@@ -37,7 +37,7 @@ const User = ({ userId }: UserProps) => {
                 </ul>
                 <UserPageLinkIcon userId={typedUser._id} />
             </div>
-        </div>
+        </article>
     )
 
 }

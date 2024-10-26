@@ -28,7 +28,7 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
     }
 
     return (
-        <div
+        <article
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={showArrowFunc}
             className="movie-container"
@@ -46,7 +46,7 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
                     error={error}
                 />
             
-        </div>
+        </article>
     )
 }
 export default React.memo(SliderItem);

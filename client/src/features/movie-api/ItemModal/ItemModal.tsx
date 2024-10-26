@@ -43,15 +43,15 @@ const ItemModal = ({
         : "image not found placeholder";
 
     content = (
-      <div className="modal-content-container">
+      <section className="modal-content-container" role="dialog" aria-labelledby={`${item.Title} info`} >
         <div onClick={closeModalHandler} className="modal-close-icon">
           <CloseIcon fontSize="large" />
         </div>
-        <div className="modal-img-container">
+        <article className="modal-img-container">
           <img src={image} alt={imageAlt} />
-        </div>
+        </article>
         <ModalContent item={item} />
-      </div>
+      </section>
     );
   }
 

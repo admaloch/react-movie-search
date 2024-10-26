@@ -1,6 +1,5 @@
 import { useDeleteReviewMutation } from "../reviewsApiSlice";
 import useAuth from "../../../hooks/useAuth";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import InfoIcon from "@mui/icons-material/Info";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import IconButton from "@mui/material/IconButton";
@@ -54,10 +53,19 @@ export default function DeleteReviewIcon({
       <IconButton
         className="custom-icon-button delete-review-btn"
         onClick={deleteReviewHandler}
-        aria-label="delete"
+        aria-label="delete review"
       >
         <Tippy content="Delete review">
-          <DeleteForeverIcon sx={{ fontSize: 33, color: "var(--color1)" }} />
+          <svg style={{ marginLeft: "7px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="var(--color2)"
+            className="bi bi-trash-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+          </svg>
         </Tippy>
       </IconButton>
     );

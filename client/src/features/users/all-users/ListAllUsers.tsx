@@ -24,13 +24,13 @@ export default function ListAllUsers() {
     const usersIds = users.ids as string[]
 
     return (
-        <div className="main-item-content all-users-section">
+        <main className="main-item-content all-users-section">
 
             <h1>All Users:</h1>
             <div className="user-list">
                 {usersIds.map(id => <User key={id} userId={id} />)}
             </div>
 
-        </div>
+        </main>
     );
 }

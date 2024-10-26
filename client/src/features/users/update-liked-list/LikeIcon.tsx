@@ -55,7 +55,7 @@ export default function LikeIcon({
   }
 
   return (
-    <div className="like-icon-container" onClick={updateLikedList}>
+    <div className="like-icon-container" onClick={updateLikedList} aria-label="like or unlike item">
       {content}
     </div>
   );

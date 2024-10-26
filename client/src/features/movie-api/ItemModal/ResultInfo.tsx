@@ -10,8 +10,8 @@ interface ResultInfoProps {
 export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.Element {
   return (
     <>
-      {item.Title !== 'N/A' && <h3 >{item.Title}</h3>}
-      <div className="result-info">
+      {item.Title !== 'N/A' &&<h3 >{item.Title}</h3> }
+      <section className="result-info">
         <ul >
           {item.Runtime !== 'N/A' && <li> <span>Runtime:</span> {item.Runtime} </li>}
           {item.Rated !== 'N/A' && <li> <span>Rated:</span> {item.Rated} </li>}
@@ -22,9 +22,12 @@ export default function ResultInfo({ item, year }: ResultInfoProps): React.JSX.E
         {item.Actors !== 'N/A' && <p><span>Actors: </span>{item.Actors}</p>}
         {item.Plot !== 'N/A' && <p><span>Plot: </span>{item.Plot}</p>}
         {item.Language !== 'N/A' && <p><span>Language:</span> {item.Language}</p>}
-        <h4>Reviews:</h4>
+        <aside>
+          <h4>Reviews:</h4>
         <ShowMovieReviews imdbId={item.imdbID}/>
-      </div>
+        </aside>
+        
+      </section>
     </>
   )
 }

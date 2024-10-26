@@ -35,7 +35,7 @@ function ErrorMsg() {
         : 'error-msg-container remove-error'
 
     return (
-        <div className={errorClass}>
+        <div className={errorClass} aria-hidden='true'>
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>
         </div>
     )

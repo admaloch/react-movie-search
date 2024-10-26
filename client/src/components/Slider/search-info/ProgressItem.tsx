@@ -12,7 +12,7 @@ const ProgressItem = ({ id, isActive, changeIndexHandler }: ProgressItemProps): 
     }
 
     return (
-        <div
+        <div role="button" aria-labelledby="progress-bar"
             onClick={() => progItemHandler(id)}
             className={isActive ? 'progress-item active' : 'progress-item'}
         >

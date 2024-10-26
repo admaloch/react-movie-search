@@ -14,7 +14,7 @@ export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieIt
 
     if (likedMovies.length) {
         content =
-            <div className="movie-items-container">
+            <section className="movie-items-container">
                 {likedMovies.map((movie) => (
                     <LikedMovieItem
                         imdbId={movie.imdbId}
@@ -24,7 +24,7 @@ export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieIt
                     />
                 ))}
 
-            </div>
+            </section>
     } else {
         content =
             <div className="movie-items-container">

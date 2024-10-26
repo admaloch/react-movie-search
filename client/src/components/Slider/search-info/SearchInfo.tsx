@@ -51,14 +51,14 @@ const SearchInfo = ({ progBar, isSliderActive, setProgBar, sliderIndex, changeIn
         : 'header-info remove-header'
 
     return (
-        <div className={headerClass}>
+        <aside className={headerClass}>
             <h2>{currType.description} about: <span style={spanColor}>{currSearch}</span>
             </h2>
             <ProgressBar
                 progBar={progBar}
                 changeIndexHandler={changeIndexHandler}
             />
-        </div>
+        </aside>
     )
 }
 export default React.memo(SearchInfo);

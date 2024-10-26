@@ -15,11 +15,14 @@ function MainSearch({ isSliderActive }: MainSearchProps): JSX.Element {
     let sliderClass = isSliderActive ? 'show-slider main-search-section' : 'hide-slider main-search-section'
 
     return (
-        <div className={sliderClass}>
-            <h1 className="text-center">{currItemHeader}</h1>
+        <section className={sliderClass}>
+           
+               <h1 className="text-center">{currItemHeader}</h1> 
+            
+            
             <SearchTypeButtons  />
             <SearchForm />
-        </div>
+        </section>
     )
 }
 export default React.memo(MainSearch)
