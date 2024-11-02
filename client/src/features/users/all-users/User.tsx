@@ -4,9 +4,7 @@ import UserPageLinkIcon from './UserPageLinkIcon';
 import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
 import { memo } from 'react';
 import  { UserItemProps } from '../../../models/UserItemProps';
-import InputLoadAnimation from '../../../components/UI/LoadAnimation/InputLoadAnimation';
 import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation';
-import MainLoadAnimation from '../../../components/UI/LoadAnimation/MainLoadAnimation';
 
 interface UserProps {   
     userId: string;

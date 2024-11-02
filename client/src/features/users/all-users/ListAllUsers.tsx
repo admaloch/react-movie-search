@@ -1,7 +1,9 @@
 import { useGetUsersQuery } from '../usersApiSlice'
 import Error from '../../../components/UI/errors/Error'
 import './User.css'
-import User from './User'export default function ListAllUsers() {
+import User from './User'
+
+export default function ListAllUsers() {
     const {
         data: users,
         isLoading,
