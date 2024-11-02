@@ -29,7 +29,7 @@ export default function LikedMovieItem({
   let content;
 
   if (isLoading) {
-    content = <CircleAnimation />;
+    content = <CircleAnimation bgColor="#3838380a"/>;
   } else if (isError) {
     content = (
       //@ts-ignore

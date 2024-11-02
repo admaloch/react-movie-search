@@ -1,12 +1,31 @@
 import './CircleAnimation.css'
 
-export default function CircleAnimation(): JSX.Element {
+interface CircleAnimationProps {
+    color?: string;
+    bgColor?: string;
+}
+
+export default function CircleAnimation({ color = 'var(--color2)', bgColor = 'transparent'}: CircleAnimationProps): JSX.Element {
+
+
     return (
-        <div className="circle-container">
+        <div style={{backgroundColor: bgColor}} className="circle-container">
          
-                <div className="circle-animation">
-                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                <span>Loading</span>
+                <div style={{color: color}} className="circle-animation">
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                    <div style={{backgroundColor: color}}></div>
+                </div>
+                <span style={{color: color}}>Loading</span>
            
         </div>
     )

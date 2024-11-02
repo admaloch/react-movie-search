@@ -2,8 +2,6 @@ import "./UserProfile.css";
 import { useState } from "react";
 import { useGetUserByIdQuery } from "../usersApiSlice";
 import { useParams } from "react-router-dom";
-import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
-import Error from "../../../components/UI/errors/Error";
 import UserInfo from "./UserInfo";
 import FilterContentOptions from "./FilterContentOptions";
 import LikedMovieItems from "./LikedMovieItems";
@@ -15,17 +13,10 @@ export default function UserProfile() {
 
   const { id } = useParams();
 
-  let { data: user, isLoading, isError, error } = useGetUserByIdQuery(id);
-  if (isLoading) return <CircleAnimation />;
+  let { data: user, isError } = useGetUserByIdQuery(id);
+
   //@ts-ignore
-  else if (isError || !user)
-    return (
-      <Error
-        text={`Error: ${
-          (error as any)?.data?.message || "Failed to load content."
-        }`}
-      />
-    );
+  if (isError || !user) return null;
 
   const typedUser = user as UserItemProps;
 

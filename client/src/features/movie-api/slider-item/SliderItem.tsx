@@ -37,6 +37,8 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
             <img
                 src={Poster !== 'N/A' ? Poster : image_not_found}
                 alt={imdbID}
+                height={275}
+                width={225}
             />
      
                 <HoverInfo

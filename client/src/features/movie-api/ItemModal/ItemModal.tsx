@@ -48,7 +48,7 @@ const ItemModal = ({
           <CloseIcon fontSize="large" />
         </div>
         <article className="modal-img-container">
-          <img src={image} alt={imageAlt} />
+          <img height={400} width={275} src={image} alt={imageAlt} />
         </article>
         <ModalContent item={item} />
       </section>

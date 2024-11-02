@@ -8,11 +8,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(216, 224, 227, 0.3);
+
 }
 
 .circle-container span {
-  color: var(--color2);
 }
 
 .circle-content {
@@ -43,7 +42,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: var(--color2);
+
   border-radius: 50%;
   animation: circle-animation 1.2s linear infinite;
 }

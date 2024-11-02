@@ -15,6 +15,8 @@ export default function LikedMovieContent({ apiItem, imdbID, isLoading }: LikedM
     return (
         <>
             <img
+            width={300}
+            height={300}
                 src={apiItem.Poster !== 'N/A' ? apiItem.Poster : image_not_found}
                 alt={imdbID}
             />

@@ -9,7 +9,9 @@ interface ShowMovieReviewItemProps {
 
 export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps): JSX.Element | null {
 
-  if (!review._id) return null;
+  if (!review.user) return null;
+
+  console.log(review)
 
   const navigate = useNavigate();
 
@@ -22,9 +24,11 @@ export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps
   return (
     <li className='movie-review-item'>
       <div className="review-header">
-        <span className='user-link' onClick={userLinkHandler}>
+        {review.user._id && (
+          <span className='user-link' onClick={userLinkHandler}>
             @{review.user.username}
         </span>
+        )}
         <Rating
           readonly={true}
           initialRating={review.rating}

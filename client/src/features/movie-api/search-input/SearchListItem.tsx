@@ -13,7 +13,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.J
             >
                 <li className="search-list-item">
                     <div className="search-item-thumbnail">
-                        <img src={Poster !== 'N/A' ? Poster : image_not_found}></img>
+                        <img width={27} height={50} src={Poster !== 'N/A' ? Poster : image_not_found}></img>
                     </div>
                     <div className="search-item-info">
                         <h3>{Title}</h3>
