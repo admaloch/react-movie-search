@@ -177,3 +177,9 @@
 20241102	12:14:18	9f0ce788-0853-4707-ac2b-eaae818b3327	Error: Not allowed by CORS	GET	/users	http://localhost:5173
 20241102	12:14:18	4fd6531c-8c55-47c7-b679-c1ceffa0859e	Error: Not allowed by CORS	GET	/reviews	http://localhost:5173
 20241102	12:14:18	3cabb7dc-e09e-4a25-a190-ad54eed2d90a	Error: Not allowed by CORS	GET	/auth/refresh	http://localhost:5173
+20241103	09:46:33	3e3e1e7a-dc25-4223-bc05-8f072e230170	Error: Not allowed by CORS	OPTIONS	/reviews	https://movie-brain.netlify.app
+20241103	09:46:33	9e8dc2ef-38b8-4b4f-b097-177dd308ac89	Error: Not allowed by CORS	OPTIONS	/users	https://movie-brain.netlify.app
+20241103	09:46:33	7151a6a6-9ecf-4bd8-b508-b963a4b9cd5e	Error: Not allowed by CORS	GET	/reviews	https://movie-brain.netlify.app
+20241103	09:46:33	020a39b4-d885-48ff-8a67-10498ff0b028	Error: Not allowed by CORS	OPTIONS	/auth/refresh	https://movie-brain.netlify.app
+20241103	09:46:33	a1787b65-ccf5-480f-8853-41da578b940f	Error: Not allowed by CORS	GET	/users	https://movie-brain.netlify.app
+20241103	09:46:33	afdf7ae0-a7aa-498a-ba09-c4df500b7b5e	Error: Not allowed by CORS	GET	/auth/refresh	https://movie-brain.netlify.app

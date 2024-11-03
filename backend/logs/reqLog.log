@@ -13137,3 +13137,9 @@
 20241103	09:40:08	c7029084-5727-460a-be40-5c2aebfa8ae9	GET	/reviews/user/66e5d81758272fa0aa10a60b	http://localhost:5173
 20241103	09:41:12	cbcdfa44-850d-415b-8ac1-ff5239cd059e	OPTIONS	/reviews/movie/tt0045152	http://localhost:5173
 20241103	09:41:12	f93f7e2d-8264-4105-a17c-98ece4b1f4b5	GET	/reviews/movie/tt0045152	http://localhost:5173
+20241103	09:46:33	0f64f22b-048a-4605-b40e-2cf2e1e3ad04	OPTIONS	/reviews	https://movie-brain.netlify.app
+20241103	09:46:33	355df61b-e3fc-492a-a432-77a75acaafbe	OPTIONS	/users	https://movie-brain.netlify.app
+20241103	09:46:33	6f5e05cc-051e-458a-a429-9057940d3e15	GET	/reviews	https://movie-brain.netlify.app
+20241103	09:46:33	7d488213-20b3-4a3d-8800-311b3d0d14a1	OPTIONS	/auth/refresh	https://movie-brain.netlify.app
+20241103	09:46:33	953598fa-b55d-427c-879a-4c4f8e999261	GET	/users	https://movie-brain.netlify.app
+20241103	09:46:33	259afb06-ac47-405e-bb0c-d9cc8ce50a7b	GET	/auth/refresh	https://movie-brain.netlify.app
