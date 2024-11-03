@@ -65,7 +65,7 @@ const SearchForm = (): JSX.Element => {
                 <InputLoadAnimation style={{ top: '.8rem', right: '120px' }} />
             }
 
-            <button type="submit" className="submit-btn">
+            <button aria-label="submit search" type="submit" className="submit-btn">
                 {isSubmitLoading
                     // ? <InputLoadAnimation placementStyle={{ inset: '.7rem 17px auto auto' }} />
                     ? 'Submitting'

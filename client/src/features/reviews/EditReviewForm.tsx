@@ -95,7 +95,7 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
             )}
           </div>
           <div className="review-btn-container">
-            <button className="review-btn" type="submit">
+            <button aria-label="submit review edit" className="review-btn" type="submit">
               {isLoading ? "Submitting..." : "Submit Review"}
             </button>
           </div>

@@ -116,7 +116,7 @@ const Login: React.FC = () => {
                     {errors.password && <span className="error">{errors.password.message}</span>}
                 </div>
 
-                <button type="submit" disabled={isLoading} className="button">
+                <button aria-label='submit login' type="submit" disabled={isLoading} className="button">
                     {isLoading ? 'Logging in...' : 'Submit'}
                 </button>
                 <label htmlFor="persist" className="form__persist">

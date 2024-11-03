@@ -28,7 +28,7 @@ export default function LogoutUser({ closeNavbar }: LogoutUserProps) {
 
    return (
        <button
-           className='logout-btn' onClick={handleLogoutBtnClick} disabled={isLoading}>{isLoading ? 'Logging out' : 'Logout'}
+          aria-label='submit logout' className='logout-btn' onClick={handleLogoutBtnClick} disabled={isLoading}>{isLoading ? 'Logging out' : 'Logout'}
        </button>
    );
 };

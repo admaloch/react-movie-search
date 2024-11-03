@@ -7,6 +7,7 @@ import FilterContentOptions from "./FilterContentOptions";
 import LikedMovieItems from "./LikedMovieItems";
 import UserSettingsIcon from "./UserSettingsIcon";
 import { UserItemProps } from "../../../models/UserItemProps";
+import Error from "../../../components/UI/errors/Error";
 
 export default function UserProfile() {
   const [isWatched, setIsWatched] = useState("both");
@@ -16,7 +17,7 @@ export default function UserProfile() {
   let { data: user, isError } = useGetUserByIdQuery(id);
 
   //@ts-ignore
-  if (isError || !user) return null;
+  if (isError || !user) return <Error text={"We couldn't find that user!"} />;
 
   const typedUser = user as UserItemProps;
 

@@ -182,7 +182,7 @@ const EditPasswordForm: React.FC = () => {
             <span className="error">{errors.confirmPassword.message}</span>
           )}
         </div>
-        <button type="submit" disabled={isLoading} className="button">
+        <button aria-label="submit edit password" type="submit" disabled={isLoading} className="button">
           {isLoading ? "Updating..." : "Update"}
         </button>
         <div className="edit-message">

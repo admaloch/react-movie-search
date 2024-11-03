@@ -46,7 +46,7 @@ export default function ShowMovieReviews({
       </ul>
     );
   } else {
-    content = <p>Unable to find content</p>;
+    content = <p>Unable to load reviews.</p>;
   }
 
   return content;

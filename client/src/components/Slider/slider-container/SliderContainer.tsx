@@ -47,9 +47,10 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     return (
         <section className={sliderClass}>
             <button id='left-arrow'
+            aria-label='decrease items'
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
-                className="handle left-handle" aria-label='decrease items'>
+                className="handle left-handle" >
                 <div  aria-labelledby='left-arrow' className="arrow">
                     <ArrowBackIcon aria-labelledby='left-arrow' className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>

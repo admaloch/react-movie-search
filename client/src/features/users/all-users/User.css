@@ -81,9 +81,14 @@
 
 .user-item h3 {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     word-wrap: break-word; /* or */
     overflow-wrap: break-word;
+}
+
+.user-movie-item {
+font-size: 1.2rem;
+line-height: 1.4rem;
 }
 
 .liked-list {

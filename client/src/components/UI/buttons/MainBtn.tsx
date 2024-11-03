@@ -4,8 +4,9 @@ interface MainBtnProps {
 }
 
 export default function MainBtn({children}: MainBtnProps) {
+  let ariaLabelText = children as string
   return (
-    <button className="main-btn">
+    <button aria-label={ariaLabelText} className="main-btn">
         {children}
     </button>
   )

@@ -114,8 +114,8 @@ display: none;
 }
 
 .review-header .user-link {
-  margin-bottom: 0;
-  font-size: 1rem;
+  /* margin-bottom: 0; */
+
   margin-right: 0.2rem;
   color: var(--color2);
   text-decoration: none;

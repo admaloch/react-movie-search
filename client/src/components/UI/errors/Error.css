@@ -4,6 +4,7 @@
 .item-error a {
   transition: .15s ease-in-out opacity;
   cursor: pointer;
+  font-size: 2rem;
 
 }
 .item-error a:hover {
@@ -24,6 +25,7 @@ text-align: center;
     max-width: 600px;
     text-align: center;
 }
+
 
 .error-content p {
     cursor: pointer;

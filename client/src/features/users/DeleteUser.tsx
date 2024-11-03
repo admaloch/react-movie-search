@@ -65,7 +65,7 @@ function DeleteUser(): React.JSX.Element | null {
         </p>
         <p>Are you sure you want to follow through with this?</p>
         <div className="button-container">
-          <button className="delete-btn" onClick={deleteUserBtnHandler}>
+          <button aria-label="submit delete account" className="delete-btn" onClick={deleteUserBtnHandler}>
             <SentimentVeryDissatisfiedIcon
               sx={{ fontSize: 20, fill: "white", marginRight: ".4rem" }}
             />

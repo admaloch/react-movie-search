@@ -175,7 +175,7 @@ const Register: React.FC = () => {
             <span className="error">{errors.confirmPassword.message}</span>
           )}
         </div>
-        <button type="submit" disabled={isLoading} className="button">
+        <button aria-label="submit new registration" type="submit" disabled={isLoading} className="button">
           {isLoading ? "Registering..." : "Register"}
         </button>
         <p>Already have an account?</p>

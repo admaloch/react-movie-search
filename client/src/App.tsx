@@ -52,6 +52,7 @@ function App() {
                                 </Route>
                                 <Route path='/credits' element={<Credits />} />
                                 <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
+
                             </Route>
                         </Route>
                     </Route>

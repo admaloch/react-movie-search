@@ -45,11 +45,11 @@ export default function MainNavIsLoggedInItems() {
                 <NavLink to="/search" onClick={closeNavbar}>Search</NavLink>
                 <NavLink to="/profiles" onClick={closeNavbar} end>All Users</NavLink>
                 {isLoggedInItems}
-                <button className="nav-close-btn" onClick={closeNavbar}>
-                    <FaTimes />
+                <button className="nav-close-btn" onClick={closeNavbar} aria-label="Close navigation">
+                    <FaTimes aria-hidden="true" />
                 </button>
             </nav>
-            <button className="nav-btn" onClick={showNavbar}>
+            <button className="nav-btn" onClick={showNavbar} aria-label="Open navigation">
                 <FaBars />
             </button>
         </>

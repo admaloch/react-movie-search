@@ -42,12 +42,8 @@ const User = ({ userId, isLoading }: UserProps) => {
         </ul>
         <UserPageLinkIcon userId={typedUser._id} />
         </>
-       
-   
     }
      
-
-
     return (
         <article className="user-container">
             <div className="user-item" >

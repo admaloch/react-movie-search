@@ -14,7 +14,15 @@
     padding: 0 .3rem;
     line-height: 35px;
     margin: 2rem 0;
+    
+    font-weight: bold;
 }
+
+@media screen and (max-width: 400px) {
+    .main-search-section h1 {
+        max-width: 340px;    }
+}
+
 
 /* result type buttons */
 #result-type-container {

@@ -114,7 +114,7 @@ const EditUserForm: React.FC = () => {
           )}
         </div>
 
-        <button type="submit" disabled={isLoading} className="button">
+        <button aria-label="submit edit user" type="submit" disabled={isLoading} className="button">
           {isLoading ? "Updating..." : "Update"}
         </button>
         <div className="edit-message">
