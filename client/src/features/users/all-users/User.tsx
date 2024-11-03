@@ -29,21 +29,26 @@ const User = ({ userId, isLoading }: UserProps) => {
     else {
         content =  
         <>
-         <h3>{typedUser.username}</h3>
+         <h2>{typedUser.username}</h2>
         <ul className="liked-list">
             {typedUser.likedMovies.map(movie => (
-                <ListItemModal
+                <li>
+                    <ListItemModal
                     imdbId={movie.imdbId}
                     key={movie._id}
                 >
-                    <li className='user-movie-item'>{movie.title}</li>
+                    <span className='user-movie-item'>{movie.title}</span>
                 </ListItemModal>
+                </li>
+                
             ))}
         </ul>
         <UserPageLinkIcon userId={typedUser._id} />
         </>
     }
      
+
+
     return (
         <article className="user-container">
             <div className="user-item" >

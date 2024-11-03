@@ -24,9 +24,10 @@ function UserPageLink({ userId }: UserPageLinkProps) {
 
     return (
         <Box sx={{ position: 'absolute', bottom: 0, right: 0 }}>
-            <Link aria-label='link to user profile' to={`/profiles/${userId}`} style={{ textDecoration: 'none',color: 'var(--containerText)' }}>
+            <Link to={`/profiles/${userId}`} style={{ textDecoration: 'none',color: 'var(--containerText)' }}>
 
                 <IconButton
+                aria-label='link to user profile' 
                     // onClick={navigate(`/profiles/${userId}`)}
                     onMouseEnter={handlePopoverOpen}
                     onMouseLeave={handlePopoverClose}

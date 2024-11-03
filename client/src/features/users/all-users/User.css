@@ -79,7 +79,7 @@
 
 
 
-.user-item h3 {
+.user-item h2 {
     text-align: center;
     font-size: 1.8rem;
     word-wrap: break-word; /* or */
@@ -87,13 +87,14 @@
 }
 
 .user-movie-item {
-font-size: 1.2rem;
+font-size: 1.4rem;
 line-height: 1.4rem;
 }
 
 .liked-list {
     max-height: 200px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
