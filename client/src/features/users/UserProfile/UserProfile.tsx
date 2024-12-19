@@ -8,16 +8,21 @@ import LikedMovieItems from "./LikedMovieItems";
 import UserSettingsIcon from "./UserSettingsIcon";
 import { UserItemProps } from "../../../models/UserItemProps";
 import Error from "../../../components/UI/errors/Error";
+import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 
 export default function UserProfile() {
   const [isWatched, setIsWatched] = useState("both");
 
   const { id } = useParams();
 
-  let { data: user, isError } = useGetUserByIdQuery(id);
+  let { data: user, isError, isLoading } = useGetUserByIdQuery(id);
+
+  if(!user) return null;
+
+  if(isLoading) return <CircleAnimation />
 
   //@ts-ignore
-  if (isError || !user) return <Error text={"We couldn't find that user!"} />;
+  if (isError) return <Error text={"We couldn't find that user!"} />;
 
   const typedUser = user as UserItemProps;
 

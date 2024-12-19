@@ -2,6 +2,7 @@ import { useGetUsersQuery } from '../usersApiSlice'
 import Error from '../../../components/UI/errors/Error'
 import './User.css'
 import User from './User'
+import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation';
 
 export default function ListAllUsers() {
     const {
@@ -13,10 +14,12 @@ export default function ListAllUsers() {
         refetchOnMountOrArgChange: false, // avoid refetching on every mount
     });
 
+    if (!users) return null
+
     //@ts-ignore
     if (isError ) return <Error text={'Something went wrong. Check your internet connection and try again.'} />
 
-    if (!users) return null
+    if(isLoading) return <CircleAnimation/>
 
     const usersIds = users.ids as string[]
 
