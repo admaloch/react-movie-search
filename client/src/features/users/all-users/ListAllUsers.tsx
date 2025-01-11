@@ -14,23 +14,32 @@ export default function ListAllUsers() {
         refetchOnMountOrArgChange: false, // avoid refetching on every mount
     });
 
-    if (!users) return null
+    let content = null
+
+    if(isLoading) content = <CircleAnimation/>
 
     //@ts-ignore
-    if (isError ) return <Error text={'Something went wrong. Check your internet connection and try again.'} />
+    else if (isError || !users) content = <Error text={'We were unable to connect. Check your internet connection and try again.'} />
 
-    if(isLoading) return <CircleAnimation/>
 
-    const usersIds = users.ids as string[]
+    else {
+        const usersIds = users.ids as string[]
+        content = (
+            <>
+                <h1>All Users:</h1>
+                <div className="user-list">
+                    {usersIds.map(id => <User key={id} userId={id} isLoading={isLoading} />)}
+                </div>
+            </>
+        )
+    }
+    
+
+
 
     return (
         <main className="main-item-content all-users-section">
-
-            <h1>All Users:</h1>
-            <div className="user-list">
-                {usersIds.map(id => <User key={id} userId={id} isLoading={isLoading} />)}
-            </div>
-
+           {content}
         </main>
     );
 }

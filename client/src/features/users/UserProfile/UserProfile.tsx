@@ -11,32 +11,46 @@ import Error from "../../../components/UI/errors/Error";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 
 export default function UserProfile() {
+
   const [isWatched, setIsWatched] = useState("both");
 
   const { id } = useParams();
 
   let { data: user, isError, isLoading } = useGetUserByIdQuery(id);
 
-  if(!user) return null;
+  let content = null;
 
-  if(isLoading) return <CircleAnimation />
 
-  //@ts-ignore
-  if (isError) return <Error text={"We couldn't find that user!"} />;
+  if(isLoading) content = <CircleAnimation />
 
-  const typedUser = user as UserItemProps;
+  else if (isError || !user) content = <Error text={'We were unable to locate that user. Check your internet connection and try again.'} />
 
-  const { likedMovies } = typedUser;
+  else {
+    const typedUser = user as UserItemProps;
+    const { likedMovies } = typedUser;
+
+    content = (
+      <>
+        <UserInfo user={typedUser} />
+        <FilterContentOptions
+          isWatched={isWatched}
+          setIsWatched={setIsWatched}
+        />
+        <LikedMovieItems
+          isWatched={isWatched}
+          likedMovies={likedMovies}
+        />
+        <UserSettingsIcon />
+      </>
+    );
+
+  }
+
+  
 
   return (
     <main className="user-profile-container">
-      <UserInfo user={typedUser} />
-
-      <FilterContentOptions isWatched={isWatched} setIsWatched={setIsWatched} />
-
-      <LikedMovieItems isWatched={isWatched} likedMovies={likedMovies} />
-
-      <UserSettingsIcon />
+      {content}
     </main>
   );
 }

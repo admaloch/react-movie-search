@@ -10,8 +10,8 @@ export default function CircleAnimation({ color = 'var(--color2)', bgColor = 'tr
 
     return (
         <div style={{backgroundColor: bgColor}} className="circle-container">
-         
-                <div style={{color: color}} className="circle-animation">
+         <div className="animation-content">
+             <div style={{color: color}} className="circle-animation">
                     <div style={{backgroundColor: color}}></div>
                     <div style={{backgroundColor: color}}></div>
                     <div style={{backgroundColor: color}}></div>
@@ -26,6 +26,8 @@ export default function CircleAnimation({ color = 'var(--color2)', bgColor = 'tr
                     <div style={{backgroundColor: color}}></div>
                 </div>
                 <span style={{color: color}}>Loading</span>
+         </div>
+               
            
         </div>
     )

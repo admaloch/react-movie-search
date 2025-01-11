@@ -30,19 +30,16 @@ const User = ({ userId, isLoading }: UserProps) => {
         content =  
         <>
          <h2>{typedUser.username}</h2>
-        <ul className="liked-list">
-            {typedUser.likedMovies.map(movie => (
-                <li>
-                    <ListItemModal
-                    imdbId={movie.imdbId}
-                    key={movie._id}
-                >
-                    <span className='user-movie-item'>{movie.title}</span>
-                </ListItemModal>
+         <ul className="liked-list">
+            {typedUser?.likedMovies.map(movie => (
+                <li key={movie._id}>
+                    <ListItemModal imdbId={movie.imdbId}>
+                        <span className='user-movie-item'>{movie.title}</span>
+                    </ListItemModal>
                 </li>
-                
             ))}
         </ul>
+
         <UserPageLinkIcon userId={typedUser._id} />
         </>
     }
