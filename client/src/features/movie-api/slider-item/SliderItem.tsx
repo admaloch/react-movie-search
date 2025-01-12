@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import HoverInfo from "../../../components/movie-item/HoverInfo";
 import image_not_found from '../../../assets/image_not_found.png';
 import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
-import { OmdbItemInterface } from "../../../models/ItemApiProps";
+import { OmdbItem, OmdbItemInterface } from "../../../models/ItemApiProps";
 interface SliderItemProps extends OmdbItemInterface {
     showArrowFunc: () => void;
     hideArrowFunc: () => void;
+    item: OmdbItem
 }
 
 const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JSX.Element | null => {
@@ -26,6 +27,8 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
             setFetchedIds(prevIds => new Set(prevIds).add(imdbID));
         }
     }
+
+    
 
     return (
         <article

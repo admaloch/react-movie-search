@@ -19,7 +19,7 @@ export default function ListAllUsers() {
     if(isLoading) content = <CircleAnimation/>
 
     //@ts-ignore
-    else if (isError || !users) content = <Error text={'We were unable to connect. Check your internet connection and try again.'} />
+    else if (isError || !users) content = <Error text={'We were unable to connect. Create an account, login or check your internet connection and try again.'} />
 
 
     else {

@@ -133,7 +133,7 @@ body {
 
 .disable {
     pointer-events: none;
-    /* opacity: .7; */
+    opacity: .2!important;
     cursor: wait;
 
 }

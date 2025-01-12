@@ -5,7 +5,7 @@
 
 .slider-container {
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: auto;
     justify-content: center;
     opacity: 0;

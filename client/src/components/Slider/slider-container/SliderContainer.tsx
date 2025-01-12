@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 import Slider from '../../../features/movie-api/slider-item/Slider';
 import './Slider.css'
@@ -21,11 +20,11 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
     const [showArrows, setShowArrows] = useState(true)
     const arrowStyle = { opacity: showArrows ? 1 : 0 }
 
-    const showArrowHandler = () => {
+    const showArrowFunc = () => {
         setShowArrows(true)
 
     }
-    const hideArrowHandler = () => {
+    const hideArrowFunc = () => {
         setShowArrows(false)
     }
 
@@ -33,45 +32,38 @@ const SliderContainer = ({ increaseIndexHandler, decreaseIndexHandler, isSliderA
         ? 'show-slider slider-container'
         : 'remove-slider slider-container'
 
-    useEffect(
-        function hideArrowsOnSmallRequests() {
-            if (progBar.length > 1) {
-                setShowArrows(true)
-            } else {
-                setShowArrows(false)
-            }
-        },
-        [progBar]
-    )
+ 
 
     return (
         <section className={sliderClass}>
+       
             <button id='left-arrow'
             aria-label='decrease items'
                 style={arrowStyle}
                 onClick={decreaseIndexHandler}
-                className="handle left-handle" >
+                className={`handle left-handle ${progBar.length < 2 ? 'disable' : ''}`}>
                 <div  aria-labelledby='left-arrow' className="arrow">
                     <ArrowBackIcon aria-labelledby='left-arrow' className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
-            {submittedSearch &&
-                <Slider
-                    showArrowFunc={showArrowHandler}
-                    hideArrowFunc={hideArrowHandler}
-                />
-            }
-
+        
+            {submittedSearch && <Slider
+                showArrowFunc={showArrowFunc}
+                hideArrowFunc={hideArrowFunc}
+            />}
+    
             <button
                 id='right-arrow'
                 style={arrowStyle}
                 aria-label='increase items'
                 onClick={increaseIndexHandler}
-                className="handle right-handle">
+                className={`handle right-handle ${progBar.length < 2 ? 'disable' : ''}`}>
                 <div aria-labelledby='right-arrow' className="arrow">
                     <ArrowForwardIcon aria-labelledby='right-arrow' className='arrow-icon' sx={{ fontSize: '3rem' }} />
                 </div>
             </button>
+ 
+            
         </section >
     )
 }
