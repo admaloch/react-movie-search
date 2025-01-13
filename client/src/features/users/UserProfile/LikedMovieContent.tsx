@@ -6,9 +6,11 @@ interface LikedMovieContentProps {
     apiItem: OmdbItem;
     imdbID: string;
     isLoading: boolean;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function LikedMovieContent({ apiItem, imdbID, isLoading }: LikedMovieContentProps): React.JSX.Element|null {
+export default function LikedMovieContent({ apiItem, imdbID, isLoading, setIsModalOpen, setCurrentImdbId }: LikedMovieContentProps): React.JSX.Element|null {
     
     if(!apiItem) return null
     
@@ -23,6 +25,8 @@ export default function LikedMovieContent({ apiItem, imdbID, isLoading }: LikedM
             <HoverInfo
                 item={apiItem}
                 isLoading={isLoading}
+                setIsModalOpen={setIsModalOpen}
+                setCurrentImdbId={setCurrentImdbId}
             />
         </>
     )

@@ -1,18 +1,28 @@
-import React from "react"
-import ListItemModal from "../ItemModal/ListItemModal"
+import React, { useState } from "react"
 import image_not_found from '../../../assets/image_not_found.png'
 import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 import { SmallOmdbItem } from "../../../models/ItemApiProps";
+import MovieItemModal from "../ItemModal/MovieItemModal";
 
 const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.JSX.Element => {
 
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const listItemClickHandler = () => {
+        setIsModalOpen(true)
+    }
+
     return (
         <>
-            <ListItemModal
-                imdbId={imdbID}
+           <li
+                onClick={listItemClickHandler}
+                className="search-list-item"
             >
-                <li className="search-list-item">
-                    <div className="search-item-thumbnail">
+                <div className="search-item-thumbnail">
                         <img width={27} height={50} src={Poster !== 'N/A' ? Poster : image_not_found}></img>
                     </div>
                     <div className="search-item-info">
@@ -24,10 +34,14 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.J
                             title={Title}
                             imdbId={imdbID}
                         />
-                    </div>
+                </div>
 
-                </li>
-            </ListItemModal>
+            </li>
+            <MovieItemModal 
+                imdbId={imdbID}
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+            />
         </>
     )
 }

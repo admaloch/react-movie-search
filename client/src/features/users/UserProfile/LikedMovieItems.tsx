@@ -2,6 +2,8 @@ import './UserProfile.css'
 import LikedMovieItem from './LikedMovieItem';
 import { Link } from 'react-router-dom';
 import { LikedUserMovies } from '../../../models/UserItemProps';
+import MovieItemModal from '../../movie-api/ItemModal/MovieItemModal';
+import { useState } from 'react';
 
 interface LikedMovieItemsProps {
     likedMovies: LikedUserMovies[];
@@ -10,6 +12,14 @@ interface LikedMovieItemsProps {
 
 export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieItemsProps): React.JSX.Element | null {
 
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [currentImdbId, setCurrentImdbId] = useState('')
+
+    const closeModal = () => {
+        setCurrentImdbId('')
+        setIsModalOpen(false)
+    }
+    
     let content
 
     if (likedMovies.length) {
@@ -21,8 +31,15 @@ export default function LikedMovieItems({ likedMovies, isWatched }: LikedMovieIt
                         hasWatched={movie.hasWatched}
                         key={movie.imdbId}
                         isWatchedFilter={isWatched}
+                        setIsModalOpen={setIsModalOpen}
+                        setCurrentImdbId={setCurrentImdbId}
                     />
                 ))}
+                <MovieItemModal 
+                    imdbId={currentImdbId}
+                    isModalOpen={isModalOpen}
+                    closeModal={closeModal}
+                />
 
             </section>
     } else {

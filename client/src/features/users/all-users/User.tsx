@@ -1,10 +1,10 @@
 
 import {  useGetUsersQuery } from '../usersApiSlice'
 import UserPageLinkIcon from './UserPageLinkIcon';
-import ListItemModal from '../../movie-api/ItemModal/ListItemModal';
 import { memo } from 'react';
 import  { UserItemProps } from '../../../models/UserItemProps';
 import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation';
+import UserListItems from './UserListItems';
 
 interface UserProps {   
     userId: string;
@@ -29,23 +29,20 @@ const User = ({ userId, isLoading }: UserProps) => {
     else {
         content =  
         <>
-         <h2>{typedUser.username}</h2>
-         <ul className="liked-list">
-            {typedUser?.likedMovies.map(movie => (
-                <li key={movie._id}>
-                    <ListItemModal imdbId={movie.imdbId}>
-                        <span className='user-movie-item'>{movie.title}</span>
-                    </ListItemModal>
-                </li>
-            ))}
-        </ul>
-
-        <UserPageLinkIcon userId={typedUser._id} />
+            <h2>{typedUser.username}</h2>
+            <ul className="liked-list">
+                {typedUser?.likedMovies.map(movie => (
+                   <UserListItems 
+                        key={movie._id} 
+                        title={movie.title} 
+                        imdbId={movie.imdbId}
+                    />
+                ))}
+            </ul>
+            <UserPageLinkIcon userId={typedUser._id} />
         </>
     }
      
-
-
     return (
         <article className="user-container">
             <div className="user-item" >
@@ -53,7 +50,6 @@ const User = ({ userId, isLoading }: UserProps) => {
             </div>
         </article>
     )
-
 }
 const memoizedUser = memo(User)
 

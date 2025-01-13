@@ -8,9 +8,13 @@ interface LikedMovieItemProps {
   imdbId: string;
   hasWatched: boolean;
   isWatchedFilter: string;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function LikedMovieItem({
+  setIsModalOpen,
+  setCurrentImdbId,
   imdbId,
   hasWatched,
   isWatchedFilter,
@@ -61,6 +65,8 @@ export default function LikedMovieItem({
         apiItem={movieItem}
         imdbID={imdbId}
         isLoading={isLoading}
+        setIsModalOpen={setIsModalOpen}
+        setCurrentImdbId={setCurrentImdbId}
       />
     );
   } else {

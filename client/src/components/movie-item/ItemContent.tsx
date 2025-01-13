@@ -2,15 +2,22 @@ import ItemInfo from "./ItemInfo";
 import BioOverlay from "./BioOverlay";
 import HoverInfoBtn from "./HoverInfoBtn";
 import { useState } from "react";
-import ListItemModal from "../../features/movie-api/ItemModal/ListItemModal";
 import { IconButton } from "@mui/material";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { OmdbItemInterface } from "../../models/ItemApiProps";
 
+interface ItemContentProps extends OmdbItemInterface {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export default function ItemContent({
   item,
-}: OmdbItemInterface): JSX.Element | null {
+  setIsModalOpen,
+  setCurrentImdbId,
+}: ItemContentProps): JSX.Element | null {
+  
   if (!item) return null;
 
   const [revealBio, setRevealBio] = useState(false);
@@ -23,6 +30,11 @@ export default function ItemContent({
     setRevealBio(false);
   };
 
+  const itemModalHandler = () => {
+    setIsModalOpen(true);
+    setCurrentImdbId(item.imdbID);
+  }
+
   return (
     <>
       <ItemInfo closeBioOverlay={closeBioOverlay} item={item} />
@@ -32,8 +44,11 @@ export default function ItemContent({
           <HoverInfoBtn openBioOverlay={openBioOverlay} />
         )}
 
-        <ListItemModal imdbId={item.imdbID}>
-          <div className="user-item-icon">
+        
+          <div 
+            className="user-item-icon"
+            onClick={itemModalHandler}
+          >
             <IconButton
               aria-label={"view more content"}
               className="custom-icon-button search-item-icon"
@@ -52,7 +67,7 @@ export default function ItemContent({
               </Tippy>
             </IconButton>
           </div>
-        </ListItemModal>
+        
       </div>
 
       <BioOverlay

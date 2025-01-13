@@ -3,11 +3,18 @@ import CircleAnimation from "../UI/LoadAnimation/CircleAnimation";
 import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedList";
 import { OmdbItemWithRTK } from "../../models/RTKQueryProps";
 
+interface HoverInfoProps extends OmdbItemWithRTK {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const HoverInfo = ({
+  setIsModalOpen,
+  setCurrentImdbId,
   item,
   isLoading,
   isError,
-}: OmdbItemWithRTK): JSX.Element | null => {
+}: HoverInfoProps): JSX.Element | null => {
   
   let content;
 
@@ -18,7 +25,11 @@ const HoverInfo = ({
   } else {
     content = (
       <>
-        <ItemContent item={item} />
+        <ItemContent 
+          item={item} 
+          setIsModalOpen={setIsModalOpen}
+          setCurrentImdbId={setCurrentImdbId}
+        />
         <UpdateLikedList title={item.Title} imdbId={item.imdbID} />
       </>
     );

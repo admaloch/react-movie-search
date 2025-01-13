@@ -11,10 +11,7 @@ export default function ShowMovieReviewItem({ review }: ShowMovieReviewItemProps
 
   if (!review.user) return null;
 
-  console.log(review)
-
   const navigate = useNavigate();
-
 
   const userLinkHandler = () => {
     navigate(`/profiles/${review.user._id}`);
