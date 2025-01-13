@@ -16,7 +16,7 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
     const { imdbID, Poster } = item
     const [fetchedIds, setFetchedIds] = useState(new Set());
 
-    const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
+    const [triggerGetMovieById, { data: movieItem, isLoading, isError }] = useLazyGetMovieByIdQuery();
 
     function mouseEnterHandler() {
         hideArrowFunc();
@@ -27,8 +27,6 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
             setFetchedIds(prevIds => new Set(prevIds).add(imdbID));
         }
     }
-
-    
 
     return (
         <article
@@ -43,13 +41,12 @@ const SliderItem = ({ item, showArrowFunc, hideArrowFunc }: SliderItemProps): JS
                 height={275}
                 width={225}
             />
-     
-                <HoverInfo
-                    item={movieItem}
-                    isLoading={isLoading}
-                    isError={isError}
-                    error={error}
-                />
+            <HoverInfo
+                item={movieItem}
+                isLoading={isLoading}
+                isError={isError}
+
+            />
             
         </article>
     )

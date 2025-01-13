@@ -8,8 +8,8 @@ import "tippy.js/dist/tippy.css";
 import { OmdbItemInterface } from "../../models/ItemApiProps";
 
 interface ItemContentProps extends OmdbItemInterface {
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentImdbId?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function ItemContent({
@@ -31,9 +31,11 @@ export default function ItemContent({
   };
 
   const itemModalHandler = () => {
-    setIsModalOpen(true);
-    setCurrentImdbId(item.imdbID);
-  }
+    if (typeof setIsModalOpen === 'function' && typeof setCurrentImdbId === 'function') {
+        setIsModalOpen(true);
+        setCurrentImdbId(item?.imdbID || '');
+    }
+};
 
   return (
     <>

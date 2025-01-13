@@ -4,8 +4,8 @@ import UpdateLikedList from "../../features/users/update-liked-list/UpdateLikedL
 import { OmdbItemWithRTK } from "../../models/RTKQueryProps";
 
 interface HoverInfoProps extends OmdbItemWithRTK {
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentImdbId?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const HoverInfo = ({
