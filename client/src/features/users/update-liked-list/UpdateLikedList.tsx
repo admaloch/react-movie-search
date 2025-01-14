@@ -7,6 +7,7 @@ import { UserItemProps } from "../../../models/UserItemProps";
 
 interface UpdateLikedListProps {
   title: string;
+  type: string;
   style?: any;
   imdbId: string;
 }
@@ -14,16 +15,15 @@ interface UpdateLikedListProps {
 export default function UpdateLikedList({
   imdbId,
   title,
+  type,
   style
 }: UpdateLikedListProps): React.JSX.Element | null {
-  const { id } = useAuth();
 
-  if (!id || !imdbId) return null;
+  const { id } = useAuth();
 
   const { data: user, isLoading, isSuccess } = useGetUserByIdQuery(id);
 
   let content;
-
 
   if (isLoading) {
     content = (
@@ -40,6 +40,7 @@ export default function UpdateLikedList({
         imdbId={imdbId}
         title={title}
         style={style}
+        type={type}
       />
     );
   } else return null;

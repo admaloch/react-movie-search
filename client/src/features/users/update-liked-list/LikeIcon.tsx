@@ -11,6 +11,7 @@ import Heart from "../../../components/UI/like-icon/Heart";
 interface LikeIconProps {
   likedMovies: LikedUserMovies[];
   title: string;
+  type: string;
   imdbId: string;
   style?: string;
 }
@@ -19,6 +20,7 @@ export default function LikeIcon({
   likedMovies,
   title,
   imdbId,
+  type,
   style,
 }: LikeIconProps) {
   const { id } = useAuth();
@@ -31,7 +33,7 @@ export default function LikeIcon({
 
   const updateLikedList = async (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
-    const movieData = !alreadyLiked ? { imdbId, title, id } : { imdbId, id };
+    const movieData = !alreadyLiked ? { imdbId, title, id, type } : { imdbId, id };
     try {
       await updateUser(movieData).unwrap();
     } catch (err) {

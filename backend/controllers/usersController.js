@@ -10,14 +10,24 @@ const mongoose = require("mongoose"); // For CommonJS modules
 // @route GET /users
 // @access Public
 const getAllUsers = async (req, res) => {
-  // Get all users from MongoDB
-  const users = await UserModel.find().select("-password").lean();
-  // If no users
-  if (!users?.length) {
-    return res.status(400).json({ message: "No users found" });
+  try {
+    // Get all users from MongoDB
+    const users = await UserModel.find().select("-password").lean();
+
+    // If no users
+    if (!users?.length) {
+      return res.status(400).json({ message: "No users found" });
+    }
+
+    // Reverse the array to get most recent first
+    const reversedUsers = users.reverse();
+
+    res.json(reversedUsers);
+  } catch (err) {
+    res.status(500).json({ message: "Error retrieving users", error: err.message });
   }
-  res.json(users);
 };
+
 
 // @desc Get user
 // @route GET /users/:id
@@ -96,6 +106,7 @@ const updateUser = async (req, res) => {
     oldPassword,
     imdbId,
     title,
+    type,
     hasWatched,
   } = req.body;
   const { id } = req.params;
@@ -150,13 +161,13 @@ const updateUser = async (req, res) => {
     }
   }
 
-  if (imdbId && title) {
+  if (imdbId && title && type) {
     const movieExists = user.likedMovies.some(
       (movie) => movie.imdbId === imdbId
     );
 
     if (!movieExists) {
-      user.likedMovies.push({ imdbId, title, hasWatched: false });
+      user.likedMovies.push({ imdbId, title, type, hasWatched: false });
     } else {
       return res.status(400).json({ message: "Movie already liked" });
     }

@@ -20,13 +20,13 @@ export default function UserProfile() {
 
   let content = null;
 
-
   if(isLoading) content = <CircleAnimation />
 
   else if (isError || !user) content = <Error text={'We were unable to locate that user. Check your internet connection and try again.'} />
 
   else {
     const typedUser = user as UserItemProps;
+
     const { likedMovies } = typedUser;
 
     content = (
@@ -45,8 +45,6 @@ export default function UserProfile() {
     );
 
   }
-
-  
 
   return (
     <main className="user-profile-container">

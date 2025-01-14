@@ -21,7 +21,6 @@ export default function ListAllUsers() {
     //@ts-ignore
     else if (isError || !users) content = <Error text={'We were unable to connect. Create an account, login or check your internet connection and try again.'} />
 
-
     else {
         const usersIds = users.ids as string[]
         content = (
@@ -34,9 +33,6 @@ export default function ListAllUsers() {
         )
     }
     
-
-
-
     return (
         <main className="main-item-content all-users-section">
            {content}

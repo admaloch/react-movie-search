@@ -30,6 +30,9 @@ const userSchema = new mongoose.Schema({
             title: {
                 type: String,
             },
+            type: {
+                type: String,
+            },
             hasWatched: {
                 type: Boolean,
             }

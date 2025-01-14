@@ -4,7 +4,7 @@ import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 import { SmallOmdbItem } from "../../../models/ItemApiProps";
 import MovieItemModal from "../ItemModal/MovieItemModal";
 
-const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.JSX.Element => {
+const SearchListItem = ({ imdbID, Poster, Title, Type, Year }: SmallOmdbItem): React.JSX.Element => {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -33,6 +33,7 @@ const SearchListItem = ({ imdbID, Poster, Title, Year }: SmallOmdbItem): React.J
                         <UpdateLikedList
                             title={Title}
                             imdbId={imdbID}
+                            type={Type}
                         />
                 </div>
 

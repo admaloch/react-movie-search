@@ -23,6 +23,8 @@ const User = ({ userId, isLoading }: UserProps) => {
 
     if (!typedUser || !typedUser.likedMovies.length) return null;
 
+    let reversedLikedMovies = typedUser.likedMovies.slice().reverse()
+
     let content = null
 
     if (isLoading) content = <CircleAnimation color='white' />;
@@ -31,7 +33,7 @@ const User = ({ userId, isLoading }: UserProps) => {
         <>
             <h2>{typedUser.username}</h2>
             <ul className="liked-list">
-                {typedUser?.likedMovies.map(movie => (
+                {reversedLikedMovies.map(movie => (
                    <UserListItems 
                         key={movie._id} 
                         title={movie.title} 

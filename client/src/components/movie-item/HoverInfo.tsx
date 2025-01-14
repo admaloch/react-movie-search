@@ -30,7 +30,7 @@ const HoverInfo = ({
           setIsModalOpen={setIsModalOpen}
           setCurrentImdbId={setCurrentImdbId}
         />
-        <UpdateLikedList title={item.Title} imdbId={item.imdbID} />
+        <UpdateLikedList title={item.Title} type={item.Type} imdbId={item.imdbID} />
       </>
     );
   }

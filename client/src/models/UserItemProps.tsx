@@ -13,6 +13,7 @@ export interface LikedUserMovies {
     hasWatched: boolean;    
     imdbId: string;
     title: string;
+    type: string;
     _id: string;
 }
 

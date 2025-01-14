@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import MainPage from './components/MainPage'
@@ -21,6 +19,9 @@ import RequireAuth from './features/auth/RequireAuth'
 import useTitle from './hooks/useTitle'
 import Credits from './components/credits/Credits'
 import DeleteUser from './features/users/DeleteUser';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SplashScreen from './components/HomePage/SplashScreen';
+
 function App() {
 
     useTitle('Movie Brain')
@@ -51,6 +52,7 @@ function App() {
                                     </Route>
                                 </Route>
                                 <Route path='/credits' element={<Credits />} />
+                                <Route path='/test' element={<SplashScreen />} />
                                 <Route path='*' element={<Error text="We couldn't find what you were looking for!" />} />
 
                             </Route>
