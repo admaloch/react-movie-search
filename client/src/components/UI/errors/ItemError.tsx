@@ -1,11 +1,16 @@
 import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 import './Error.css'
 
-export default function ItemError({ text }: {text: string}): JSX.Element {
+interface ItemErrorProps {
+    text: string;
+    faceSize?: number;
+}
+
+export default function ItemError({ text, faceSize = 50 }: ItemErrorProps): JSX.Element {
     return (
-            <div className="error-content item-error">
-                <SentimentDissatisfiedIcon sx={{ fontSize: 50 }} />
-                <span>{text}</span>
-            </div>
+        <div className="error-content item-error">
+            <SentimentDissatisfiedIcon sx={{ fontSize: faceSize }} />
+            <span>{text}</span>
+        </div>
     );
 }

@@ -121,3 +121,8 @@ line-height: 1.4rem;
 .user-movie-item:hover {
     opacity: .6;
 }
+
+
+  .user-item .error-content span {
+    font-size: 1.3rem;
+  }

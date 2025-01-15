@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import ModalContent from "./ModalContent";
-import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 import ItemError from "../../../components/UI/errors/ItemError";
 import CloseIcon from "@mui/icons-material/Close";
 import imageNotFound from "../../../assets/image_not_found.png";
 import { OmdbItemWithRTK } from "../../../models/RTKQueryProps";
 import "./ItemModal.css";
+import MovieModalSkeletonLoader from "../../../components/UI/LoadAnimation/MovieModalSkeletonLoader";
 
 interface ItemModalInterface extends OmdbItemWithRTK {
   closeModal: () => void;
@@ -25,15 +25,18 @@ const ItemModal = ({
 
   let content;
 
-  if (isLoading) content = <CircleAnimation />;
+  if (isLoading) content = <MovieModalSkeletonLoader />;
   else if (isError || !item) {
     // @ts-ignore
     content = (
-      <ItemError
-        text={`Error: ${
-          (error as any)?.data?.message || "Failed to load content."
+        <ItemError
+        faceSize={80}
+        text={`Error! ${
+          (error as any)?.data?.message || "We had trouble getting access to this item. Try refreshing your browser."
         }`}
       />
+
+      
     );
   } else {
     const image = item.Poster !== "N/A" ? item.Poster : imageNotFound;

@@ -16,10 +16,7 @@ function MainSearch({ isSliderActive }: MainSearchProps): JSX.Element {
 
     return (
         <section className={sliderClass}>
-           
-               <h1 className="text-center">{currItemHeader}</h1> 
-            
-            
+            <h1 className="text-center">{currItemHeader}</h1> 
             <SearchTypeButtons  />
             <SearchForm />
         </section>

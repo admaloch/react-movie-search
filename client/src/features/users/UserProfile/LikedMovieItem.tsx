@@ -2,6 +2,8 @@ import LikedMovieContent from "./LikedMovieContent";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 import { useGetMovieByIdQuery } from "../../movie-api/omdbApiSlice";
 import ItemError from "../../../components/UI/errors/ItemError";
+import { Box, Skeleton, Stack } from "@mui/material";
+import MovieSkeletonLoader from "../../../components/UI/LoadAnimation/MovieSkeletonLoader";
 
 interface LikedMovieItemProps {
   imdbId: string;
@@ -18,7 +20,6 @@ export default function LikedMovieItem({
   // Hook call is always executed
   let {
     data: movieItem,
-    isSuccess,
     isLoading,
     isError,
     error,
@@ -26,11 +27,13 @@ export default function LikedMovieItem({
   let content;
 
   if (isLoading) {
-    content = <CircleAnimation bgColor="#3838380a"/>;
-  } else if (isError) {
+    content =  <MovieSkeletonLoader />;
+
+  } else if (isError || !movieItem) {
     content = (
       //@ts-ignore
       <ItemError
+      faceSize={70}
         text={`Error: ${
           (error as any)?.data?.message || "Failed to load content."
         }`}
@@ -39,8 +42,7 @@ export default function LikedMovieItem({
   }
 
   // Ensure movieItem is defined before accessing its properties
-  else if (isSuccess && movieItem) {
-    
+  else {
     content = (
       <LikedMovieContent
         key={imdbId}
@@ -51,11 +53,7 @@ export default function LikedMovieItem({
         setCurrentImdbId={setCurrentImdbId}
       />
     );
-  } else {
-    <ItemError
-      text={"Something went wrong. Try refreshing your browser and try again."}
-    />;
-  }
+  } 
 
   // Return null if no conditions match
   return (

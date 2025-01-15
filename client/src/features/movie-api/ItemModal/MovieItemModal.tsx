@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import ItemModal from './ItemModal'
 import Modal from '../../../components/UI/Modal'
 import { useLazyGetMovieByIdQuery } from '../omdbApiSlice'
-import { toast } from 'react-toastify'
 
 //this accepts an item like a li or btn as children.. and an imdbId then wraps a div around it and generates a request to omdb endpoint to get the movie by id and displays the movie in a modal
 
@@ -14,13 +13,14 @@ interface MovieItemModalProps {
 
 export default function MovieItemModal({ imdbId, isModalOpen, closeModal }: MovieItemModalProps): React.JSX.Element | null {
 
-    if (!imdbId) return null;
+    if (!imdbId || !isModalOpen) return null;
 
     const [triggerGetMovieById, { data: movieItem, isLoading, isError, error }] = useLazyGetMovieByIdQuery();
 
     const closeItemModal = () => {
         closeModal();
         document.body.classList.remove('no-scroll');
+        return null;
     }
 
     // Effect to run when isModalOpen changes
@@ -37,7 +37,6 @@ export default function MovieItemModal({ imdbId, isModalOpen, closeModal }: Movi
 
     if (isError) {
         closeItemModal()
-        toast.error(`Error: ${error}`);
         return null;
     }
 

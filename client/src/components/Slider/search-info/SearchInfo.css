@@ -15,12 +15,13 @@ height: 100%;
 
 .progress-bar {
     display: flex;
-    flex-direction: row;
+    flex-direction: row!important;
     justify-content: end;
     align-items: center;
     gap: .25rem;
     margin-right: 0;
     height: 100%;
+    z-index: 5;
 } 
 @media screen and (min-width: 600px) {
     .progress-bar {

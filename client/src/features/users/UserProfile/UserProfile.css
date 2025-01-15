@@ -134,3 +134,11 @@
     right: 1rem;
     text-decoration: none;
 }
+
+.movie-item .error-content {
+    border: var(--text) solid 3px;
+    border-radius: 7px; 
+}
+.movie-item .error-content span {
+   font-size: 1.5rem;
+}

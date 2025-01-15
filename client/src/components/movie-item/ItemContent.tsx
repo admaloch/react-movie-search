@@ -30,7 +30,7 @@ export default function ItemContent({
     setRevealBio(false);
   };
 
-  const itemModalHandler = () => {
+  const userListItemClickHandler = () => {
     if (typeof setIsModalOpen === 'function' && typeof setCurrentImdbId === 'function') {
         setIsModalOpen(true);
         setCurrentImdbId(item?.imdbID || '');
@@ -49,7 +49,7 @@ export default function ItemContent({
         
           <div 
             className="user-item-icon"
-            onClick={itemModalHandler}
+            onClick={userListItemClickHandler}
           >
             <IconButton
               aria-label={"view more content"}
@@ -77,7 +77,7 @@ export default function ItemContent({
         closeBio={closeBioOverlay}
         plot={item.Plot}
         title={item.Title}
-      />
+      />      
     </>
   );
 }

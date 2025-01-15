@@ -53,7 +53,6 @@ const SearchForm = (): JSX.Element => {
         <form id="searchForm" onSubmit={formSubmitHandler}>
             <input
                 type="text"
-                className="form-control"
                 placeholder={`${currType?.description}...`}
                 autoComplete="off"
                 name="query"
@@ -62,7 +61,7 @@ const SearchForm = (): JSX.Element => {
                 onChange={(e) => setSearchInput(e.target.value)}
             />
             {isKeyLoading &&
-                <InputLoadAnimation style={{ top: '.8rem', right: '120px' }} />
+                <InputLoadAnimation style={{ top: '.8rem', right: '130px' }} />
             }
 
             <button aria-label="submit search" type="submit" className="submit-btn">

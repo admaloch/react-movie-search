@@ -117,6 +117,7 @@
     background-color: var(--mainBackground);
     font-size: 1.1rem;
     z-index: 10;
+    border-radius: none!important;
 }
 
 @media screen and (min-width: 768px) {

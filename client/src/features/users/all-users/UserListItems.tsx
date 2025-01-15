@@ -1,28 +1,25 @@
-import React, { useState } from 'react'
-import MovieItemModal from '../../movie-api/ItemModal/MovieItemModal';
+
 
 interface UserListItemsProps {
     imdbId: string;
     title: string;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setCurrentImdbId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function UserListItems({imdbId, title}: UserListItemsProps ): React.JSX.Element | null {
+export default function UserListItems({title, setIsModalOpen, imdbId, setCurrentImdbId }: UserListItemsProps ): React.JSX.Element | null {
 
-     const [isModalOpen, setIsModalOpen] = useState(false)
-    
-        const closeModal = () => setIsModalOpen(false)
-        const listItemClickHandler = () => setIsModalOpen(true)
+        const listItemClickHandler = () => {
+            setIsModalOpen(true);
+            setCurrentImdbId(imdbId);
+        }
         
   return (
     <>
         <li onClick={listItemClickHandler}>
             <span className='user-movie-item'>{title}</span>
         </li>
-        <MovieItemModal
-            imdbId={imdbId}
-            isModalOpen={isModalOpen}
-            closeModal={closeModal}
-        />                    
+               
     </>
   )
 }

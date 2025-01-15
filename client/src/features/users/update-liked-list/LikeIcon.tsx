@@ -25,8 +25,6 @@ export default function LikeIcon({
 }: LikeIconProps) {
   const { id } = useAuth();
 
-  if (!id) return null;
-
   const alreadyLiked = likedMovies.some((movie) => movie.imdbId === imdbId);
 
   const [updateUser, { isLoading, isError, error }] = useUpdateUserMutation();

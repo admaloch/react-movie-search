@@ -15,9 +15,7 @@ function ErrorMsg() {
         function hideErrMsgStateHandler() {
             if (submittedSearch.length > 0 && omdbSearchResults.length === 0) {
                 setShowErrorMsg(true)
-            } else if (!showErrorMsg && submittedSearch.length === 0) {
-                return;
-            } else {
+            }  else {
                 setShowErrorMsg(false)
             }
         },
@@ -30,12 +28,10 @@ function ErrorMsg() {
         }, [searchTypes]
     )
 
-    const errorClass = showErrorMsg
-        ? 'error-msg-container show-error'
-        : 'error-msg-container remove-error'
+if (!showErrorMsg) return null
 
     return (
-        <div className={errorClass} aria-hidden='true'>
+        <div className= "error-msg-container" aria-hidden='true'>
             <p>We couldn&apos;t find anything for that. Try searching for a specific topic or {currType.errorMsg} to get better results </p>
         </div>
     )

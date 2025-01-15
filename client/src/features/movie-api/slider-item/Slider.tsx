@@ -11,6 +11,7 @@ interface SlidersProps {
 const Slider = ({ showArrowFunc, hideArrowFunc }: SlidersProps): JSX.Element => {
 
     const { omdbSearchResults} = useOmdbState()
+    
 
     return (
         <div className="slider">

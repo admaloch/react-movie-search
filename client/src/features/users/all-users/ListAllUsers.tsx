@@ -1,10 +1,16 @@
 import { useGetUsersQuery } from '../usersApiSlice'
-import Error from '../../../components/UI/errors/Error'
 import './User.css'
 import User from './User'
-import CircleAnimation from '../../../components/UI/LoadAnimation/CircleAnimation';
+import { useState } from 'react';
+import MovieItemModal from '../../movie-api/ItemModal/MovieItemModal';
 
 export default function ListAllUsers() {
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [currentImdbId, setCurrentImdbId] = useState('');
+    
+    const closeModal = () => setIsModalOpen(false)
+
     const {
         data: users,
         isLoading,
@@ -16,22 +22,27 @@ export default function ListAllUsers() {
 
     let content = null
 
-    if(isLoading) content = <CircleAnimation/>
+    if(!users) return null
 
-    //@ts-ignore
-    else if (isError || !users) content = <Error text={'We were unable to connect. Create an account, login or check your internet connection and try again.'} />
-
-    else {
         const usersIds = users.ids as string[]
         content = (
             <>
                 <h1>All Users:</h1>
                 <div className="user-list">
-                    {usersIds.map(id => <User key={id} userId={id} isLoading={isLoading} />)}
+                    {usersIds.map(id => 
+                    <User 
+                        key={id} 
+                        userId={id} 
+                        isLoading={isLoading}
+                        isError={isError}
+                        setIsModalOpen={setIsModalOpen}
+                        setCurrentImdbId={setCurrentImdbId}
+                    />)}
                 </div>
+                <MovieItemModal imdbId={currentImdbId} isModalOpen={isModalOpen} closeModal={closeModal} />
             </>
         )
-    }
+    
     
     return (
         <main className="main-item-content all-users-section">
