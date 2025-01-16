@@ -21,7 +21,5 @@
 <h2>Takeaways:</h2>
 <p>This was reworked multiple times as it is used as a means to implement/practice new skills </p>
 
-<h2>Note:</h2>
-<p>The backend is deployed using the render.com free tier, so it takes a minute or so to kick into gear when you first visit the page.</p>
 
 
