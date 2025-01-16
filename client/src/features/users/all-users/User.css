@@ -1,128 +1,118 @@
 .all-users-section {
-    margin: 10rem 0 5rem 0;
+  margin: 10rem 0 5rem 0;
 }
 
 .user-list {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1300px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1300px;
 }
 
 .user-container {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 7px;
-    aspect-ratio: 1/1;
-    /* border: black solid 1px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(100%/2);    
-    margin-bottom: .5rem;
-
+  width: 100%;
+  max-width: 300px;
+  border-radius: 7px;
+  aspect-ratio: 1/1;
+  /* border: black solid 1px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 2);
+  margin-bottom: 0.5rem;
 }
-
 
 @media screen and (min-width: 768px) {
-    .user-container {
-        width: calc(100%/3);
-    }
-    .user-list {
-        width: 95%;
-    }
+  .user-container {
+    width: calc(100% / 3);
+  }
+  .user-list {
+    width: 95%;
+  }
 }
 @media screen and (min-width: 992px) {
-    .user-container {
-        width: calc(100%/4);
-    }
+  .user-container {
+    width: calc(100% / 4);
+  }
 }
 @media screen and (min-width: 1200px) {
-    .user-container {
-        width: calc(100%/5);
-    }
+  .user-container {
+    width: calc(100% / 5);
+  }
 }
 
-
-
 .user-item {
-    width: 97%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    /* justify-self: center; */
-    /* align-items: center; */
-    border: var(--containerBackground) solid 1px;
-    background-color: var(--containerBackground);
-    color: var(--containertext);
-    margin: .5rem;
-    padding: 2rem 1.5rem;
-    /* min-height: 300px; */
-    aspect-ratio: 1/1;
-    border-radius: 7px;
-    position: relative;
-
+  width: 97%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-self: center; */
+  /* align-items: center; */
+  border: var(--containerBackground) solid 1px;
+  background-color: var(--containerBackground);
+  color: var(--containertext);
+  margin: 0.5rem;
+  padding: 2rem 1.5rem;
+  /* min-height: 300px; */
+  aspect-ratio: 1/1;
+  border-radius: 7px;
+  position: relative;
 }
 
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
-    .user-container {
-        width: calc(100%/4);
-        aspect-ratio: 1/1.5;
-        /* padding: 0; */
-    }
-    .user-item {
-        padding: 2rem .2rem;
-    }
+  .user-container {
+    width: calc(100% / 4);
+    aspect-ratio: 1/1.5;
+    /* padding: 0; */
+  }
+  .user-item {
+    padding: 2rem 0.2rem;
+  }
 }
 
-
-
 .user-item h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    word-wrap: break-word; /* or */
-    overflow-wrap: break-word;
+  text-align: center;
+  font-size: 1.8rem;
+  word-wrap: break-word; /* or */
+  overflow-wrap: break-word;
 }
 
 .user-movie-item {
-font-size: 1.4rem;
-line-height: 1.4rem;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
 }
 
 .liked-list {
-    max-height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-
 
 .user-item svg {
-    opacity: 1;
-    transition: .3s ease-in-out opacity;
+  opacity: 1;
+  transition: 0.3s ease-in-out opacity;
 }
 
-
 @media screen and (min-width: 992px) {
-    .user-item svg {
-        opacity: 0;
-        transition: .3s ease-in-out opacity;
-    }
-    .user-item:hover svg {
-        opacity: 1;
-    }
+  .user-item svg {
+    opacity: 0;
+    transition: 0.3s ease-in-out opacity;
+  }
+  .user-item:hover svg {
+    opacity: 1;
+  }
 }
 
 .user-movie-item {
-    cursor: pointer;
-    transition: .15s ease-in-out opacity;
+  cursor: pointer;
+  transition: 0.15s ease-in-out opacity;
 }
 .user-movie-item:hover {
-    opacity: .6;
+  opacity: 0.6;
 }
 
-
-  .user-item .error-content span {
-    font-size: 1.3rem;
-  }
+.user-item .error-content span {
+  font-size: 1.3rem;
+}

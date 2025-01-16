@@ -1,53 +1,47 @@
-
-
-
 .item-error a {
-  transition: .15s ease-in-out opacity;
+  transition: 0.15s ease-in-out opacity;
   cursor: pointer;
   font-size: 2rem;
-
 }
 .item-error a:hover {
-    opacity: .5;
+  opacity: 0.5;
 }
 
-
 .error-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;    
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .error-content h2 {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
 }
 
-
 .error-content p {
-    cursor: pointer;
-    transition: .15s ease-in-out opacity;
+  cursor: pointer;
+  transition: 0.15s ease-in-out opacity;
 }
 
 .page-error p {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
 
 .error-content p:hover {
-    opacity: .6;
+  opacity: 0.6;
 }
 
 .err-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navlink-style {
-    text-decoration: none;
+  text-decoration: none;
 }

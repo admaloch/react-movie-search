@@ -1,18 +1,21 @@
 import { useState, useEffect, useMemo } from "react";
 
-const usePersist = (): [boolean, React.Dispatch<React.SetStateAction<boolean>>] => {
-    const getPersistValue = useMemo(() => {
-        const storedPersist = localStorage.getItem("persist");
-        return storedPersist ? JSON.parse(storedPersist) === true : false;
-    }, []);
+const usePersist = (): [
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>,
+] => {
+  const getPersistValue = useMemo(() => {
+    const storedPersist = localStorage.getItem("persist");
+    return storedPersist ? JSON.parse(storedPersist) === true : false;
+  }, []);
 
-    const [persist, setPersist] = useState<boolean>(getPersistValue);
+  const [persist, setPersist] = useState<boolean>(getPersistValue);
 
-    useEffect(() => {
-        localStorage.setItem("persist", JSON.stringify(persist));
-    }, [persist]);
+  useEffect(() => {
+    localStorage.setItem("persist", JSON.stringify(persist));
+  }, [persist]);
 
-    return [persist, setPersist];
+  return [persist, setPersist];
 };
 
 export default usePersist;

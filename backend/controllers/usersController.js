@@ -24,10 +24,11 @@ const getAllUsers = async (req, res) => {
 
     res.json(reversedUsers);
   } catch (err) {
-    res.status(500).json({ message: "Error retrieving users", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error retrieving users", error: err.message });
   }
 };
-
 
 // @desc Get user
 // @route GET /users/:id
@@ -163,7 +164,7 @@ const updateUser = async (req, res) => {
 
   if (imdbId && title && type) {
     const movieExists = user.likedMovies.some(
-      (movie) => movie.imdbId === imdbId
+      (movie) => movie.imdbId === imdbId,
     );
 
     if (!movieExists) {
@@ -175,7 +176,7 @@ const updateUser = async (req, res) => {
 
   if (imdbId && !title && !hasWatched) {
     user.likedMovies = user.likedMovies.filter(
-      (movie) => movie.imdbId !== imdbId
+      (movie) => movie.imdbId !== imdbId,
     );
   }
 

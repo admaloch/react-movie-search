@@ -22,7 +22,7 @@ export default function HandleReviews({
   if (isError) {
     //@ts-ignore
     console.log(
-      `Error: ${(error as any)?.data?.message || "Failed to load content."}`
+      `Error: ${(error as any)?.data?.message || "Failed to load content."}`,
     );
     return null;
   }
@@ -32,7 +32,7 @@ export default function HandleReviews({
   const typedUser = user as UserItemProps;
 
   const alreadyLiked = typedUser.likedMovies.find(
-    (movie) => movie.imdbId === imdbId
+    (movie) => movie.imdbId === imdbId,
   );
   const alreadyWatched = alreadyLiked ? alreadyLiked.hasWatched : null;
 

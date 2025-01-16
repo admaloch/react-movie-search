@@ -17,19 +17,17 @@ function DeleteUser(): React.JSX.Element | null {
   const navigate = useNavigate();
 
   const [deleteUser, { isSuccess, isError, error }] = useDeleteUserMutation();
-  const [sendLogout, {isError: isLogoutError, error: logoutError}] = useSendLogoutMutation();
+  const [sendLogout, { isError: isLogoutError, error: logoutError }] =
+    useSendLogoutMutation();
 
   const deleteUserBtnHandler = async () => {
     try {
-      
       await deleteUser(id).unwrap();
       await sendLogout();
     } catch (err) {
       console.error("Failed to delete user:", err);
     }
   };
-
-
 
   useEffect(() => {
     if (isSuccess) {
@@ -40,17 +38,16 @@ function DeleteUser(): React.JSX.Element | null {
     if (isError) {
       //@ts-ignore
       toast.error(
-        `Error: ${(error as any)?.data?.message || "Failed to delete user"}`
+        `Error: ${(error as any)?.data?.message || "Failed to delete user"}`,
       );
     }
   }, [isSuccess, isError, error, navigate]);
 
   useEffect(() => {
-
     if (isLogoutError) {
       //@ts-ignore
       toast.error(
-        `Error: ${(logoutError as any)?.data?.message || "Failed to delete user"}`
+        `Error: ${(logoutError as any)?.data?.message || "Failed to delete user"}`,
       );
     }
   }, [isLogoutError, logoutError]);
@@ -65,7 +62,11 @@ function DeleteUser(): React.JSX.Element | null {
         </p>
         <p>Are you sure you want to follow through with this?</p>
         <div className="button-container">
-          <button aria-label="submit delete account" className="delete-btn" onClick={deleteUserBtnHandler}>
+          <button
+            aria-label="submit delete account"
+            className="delete-btn"
+            onClick={deleteUserBtnHandler}
+          >
             <SentimentVeryDissatisfiedIcon
               sx={{ fontSize: 20, fill: "white", marginRight: ".4rem" }}
             />

@@ -1,15 +1,18 @@
-import { ReactNode } from 'react';
-import './Card.css'
+import { ReactNode } from "react";
+import "./Card.css";
 
 interface MainCardProps {
-    children: ReactNode;
-    bgColor?: string;
+  children: ReactNode;
+  bgColor?: string;
 }
 
-export default function Card({bgColor = 'var(--mainBackground)', children}:MainCardProps) {
+export default function Card({
+  bgColor = "var(--mainBackground)",
+  children,
+}: MainCardProps) {
   return (
-    <div style={{backgroundColor: bgColor}} className="main-card">
-        {children}
+    <div style={{ backgroundColor: bgColor }} className="main-card">
+      {children}
     </div>
-  )
+  );
 }

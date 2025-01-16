@@ -57,7 +57,7 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
         `Error: ${
           (error as any)?.data?.message ||
           "Failed to update review. Try again later."
-        }`
+        }`,
       );
     }
   }, [isSuccess, isError, error]);
@@ -95,7 +95,11 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
             )}
           </div>
           <div className="review-btn-container">
-            <button aria-label="submit review edit" className="review-btn" type="submit">
+            <button
+              aria-label="submit review edit"
+              className="review-btn"
+              type="submit"
+            >
               {isLoading ? "Submitting..." : "Submit Review"}
             </button>
           </div>

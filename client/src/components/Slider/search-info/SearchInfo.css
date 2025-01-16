@@ -1,80 +1,80 @@
 .header-info {
-    display: flex;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-height: 100%;
-    margin: 1.3rem 0;
-    flex-direction: column;
-    align-items: center;
-    width: 90%!important;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  height: 100%;
+  margin: 1.3rem 0;
+  flex-direction: column;
+  align-items: center;
+  width: 90% !important;
 }
 
 .header-info h2 {
-    margin-bottom: .7rem;
+  margin-bottom: 0.7rem;
 }
 
 .progress-bar {
-    display: flex;
-    flex-direction: row!important;
-    justify-content: end;
-    align-items: center;
-    gap: .25rem;
-    margin-right: 0;
-    height: 100%;
-    z-index: 5;
-} 
+  display: flex;
+  flex-direction: row !important;
+  justify-content: end;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: 0;
+  height: 100%;
+  z-index: 5;
+}
 @media screen and (min-width: 600px) {
-    .progress-bar {
-        position: relative;
-        top: .1rem;
-    }
+  .progress-bar {
+    position: relative;
+    top: 0.1rem;
+  }
 }
 
 .progress-item {
-    flex: 0 0 2.5rem;
-    min-width: 2.5rem;
-    height: .8rem;
-    background-color: var(--color2);
-    opacity: .5;
+  flex: 0 0 2.5rem;
+  min-width: 2.5rem;
+  height: 0.8rem;
+  background-color: var(--color2);
+  opacity: 0.5;
 }
 
 .progress-item.active,
 .progress-item:hover {
-    background-color: var(--color3);
-    opacity: 1;
-    cursor: pointer;
+  background-color: var(--color3);
+  opacity: 1;
+  cursor: pointer;
 }
 
 .no-results {
-    margin-top: 2rem;
-    width: 40%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transition: 1s ease-in-out;
+  margin-top: 2rem;
+  width: 40%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: 1s ease-in-out;
 }
 
 @media screen and (min-width: 600px) {
-    .header-info {
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-    }
-    .header-info h2 {
-        margin-bottom: 0rem;
-    }
+  .header-info {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+  .header-info h2 {
+    margin-bottom: 0rem;
+  }
 }
 
 .show-header {
-    opacity: 1;
-    height: auto;
-    width: auto; 
+  opacity: 1;
+  height: auto;
+  width: auto;
 }
 
 .remove-header {
-    opacity: 0;
-    height: 0;
-    width: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }

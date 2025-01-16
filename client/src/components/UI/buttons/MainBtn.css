@@ -1,17 +1,17 @@
 .main-btn {
-    background-color: transparent;
-    border: var(--text) solid 2px;
-    color: var(--text);
-    padding: .5rem 1rem;
-    transition: all .25s ease-in-out;
-    font-size: 1.5rem;
-    border-radius: 5px;
+  background-color: transparent;
+  border: var(--text) solid 2px;
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  transition: all 0.25s ease-in-out;
+  font-size: 1.5rem;
+  border-radius: 5px;
 }
 .main-btn:hover {
-    background-color: var(--text);
-    color: var(--mainBackground);
-    padding: .5rem 1rem;
-    transition: all .25s ease-in-out;
-    font-size: 1.5rem;
-    border-radius: 5px;
+  background-color: var(--text);
+  color: var(--mainBackground);
+  padding: 0.5rem 1rem;
+  transition: all 0.25s ease-in-out;
+  font-size: 1.5rem;
+  border-radius: 5px;
 }

@@ -1,229 +1,221 @@
 header {
-	height: var(--headerHeight);
-	padding: 0 2rem;
-	color: var(--text);
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	background-color: var(--navBackground);
+  height: var(--headerHeight);
+  padding: 0 2rem;
+  color: var(--text);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--navBackground);
 }
 
 .header-content {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
 }
 
 @media only screen and (min-width: 1300px) {
-	.header-content {
-		justify-content: center;
-	}
+  .header-content {
+    justify-content: center;
+  }
 }
 
 nav a,
 nav button {
-	position: relative;
-	margin: 0 1rem;
-	color: var(--text);
-	text-decoration: none;
-	transition: color 0.15s ease-in-out, opacity 0.2s ease-in-out;
-	opacity: 0.7;
-	font-size: 1.5rem;
-	background: none;
-	border: none;
-	font-family: Arial, Helvetica, sans-serif;
-	letter-spacing: 3px;
-
+  position: relative;
+  margin: 0 1rem;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    color 0.15s ease-in-out,
+    opacity 0.2s ease-in-out;
+  opacity: 0.7;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 3px;
 }
 
 nav button:not(.nav-close-btn)::after,
 nav a::after {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 2px;
-	bottom: 0;
-	left: 0;
-	background-color: var(--text);
-	transition: width 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--text);
+  transition: width 0.3s ease-in-out;
 }
 
 nav button:hover::after,
 nav a:hover::after,
 nav button.active::after,
 nav a.active::after {
-	width: 100%;
+  width: 100%;
 }
 
 nav a:hover,
 nav button:hover,
 nav a.active,
 nav button.active {
-	opacity: 1;
-	color: var(--containerBackground);
+  opacity: 1;
+  color: var(--containerBackground);
 }
 
 header .nav-btn {
-	padding: 5px;
-	cursor: pointer;
-	background: transparent;
-	border: none;
-	outline: none;
-	color: var(--text);
-	visibility: hidden;
-	opacity: 0;
-	font-size: 1.8rem;
-	transition: .15s ease-in-out opacity;
-	color: var;
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+  transition: 0.15s ease-in-out opacity;
+  color: var;
 }
 
 header .nav-close-btn {
-	color: var(--mainBackground);
-	font-size: 2.5rem;
-	display: none;
+  color: var(--mainBackground);
+  font-size: 2.5rem;
+  display: none;
 }
 
 header .nav-close-btn:hover {
-	color: var(--mainBackground);
+  color: var(--mainBackground);
 }
 
 header .nav-btn:hover {
-	opacity: .5;
+  opacity: 0.5;
 }
 
 header div,
 nav {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	position: absolute;
-	left: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: absolute;
+  left: 0;
 }
 
 .logo h3 {
-	font-size: 3rem;
-	color: var(--text);
-	margin-bottom: 0;
+  font-size: 3rem;
+  color: var(--text);
+  margin-bottom: 0;
 }
 
 .logo img {
-	width: 40px;
-	height: 40px;
-	/* display: none; */
+  width: 40px;
+  height: 40px;
+  /* display: none; */
 }
 
-
-
-
-
-
 @media screen and (min-width: 600px) {
-	.logo img {
-		width: 50px;
-		height: 50px;
-	}
+  .logo img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
-	.logo img {
-		width: 30px;
-		height: 30px;
-	}
-	.logo h3 {
-		font-size: 2rem;
-	}
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+  .logo h3 {
+    font-size: 2rem;
+  }
 }
-
-
 
 .logo h3,
 .logo img {
-	opacity: 1;
-	transition: opacity .2s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .logo:hover h3,
 .logo:hover img {
-	opacity: .7;
+  opacity: 0.7;
 }
 
 @media only screen and (max-width: 933px) {
-	header .nav-btn {
-		visibility: visible;
-		opacity: 1;
-		margin-left: auto;
-	}
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+    margin-left: auto;
+  }
 
-	header nav {
-		position: fixed;
-		top: -100vh;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1.5rem;
-		background-color: var(--color1);
-		transition: .5s;
-		opacity: 1;
-		z-index: 100;
-		border: var(--containertext) solid 10px;
-	}
+  header nav {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: var(--color1);
+    transition: 0.5s;
+    opacity: 1;
+    z-index: 100;
+    border: var(--containertext) solid 10px;
+  }
 
-	header nav button,
-	header nav a {
-		color: var(--mainBackground);
-		opacity: 1;
-		font-size: 2.5rem;
-	}
+  header nav button,
+  header nav a {
+    color: var(--mainBackground);
+    opacity: 1;
+    font-size: 2.5rem;
+  }
 
+  nav button:not(.nav-close-btn)::after,
+  nav a::after {
+    background-color: var(--mainBackground);
+    transition: width 0.3s ease-in-out;
+  }
 
+  nav a:hover,
+  nav a.active,
+  nav button:hover,
+  nav button.active {
+    color: var(--mainBackground);
+  }
 
-	nav button:not(.nav-close-btn)::after,
-	nav a::after {
-		background-color: var(--mainBackground);
-		transition: width 0.3s ease-in-out;
-	}
+  header .responsive_nav {
+    transform: translateY(100vh);
+  }
 
-	nav a:hover,
-	nav a.active,
-	nav button:hover,
-	nav button.active {
-		color: var(--mainBackground);
-	}
+  nav .nav-close-btn {
+    position: absolute;
+    top: 0.3rem;
+    right: 0rem;
+    transition: 0.15s ease-in-out opacity;
+    display: block;
+  }
 
-	header .responsive_nav {
-		transform: translateY(100vh);
-	}
-
-	nav .nav-close-btn {
-		position: absolute;
-		top: .3rem;
-		right: 0rem;
-		transition: .15s ease-in-out opacity;
-		display: block;
-	}
-
-	nav .nav-close-btn:hover {
-		opacity: .6;
-	}
+  nav .nav-close-btn:hover {
+    opacity: 0.6;
+  }
 }
 
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
-	header nav button,
-	header nav a {
-		font-size: 1.2rem;
-	}
+  header nav button,
+  header nav a {
+    font-size: 1.2rem;
+  }
 }

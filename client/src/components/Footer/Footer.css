@@ -1,28 +1,28 @@
 .footer {
-    width: 100%;
-    padding: 1.2rem;
-    background-color: var(--color1);
-    color: var(--mainBackground);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--color1);
+  color: var(--mainBackground);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
 }
 
 .footer p,
 .footer a {
-    font-size: 1.6rem;
-    margin: .1rem 0;
+  font-size: 1.6rem;
+  margin: 0.1rem 0;
 }
 
 .footer a {
-    color: var(--mainBackground);
-    transition: .3s all ease-in-out;
-    text-decoration: underline;
+  color: var(--mainBackground);
+  transition: 0.3s all ease-in-out;
+  text-decoration: underline;
 }
 
 .footer a:hover {
-    opacity: .6;
-    letter-spacing: 5px;
+  opacity: 0.6;
+  letter-spacing: 5px;
 }

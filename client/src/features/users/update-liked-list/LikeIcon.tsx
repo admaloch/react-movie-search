@@ -25,13 +25,15 @@ export default function LikeIcon({
 }: LikeIconProps) {
   const { id } = useAuth();
 
-  const alreadyLiked = likedMovies.some((movie) => movie.imdbId === imdbId);
+  const alreadyLiked = likedMovies?.some((movie) => movie.imdbId === imdbId);
 
   const [updateUser, { isLoading, isError, error }] = useUpdateUserMutation();
 
   const updateLikedList = async (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
-    const movieData = !alreadyLiked ? { imdbId, title, id, type } : { imdbId, id };
+    const movieData = !alreadyLiked
+      ? { imdbId, title, id, type }
+      : { imdbId, id };
     try {
       await updateUser(movieData).unwrap();
     } catch (err) {
@@ -47,7 +49,7 @@ export default function LikeIcon({
     toast.dismiss();
     //@ts-ignore
     toast.error(
-      `Error: ${(error as any)?.data?.message || "Failed to like item."}`
+      `Error: ${(error as any)?.data?.message || "Failed to like item."}`,
     );
     content = <ErrorIcon />;
   } else {
@@ -55,7 +57,11 @@ export default function LikeIcon({
   }
 
   return (
-    <div className="like-icon-container" onClick={updateLikedList} aria-label="like or unlike item">
+    <div
+      className="like-icon-container"
+      onClick={updateLikedList}
+      aria-label="like or unlike item"
+    >
       {content}
     </div>
   );

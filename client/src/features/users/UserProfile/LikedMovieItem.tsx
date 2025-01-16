@@ -1,8 +1,6 @@
 import LikedMovieContent from "./LikedMovieContent";
-import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 import { useGetMovieByIdQuery } from "../../movie-api/omdbApiSlice";
 import ItemError from "../../../components/UI/errors/ItemError";
-import { Box, Skeleton, Stack } from "@mui/material";
 import MovieSkeletonLoader from "../../../components/UI/LoadAnimation/MovieSkeletonLoader";
 
 interface LikedMovieItemProps {
@@ -16,7 +14,6 @@ export default function LikedMovieItem({
   setCurrentImdbId,
   imdbId,
 }: LikedMovieItemProps): React.JSX.Element | null {
-
   // Hook call is always executed
   let {
     data: movieItem,
@@ -27,13 +24,12 @@ export default function LikedMovieItem({
   let content;
 
   if (isLoading) {
-    content =  <MovieSkeletonLoader />;
-
+    content = <MovieSkeletonLoader />;
   } else if (isError || !movieItem) {
     content = (
       //@ts-ignore
       <ItemError
-      faceSize={70}
+        faceSize={70}
         text={`Error: ${
           (error as any)?.data?.message || "Failed to load content."
         }`}
@@ -53,12 +49,8 @@ export default function LikedMovieItem({
         setCurrentImdbId={setCurrentImdbId}
       />
     );
-  } 
+  }
 
   // Return null if no conditions match
-  return (
-    
-      <div className="movie-item">{content}</div>
-    
-  );
+  return <div className="movie-item">{content}</div>;
 }

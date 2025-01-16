@@ -1,38 +1,41 @@
-import BGSection from '../UI/BGSection/BGSection';
-import './HomeLayout.css';
-import { Outlet } from 'react-router-dom';
-import bgBrain from '../../assets/big-brain.png';
-import { useEffect, useState } from 'react';
-import SplashScreen from './SplashScreen';
+import BGSection from "../UI/BGSection/BGSection";
+import "./HomeLayout.css";
+import { Outlet } from "react-router-dom";
+import bgBrain from "../../assets/big-brain.png";
+import { useEffect, useState } from "react";
+import HomeSkeletonLoad from "../UI/LoadAnimation/skeleton-loaders/HomeSkeletonLoad";
 
 export default function HomeLayout() {
-  const [showSplash, setShowSplash] = useState(() => {
-    return sessionStorage.getItem('splashShown') !== 'true';
+  const [showLoadingSkeleton, setShowLoadingSkeleton] = useState(() => {
+    return sessionStorage.getItem("loadSkeletonShown") !== "true";
   });
 
   useEffect(() => {
-    if (showSplash) {
+    if (showLoadingSkeleton) {
       // Set a timeout to hide the splash screen after 1 second
       const timer = setTimeout(() => {
-        setShowSplash(false);
-        sessionStorage.setItem('splashShown', 'true'); // Mark splash as shown
-      }, 800);
+        setShowLoadingSkeleton(false);
+        sessionStorage.setItem("loadSkeletonShown", "true"); // Mark splash as shown
+      }, 2000);
 
       return () => clearTimeout(timer); // Cleanup timer on component unmount
     }
-  }, [showSplash]);
+  }, [showLoadingSkeleton]);
 
   return (
     <>
-      {showSplash && <SplashScreen />}
-      {!showSplash && (
-        <BGSection bgClass="theatre-bg">
-          <main className="main-content-container">
-            <Outlet />
-            <img className="background-img" src={bgBrain} alt="background-brain" />
-          </main>
-        </BGSection>
-      )}
+      {showLoadingSkeleton && <HomeSkeletonLoad />}
+
+      <BGSection bgClass="theatre-bg">
+        <main className="main-content-container">
+          <Outlet />
+          <img
+            className="background-img"
+            src={bgBrain}
+            alt="background-brain"
+          />
+        </main>
+      </BGSection>
     </>
   );
 }

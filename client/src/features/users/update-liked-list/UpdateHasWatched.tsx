@@ -39,11 +39,9 @@ export default function UpdateHasWatched({
     content = <UpdateHasWatchedIcon size={size} imdbId={imdbId} />;
   } else {
     content = (
- 
-        <div className="disable-icon">
-          <ErrorIcon fontSize="medium" sx={{ color: red[500] }} />
-        </div>
- 
+      <div className="disable-icon">
+        <ErrorIcon fontSize="medium" sx={{ color: red[500] }} />
+      </div>
     );
   }
 

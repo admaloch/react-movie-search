@@ -35,7 +35,6 @@ export default function Error({ text }: { text: string }): JSX.Element {
               <ArrowCircleLeftIcon
                 style={{
                   marginRight: "5px",
-                  
                 }}
               />
               <NavLink className="navlink-style" to="/users/register">
@@ -48,7 +47,6 @@ export default function Error({ text }: { text: string }): JSX.Element {
           <ArrowCircleLeftIcon
             style={{
               marginRight: "5px",
-              
             }}
           />
           <a onClick={handleGoBack}>Return to previous page</a>
@@ -57,7 +55,6 @@ export default function Error({ text }: { text: string }): JSX.Element {
           <ArrowCircleLeftIcon
             style={{
               marginRight: "5px",
-              
             }}
           />
           <NavLink className="navlink-style" to="/">

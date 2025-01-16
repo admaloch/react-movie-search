@@ -36,13 +36,13 @@ const login = async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" }
+    { expiresIn: "15m" },
   );
 
   const refreshToken = jwt.sign(
     { username: foundUser.username },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "30d" }
+    { expiresIn: "30d" },
   );
 
   // Create secure cookie with refresh token
@@ -89,11 +89,11 @@ const refresh = (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "15m" }
+        { expiresIn: "15m" },
       );
 
       res.json({ accessToken });
-    }
+    },
   );
 };
 

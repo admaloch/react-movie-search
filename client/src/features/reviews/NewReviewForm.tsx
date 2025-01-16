@@ -58,7 +58,7 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
         `Error: ${
           (error as any)?.data?.message ||
           "Failed to create review. Try again later."
-        }`
+        }`,
       );
     }
   }, [isSuccess, isError, error]);
@@ -95,7 +95,11 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
             )}
           </div>
           <div className="review-btn-container">
-            <button aria-label="submit new review" className="review-btn" type="submit">
+            <button
+              aria-label="submit new review"
+              className="review-btn"
+              type="submit"
+            >
               {isLoading ? "Submitting..." : "Submit Review"}
             </button>
           </div>

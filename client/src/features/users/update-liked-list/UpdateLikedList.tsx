@@ -16,9 +16,8 @@ export default function UpdateLikedList({
   imdbId,
   title,
   type,
-  style
+  style,
 }: UpdateLikedListProps): React.JSX.Element | null {
-
   const { id } = useAuth();
 
   const { data: user, isLoading, isSuccess } = useGetUserByIdQuery(id);
@@ -27,9 +26,9 @@ export default function UpdateLikedList({
 
   if (isLoading) {
     content = (
-        <div className="waiting-icon">
-          <HourglassLoadingIcon />
-        </div>
+      <div className="waiting-icon">
+        <HourglassLoadingIcon />
+      </div>
     );
   } else if (isSuccess) {
     const typedUser = user as UserItemProps;

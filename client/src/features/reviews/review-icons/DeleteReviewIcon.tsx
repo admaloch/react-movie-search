@@ -37,7 +37,7 @@ export default function DeleteReviewIcon({
   } else if (isError) {
     //@ts-ignore
     console.log(
-      `Error: ${(error as any)?.data?.message || "Could not delete review"}`
+      `Error: ${(error as any)?.data?.message || "Could not delete review"}`,
     );
     content = (
       <div className="delete-review-btn">
@@ -56,7 +56,8 @@ export default function DeleteReviewIcon({
         aria-label="delete review"
       >
         <Tippy content="Delete review">
-          <svg style={{ marginLeft: "7px" }}
+          <svg
+            style={{ marginLeft: "7px" }}
             xmlns="http://www.w3.org/2000/svg"
             width="25"
             height="25"

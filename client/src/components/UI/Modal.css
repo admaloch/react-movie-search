@@ -16,7 +16,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: .5s all;
+  transition: 0.5s all;
 }
 .modal-container {
   position: fixed;
@@ -53,20 +53,18 @@
   visibility: visible;
 }
 .modal-close-icon {
- position: absolute;
- right: .5rem;
- top: .5rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 .modal-close-icon svg {
   font-size: 2.7rem;
 }
 
 .modal-close-icon:hover {
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
 }
-
-
 
 @media screen and (min-width: 576px) {
   .modal-container {
@@ -83,8 +81,6 @@
   }
 }
 
-
-
 /* mobile */
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
   .modal-container {
@@ -92,5 +88,5 @@
     height: 93%;
     width: 98%;
     min-height: 300px;
-
-  }}
+  }
+}

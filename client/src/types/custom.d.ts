@@ -1,1 +1,1 @@
-declare module '@fvilers/disable-react-devtools';
+declare module "@fvilers/disable-react-devtools";

@@ -1,43 +1,71 @@
 .user-profile-container {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    margin-top: var(--headerHeight);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  margin-top: var(--headerHeight);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
 }
 
 .user-profile-container h2 {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
 .user-profile-container h3 {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-top: 3rem;
-    line-height: 1.6rem;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 3rem;
+  line-height: 1.6rem;
 }
 .user-profile-container h1 {
-    text-align: center;
-    margin: 0;
-    margin-top: 4rem;
+  text-align: center;
+  margin: 0;
+  margin-top: 4rem;
 }
 
 .no-movies-container {
-    width: 100%;
-    max-width: 800px;
+  width: 100%;
+  max-width: 800px;
 }
 
 .user-profile-container #result-type-container {
-    margin-bottom: .7rem;
+  margin-bottom: 0.7rem;
 }
 
 .movie-items-container {
-    margin: 2rem 0 10rem 0;
-    width: 100%;
+  margin: 2rem 0 10rem 0;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  /* border: pink solid 1px; */
+  /* flex-grow: 1; */
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-item-container {
+  width: calc(100% / 2);
+  max-width: 300px;
+  border-radius: 7px;
+  aspect-ratio: 1/1;
+  /* border: black solid 1px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.movie-item:hover {
+  z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-items-container {
+    width: 90%;
     height: 100%;
     max-width: 1400px;
     /* border: pink solid 1px; */
@@ -45,100 +73,66 @@
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
-}
-
-.movie-item-container {
-    width: calc(100%/2);    
-    max-width: 300px;
-    border-radius: 7px;
-    aspect-ratio: 1/1;
-    /* border: black solid 1px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.movie-item:hover {
-    z-index: 1;
-}
-
-
-
-@media screen and (min-width: 768px) {
-    .movie-items-container {
-        width: 90%;
-        height: 100%;
-        max-width: 1400px;
-        /* border: pink solid 1px; */
-        /* flex-grow: 1; */
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: center;
-    }
-    .movie-item-container {
-        width: calc(100%/3);
-    }
-    .movie-item:hover {
-        transform: scale(1.1);
-    }
+  }
+  .movie-item-container {
+    width: calc(100% / 3);
+  }
+  .movie-item:hover {
+    transform: scale(1.1);
+  }
 }
 @media screen and (min-width: 992px) {
-    .movie-item-container {
-        width: calc(100%/4);
-    }
-    .movie-item:hover {
-        transform: scale(1.2);
-    }
+  .movie-item-container {
+    width: calc(100% / 4);
+  }
+  .movie-item:hover {
+    transform: scale(1.2);
+  }
 }
 @media screen and (min-width: 1200px) {
-    .movie-item-container {
-        width: calc(100%/5);
-    }
+  .movie-item-container {
+    width: calc(100% / 5);
+  }
 }
 
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
-    .movie-item-container {
-        width: calc(100%/4);
-    }
+  .movie-item-container {
+    width: calc(100% / 4);
+  }
 }
 
 .movie-item {
-    border-radius: 7px;
-    width: 100%;
-    padding: 1rem;
-    height: 100%;
-    margin: .5rem;
-    position: relative;
-    transition: .3s ease-in-out all;
-    z-index: 0;
-    /* border: var(--color1) solid 3px; */
-
+  border-radius: 7px;
+  width: 100%;
+  padding: 1rem;
+  height: 100%;
+  margin: 0.5rem;
+  position: relative;
+  transition: 0.3s ease-in-out all;
+  z-index: 0;
+  /* border: var(--color1) solid 3px; */
 }
 
-
-
-
 .movie-item img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 7px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
 }
 
 .account-settings-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-decoration: none;
 }
 
 .movie-item .error-content {
-    border: var(--text) solid 3px;
-    border-radius: 7px; 
+  border: var(--text) solid 3px;
+  border-radius: 7px;
 }
 .movie-item .error-content span {
-   font-size: 1.5rem;
+  font-size: 1.5rem;
 }

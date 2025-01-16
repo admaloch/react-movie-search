@@ -11,7 +11,6 @@ import Error from "../../../components/UI/errors/Error";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 
 export default function UserProfile() {
-
   const [isWatched, setIsWatched] = useState("both");
 
   const { id } = useParams();
@@ -20,10 +19,15 @@ export default function UserProfile() {
 
   let content = null;
 
-  if(isLoading) content = <CircleAnimation />
-
-  else if (isError || !user) content = <Error text={'We were unable to locate that user. Check your internet connection and try again.'} />
-
+  if (isLoading) content = <CircleAnimation />;
+  else if (isError || !user)
+    content = (
+      <Error
+        text={
+          "We were unable to locate that user. Check your internet connection and try again."
+        }
+      />
+    );
   else {
     const typedUser = user as UserItemProps;
 
@@ -36,19 +40,11 @@ export default function UserProfile() {
           isWatched={isWatched}
           setIsWatched={setIsWatched}
         />
-        <LikedMovieItems
-          isWatched={isWatched}
-          likedMovies={likedMovies}
-        />
+        <LikedMovieItems isWatched={isWatched} likedMovies={likedMovies} />
         <UserSettingsIcon />
       </>
     );
-
   }
 
-  return (
-    <main className="user-profile-container">
-      {content}
-    </main>
-  );
+  return <main className="user-profile-container">{content}</main>;
 }

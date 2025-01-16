@@ -50,7 +50,7 @@ const EditPasswordForm: React.FC = () => {
     if (isSuccess) {
       toast.dismiss();
       toast.success(
-        "Password successfully updated! Please login with your new credentials."
+        "Password successfully updated! Please login with your new credentials.",
       );
       setTimeout(() => {
         sendLogout();
@@ -63,7 +63,7 @@ const EditPasswordForm: React.FC = () => {
         `Error: ${
           (error as any)?.data?.message ||
           "Failed to update password. Try again later."
-        }`
+        }`,
       );
     }
   }, [isSuccess, isError, error, navigate]);
@@ -182,11 +182,15 @@ const EditPasswordForm: React.FC = () => {
             <span className="error">{errors.confirmPassword.message}</span>
           )}
         </div>
-        <button aria-label="submit edit password" type="submit" disabled={isLoading} className="button">
+        <button
+          aria-label="submit edit password"
+          type="submit"
+          disabled={isLoading}
+          className="button"
+        >
           {isLoading ? "Updating..." : "Update"}
         </button>
         <div className="edit-message">
-         
           <NavLink className="link-class" to={`/profiles/${id}/edit`}>
             <ArrowBackIcon />
             Edit account details

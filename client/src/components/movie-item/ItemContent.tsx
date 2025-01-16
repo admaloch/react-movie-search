@@ -17,7 +17,6 @@ export default function ItemContent({
   setIsModalOpen,
   setCurrentImdbId,
 }: ItemContentProps): JSX.Element | null {
-  
   if (!item) return null;
 
   const [revealBio, setRevealBio] = useState(false);
@@ -31,11 +30,14 @@ export default function ItemContent({
   };
 
   const userListItemClickHandler = () => {
-    if (typeof setIsModalOpen === 'function' && typeof setCurrentImdbId === 'function') {
-        setIsModalOpen(true);
-        setCurrentImdbId(item?.imdbID || '');
+    if (
+      typeof setIsModalOpen === "function" &&
+      typeof setCurrentImdbId === "function"
+    ) {
+      setIsModalOpen(true);
+      setCurrentImdbId(item?.imdbID || "");
     }
-};
+  };
 
   return (
     <>
@@ -46,30 +48,25 @@ export default function ItemContent({
           <HoverInfoBtn openBioOverlay={openBioOverlay} />
         )}
 
-        
-          <div 
-            className="user-item-icon"
-            onClick={userListItemClickHandler}
+        <div className="user-item-icon" onClick={userListItemClickHandler}>
+          <IconButton
+            aria-label={"view more content"}
+            className="custom-icon-button search-item-icon"
           >
-            <IconButton
-              aria-label={"view more content"}
-              className="custom-icon-button search-item-icon"
-            >
-              <Tippy content="View more information">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  fill="currentColor"
-                  className="bi bi-three-dots"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-                </svg>
-              </Tippy>
-            </IconButton>
-          </div>
-        
+            <Tippy content="View more information">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                className="bi bi-three-dots"
+                viewBox="0 0 16 16"
+              >
+                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+              </svg>
+            </Tippy>
+          </IconButton>
+        </div>
       </div>
 
       <BioOverlay
@@ -77,7 +74,7 @@ export default function ItemContent({
         closeBio={closeBioOverlay}
         plot={item.Plot}
         title={item.Title}
-      />      
+      />
     </>
   );
 }

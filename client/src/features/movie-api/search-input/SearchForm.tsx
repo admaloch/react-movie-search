@@ -9,77 +9,83 @@ import { toast } from "react-toastify";
 import InputLoadAnimation from "../../../components/UI/LoadAnimation/InputLoadAnimation";
 
 const SearchForm = (): JSX.Element => {
+  const { updateOmdbState } = useOmdbState();
+  const [isListShown, setIsListShown] = useState(false);
+  const { currType } = useSearchType();
+  const [searchInput, setSearchInput] = useState<string>("");
+  let currTypeParam = currType.apiParam;
 
-    const { updateOmdbState } = useOmdbState()
-    const [isListShown, setIsListShown] = useState(false)
-    const { currType } = useSearchType()
-    const [searchInput, setSearchInput] = useState<string>('')
-    let currTypeParam = currType.apiParam;
+  const { fetchSubmittedResults, isLoading: isSubmitLoading } =
+    useDoubleOmdbRes();
 
-    const { fetchSubmittedResults, isLoading: isSubmitLoading } = useDoubleOmdbRes();
+  const {
+    data: movieItems,
+    isLoading: isKeyLoading,
+    isSuccess: isKeySuccess,
+    isError,
+    error,
+  } = useSearchMoviesQuery(
+    { searchInput, currTypeParam },
+    { skip: searchInput.length < 3 },
+  );
 
-    const { data: movieItems, isLoading: isKeyLoading, isSuccess: isKeySuccess, isError, error } = useSearchMoviesQuery(
-        { searchInput, currTypeParam },
-        { skip: searchInput.length < 3 }
-    );
+  if (isError) {
+    console.log(error);
+  }
 
-    if (isError) {
-        console.log(error)
+  const showSearchList = () => setIsListShown(true);
+  const hideSearchList = () => setIsListShown(false);
+
+  useEffect(() => {
+    if (searchInput.length > 2) {
+      showSearchList();
+    } else {
+      hideSearchList();
     }
+  }, [searchInput]);
 
-    const showSearchList = () => setIsListShown(true)
-    const hideSearchList = () => setIsListShown(false)
+  const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const omdbResults = await fetchSubmittedResults(searchInput);
+      updateOmdbState(searchInput, omdbResults);
+    } catch (err) {
+      console.error("Error fetching movie results:", err);
+      toast.error(
+        `Error: Couldn't locate movies. Try checking your internet connction and trying again`,
+      );
+    }
+  };
 
-    useEffect(() => {
-        if (searchInput.length > 2) {
-            showSearchList()
-        } else {
-            hideSearchList()
-        }
-    }, [searchInput])
+  return (
+    <form id="searchForm" onSubmit={formSubmitHandler}>
+      <input
+        type="text"
+        placeholder={`${currType?.description}...`}
+        autoComplete="off"
+        name="query"
+        value={searchInput}
+        id="search-input"
+        onChange={(e) => setSearchInput(e.target.value)}
+      />
+      {isKeyLoading && (
+        <InputLoadAnimation style={{ top: ".8rem", right: "130px" }} />
+      )}
 
-    const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        try {
-            const omdbResults = await fetchSubmittedResults(searchInput);
-            updateOmdbState(searchInput, omdbResults)
-        } catch (err) {
-            console.error('Error fetching movie results:', err);
-            toast.error(`Error: Couldn't locate movies. Try checking your internet connction and trying again`);
-        }
-    };
-
-    return (
-        <form id="searchForm" onSubmit={formSubmitHandler}>
-            <input
-                type="text"
-                placeholder={`${currType?.description}...`}
-                autoComplete="off"
-                name="query"
-                value={searchInput}
-                id="search-input"
-                onChange={(e) => setSearchInput(e.target.value)}
-            />
-            {isKeyLoading &&
-                <InputLoadAnimation style={{ top: '.8rem', right: '130px' }} />
-            }
-
-            <button aria-label="submit search" type="submit" className="submit-btn">
-                {isSubmitLoading
-                    // ? <InputLoadAnimation placementStyle={{ inset: '.7rem 17px auto auto' }} />
-                    ? 'Submitting'
-                    : 'Submit'
-                }
-            </button>
-            {isKeySuccess && Array.isArray(movieItems.Search) && (
-                <SearchList
-                    isListShown={isListShown}
-                    hideList={hideSearchList}
-                    movieItems={movieItems.Search}
-                />
-            )}
-
-        </form>
-    )
-}
-export default React.memo(SearchForm)
+      <button aria-label="submit search" type="submit" className="submit-btn">
+        {isSubmitLoading
+          ? // ? <InputLoadAnimation placementStyle={{ inset: '.7rem 17px auto auto' }} />
+            "Submitting"
+          : "Submit"}
+      </button>
+      {isKeySuccess && Array.isArray(movieItems.Search) && (
+        <SearchList
+          isListShown={isListShown}
+          hideList={hideSearchList}
+          movieItems={movieItems.Search}
+        />
+      )}
+    </form>
+  );
+};
+export default React.memo(SearchForm);

@@ -1,20 +1,20 @@
-const express = require('express')
-const router = express.Router()
-const reviewsController = require('../controllers/reviewsController')
-const verifyJWT = require('../middleware/verifyJWT')
+const express = require("express");
+const router = express.Router();
+const reviewsController = require("../controllers/reviewsController");
+const verifyJWT = require("../middleware/verifyJWT");
 
-router.route('/')
-    .get(reviewsController.getAllReviews)
-    .post(verifyJWT, reviewsController.createReview) 
+router
+  .route("/")
+  .get(reviewsController.getAllReviews)
+  .post(verifyJWT, reviewsController.createReview);
 
-router.route('/:id')
-    .patch(verifyJWT, reviewsController.updateReview) 
-    .delete(verifyJWT, reviewsController.deleteReview) 
+router
+  .route("/:id")
+  .patch(verifyJWT, reviewsController.updateReview)
+  .delete(verifyJWT, reviewsController.deleteReview);
 
-router.route('/user/:userId')
-    .get(reviewsController.getUserReviews)
+router.route("/user/:userId").get(reviewsController.getUserReviews);
 
-router.route('/movie/:movieId')
-    .get(reviewsController.getMovieReviews)
+router.route("/movie/:movieId").get(reviewsController.getMovieReviews);
 
-module.exports = router
+module.exports = router;

@@ -1,13 +1,13 @@
-import './MainBtn.css'
+import "./MainBtn.css";
 interface MainBtnProps {
-    children: String;
+  children: String;
 }
 
-export default function MainBtn({children}: MainBtnProps) {
-  let ariaLabelText = children as string
+export default function MainBtn({ children }: MainBtnProps) {
+  let ariaLabelText = children as string;
   return (
     <button aria-label={ariaLabelText} className="main-btn">
-        {children}
+      {children}
     </button>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import './SplashScreen.css';
+import "./SplashScreen.css";
 //@ts-ignore
-import splashImg from '../../assets/vectorHomePage.svg';
+import splashImg from "../../assets/vectorHomePage.svg";
 
 export default function SplashScreen() {
   return (

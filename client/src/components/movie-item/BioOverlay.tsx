@@ -8,8 +8,12 @@ interface BioOverlayProps {
   title: string;
 }
 
-const BioOverlay = ({ plot, revealBio, closeBio, title }: BioOverlayProps): JSX.Element => {
-  
+const BioOverlay = ({
+  plot,
+  revealBio,
+  closeBio,
+  title,
+}: BioOverlayProps): JSX.Element => {
   const scrollDivRef = useRef<HTMLDivElement>(null);
 
   const mouseLeaveHandler = () => {
@@ -29,18 +33,19 @@ const BioOverlay = ({ plot, revealBio, closeBio, title }: BioOverlayProps): JSX.
   };
 
   let styles = revealBio
-    ? { opacity: '1', height: '100%', zIndex: 50 }
-    : { opacity: '0', height: '0', zIndex: 0 };
+    ? { opacity: "1", height: "100%", zIndex: 50 }
+    : { opacity: "0", height: "0", zIndex: 0 };
 
   return (
     <div
       ref={scrollDivRef}
       onMouseLeave={mouseLeaveHandler}
       style={styles}
-      className='bio-overlay'>
+      className="bio-overlay"
+    >
       <h4>{title}</h4>
       <p>{plot}</p>
-        <IoClose onClick={closeBio} className="icon-large close-bio-text"/>
+      <IoClose onClick={closeBio} className="icon-large close-bio-text" />
     </div>
   );
 };

@@ -26,18 +26,19 @@ const ItemModal = ({
   let content;
 
   if (isLoading) content = <MovieModalSkeletonLoader />;
-  else if (isError || !item) {
+  else if (isError) {
     // @ts-ignore
     content = (
-        <ItemError
+      <ItemError
         faceSize={80}
         text={`Error! ${
-          (error as any)?.data?.message || "We had trouble getting access to this item. Try refreshing your browser."
+          (error as any)?.data?.message ||
+          "We had trouble getting access to this item. Try refreshing your browser."
         }`}
       />
-
-      
     );
+  } else if (!item) {
+    return null;
   } else {
     const image = item.Poster !== "N/A" ? item.Poster : imageNotFound;
     const imageAlt =
@@ -46,7 +47,11 @@ const ItemModal = ({
         : "image not found placeholder";
 
     content = (
-      <section className="modal-content-container" role="dialog" aria-labelledby={`${item.Title} info`} >
+      <section
+        className="modal-content-container"
+        role="dialog"
+        aria-labelledby={`${item.Title} info`}
+      >
         <div onClick={closeModalHandler} className="modal-close-icon">
           <CloseIcon fontSize="large" />
         </div>

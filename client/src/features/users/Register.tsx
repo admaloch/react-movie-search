@@ -45,7 +45,7 @@ const Register: React.FC = () => {
     if (isSuccess) {
       toast.dismiss();
       toast.success(
-        "Registration successful! Please login with your new credentials."
+        "Registration successful! Please login with your new credentials.",
       );
       setTimeout(() => {
         navigate("/login");
@@ -57,7 +57,7 @@ const Register: React.FC = () => {
         `Error: ${
           (error as any)?.data?.message ||
           "Failed to register new account. Try again later."
-        }`
+        }`,
       );
     }
   }, [isSuccess, isError, error, navigate]);
@@ -175,7 +175,12 @@ const Register: React.FC = () => {
             <span className="error">{errors.confirmPassword.message}</span>
           )}
         </div>
-        <button aria-label="submit new registration" type="submit" disabled={isLoading} className="button">
+        <button
+          aria-label="submit new registration"
+          type="submit"
+          disabled={isLoading}
+          className="button"
+        >
           {isLoading ? "Registering..." : "Register"}
         </button>
         <p>Already have an account?</p>

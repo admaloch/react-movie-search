@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { OmdbItem } from '../../models/ItemApiProps';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { OmdbItem } from "../../models/ItemApiProps";
 
 interface SearchResponse {
   Search: OmdbItem[];
@@ -7,22 +7,25 @@ interface SearchResponse {
   Response: string;
 }
 
-const BASE_URL = 'https://omdbapi.com/';
+const BASE_URL = "https://omdbapi.com/";
 //@ts-ignore
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 export const omdbApiSlice = createApi({
-  reducerPath: 'omdbApi',
+  reducerPath: "omdbApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
-    searchMovies: builder.query<SearchResponse, { searchInput: string, currTypeParam: string, page?: number }>({
+    searchMovies: builder.query<
+      SearchResponse,
+      { searchInput: string; currTypeParam: string; page?: number }
+    >({
       query: ({ searchInput, currTypeParam, page = 1 }) =>
         `?s=${searchInput}&page=${page}&${API_KEY}${currTypeParam}`,
     }),
     getMovieById: builder.query<OmdbItem, string>({
-      query: ( imdbId ) => {
+      query: (imdbId) => {
         const queryString = `?i=${imdbId}&plot=full&${API_KEY}`;
         return queryString;
       },
@@ -30,4 +33,9 @@ export const omdbApiSlice = createApi({
   }),
 });
 
-export const { useSearchMoviesQuery, useLazySearchMoviesQuery, useGetMovieByIdQuery, useLazyGetMovieByIdQuery } = omdbApiSlice;
+export const {
+  useSearchMoviesQuery,
+  useLazySearchMoviesQuery,
+  useGetMovieByIdQuery,
+  useLazyGetMovieByIdQuery,
+} = omdbApiSlice;

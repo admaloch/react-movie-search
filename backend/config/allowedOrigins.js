@@ -5,6 +5,6 @@ const origin =
 
 const allowedOrigins = origin;
 
-console.log(allowedOrigins)
+console.log(allowedOrigins);
 
 module.exports = allowedOrigins;

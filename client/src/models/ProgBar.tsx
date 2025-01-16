@@ -1,4 +1,4 @@
 export default interface ProgBar {
-    id: number;
-    isActive: Boolean;
+  id: number;
+  isActive: Boolean;
 }

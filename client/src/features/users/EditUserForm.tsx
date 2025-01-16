@@ -49,7 +49,7 @@ const EditUserForm: React.FC = () => {
     if (isSuccess) {
       toast.dismiss();
       toast.success(
-        "Account info successfully updated! Please login with your new credentials."
+        "Account info successfully updated! Please login with your new credentials.",
       );
       setTimeout(() => {
         sendLogout();
@@ -62,7 +62,7 @@ const EditUserForm: React.FC = () => {
         `Error: ${
           (error as any)?.data?.message ||
           "Failed to update account info. Try again later."
-        }`
+        }`,
       );
     }
   }, [isSuccess, isError, error, navigate]);
@@ -114,7 +114,12 @@ const EditUserForm: React.FC = () => {
           )}
         </div>
 
-        <button aria-label="submit edit user" type="submit" disabled={isLoading} className="button">
+        <button
+          aria-label="submit edit user"
+          type="submit"
+          disabled={isLoading}
+          className="button"
+        >
           {isLoading ? "Updating..." : "Update"}
         </button>
         <div className="edit-message">
@@ -122,7 +127,7 @@ const EditUserForm: React.FC = () => {
             Edit password
           </NavLink>
           <NavLink className="link-class" to={`/profiles/${id}/delete`}>
-           Delete account
+            Delete account
           </NavLink>
           <NavLink className="link-class" to={`/profiles/${id}`}>
             <ArrowBackIcon />

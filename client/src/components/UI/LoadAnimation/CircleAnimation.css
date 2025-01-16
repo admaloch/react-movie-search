@@ -7,9 +7,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
-  
-
+  align-items: center;
 }
 
 .animation-content {
@@ -31,11 +29,9 @@
 }
 
 .circle-animation {
-
   width: auto;
   height: 100%;
   /* border: black solid 1px; */
-
 }
 
 .circle-animation {
@@ -44,8 +40,6 @@
   width: 80px;
   height: 80px;
 }
-
-
 
 .circle-animation div {
   position: absolute;
@@ -129,7 +123,6 @@
 }
 
 @keyframes circle-animation {
-
   0%,
   20%,
   80%,

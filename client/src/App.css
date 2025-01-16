@@ -1,168 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 u,
 p {
-    margin: 0;
+  margin: 0;
 }
 html {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-size: 7px;
-
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 7px;
 }
 /* scrollbar style change */
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar:hover {
-    cursor: auto;
-    cursor: pointer;
+  cursor: auto;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
-
-    border-radius: 22px;
+  border-radius: 22px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 22px;
+  background: #888;
+  border-radius: 22px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 :root {
-    --slider-padding: 5rem;
+  --slider-padding: 5rem;
 }
 
 :root {
-    --text: #022B3A;
-    --mainBackground: #edf2f4;
-    --navBackground: rgba(237, 242, 244, .8);
-    --containertext: #f7ede2;
-    --containerBackground: #022B3A;
-    --color1: #5e548e;
-    --color2: #03045e;
-    --color3: #1F7A8C;
-    --color4: #e63946;
-    --overlay: rgba(2, 43, 58, .7);
-    --headerHeight: 70px;
+  --text: #022b3a;
+  --mainBackground: #edf2f4;
+  --navBackground: rgba(237, 242, 244, 0.8);
+  --containertext: #f7ede2;
+  --containerBackground: #022b3a;
+  --color1: #5e548e;
+  --color2: #03045e;
+  --color3: #1f7a8c;
+  --color4: #e63946;
+  --overlay: rgba(2, 43, 58, 0.7);
+  --headerHeight: 70px;
 }
-
-
 
 @media screen and (min-width: 600px) {
-    :root {
-        --headerHeight: 80px;
-    }
-    
+  :root {
+    --headerHeight: 80px;
+  }
 }
 @media only screen and (max-device-width: 950px) and (max-device-height: 500px) and (orientation: landscape) {
-    :root {
-        --headerHeight: 50px;
-    }
+  :root {
+    --headerHeight: 50px;
+  }
 }
-
 
 body {
-    margin: 0;
-    background-color: var(--mainBackground);
-    color: var(--text);
-    letter-spacing: .3rem;
-    display: flex;
-    width: 100%;
-    overflow-x: hidden;
-    flex-direction: column;
-    align-items: center;
-    /* overscroll-behavior: none; */
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
-
+  margin: 0;
+  background-color: var(--mainBackground);
+  color: var(--text);
+  letter-spacing: 0.3rem;
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  flex-direction: column;
+  align-items: center;
+  /* overscroll-behavior: none; */
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
 }
 
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Archivo', sans-serif;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo", sans-serif;
+}
 
 #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-x: hidden;
-    width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  width: 100vw;
+  background-color: var(--mainBackground);
 }
 
 .main-item-content {
-    height: 100%;
-    min-height: 100vh;
-    width: 100%;
-    margin-top: var(--headerHeight);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  margin-top: var(--headerHeight);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 }
 .content-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
 }
 
 .no-scroll {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .disable {
-    pointer-events: none;
-    opacity: .2!important;
-    cursor: wait;
-
+  pointer-events: none;
+  opacity: 0.2 !important;
+  cursor: wait;
 }
 .custom-icon-button {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    opacity: 1;
-    transition: .15s ease-in-out opacity;
-  }
-  
-  .custom-icon-button:hover {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    opacity: 0.6;
-  }
-  
-  .no-scroll {
-    overflow-y: hidden;
-  }
-  .user-profile-container h1,
-  .main-item-content h1 {
-    font-size: 3.5rem;
-  }
-  .user-profile-container h1{
-    width: 90%;
-  }
+  background-color: transparent !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  opacity: 1;
+  transition: 0.15s ease-in-out opacity;
+}
+
+.custom-icon-button:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  opacity: 0.6;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+.user-profile-container h1,
+.main-item-content h1 {
+  font-size: 3.5rem;
+}
+.user-profile-container h1 {
+  width: 90%;
+}
 /* bootstrap Breakpoints
 X-Small	None	<576px
 Small	sm	≥576px
@@ -171,26 +167,25 @@ Large	lg	≥992px
 Extra large	xl	≥1200px
 Extra extra large	xxl	≥1400px */
 @media screen and (min-width: 360px) {
-    :root {
-        font-size: 9px;
-    }
+  :root {
+    font-size: 9px;
+  }
 }
 
 @media screen and (min-width: 414px) {
-    :root {
-        font-size: 11px;
-    }
+  :root {
+    font-size: 11px;
+  }
 }
 
 @media screen and (min-width: 540px) {
-    :root {
-        font-size: 12px;
-    }
+  :root {
+    font-size: 12px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    :root {
-        font-size: 13px;
-    }
+  :root {
+    font-size: 13px;
+  }
 }
-

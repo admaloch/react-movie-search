@@ -1,17 +1,12 @@
-import React from 'react'
+import React from "react";
 
-interface InfoCardProps {   
-    children: React.ReactNode;
-    classes?: string
+interface InfoCardProps {
+  children: React.ReactNode;
+  classes?: string;
 }
 
-export default function InfoCard({children, classes}: InfoCardProps) {
+export default function InfoCard({ children, classes }: InfoCardProps) {
+  const itemClass = classes ? `info-card ${classes}` : "info-card";
 
-    const itemClass = classes ? `info-card ${classes}` : 'info-card'
-
-  return (
-    <div className={itemClass}>
-        {children}
-    </div>
-  )
+  return <div className={itemClass}>{children}</div>;
 }
