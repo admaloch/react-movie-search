@@ -10,7 +10,7 @@ export default function MainNavIsLoggedInItems() {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to track if the nav is open
   const [isNavShown, setIsNavShown] = useState(window.innerWidth > 933); // State to track if the nav is shown
   const navRef = useRef<HTMLDivElement | null>(null);
-  const firstNavLinkRef = useRef<HTMLDivElement | null>(null);
+  const firstNavLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   // Effect to handle window resize
   useEffect(() => {
