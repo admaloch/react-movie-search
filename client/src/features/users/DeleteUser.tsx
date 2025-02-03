@@ -53,7 +53,7 @@ function DeleteUser(): React.JSX.Element | null {
   }, [isLogoutError, logoutError]);
 
   return (
-    <main className="main-item-content">
+    <main id="main-content" className="main-item-content">
       <InfoCard classes="delete-account">
         <h2>Delete Account Settings:</h2>
         <p>

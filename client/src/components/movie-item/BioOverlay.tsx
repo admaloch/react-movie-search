@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 
 interface BioOverlayProps {
@@ -18,9 +18,26 @@ const BioOverlay = ({
 
   const mouseLeaveHandler = () => {
     if (scrollDivRef.current) {
-      scrollToTop();
-      closeBio();
+      closeBioOverlay();
     }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeBioOverlay();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const closeBioOverlay = () => {
+    scrollToTop();
+    closeBio();
   };
 
   const scrollToTop = () => {
@@ -38,6 +55,7 @@ const BioOverlay = ({
 
   return (
     <div
+    tabIndex={-1}
       ref={scrollDivRef}
       onMouseLeave={mouseLeaveHandler}
       style={styles}
@@ -45,7 +63,6 @@ const BioOverlay = ({
     >
       <h4>{title}</h4>
       <p>{plot}</p>
-      <IoClose onClick={closeBio} className="icon-large close-bio-text" />
     </div>
   );
 };

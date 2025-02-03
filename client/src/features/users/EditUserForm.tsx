@@ -74,7 +74,7 @@ const EditUserForm: React.FC = () => {
   }, [isLogoutError]);
 
   return (
-    <main className="user-profile-container">
+    <main id="main-content" className="user-profile-container">
       <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
         <h2>Edit account details</h2>
         <div className="formGroup">

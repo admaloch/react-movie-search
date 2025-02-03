@@ -46,5 +46,5 @@ export default function UserProfile() {
     );
   }
 
-  return <main className="user-profile-container">{content}</main>;
+  return <main id="main-content" className="user-profile-container">{content}</main>;
 }

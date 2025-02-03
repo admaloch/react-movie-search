@@ -47,5 +47,5 @@ export default function ListAllUsers() {
     </>
   );
 
-  return <main className="main-item-content all-users-section">{content}</main>;
+  return <main id="main-content" className="main-item-content all-users-section">{content}</main>;
 }

@@ -90,6 +90,19 @@
   overflow-x: hidden;
 }
 
+.liked-list button {
+  background: none;
+  border: none;
+  color: var(--containertext);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+.liked-list span {
+text-align: start;
+}
+
+
 .user-item svg {
   opacity: 1;
   transition: 0.3s ease-in-out opacity;

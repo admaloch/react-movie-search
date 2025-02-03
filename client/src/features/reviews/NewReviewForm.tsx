@@ -66,9 +66,9 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
   return (
     <>
       <div className="review-form">
-        <div onClick={() => closeModal()} className="close-modal-icon">
+        <button onClick={() => closeModal()} className="close-modal-icon">
           <CloseIcon fontSize="large" />
-        </div>
+        </button>
         <form onSubmit={handleSubmit(submitForm)}>
           <h2>Review for {title}</h2>
 

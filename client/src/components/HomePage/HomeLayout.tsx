@@ -16,7 +16,7 @@ export default function HomeLayout() {
       const timer = setTimeout(() => {
         setShowLoadingSkeleton(false);
         sessionStorage.setItem("loadSkeletonShown", "true"); // Mark splash as shown
-      }, 2000);
+      }, 1200);
 
       return () => clearTimeout(timer); // Cleanup timer on component unmount
     }
@@ -27,7 +27,7 @@ export default function HomeLayout() {
       {showLoadingSkeleton && <HomeSkeletonLoad />}
 
       <BGSection bgClass="theatre-bg">
-        <main className="main-content-container">
+        <main id="main-content" className="main-content-container">
           <Outlet />
           <img
             className="background-img"

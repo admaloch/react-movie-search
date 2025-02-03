@@ -8,7 +8,7 @@ function MainPage() {
   const hideSlider = () => setIsSliderActive(false);
 
   return (
-    <main className="main-slider-content main-item-content">
+    <main id="main-content" className=" main-item-content">
       <section className="content-container">
         <MainSearch isSliderActive={isSliderActive} />
         <MainSlider

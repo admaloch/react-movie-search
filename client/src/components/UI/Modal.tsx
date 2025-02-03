@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import "./Modal.css";
+import { useEffect } from "react";
 
 interface ModalProps {
   closeModal: () => void;
@@ -14,7 +15,21 @@ export default function Modal({
   children,
   closeModal,
 }: ModalProps): JSX.Element | null {
+
   if (!open) return null;
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [closeModal]);
 
   return ReactDOM.createPortal(
     <>
@@ -23,7 +38,7 @@ export default function Modal({
         className={open ? "modal-overlay active" : "modal-overlay"}
       ></div>
       <div
-        aria-hidden="false"
+        aria-hidden={!open}
         aria-modal="true"
         className={open ? "modal-container active" : "modal-container"}
       >

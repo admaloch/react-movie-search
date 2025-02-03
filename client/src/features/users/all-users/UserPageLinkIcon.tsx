@@ -29,6 +29,7 @@ function UserPageLink({ userId }: UserPageLinkProps) {
         style={{ textDecoration: "none", color: "var(--containerText)" }}
       >
         <IconButton
+        tabIndex={-1}
           aria-label="link to user profile"
           // onClick={navigate(`/profiles/${userId}`)}
           onMouseEnter={handlePopoverOpen}

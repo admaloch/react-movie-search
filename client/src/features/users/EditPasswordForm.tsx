@@ -90,7 +90,7 @@ const EditPasswordForm: React.FC = () => {
   };
 
   return (
-    <main className="user-profile-container">
+    <main id="main-content" className="user-profile-container">
       <form onSubmit={handleSubmit(onSubmit)} className="credentials-form">
         <h2>Edit password</h2>
         <div className="formGroup">

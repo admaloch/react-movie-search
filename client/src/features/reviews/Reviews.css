@@ -88,10 +88,16 @@
   top: 0.5rem;
   right: 0.5rem;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  border-radius: 20px;
+
 }
 
 .close-modal-icon:hover {
-  opacity: 0.8;
+color: black;
+background-color: white;
 }
 
 .delete-review-icon {

@@ -14,12 +14,13 @@ const ProgressItem = ({
   };
 
   return (
-    <div
+    <button
       role="button"
-      aria-labelledby="progress-bar"
+      aria-label={`results page ${id + 1}`}
+      aria-current="step"
       onClick={() => progItemHandler(id)}
       className={isActive ? "progress-item active" : "progress-item"}
-    ></div>
+    ></button>
   );
 };
 

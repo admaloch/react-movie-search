@@ -7,7 +7,7 @@ const SearchTypeButtons = () => {
   const { searchTypes } = useSearchType();
 
   return (
-    <ul id="result-type-container">
+    <div id="result-type-container">
       {searchTypes.map((type: SearchType) => (
         <SearchTypeButton
           key={type.type}
@@ -15,7 +15,7 @@ const SearchTypeButtons = () => {
           isActive={type.isActive}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 export default React.memo(SearchTypeButtons);

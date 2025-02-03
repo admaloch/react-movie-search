@@ -47,6 +47,7 @@ export default function UpdateHasWatchedIcon({
         >
           <Tippy content="I've seen this!">
             <svg
+            tabIndex={-1}
               style={{ width: size }}
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"

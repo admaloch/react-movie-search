@@ -17,10 +17,10 @@ export default function UserListItems({
   };
 
   return (
-    <>
-      <li onClick={listItemClickHandler}>
+    <li>
+      <button onClick={listItemClickHandler}>
         <span className="user-movie-item">{title}</span>
-      </li>
-    </>
+      </button>
+    </li>
   );
 }

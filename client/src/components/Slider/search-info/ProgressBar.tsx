@@ -6,13 +6,17 @@ interface ProgressBarProps {
   changeIndexHandler: (newIndex: number) => void;
 }
 
+
 const ProgressBar = ({
   progBar,
   changeIndexHandler,
 }: ProgressBarProps): JSX.Element => {
+
+  console.log(progBar);
+
   return (
     <div id="progress-bar" className="progress-bar">
-      {progBar &&
+      {progBar.length > 1 &&
         progBar.map((item) => (
           <ProgressItem
             key={item.id}

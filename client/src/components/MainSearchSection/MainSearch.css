@@ -27,7 +27,7 @@
 /* result type buttons */
 #result-type-container {
   display: flex;
-  /* margin: .2rem 0; */
+  margin-bottom: 0.7rem;
   padding: 0;
 }
 
@@ -162,10 +162,11 @@
   overflow-x: hidden;
 }
 
+
 .search-list-item {
   background-color: var(--containerBackground);
   color: var(--containertext);
-  border: var(--containertext) solid 1px;
+  border: var(--containertext) solid 1px!important;
   padding: 0.2rem;
   width: 100%;
   cursor: pointer;
@@ -182,10 +183,13 @@
 
 .search-list-item:hover {
   background-color: var(--color3);
-  border: var(--color1) solid 1px;
+  border: var(--color1) solid 1px!important;
 }
 
 .search-item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   max-width: 80%;
 }
 

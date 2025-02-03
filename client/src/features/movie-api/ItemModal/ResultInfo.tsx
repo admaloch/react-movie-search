@@ -14,7 +14,7 @@ export default function ResultInfo({
   return (
     <>
       {item.Title !== "N/A" && <h3>{item.Title}</h3>}
-      <section className="result-info">
+      <section tabIndex={-1} className="result-info">
         <ul>
           {item.Runtime !== "N/A" && (
             <li>

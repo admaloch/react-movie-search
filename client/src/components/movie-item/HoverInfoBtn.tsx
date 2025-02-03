@@ -12,6 +12,7 @@ export default function HoverInfoBtn({
   return (
     <div className="user-item-icon">
       <IconButton
+      tabIndex={-1}
         aria-label={"show more info"}
         className="custom-icon-button"
         onClick={openBioOverlay}

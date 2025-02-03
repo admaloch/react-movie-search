@@ -30,6 +30,7 @@ export default function UserSettingsIcon() {
       >
         <Tippy content="View your account settings">
           <svg
+            tabIndex={-1}
             xmlns="http://www.w3.org/2000/svg"
             width="25"
             height="25"

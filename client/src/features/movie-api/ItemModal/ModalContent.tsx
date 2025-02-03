@@ -15,7 +15,7 @@ export default function ModalContent({
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`;
 
   return (
-    <main className="result-info-container">
+    <main id="main-content" className="result-info-container">
       <ResultInfo item={item} year={year} />
       <div className="results-icons">
         <SearchBtn type={item.Type} searchLink={searchLink} />

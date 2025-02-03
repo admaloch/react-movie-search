@@ -18,12 +18,11 @@ export default function Heart({ isLiked, style }: HeartProps): JSX.Element {
   };
 
   return (
-    <div style={style} className="heart-bg">
+    <button onClick={toggleDisplay} aria-label={isLiked ? 'Unlike item' : 'Like item'}style={style} className="heart-bg">
       <div
-        aria-label="like or unlike item"
         className={`heart-icon ${liked ? "liked" : ""}`}
-        onClick={toggleDisplay}
+        
       ></div>
-    </div>
+    </button>
   );
 }

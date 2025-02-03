@@ -15,7 +15,7 @@ export default function Error({ text }: { text: string }): JSX.Element {
   };
 
   return (
-    <main className="main-item-content">
+    <main id="main-content" className="main-item-content">
       <InfoCard classes="item-error">
         <SentimentDissatisfiedIcon sx={{ fontSize: 100 }} />
         <h1>{text}</h1>
@@ -49,7 +49,7 @@ export default function Error({ text }: { text: string }): JSX.Element {
               marginRight: "5px",
             }}
           />
-          <a onClick={handleGoBack}>Return to previous page</a>
+          <a tabIndex={0} onClick={handleGoBack}>Return to previous page</a>
         </div>
         <div className="err-link">
           <ArrowCircleLeftIcon

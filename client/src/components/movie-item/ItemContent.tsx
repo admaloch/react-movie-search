@@ -50,6 +50,7 @@ export default function ItemContent({
 
         <div className="user-item-icon" onClick={userListItemClickHandler}>
           <IconButton
+            tabIndex={-1}
             aria-label={"view more content"}
             className="custom-icon-button search-item-icon"
           >

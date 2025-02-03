@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import LogoutUser from "../../features/users/LogoutUser";
@@ -7,27 +7,50 @@ import useAuth from "../../hooks/useAuth";
 export default function MainNavIsLoggedInItems() {
   const { isLoggedIn, id } = useAuth();
 
+  const [isNavOpen, setIsNavOpen] = useState(false); // State to track if the nav is open
+  const [isNavShown, setIsNavShown] = useState(window.innerWidth > 933); // State to track if the nav is shown
   const navRef = useRef<HTMLDivElement | null>(null);
+  const firstNavLinkRef = useRef<HTMLDivElement | null>(null);
+
+  // Effect to handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNavShown(window.innerWidth > 933);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const showNavbar = () => {
-    if (navRef.current) {
-      navRef.current.classList.add("responsive_nav");
-    }
+    setIsNavOpen(true);
+
+    setTimeout(() => {
+      firstNavLinkRef.current?.focus(); // Focus the first NavLink
+    }, 100); // Small delay to allow DOM update
   };
 
   const closeNavbar = () => {
-    if (navRef.current) {
-      navRef.current.classList.remove("responsive_nav");
-    }
+    setIsNavOpen(false);
   };
 
   let isLoggedInItems;
 
+  const navLinkStyle = {
+    display: isNavShown || isNavOpen ? "block" : "none",
+  };
+
   if (isLoggedIn && id) {
     isLoggedInItems = (
       <>
-        <LogoutUser closeNavbar={closeNavbar} />
-        <NavLink to={`/profiles/${id}`} onClick={closeNavbar}>
+        <LogoutUser navLinkStyle={navLinkStyle} closeNavbar={closeNavbar} />
+        <NavLink
+          style={navLinkStyle}
+          to={`/profiles/${id}`}
+          onClick={closeNavbar}
+        >
           My Profile
         </NavLink>
       </>
@@ -35,10 +58,14 @@ export default function MainNavIsLoggedInItems() {
   } else {
     isLoggedInItems = (
       <>
-        <NavLink to="/users/register" onClick={closeNavbar}>
+        <NavLink
+          style={navLinkStyle}
+          to="/users/register"
+          onClick={closeNavbar}
+        >
           Register
         </NavLink>
-        <NavLink to="/login" onClick={closeNavbar}>
+        <NavLink style={navLinkStyle} to="/login" onClick={closeNavbar}>
           Login
         </NavLink>
       </>
@@ -47,29 +74,44 @@ export default function MainNavIsLoggedInItems() {
 
   return (
     <>
-      <nav ref={navRef}>
-        <NavLink to="/" onClick={closeNavbar}>
+      <nav
+        ref={navRef}
+        aria-hidden={!isNavOpen && !isNavShown} // Hide the nav for screen readers when closed
+        className={isNavOpen ? "responsive_nav" : ""}
+      >
+        
+        <NavLink
+          ref={firstNavLinkRef}
+          style={navLinkStyle}
+          to="/"
+          onClick={closeNavbar}
+        >
           Home
         </NavLink>
-        <NavLink to="/search" onClick={closeNavbar}>
+        <NavLink style={navLinkStyle} to="/search" onClick={closeNavbar}>
           Search
         </NavLink>
-        <NavLink to="/profiles" onClick={closeNavbar} end>
+        <NavLink style={navLinkStyle} to="/profiles" onClick={closeNavbar} end>
           All Users
         </NavLink>
+
         {isLoggedInItems}
+
         <button
           className="nav-close-btn"
+          style={{ display: isNavOpen ? "block" : "none" }}
           onClick={closeNavbar}
           aria-label="Close navigation"
         >
           <FaTimes aria-hidden="true" />
         </button>
       </nav>
+
       <button
         className="nav-btn"
         onClick={showNavbar}
         aria-label="Open navigation"
+        aria-expanded={isNavOpen}
       >
         <FaBars />
       </button>

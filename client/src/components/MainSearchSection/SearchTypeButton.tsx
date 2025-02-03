@@ -17,12 +17,12 @@ const SearchTypeButton = ({
   };
 
   return (
-    <li
+    <button
       onClick={clickHandler}
       className={`result-btn ${isActive ? "active-btn" : ""}`}
     >
       {type}
-    </li>
+    </button>
   );
 };
 export default React.memo(SearchTypeButton);

@@ -34,6 +34,10 @@ function MainNavBar() {
         style={{ top: showNavbar ? "0" : "-80px", transition: "top 0.3s" }}
       >
         <div className="header-content">
+          {/* Skip Link for Accessibility */}
+          <a href="#main-content" className="skip-link">
+            Skip to Main Content
+          </a>
           <MainNavLogo />
           <MainNavContent />
         </div>

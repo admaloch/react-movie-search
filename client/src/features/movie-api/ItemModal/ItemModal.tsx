@@ -52,9 +52,13 @@ const ItemModal = ({
         role="dialog"
         aria-labelledby={`${item.Title} info`}
       >
-        <div onClick={closeModalHandler} className="modal-close-icon">
+        <button
+          onClick={closeModalHandler}
+          className="modal-close-icon"
+          ref={(button) => button && button.focus()}
+        >
           <CloseIcon fontSize="large" />
-        </div>
+        </button>
         <article className="modal-img-container">
           <img height={400} width={275} src={image} alt={imageAlt} />
         </article>

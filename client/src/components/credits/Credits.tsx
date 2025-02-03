@@ -3,7 +3,7 @@ import MoodIcon from "@mui/icons-material/Mood"; // Import the happy face icon
 import "./Credits.css";
 export default function Credits() {
   return (
-    <main className="main-item-content">
+    <main id="main-content" className="main-item-content">
       <section className="credits-section">
         <MoodIcon sx={{ fontSize: 100 }} /> {/* Happy face icon */}
         <h3>

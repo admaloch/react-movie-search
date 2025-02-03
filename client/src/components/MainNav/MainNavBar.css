@@ -10,6 +10,7 @@ header {
   background-color: var(--navBackground);
 }
 
+
 .header-content {
   width: 100%;
   height: 100%;
@@ -81,6 +82,9 @@ header .nav-btn {
   font-size: 1.8rem;
   transition: 0.15s ease-in-out opacity;
   color: var;
+}
+header .nav-btn:focus {
+opacity: .3;
 }
 
 header .nav-close-btn {
@@ -219,3 +223,24 @@ nav {
     font-size: 1.2rem;
   }
 }
+
+.skip-link {
+  position: absolute;
+  top: -40px; /* Initially hidden above viewport */
+  left: 10px;
+  background: #000;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: top 0.2s ease-in-out;
+  z-index: 100; /* Ensure it stays above other elements */
+}
+
+.skip-link:focus {
+  top: 10px; /* Move into view when focused */
+  left: 10px;
+  outline: 2px solid white; /* Visible focus outline */
+}
+

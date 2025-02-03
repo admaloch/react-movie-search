@@ -36,6 +36,7 @@
   height: 0.8rem;
   background-color: var(--color2);
   opacity: 0.5;
+  border: none;
 }
 
 .progress-item.active,
@@ -43,6 +44,7 @@
   background-color: var(--color3);
   opacity: 1;
   cursor: pointer;
+  border: none;
 }
 
 .no-results {

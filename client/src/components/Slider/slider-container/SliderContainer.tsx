@@ -37,41 +37,51 @@ const SliderContainer = ({
 
   return (
     <section className={sliderClass}>
-      <button
-        id="left-arrow"
-        aria-label="decrease items"
-        style={arrowStyle}
-        onClick={decreaseIndexHandler}
-        className={`handle left-handle ${progBar.length < 2 ? "disable" : ""}`}
-      >
-        <div aria-labelledby="left-arrow" className="arrow">
-          <ArrowBackIcon
-            aria-labelledby="left-arrow"
-            className="arrow-icon"
-            sx={{ fontSize: "3rem" }}
-          />
-        </div>
-      </button>
+
+      {isSliderActive && (
+        <button
+          id="left-arrow"
+          aria-label="decrease items"
+          style={arrowStyle}
+          onClick={decreaseIndexHandler}
+          className={`handle left-handle ${
+            progBar.length < 2 ? "disable" : ""
+          }`}
+        >
+          <div aria-labelledby="left-arrow" className="arrow">
+            <ArrowBackIcon
+              aria-labelledby="left-arrow"
+              className="arrow-icon"
+              sx={{ fontSize: "3rem" }}
+            />
+          </div>
+        </button>
+      )}
 
       {submittedSearch && (
         <Slider showArrowFunc={showArrowFunc} hideArrowFunc={hideArrowFunc} />
       )}
 
-      <button
-        id="right-arrow"
-        style={arrowStyle}
-        aria-label="increase items"
-        onClick={increaseIndexHandler}
-        className={`handle right-handle ${progBar.length < 2 ? "disable" : ""}`}
-      >
-        <div aria-labelledby="right-arrow" className="arrow">
-          <ArrowForwardIcon
-            aria-labelledby="right-arrow"
-            className="arrow-icon"
-            sx={{ fontSize: "3rem" }}
-          />
-        </div>
-      </button>
+      {isSliderActive && (
+        <button
+          id="right-arrow"
+          style={arrowStyle}
+          aria-label="increase items"
+          onClick={increaseIndexHandler}
+          className={`handle right-handle ${
+            progBar.length < 2 ? "disable" : ""
+          }`}
+        >
+          <div aria-labelledby="right-arrow" className="arrow">
+            <ArrowForwardIcon
+              aria-labelledby="right-arrow"
+              className="arrow-icon"
+              sx={{ fontSize: "3rem" }}
+            />
+          </div>
+        </button>
+      )}
+      
     </section>
   );
 };

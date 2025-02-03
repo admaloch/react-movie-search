@@ -44,26 +44,29 @@ const SliderItem = ({
   return (
     <article
       onMouseEnter={mouseEnterHandler}
+      onFocus={mouseEnterHandler}
       onMouseLeave={showArrowFunc}
+      onBlur={showArrowFunc}
       className="movie-container"
       data-id={imdbID}
+      tabIndex={0}
     >
       <img
-        src={Poster !== "N/A" ? Poster : image_not_found}
-        alt={imdbID}
-        height={275}
-        width={225}
+      src={Poster !== "N/A" ? Poster : image_not_found}
+      alt={imdbID}
+      height={275}
+      width={225}
       />
       <HoverInfo
-        item={movieItem}
-        isLoading={isLoading}
-        setIsModalOpen={setIsModalOpen}
-        setCurrentImdbId={setCurrentImdbId}
+      item={movieItem}
+      isLoading={isLoading}
+      setIsModalOpen={setIsModalOpen}
+      setCurrentImdbId={setCurrentImdbId}
       />
       <MovieItemModal
-        imdbId={currentImdbId}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
+      imdbId={currentImdbId}
+      isModalOpen={isModalOpen}
+      closeModal={closeModal}
       />
     </article>
   );

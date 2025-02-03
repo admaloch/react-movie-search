@@ -10,10 +10,11 @@ interface SearchBtnProps {
 export default function SearchBtn({ searchLink }: SearchBtnProps): JSX.Element {
   return (
     <div style={{ zIndex: "100" }}>
-      <IconButton aria-label={"show more info"} className="custom-icon-button">
+      <IconButton tabIndex={-1} aria-label={"show more info"} className="custom-icon-button">
         <a href={searchLink} target="_blank" rel="noopener noreferrer">
-          <Tippy content="Google search">
+          <Tippy  content="Google search">
             <svg
+            tabIndex={-1} 
               xmlns="http://www.w3.org/2000/svg"
               width="25"
               height="25"
