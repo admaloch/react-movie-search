@@ -12,8 +12,6 @@ const ProgressBar = ({
   changeIndexHandler,
 }: ProgressBarProps): JSX.Element => {
 
-  console.log(progBar);
-
   return (
     <div id="progress-bar" className="progress-bar">
       {progBar.length > 1 &&

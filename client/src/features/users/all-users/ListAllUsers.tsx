@@ -22,13 +22,10 @@ export default function ListAllUsers() {
 
   let content = null;
 
-  if (!users) return null;
-
-  const usersIds = users.ids as string[];
-  const isLoadingg = false;
-  if (isLoadingg) {
+  if (!users || isLoading) {
     content = <CircleAnimation />;
   } else {
+    const usersIds = users.ids as string[];
     content = (
       <>
         <h1>All Users:</h1>
@@ -54,7 +51,7 @@ export default function ListAllUsers() {
   }
 
   return (
-    <main id="main-content" className="main-item-content all-users-section">
+    <main id="main-content"  className="main-item-content all-users-section">
       {content}
     </main>
   );

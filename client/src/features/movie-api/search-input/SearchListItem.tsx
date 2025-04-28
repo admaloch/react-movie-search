@@ -29,7 +29,7 @@ const SearchListItem = ({
   return (
     <>
       <li >
-        <button tabIndex={isListShown ? 0 : -1} className="search-list-item" onClick={listItemClickHandler}>
+        <div role="button" tabIndex={isListShown ? 0 : -1} className="search-list-item" onClick={listItemClickHandler}>
           <div className="search-item-thumbnail">
           <PosterImage poster={Poster} imdbId={imdbID} height={27} width={50} />
           </div>
@@ -40,7 +40,7 @@ const SearchListItem = ({
           <div style={{display: isListShown ? 'block' : 'none'}} className="like-icon-container">
             <UpdateLikedList title={Title} imdbId={imdbID} type={Type} />
           </div>
-        </button>
+        </div>
       </li>
       <MovieItemModal
         imdbId={imdbID}

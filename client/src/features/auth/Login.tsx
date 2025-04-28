@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./auth.css";
-import { toast } from "react-toastify";
 import { useNavigate, NavLink } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
@@ -36,7 +35,6 @@ const Login: React.FC = () => {
   // Memoize the onSubmit function to prevent unnecessary re-renders
   const onSubmit: SubmitHandler<IFormInput> = useCallback(
     async ({ email, password }) => {
-      toast.dismiss();
       try {
         const { accessToken, id } = await login({ email, password }).unwrap();
         dispatch(setCredentials({ accessToken }));

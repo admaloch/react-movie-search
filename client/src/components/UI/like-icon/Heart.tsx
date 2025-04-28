@@ -21,7 +21,6 @@ export default function Heart({ isLiked, style }: HeartProps): JSX.Element {
     <button onClick={toggleDisplay} aria-label={isLiked ? 'Unlike item' : 'Like item'}style={style} className="heart-bg">
       <div
         className={`heart-icon ${liked ? "liked" : ""}`}
-        
       ></div>
     </button>
   );
