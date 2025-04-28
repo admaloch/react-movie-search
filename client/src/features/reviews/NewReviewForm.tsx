@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import { useAddNewReviewMutation } from "./reviewsApiSlice";
@@ -46,8 +46,17 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
 
   useToastOnMutationResult(isSuccess, isError, error, {
     successMessage: "Review successfully created!",
-    errorMessage: "Failed to create review! Check your connection and try again."
+    errorMessage:
+      "Failed to create review! Check your connection and try again.",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => {
+        closeModal();
+      }, 600);
+    }
+  }, [isSuccess]);
 
   return (
     <>

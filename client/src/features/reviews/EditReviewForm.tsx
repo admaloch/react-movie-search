@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import { useUpdateReviewMutation } from "./reviewsApiSlice";
@@ -44,8 +44,17 @@ const EditReviewForm = ({ closeModal, movie }: EditReviewFormProps) => {
 
   useToastOnMutationResult(isSuccess, isError, error, {
     successMessage: "Review successfully updated!",
-    errorMessage: "Failed to update review! Check your connection and try again."
+    errorMessage:
+      "Failed to update review! Check your connection and try again.",
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => {
+        closeModal();
+      }, 600);
+    }
+  }, [isSuccess]);
 
   return (
     <>

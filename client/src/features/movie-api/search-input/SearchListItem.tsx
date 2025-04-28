@@ -16,6 +16,7 @@ const SearchListItem = ({
   Year,
   isListShown,
 }: ExtendedOmdbItem): React.JSX.Element => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {

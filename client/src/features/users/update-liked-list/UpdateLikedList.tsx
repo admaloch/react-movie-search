@@ -18,6 +18,7 @@ export default function UpdateLikedList({
   type,
   style,
 }: UpdateLikedListProps): React.JSX.Element | null {
+  
   const { id } = useAuth();
 
   const { data: user, isLoading, isSuccess } = useGetUserByIdQuery(id);

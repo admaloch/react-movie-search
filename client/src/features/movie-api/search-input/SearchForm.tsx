@@ -74,8 +74,7 @@ const SearchForm = (): JSX.Element => {
 
       <button aria-label="submit search" type="submit" className="submit-btn">
         {isSubmitLoading
-          ? // ? <InputLoadAnimation placementStyle={{ inset: '.7rem 17px auto auto' }} />
-            "Submitting"
+          ? "Submitting"
           : "Submit"}
       </button>
       {isKeySuccess && Array.isArray(movieItems.Search) && (
