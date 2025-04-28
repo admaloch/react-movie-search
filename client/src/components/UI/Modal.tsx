@@ -37,7 +37,6 @@ export default function Modal({
         className={open ? "modal-overlay active" : "modal-overlay"}
       ></div>
       <div
-        aria-hidden={!open}
         aria-modal="true"
         className={open ? "modal-container active" : "modal-container"}
       >

@@ -49,7 +49,7 @@ const ItemModal = ({
         <button
           onClick={closeModalHandler}
           className="modal-close-icon"
-          ref={(button) => button && button.focus()}
+          ref={(button) => button}
         >
           <CloseIcon fontSize="large" />
         </button>

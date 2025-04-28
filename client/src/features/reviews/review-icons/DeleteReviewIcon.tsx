@@ -11,6 +11,8 @@ interface DeleteReviewIconProps {
   reviewId: string;
 }
 
+import { useEffect } from "react";
+
 export default function DeleteReviewIcon({
   reviewId,
 }: DeleteReviewIconProps): React.JSX.Element | null {
@@ -22,9 +24,15 @@ export default function DeleteReviewIcon({
     useDeleteReviewMutation();
 
   const deleteReviewHandler = async () => {
-    const id = reviewId;
-    await deleteReview(id);
+    await deleteReview(reviewId);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success("Review successfully deleted");
+    }
+  }, [isSuccess]);
 
   let content;
 
@@ -41,13 +49,9 @@ export default function DeleteReviewIcon({
     );
     content = (
       <div className="delete-review-btn">
-        <InfoIcon sx={{ fontSize: 25 }} />;
+        <InfoIcon sx={{ fontSize: 25 }} />
       </div>
     );
-  } else if (isSuccess) {
-    toast.dismiss();
-    toast.success("Review successfully deleted");
-    content = null;
   } else {
     content = (
       <IconButton
@@ -57,7 +61,7 @@ export default function DeleteReviewIcon({
       >
         <Tippy content="Delete review">
           <svg
-          tabIndex={-1}
+            tabIndex={-1}
             style={{ marginLeft: "7px" }}
             xmlns="http://www.w3.org/2000/svg"
             width="25"
@@ -72,5 +76,7 @@ export default function DeleteReviewIcon({
       </IconButton>
     );
   }
+
   return content;
 }
+
