@@ -1,7 +1,7 @@
 import { useGetReviewsByMovieQuery } from "./reviewsApiSlice";
-import CircleAnimation from "../../components/UI/LoadAnimation/CircleAnimation";
 import ShowMovieReviewItem from "./ShowMovieReviewItem";
 import MovieReviewProps from "../../models/MovieReviewProps";
+import MovieSkeletonLoader from "../../components/UI/LoadAnimation/MovieSkeletonLoader";
 
 interface ShowMovieReviewsProps {
   imdbId: string;
@@ -9,7 +9,7 @@ interface ShowMovieReviewsProps {
 
 export default function ShowMovieReviews({
   imdbId,
-}: ShowMovieReviewsProps): JSX.Element | null {
+}: ShowMovieReviewsProps): JSX.Element | undefined | null {
   if (!imdbId) return null;
 
   const {
@@ -20,18 +20,21 @@ export default function ShowMovieReviews({
     isSuccess,
   } = useGetReviewsByMovieQuery(imdbId);
   let content;
-  if (isLoading) content = <CircleAnimation />;
 
-  if (isError) {
+  const typedMovieReviews = movieReviews as MovieReviewProps[];
+
+  if (isLoading) {
+    content = (
+      <div style={{ padding: "0 20px" }}>
+        <MovieSkeletonLoader />
+      </div>
+    );
+  } else if (isError) {
     // @ts-ignore
     const errMsg =
       `Error: ${(error as any)?.data?.message}` || "Failed to load reviews.";
     console.log(errMsg);
-  }
-
-  const typedMovieReviews = movieReviews as MovieReviewProps[];
-
-  if (isSuccess && !typedMovieReviews.length) {
+  } else if (isSuccess && !typedMovieReviews.length) {
     content = (
       <div className="no-reviews-yet">
         <p>This movie has not been reviewed yet.</p>

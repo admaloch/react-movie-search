@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import image_not_found from "../../../assets/image_not_found.png";
 import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 import { SmallOmdbItem } from "../../../models/ItemApiProps";
 import MovieItemModal from "../ItemModal/MovieItemModal";

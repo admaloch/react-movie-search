@@ -148,6 +148,7 @@ background-color: white;
 
 .movie-reviews {
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .movie-review-item {

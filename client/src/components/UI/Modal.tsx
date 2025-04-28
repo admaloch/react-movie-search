@@ -16,7 +16,6 @@ export default function Modal({
   closeModal,
 }: ModalProps): JSX.Element | null {
 
-  if (!open) return null;
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
