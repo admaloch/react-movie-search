@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./users.css";
 import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useUpdateUserMutation } from "./usersApiSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useAuth from "../../hooks/useAuth";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 interface IFormInput {
   email: string;
@@ -45,27 +45,20 @@ const EditUserForm: React.FC = () => {
     }
   };
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Account info successfully updated!",
+    errorMessage:
+      "Failed to update account info. Check your connection and try again.",
+  });
+
   useEffect(() => {
     if (isSuccess) {
-      toast.dismiss();
-      toast.success(
-        "Account info successfully updated! Please login with your new credentials.",
-      );
       setTimeout(() => {
         sendLogout();
         navigate("/login");
       }, 1000);
     }
-    if (isError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${
-          (error as any)?.data?.message ||
-          "Failed to update account info. Try again later."
-        }`,
-      );
-    }
-  }, [isSuccess, isError, error, navigate]);
+  }, [isSuccess, navigate]);
 
   useEffect(() => {
     if (isLogoutError) {

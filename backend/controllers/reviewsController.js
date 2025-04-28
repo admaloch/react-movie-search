@@ -45,6 +45,7 @@ const getMovieReviews = async (req, res) => {
 // @route POST /reviews
 // @access Private
 const createReview = async (req, res) => {
+
   const { user, imdbId, body, rating, title } = req.body;
 
   if (!imdbId || !body || !rating || !user || !title) {
@@ -56,6 +57,7 @@ const createReview = async (req, res) => {
   const alreadyReviewed = usersReviews.some(
     (review) => review.imdbId === imdbId,
   );
+  
   if (alreadyReviewed) {
     return res
       .status(409)
@@ -98,6 +100,7 @@ const updateReview = async (req, res) => {
   if (rating) review.rating = rating;
 
   const updatedReview = await review.save();
+
   res.json({ message: `Review # ${updatedReview.id} updated`, review });
 };
 

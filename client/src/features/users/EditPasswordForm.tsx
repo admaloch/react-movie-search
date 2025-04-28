@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./users.css";
 import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useUpdateUserMutation } from "./usersApiSlice";
@@ -11,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useAuth from "../../hooks/useAuth";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 interface IFormInput {
   oldPassword: string;
@@ -46,27 +46,20 @@ const EditPasswordForm: React.FC = () => {
     }
   };
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Password successfully updated!",
+    errorMessage:
+      "Failed to update password. Check your connection and try again.",
+  });
+
   useEffect(() => {
     if (isSuccess) {
-      toast.dismiss();
-      toast.success(
-        "Password successfully updated! Please login with your new credentials.",
-      );
       setTimeout(() => {
         sendLogout();
         navigate("/login");
       }, 1000);
     }
-    if (isError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${
-          (error as any)?.data?.message ||
-          "Failed to update password. Try again later."
-        }`,
-      );
-    }
-  }, [isSuccess, isError, error, navigate]);
+  }, [isSuccess, navigate]);
 
   useEffect(() => {
     if (isLogoutError) {
@@ -138,6 +131,9 @@ const EditPasswordForm: React.FC = () => {
                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
                     "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
+                },
+                validate: (value) => {
+                  return value !== watch("oldPassword") || "New password must be different from old password";
                 },
               })}
               name="newPassword"

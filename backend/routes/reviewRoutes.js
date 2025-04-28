@@ -3,6 +3,7 @@ const router = express.Router();
 const reviewsController = require("../controllers/reviewsController");
 const verifyJWT = require("../middleware/verifyJWT");
 
+// /reviews/:id
 router
   .route("/")
   .get(reviewsController.getAllReviews)

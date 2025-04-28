@@ -5,13 +5,12 @@ import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import IconButton from "@mui/material/IconButton";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { toast } from "react-toastify";
 
 interface DeleteReviewIconProps {
   reviewId: string;
 }
 
-import { useEffect } from "react";
+import { useToastOnMutationResult } from "../../../hooks/useToastOnMutation";
 
 export default function DeleteReviewIcon({
   reviewId,
@@ -23,16 +22,14 @@ export default function DeleteReviewIcon({
   const [deleteReview, { isLoading, isError, isSuccess, error }] =
     useDeleteReviewMutation();
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Review deleted successfully!",
+    errorMessage: "Failed to delete review",
+  });
+
   const deleteReviewHandler = async () => {
     await deleteReview(reviewId);
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.dismiss();
-      toast.success("Review successfully deleted");
-    }
-  }, [isSuccess]);
 
   let content;
 
@@ -45,7 +42,7 @@ export default function DeleteReviewIcon({
   } else if (isError) {
     //@ts-ignore
     console.log(
-      `Error: ${(error as any)?.data?.message || "Could not delete review"}`,
+      `Error: ${(error as any)?.data?.message || "Could not delete review"}`
     );
     content = (
       <div className="delete-review-btn">
@@ -79,4 +76,3 @@ export default function DeleteReviewIcon({
 
   return content;
 }
-

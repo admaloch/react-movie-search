@@ -164,7 +164,7 @@ const updateUser = async (req, res) => {
 
   if (imdbId && title && type) {
     const movieExists = user.likedMovies.some(
-      (movie) => movie.imdbId === imdbId,
+      (movie) => movie.imdbId === imdbId
     );
 
     if (!movieExists) {
@@ -176,7 +176,7 @@ const updateUser = async (req, res) => {
 
   if (imdbId && !title && !hasWatched) {
     user.likedMovies = user.likedMovies.filter(
-      (movie) => movie.imdbId !== imdbId,
+      (movie) => movie.imdbId !== imdbId
     );
   }
 

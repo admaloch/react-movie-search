@@ -1,34 +1,39 @@
 import { useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import { toast } from "react-toastify";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 interface LogoutUserProps {
   closeNavbar: () => void;
   navLinkStyle: { display: string };
 }
 
-export default function LogoutUser({ closeNavbar, navLinkStyle }: LogoutUserProps) {
-
+export default function LogoutUser({
+  closeNavbar,
+  navLinkStyle,
+}: LogoutUserProps) {
   const navigate = useNavigate();
 
-  const [sendLogout, { isLoading }] = useSendLogoutMutation();
+  const [sendLogout, { isLoading, isSuccess, error, isError }] = useSendLogoutMutation();
 
   const handleLogoutBtnClick = () => {
     closeNavbar();
     toast.dismiss();
     try {
       sendLogout();
-      toast.success("You have been logged out");
-
       navigate("/login");
     } catch (err) {
       console.log("Error", err);
-      toast.error("Failed to logout");
     }
   };
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Successfully logged out!",
+    errorMessage: "Failed to log out. Check your connection and try again",
+  });
+
   return (
     <button
-    style={navLinkStyle}
+      style={navLinkStyle}
       aria-label="submit logout"
       className="logout-btn"
       onClick={handleLogoutBtnClick}

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAddNewReviewMutation } from "./reviewsApiSlice";
 import useAuth from "../../hooks/useAuth";
@@ -8,6 +7,7 @@ import "./Reviews.css";
 import CloseIcon from "@mui/icons-material/Close";
 import StarRating from "../../components/UI/StarRating";
 import { IFormInput } from "./EditReviewForm";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 interface NewReviewFormProps {
   imdbId: string;
@@ -44,24 +44,10 @@ const NewReviewForm = ({ imdbId, title, closeModal }: NewReviewFormProps) => {
     }
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      toast.dismiss();
-      toast.success("Review successfully submitted");
-      setTimeout(() => {
-        closeModal();
-      }, 600);
-    }
-    if (isError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${
-          (error as any)?.data?.message ||
-          "Failed to create review. Try again later."
-        }`,
-      );
-    }
-  }, [isSuccess, isError, error]);
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Review successfully created!",
+    errorMessage: "Failed to create review! Check your connection and try again."
+  });
 
   return (
     <>

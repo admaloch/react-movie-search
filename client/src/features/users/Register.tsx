@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAddNewUserMutation } from "./usersApiSlice";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 interface IFormInput {
   email: string;
@@ -41,26 +42,18 @@ const Register: React.FC = () => {
     }
   };
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Successfully registered a new account!",
+    errorMessage: "Failed to register a new account. Check your connection and try again",
+  });
+
   useEffect(() => {
     if (isSuccess) {
-      toast.dismiss();
-      toast.success(
-        "Registration successful! Please login with your new credentials.",
-      );
       setTimeout(() => {
         navigate("/login");
       }, 1000);
     }
-    if (isError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${
-          (error as any)?.data?.message ||
-          "Failed to register new account. Try again later."
-        }`,
-      );
-    }
-  }, [isSuccess, isError, error, navigate]);
+  }, [isSuccess, navigate]);
 
   const password = watch("password", "");
 

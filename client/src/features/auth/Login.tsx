@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./auth.css";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import { useLoginMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
 import { IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 interface IFormInput {
   email: string;
@@ -46,25 +47,18 @@ const Login: React.FC = () => {
         console.log(err);
       }
     },
-    [login, navigate, dispatch, error],
+    [login, navigate, dispatch, error]
   );
 
-  useEffect(() => {
-    if (isSuccess) {
-      toast.dismiss();
-      toast.success("Login successful!");
-    }
-    if (isError) {
-      toast.error(
-        `Error: ${(error as any)?.data?.message || "Failed to login. Try again later"}`,
-      );
-    }
-  }, [isSuccess, isError, error, navigate]);
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Login successful!",
+    errorMessage: "Failed to login. Check your connection and try again"
+  });
 
   // Memoize handlePersistToggle to prevent unnecessary re-renders
   const handlePersistToggle = useCallback(
     () => setPersist((prev) => !prev),
-    [setPersist],
+    [setPersist]
   );
 
   // Memoize togglePasswordVisibility to prevent unnecessary re-renders

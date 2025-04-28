@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDeleteUserMutation } from "./usersApiSlice";
 import { NavLink, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../hooks/useAuth";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoCard from "../../components/UI/card/InfoCard";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
+import { useToastOnMutationResult } from "../../hooks/useToastOnMutation";
 
 function DeleteUser(): React.JSX.Element | null {
   const { id, username } = useAuth();
@@ -17,8 +17,7 @@ function DeleteUser(): React.JSX.Element | null {
   const navigate = useNavigate();
 
   const [deleteUser, { isSuccess, isError, error }] = useDeleteUserMutation();
-  const [sendLogout, { isError: isLogoutError, error: logoutError }] =
-    useSendLogoutMutation();
+  const [sendLogout, { isError: isLogoutError }] = useSendLogoutMutation();
 
   const deleteUserBtnHandler = async () => {
     try {
@@ -29,28 +28,23 @@ function DeleteUser(): React.JSX.Element | null {
     }
   };
 
+  useToastOnMutationResult(isSuccess, isError, error, {
+    successMessage: "Account successfully deleted!",
+    errorMessage:
+      "Failed to delete account. Check your connection and try again.",
+  });
+
   useEffect(() => {
     if (isSuccess) {
-      toast.dismiss();
-      toast.success("Successfully deleted account!");
       navigate("/users/register");
     }
-    if (isError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${(error as any)?.data?.message || "Failed to delete user"}`,
-      );
-    }
-  }, [isSuccess, isError, error, navigate]);
+  }, [isSuccess, navigate]);
 
   useEffect(() => {
     if (isLogoutError) {
-      //@ts-ignore
-      toast.error(
-        `Error: ${(logoutError as any)?.data?.message || "Failed to delete user"}`,
-      );
+      window.location.reload();
     }
-  }, [isLogoutError, logoutError]);
+  }, [isLogoutError]);
 
   return (
     <main id="main-content" className="main-item-content">

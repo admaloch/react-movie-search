@@ -3,6 +3,7 @@ import "./User.css";
 import User from "./User";
 import { useState } from "react";
 import MovieItemModal from "../../movie-api/ItemModal/MovieItemModal";
+import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
 
 export default function ListAllUsers() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,28 +25,37 @@ export default function ListAllUsers() {
   if (!users) return null;
 
   const usersIds = users.ids as string[];
-  content = (
-    <>
-      <h1>All Users:</h1>
-      <div className="user-list">
-        {usersIds.map((id) => (
-          <User
-            key={id}
-            userId={id}
-            isLoading={isLoading}
-            isError={isError}
-            setIsModalOpen={setIsModalOpen}
-            setCurrentImdbId={setCurrentImdbId}
-          />
-        ))}
-      </div>
-      <MovieItemModal
-        imdbId={currentImdbId}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-      />
-    </>
-  );
+  const isLoadingg = false;
+  if (isLoadingg) {
+    content = <CircleAnimation />;
+  } else {
+    content = (
+      <>
+        <h1>All Users:</h1>
+        <div className="user-list">
+          {usersIds.map((id) => (
+            <User
+              key={id}
+              userId={id}
+              isLoading={isLoading}
+              isError={isError}
+              setIsModalOpen={setIsModalOpen}
+              setCurrentImdbId={setCurrentImdbId}
+            />
+          ))}
+        </div>
+        <MovieItemModal
+          imdbId={currentImdbId}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+        />
+      </>
+    );
+  }
 
-  return <main id="main-content" className="main-item-content all-users-section">{content}</main>;
+  return (
+    <main id="main-content" className="main-item-content all-users-section">
+      {content}
+    </main>
+  );
 }
