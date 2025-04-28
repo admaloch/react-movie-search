@@ -1,5 +1,5 @@
-import image_not_found from "../../../assets/image_not_found.png";
 import HoverInfo from "../../../components/movie-item/HoverInfo";
+import PosterImage from "../../../components/PosterImage/PosterImage";
 import { OmdbItem } from "../../../models/ItemApiProps";
 
 interface LikedMovieContentProps {
@@ -21,12 +21,7 @@ export default function LikedMovieContent({
 
   return (
     <>
-      <img
-        width={300}
-        height={300}
-        src={apiItem.Poster !== "N/A" ? apiItem.Poster : image_not_found}
-        alt={imdbID}
-      />
+      <PosterImage poster={apiItem.Poster } imdbId={imdbID} height={300} width={300} />     
       <HoverInfo
         item={apiItem}
         isLoading={isLoading}

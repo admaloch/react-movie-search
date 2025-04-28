@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import HoverInfo from "../../../components/movie-item/HoverInfo";
-import image_not_found from "../../../assets/image_not_found.png";
 import { useLazyGetMovieByIdQuery } from "../omdbApiSlice";
 import { OmdbItem, OmdbItemInterface } from "../../../models/ItemApiProps";
 import MovieItemModal from "../ItemModal/MovieItemModal";
+import PosterImage from "../../../components/PosterImage/PosterImage";
 interface SliderItemProps extends OmdbItemInterface {
   showArrowFunc: () => void;
   hideArrowFunc: () => void;
@@ -17,16 +17,16 @@ const SliderItem = ({
 }: SliderItemProps): JSX.Element | null => {
   if (!item) return null;
 
+  const { imdbID, Poster } = item;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImdbId, setCurrentImdbId] = useState("");
+  const [fetchedIds, setFetchedIds] = useState(new Set());
 
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentImdbId("");
   };
-
-  const { imdbID, Poster } = item;
-  const [fetchedIds, setFetchedIds] = useState(new Set());
 
   const [triggerGetMovieById, { data: movieItem, isLoading }] =
     useLazyGetMovieByIdQuery();
@@ -51,22 +51,17 @@ const SliderItem = ({
       data-id={imdbID}
       tabIndex={0}
     >
-      <img
-      src={Poster !== "N/A" ? Poster : image_not_found}
-      alt={imdbID}
-      height={275}
-      width={225}
-      />
+      <PosterImage poster={Poster} imdbId={imdbID} height={275} width={225} />
       <HoverInfo
-      item={movieItem}
-      isLoading={isLoading}
-      setIsModalOpen={setIsModalOpen}
-      setCurrentImdbId={setCurrentImdbId}
+        item={movieItem}
+        isLoading={isLoading}
+        setIsModalOpen={setIsModalOpen}
+        setCurrentImdbId={setCurrentImdbId}
       />
       <MovieItemModal
-      imdbId={currentImdbId}
-      isModalOpen={isModalOpen}
-      closeModal={closeModal}
+        imdbId={currentImdbId}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
       />
     </article>
   );

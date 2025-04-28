@@ -2,10 +2,10 @@ import React, { useCallback } from "react";
 import ModalContent from "./ModalContent";
 import ItemError from "../../../components/UI/errors/ItemError";
 import CloseIcon from "@mui/icons-material/Close";
-import imageNotFound from "../../../assets/image_not_found.png";
 import { OmdbItemWithRTK } from "../../../models/RTKQueryProps";
 import "./ItemModal.css";
 import MovieModalSkeletonLoader from "../../../components/UI/LoadAnimation/MovieModalSkeletonLoader";
+import PosterImage from "../../../components/PosterImage/PosterImage";
 
 interface ItemModalInterface extends OmdbItemWithRTK {
   closeModal: () => void;
@@ -40,12 +40,6 @@ const ItemModal = ({
   } else if (!item) {
     return null;
   } else {
-    const image = item.Poster !== "N/A" ? item.Poster : imageNotFound;
-    const imageAlt =
-      item.Poster !== "N/A"
-        ? `${item.Title}-poster`
-        : "image not found placeholder";
-
     content = (
       <section
         className="modal-content-container"
@@ -60,7 +54,7 @@ const ItemModal = ({
           <CloseIcon fontSize="large" />
         </button>
         <article className="modal-img-container">
-          <img height={400} width={275} src={image} alt={imageAlt} />
+          <PosterImage poster={item.Poster} imdbId={item.imdbID} height={400} width={275} />
         </article>
         <ModalContent item={item} />
       </section>
