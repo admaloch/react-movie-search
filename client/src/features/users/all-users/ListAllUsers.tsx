@@ -4,6 +4,7 @@ import User from "./User";
 import { useState } from "react";
 import MovieItemModal from "../../movie-api/ItemModal/MovieItemModal";
 import CircleAnimation from "../../../components/UI/LoadAnimation/CircleAnimation";
+import Error from "../../../components/UI/errors/Error";
 
 export default function ListAllUsers() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,10 +21,15 @@ export default function ListAllUsers() {
     refetchOnMountOrArgChange: false, // avoid refetching on every mount
   });
 
+
+
   let content = null;
 
-  if (!users || isLoading) {
+  if (isLoading) {
     content = <CircleAnimation />;
+  }
+  if (isError || !users) {
+    content = <Error text="We are unable to load that content right now!" />;
   } else {
     const usersIds = users.ids as string[];
     content = (
@@ -51,7 +57,7 @@ export default function ListAllUsers() {
   }
 
   return (
-    <main id="main-content"  className="main-item-content all-users-section">
+    <main id="main-content" className="main-item-content all-users-section">
       {content}
     </main>
   );

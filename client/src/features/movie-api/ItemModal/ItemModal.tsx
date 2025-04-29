@@ -25,8 +25,9 @@ const ItemModal = ({
 
   let content;
 
+
   if (isLoading) content = <MovieModalSkeletonLoader />;
-  else if (isError) {
+  if (isError) {
     // @ts-ignore
     content = (
       <ItemError
@@ -54,7 +55,12 @@ const ItemModal = ({
           <CloseIcon fontSize="large" />
         </button>
         <article className="modal-img-container">
-          <PosterImage poster={item.Poster} imdbId={item.imdbID} height={400} width={275} />
+          <PosterImage
+            poster={item.Poster}
+            imdbId={item.imdbID}
+            height={400}
+            width={275}
+          />
         </article>
         <ModalContent item={item} />
       </section>
