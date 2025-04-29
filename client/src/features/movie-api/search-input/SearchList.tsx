@@ -44,7 +44,6 @@ const SearchList = ({
       aria-label="Search results"
       role="listbox"
       tabIndex={-1}
-      aria-hidden={!isListShown}
       style={{
       height: isListShown ? "300px" : "0",
       opacity: isListShown ? 1 : 0,

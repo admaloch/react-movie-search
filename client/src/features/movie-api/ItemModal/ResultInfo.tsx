@@ -4,7 +4,7 @@ import { OmdbItem } from "../../../models/ItemApiProps";
 
 interface ResultInfoProps {
   item: OmdbItem;
-  year: number;
+  year: number | string;
 }
 
 export default function ResultInfo({

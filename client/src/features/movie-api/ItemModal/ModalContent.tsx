@@ -1,6 +1,5 @@
 import SearchBtn from "./SearchBtn";
 import ResultInfo from "./ResultInfo";
-import React from "react";
 import UpdateLikedList from "../../users/update-liked-list/UpdateLikedList";
 import HandleReviews from "../../reviews/HandleReviews";
 import UpdateHasWatched from "../../users/update-liked-list/UpdateHasWatched";
@@ -11,7 +10,12 @@ export default function ModalContent({
 }: OmdbItemInterface): React.JSX.Element | null {
   if (!item) return null;
 
-  const year = new Date(item.Released).getFullYear();
+  let year: string | number = new Date(item.Released).getFullYear();
+
+  if(!year) {
+    year = item.Year
+  }
+
   const searchLink = `https://www.google.com/search?q=${item.Title}+${year}`;
 
   return (

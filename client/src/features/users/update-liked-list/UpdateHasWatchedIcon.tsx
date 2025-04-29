@@ -39,7 +39,7 @@ export default function UpdateHasWatchedIcon({
     content = <ErrorIcon />;
   } else {
     content = (
-      <div className="seen-icon" aria-hidden="false">
+      <div className="seen-icon">
         <IconButton
           className="custom-icon-button eye-icon"
           onClick={updateHasWatched}

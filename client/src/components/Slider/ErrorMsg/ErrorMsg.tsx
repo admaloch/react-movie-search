@@ -31,7 +31,7 @@ function ErrorMsg() {
   if (!showErrorMsg) return null;
 
   return (
-    <div className="error-msg-container" aria-hidden="true">
+    <div className="error-msg-container" >
       <p>
         We couldn&apos;t find anything for that. Try searching for a specific
         topic or {currType.errorMsg} to get better results{" "}

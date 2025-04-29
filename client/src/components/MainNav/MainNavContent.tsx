@@ -76,7 +76,6 @@ export default function MainNavIsLoggedInItems() {
     <>
       <nav
         ref={navRef}
-        aria-hidden={!isNavOpen && !isNavShown} // Hide the nav for screen readers when closed
         className={isNavOpen ? "responsive_nav" : ""}
       >
         
@@ -103,7 +102,7 @@ export default function MainNavIsLoggedInItems() {
           onClick={closeNavbar}
           aria-label="Close navigation"
         >
-          <FaTimes aria-hidden="true" />
+          <FaTimes  />
         </button>
       </nav>
 
