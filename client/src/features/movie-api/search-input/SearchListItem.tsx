@@ -16,7 +16,6 @@ const SearchListItem = ({
   Year,
   isListShown,
 }: ExtendedOmdbItem): React.JSX.Element => {
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -29,25 +28,40 @@ const SearchListItem = ({
 
   return (
     <>
-      <li >
-        <div role="button" tabIndex={isListShown ? 0 : -1} className="search-list-item" onClick={listItemClickHandler}>
+      <li>
+        <div
+          role="button"
+          tabIndex={isListShown ? 0 : -1}
+          className="search-list-item"
+          onClick={listItemClickHandler}
+        >
           <div className="search-item-thumbnail">
-          <PosterImage poster={Poster} imdbId={imdbID} height={27} width={50} />
+            <PosterImage
+              poster={Poster}
+              imdbId={imdbID}
+              height={27}
+              width={50}
+            />
           </div>
           <div className="search-item-info">
             <h3>{Title}</h3>
             {Year && <p>{Year}</p>}
           </div>
-          <div style={{display: isListShown ? 'block' : 'none'}} className="like-icon-container">
+          <div
+            style={{ display: isListShown ? "block" : "none" }}
+            className="like-icon-container"
+          >
             <UpdateLikedList title={Title} imdbId={imdbID} type={Type} />
           </div>
         </div>
       </li>
+  
       <MovieItemModal
         imdbId={imdbID}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       />
+      
     </>
   );
 };

@@ -15,15 +15,13 @@ export default function Modal({
   children,
   closeModal,
 }: ModalProps): JSX.Element | null {
-
-
+  
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeModal();
       }
     };
-
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("keydown", handleEscape);
@@ -43,6 +41,6 @@ export default function Modal({
         {children && children}
       </div>
     </>,
-    document.getElementById("portal") as Element,
+    document.getElementById("portal") as Element
   );
 }

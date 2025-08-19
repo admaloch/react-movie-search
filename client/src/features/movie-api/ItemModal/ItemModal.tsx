@@ -18,6 +18,7 @@ const ItemModal = ({
   closeModal,
   error,
 }: ItemModalInterface): React.JSX.Element | null => {
+
   const closeModalHandler = useCallback(() => {
     closeModal();
     document.body.classList.remove("no-scroll");
@@ -25,9 +26,8 @@ const ItemModal = ({
 
   let content;
 
-
   if (isLoading) content = <MovieModalSkeletonLoader />;
-  if (isError) {
+  else if (isError && !item) {
     // @ts-ignore
     content = (
       <ItemError

@@ -67,6 +67,7 @@ const User = ({
 
   return <article className="user-container">{content}</article>;
 };
+
 const memoizedUser = memo(User);
 
 export default memoizedUser;

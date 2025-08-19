@@ -11,6 +11,7 @@ export default function UserListItems({
   imdbId,
   setCurrentImdbId,
 }: UserListItemsProps): React.JSX.Element | null {
+  
   const listItemClickHandler = () => {
     setIsModalOpen(true);
     setCurrentImdbId(imdbId);

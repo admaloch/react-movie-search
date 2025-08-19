@@ -15,6 +15,7 @@ const SliderItem = ({
   showArrowFunc,
   hideArrowFunc,
 }: SliderItemProps): JSX.Element | null => {
+  
   if (!item) return null;
 
   const { imdbID, Poster } = item;

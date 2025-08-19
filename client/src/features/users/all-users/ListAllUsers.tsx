@@ -10,7 +10,10 @@ export default function ListAllUsers() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImdbId, setCurrentImdbId] = useState("");
 
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setCurrentImdbId("");
+  };
 
   const {
     data: users,
@@ -20,8 +23,6 @@ export default function ListAllUsers() {
     refetchOnFocus: true, // or set to false if you don't need it
     refetchOnMountOrArgChange: false, // avoid refetching on every mount
   });
-
-
 
   let content = null;
 
@@ -47,11 +48,13 @@ export default function ListAllUsers() {
             />
           ))}
         </div>
-        <MovieItemModal
-          imdbId={currentImdbId}
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-        />
+        {isModalOpen && (
+          <MovieItemModal
+            imdbId={currentImdbId}
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+          />
+        )}
       </>
     );
   }

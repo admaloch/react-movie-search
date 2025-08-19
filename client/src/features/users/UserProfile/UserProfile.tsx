@@ -24,7 +24,7 @@ export default function UserProfile() {
     content = (
       <Error
         text={
-          "We were unable to locate that user. Check your internet connection and try again."
+          "We were unable to locate that user."
         }
       />
     );

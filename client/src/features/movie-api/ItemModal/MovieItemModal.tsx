@@ -40,7 +40,7 @@ export default function MovieItemModal({
 
   return (
     <Modal closeModal={closeItemModal} open={isModalOpen}>
-      {imdbId ? (
+      {isModalOpen && imdbId ? (
         <ItemModal
           isError={isError}
           isLoading={isLoading}

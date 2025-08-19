@@ -49,7 +49,7 @@ export default function LikedMovieItems({
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     movieRefs.current.forEach((ref) => ref && observer.observe(ref));
@@ -64,7 +64,9 @@ export default function LikedMovieItems({
           key={movie.imdbId}
           data-index={index}
           ref={(el) => (movieRefs.current[index] = el!)}
-          className={`movie-item-container ${visibleMovies.has(index) ? "visible" : "hidden"}`}
+          className={`movie-item-container ${
+            visibleMovies.has(index) ? "visible" : "hidden"
+          }`}
         >
           {visibleMovies.has(index) && (
             <LikedMovieItem
@@ -76,11 +78,13 @@ export default function LikedMovieItems({
         </div>
       ))}
 
-      <MovieItemModal
-        imdbId={currentImdbId}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-      />
+      {isModalOpen && (
+        <MovieItemModal
+          imdbId={currentImdbId}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+        />
+      )}
     </section>
   ) : (
     <div className="movie-items-container">
